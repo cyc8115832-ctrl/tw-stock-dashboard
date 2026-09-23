@@ -50,7 +50,7 @@
     }
   </style>
 </head>
-<body class="min-h-screen p-4 md:p-8 custom-scrollbar">
+<body class="min-h-screen p-3 md:p-8 pb-24 md:pb-8 custom-scrollbar">
 
   <div class="max-w-7xl mx-auto space-y-6">
 
@@ -62,7 +62,7 @@
           <h1 class="text-2xl md:text-3xl font-black tracking-tight text-white flex items-center gap-2">
             台股領先指標即時監控儀表板
             <span class="text-xs font-mono font-normal px-2.5 py-0.5 rounded-full bg-cyan-500/20 text-cyan-400 border border-cyan-500/30">
-              Phase 1–6 整合版 v2.2
+              Phase 1–7 手機/電腦自適應版
             </span>
           </h1>
         </div>
@@ -83,7 +83,8 @@
     </header>
 
     <!-- 1. 即時總覽狀態卡 (Status Header) -->
-    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+    <section id="market-status" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+
       <!-- 卡片 1: 綜合信心總分 -->
       <div class="bg-brand-card p-5 rounded-xl border border-brand-border flex flex-col justify-between glow-accent">
         <div class="flex justify-between items-start">
@@ -202,7 +203,7 @@
     </section>
 
     <!-- 1.5 AI 投資心法教練 (心理建設與大腦紀律導航) -->
-    <section class="bg-brand-card p-6 rounded-xl border border-cyan-500/50 glow-accent space-y-4">
+    <section id="mindset-coach" class="bg-brand-card p-4 md:p-6 rounded-xl border border-cyan-500/50 glow-accent space-y-4">
       <div class="flex flex-col md:flex-row md:items-center justify-between pb-3 border-b border-slate-800 gap-2">
         <div class="flex items-center gap-2.5">
           <span class="text-2xl">🧘</span>
@@ -263,7 +264,8 @@
     </section>
 
     <!-- 2. 加權指數 vs 複合記分卡雙軸對照走勢圖 -->
-    <section class="bg-brand-card p-6 rounded-xl border border-brand-border">
+    <section id="trend-chart" class="bg-brand-card p-4 md:p-6 rounded-xl border border-brand-border">
+
       <div class="flex flex-col md:flex-row md:items-center justify-between pb-4 border-b border-slate-800 gap-2 mb-4">
         <div>
           <h2 class="text-lg font-bold text-white flex items-center gap-2">
@@ -451,7 +453,7 @@
       </div>
 
       <!-- 第一層｜AI 產業景氣雷達 (10 大 AI 子產業 · 50 檔代表觀察池) -->
-      <div class="border-t border-slate-800 pt-6">
+      <div id="ai-radar" class="border-t border-slate-800 pt-6">
         <div class="flex flex-col md:flex-row md:items-center justify-between pb-3 gap-2">
           <div>
             <h3 class="text-base font-bold text-white flex items-center gap-2">
@@ -474,8 +476,8 @@
       </div>
 
       <!-- 第三層｜20 檔核心監控名單 — AI 投資 2.0 估值矩陣與位階色標 -->
-      <div class="border-t border-slate-800 pt-6">
-        <div class="flex flex-col md:flex-row md:items-center justify-between mb-3 gap-2">
+      <div id="core-stocks" class="border-t border-slate-800 pt-6">
+        <div class="flex flex-col md:flex-row md:items-center justify-between mb-3 gap-3">
           <div>
             <h3 class="text-base font-bold text-white flex items-center gap-2">
               <span>🎯</span> 第三層｜20 檔核心監控名單 — AI 投資 2.0 估值矩陣與位階色標
@@ -484,13 +486,19 @@
               🚦 觸發原則：綠燈優先 (低風險 → 高風險) · 依照【低於合理價 / 便宜價】安全邊際降序排列
             </p>
           </div>
-          <div class="text-xs font-mono text-slate-400 flex items-center gap-2">
-            <span>排序標準：</span>
-            <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold border border-emerald-500/30">安全邊際 MoS% 由大到小 (便宜優先)</span>
+
+          <!-- 快速分類篩選按鈕 (手機/電腦共用) -->
+          <div class="flex items-center gap-1.5 overflow-x-auto custom-scrollbar pb-1 text-xs font-mono" id="stockFilterGroup">
+            <button onclick="window.filterStocks('all')" class="stock-filter-btn px-2.5 py-1 rounded-full border border-cyan-500/50 bg-cyan-500/20 text-cyan-300 font-bold active-filter" data-type="all">全部 (20)</button>
+            <button onclick="window.filterStocks('cheap')" class="stock-filter-btn px-2.5 py-1 rounded-full border border-emerald-500/30 bg-slate-900/80 text-emerald-400 font-bold hover:bg-emerald-500/10" data-type="cheap">🟢 好球帶 (4)</button>
+            <button onclick="window.filterStocks('fair')" class="stock-filter-btn px-2.5 py-1 rounded-full border border-slate-700 bg-slate-900/80 text-slate-300 hover:bg-slate-800" data-type="fair">⚪ 合理偏低 (6)</button>
+            <button onclick="window.filterStocks('watch')" class="stock-filter-btn px-2.5 py-1 rounded-full border border-amber-500/30 bg-slate-900/80 text-amber-400 hover:bg-amber-500/10" data-type="watch">🟡 停止追高 (8)</button>
+            <button onclick="window.filterStocks('overheat')" class="stock-filter-btn px-2.5 py-1 rounded-full border border-rose-500/30 bg-slate-900/80 text-rose-400 hover:bg-rose-500/10" data-type="overheat">🟠 逢高調節 (2)</button>
           </div>
         </div>
 
-        <div class="overflow-x-auto custom-scrollbar">
+        <!-- 電腦版完整寬表格 (md 以上顯示) -->
+        <div class="hidden md:block overflow-x-auto custom-scrollbar">
           <table class="w-full text-left text-xs">
             <thead class="bg-slate-900/80 text-slate-400 uppercase font-mono border-b border-slate-800 text-xs">
               <tr>
@@ -514,8 +522,14 @@
             </tbody>
           </table>
         </div>
+
+        <!-- 手機版高對比卡片流 (md 隱藏，手機專用) -->
+        <div class="md:hidden space-y-3" id="coreWatchlistMobileCards">
+          <!-- JS 動態渲染手機卡片 -->
+        </div>
       </div>
     </section>
+
 
     <!-- 頁尾 -->
     <footer class="pt-6 pb-12 text-center text-xs text-slate-500 border-t border-slate-800 space-y-2">
@@ -528,7 +542,7 @@
   <!-- 嵌入真實數據資料庫 -->
   <script>
     const DASHBOARD_DATA = {
-  "generated_at": "2026-09-23 08:02",
+  "generated_at": "2026-09-23 09:57",
   "latest_signal": {
     "date": "2026-09",
     "total_score": 67.0,
@@ -5404,61 +5418,296 @@
         }).join("");
       }
 
-      // 8. 渲染第三層 20 檔核心監控名單 (安全邊際降序，便宜優先)
-      const coreList = data.core_watchlist_20 || data.rs_rankings || [];
-      const coreTbody = document.getElementById("coreWatchlistTableBody");
-      if (coreTbody) {
-        coreTbody.innerHTML = coreList.map((r, idx) => {
-          const mos = r.margin_of_safety_pct !== undefined ? r.margin_of_safety_pct : 0.0;
-          let mosColor = "text-rose-400 font-bold";
-          if (mos >= 15.0) mosColor = "text-emerald-400 font-black text-sm";
-          else if (mos > 0.0) mosColor = "text-emerald-300 font-bold";
-          else if (mos >= -10.0) mosColor = "text-amber-300 font-medium";
+      // 8. 渲染第三層 20 檔核心監控名單 (支援分類篩選與手機卡片)
+      const rawCoreList = data.core_watchlist_20 || data.rs_rankings || [];
 
-          const mosStr = (mos > 0 ? '+' : '') + mos.toFixed(1) + '%';
-          const floorStr = r.floor_value ? `$${Math.round(r.floor_value)}` : '-';
-          const pCheapStr = r.p_cheap ? `$${Math.round(r.p_cheap)}` : '-';
-          const pFairStr = r.p_fair ? `$${Math.round(r.p_fair)}` : '-';
-          const pExpStr = r.p_expensive ? `$${Math.round(r.p_expensive)}` : '-';
-          const epsStr = (r.eps_2026e && r.eps_2027e && r.eps_2028e) ? `$${r.eps_2026e}/$${r.eps_2027e}/$${r.eps_2028e}` : '-';
-          const targetStr = (r.target_fair_2027 && r.target_fair_2028) ? `$${Math.round(r.target_fair_2027)} / $${Math.round(r.target_fair_2028)}` : '-';
-          const pegStr = r.peg !== undefined ? r.peg : '-';
-          const badgeColor = r.badge_color || '#F8FAFC';
-          const sunStatus = r.sun_status || '⚪ 合理偏低區';
-          const sunPos = r.sun_position || '50% (持有)';
+      function renderWatchlist(list) {
+        // 電腦版寬表格
+        const coreTbody = document.getElementById("coreWatchlistTableBody");
+        if (coreTbody) {
+          if (list.length === 0) {
+            coreTbody.innerHTML = `<tr><td colspan="13" class="py-8 text-center text-slate-500 font-mono">此分類目前無符合之標的</td></tr>`;
+          } else {
+            coreTbody.innerHTML = list.map((r, idx) => {
+              const mos = r.margin_of_safety_pct !== undefined ? r.margin_of_safety_pct : 0.0;
+              let mosColor = "text-rose-400 font-bold";
+              if (mos >= 15.0) mosColor = "text-emerald-400 font-black text-sm";
+              else if (mos > 0.0) mosColor = "text-emerald-300 font-bold";
+              else if (mos >= -10.0) mosColor = "text-amber-300 font-medium";
 
-          return `
-            <tr class="hover:bg-slate-800/40 transition-colors text-xs">
-              <td class="py-2.5 px-2 font-bold text-slate-300 font-mono">#${idx + 1}</td>
-              <td class="py-2.5 px-2">
-                <div class="font-bold text-white text-sm flex items-center gap-1.5">
-                  <span>${r.name}</span>
-                  <span class="text-[10px] font-mono font-normal px-1 rounded bg-slate-800 text-slate-400">${r.symbol}</span>
+              const mosStr = (mos > 0 ? '+' : '') + mos.toFixed(1) + '%';
+              const floorStr = r.floor_value ? `$${Math.round(r.floor_value)}` : '-';
+              const pCheapStr = r.p_cheap ? `$${Math.round(r.p_cheap)}` : '-';
+              const pFairStr = r.p_fair ? `$${Math.round(r.p_fair)}` : '-';
+              const pExpStr = r.p_expensive ? `$${Math.round(r.p_expensive)}` : '-';
+              const epsStr = (r.eps_2026e && r.eps_2027e && r.eps_2028e) ? `$${r.eps_2026e}/$${r.eps_2027e}/$${r.eps_2028e}` : '-';
+              const targetStr = (r.target_fair_2027 && r.target_fair_2028) ? `$${Math.round(r.target_fair_2027)} / $${Math.round(r.target_fair_2028)}` : '-';
+              const pegStr = r.peg !== undefined ? r.peg : '-';
+              const badgeColor = r.badge_color || '#F8FAFC';
+              const sunStatus = r.sun_status || '⚪ 合理偏低區';
+              const sunPos = r.sun_position || '50% (持有)';
+
+              return `
+                <tr class="hover:bg-slate-800/40 transition-colors text-xs">
+                  <td class="py-2.5 px-2 font-bold text-slate-300 font-mono">#${idx + 1}</td>
+                  <td class="py-2.5 px-2">
+                    <div class="font-bold text-white text-sm flex items-center gap-1.5">
+                      <span>${r.name}</span>
+                      <span class="text-[10px] font-mono font-normal px-1 rounded bg-slate-800 text-slate-400">${r.symbol}</span>
+                    </div>
+                    <div class="text-[10px] text-cyan-400 font-mono mt-0.5">${r.category || r.sub_industry || ''}</div>
+                  </td>
+                  <td class="py-2.5 px-2 font-black text-white font-mono text-sm">$${r.close}</td>
+                  <td class="py-2.5 px-2 font-mono text-slate-400 text-[11px]" title="近4季EPS × 15">${floorStr}</td>
+                  <td class="py-2.5 px-2 font-mono text-emerald-400 font-semibold">${pCheapStr}</td>
+                  <td class="py-2.5 px-2 font-mono text-white font-semibold">${pFairStr}</td>
+                  <td class="py-2.5 px-2 font-mono text-amber-300">${pExpStr}</td>
+                  <td class="py-2.5 px-2 font-mono ${mosColor}">${mosStr}</td>
+                  <td class="py-2.5 px-2 font-mono text-slate-300">${pegStr}</td>
+                  <td class="py-2.5 px-2 font-mono text-cyan-300 text-[11px]">${epsStr}</td>
+                  <td class="py-2.5 px-2 font-mono font-bold text-emerald-300 text-[11px]">${targetStr}</td>
+                  <td class="py-2.5 px-2">
+                    <span class="px-2 py-0.5 rounded text-[11px] font-bold font-mono inline-block shadow-sm"
+                          style="color: ${badgeColor}; background-color: ${badgeColor}20; border: 1px solid ${badgeColor}60;">
+                      ${sunStatus}
+                    </span>
+                  </td>
+                  <td class="py-2.5 px-2 text-right font-mono font-bold text-cyan-300 text-[11px]">${sunPos}</td>
+                </tr>
+              `;
+            }).join("");
+          }
+        }
+
+        // 手機版高對比卡片流
+        const mobileContainer = document.getElementById("coreWatchlistMobileCards");
+        if (mobileContainer) {
+          if (list.length === 0) {
+            mobileContainer.innerHTML = `<div class="p-6 text-center text-slate-500 font-mono text-sm border border-slate-800 rounded-lg">此分類目前無符合之標的</div>`;
+          } else {
+            mobileContainer.innerHTML = list.map((r, idx) => {
+              const mos = r.margin_of_safety_pct !== undefined ? r.margin_of_safety_pct : 0.0;
+              let mosBadgeClass = "text-rose-400 bg-rose-500/10 border-rose-500/30";
+              if (mos >= 15.0) mosBadgeClass = "text-emerald-400 bg-emerald-500/20 border-emerald-500/40 font-black";
+              else if (mos > 0.0) mosBadgeClass = "text-emerald-300 bg-emerald-500/15 border-emerald-500/30";
+              else if (mos >= -10.0) mosBadgeClass = "text-amber-300 bg-amber-500/15 border-amber-500/30";
+
+              const mosStr = (mos > 0 ? '+' : '') + mos.toFixed(1) + '%';
+              const pBargainStr = r.p_bargain ? `$${Math.round(r.p_bargain)}` : '-';
+              const pCheapStr = r.p_cheap ? `$${Math.round(r.p_cheap)}` : '-';
+              const pFairStr = r.p_fair ? `$${Math.round(r.p_fair)}` : '-';
+              const pExpStr = r.p_expensive ? `$${Math.round(r.p_expensive)}` : '-';
+              const pCrazyStr = r.p_crazy ? `$${Math.round(r.p_crazy)}` : '-';
+              const floorStr = r.floor_value ? `$${Math.round(r.floor_value)}` : '-';
+              const epsStr = (r.eps_2026e && r.eps_2027e && r.eps_2028e) ? `$${r.eps_2026e} / $${r.eps_2027e} / $${r.eps_2028e}` : '-';
+              const targetStr = (r.target_fair_2027 && r.target_fair_2028) ? `$${Math.round(r.target_fair_2027)} / $${Math.round(r.target_fair_2028)}` : '-';
+              const pegStr = r.peg !== undefined ? r.peg : '-';
+              const badgeColor = r.badge_color || '#F8FAFC';
+              const sunStatus = r.sun_status || '⚪ 合理偏低區';
+              const sunPos = r.sun_position || '50% (持有)';
+              const sunAction = r.sun_action || '按照紀律分批布局';
+              const cardId = `mobile-card-${idx}`;
+
+              return `
+                <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-3.5 space-y-3 shadow-lg hover:border-slate-700 transition-all">
+                  <!-- 卡片頭部：名稱與狀態標籤 -->
+                  <div class="flex items-start justify-between gap-2">
+                    <div>
+                      <div class="flex items-center gap-2">
+                        <span class="text-xs font-mono font-bold text-slate-400 bg-slate-800/80 px-1.5 py-0.5 rounded">#${idx + 1}</span>
+                        <span class="text-base font-black text-white tracking-wide">${r.name}</span>
+                        <span class="text-xs font-mono px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 border border-slate-700/60">${r.symbol}</span>
+                      </div>
+                      <div class="text-[11px] text-cyan-400 font-mono mt-1">${r.category || r.sub_industry || ''}</div>
+                    </div>
+                    <div class="flex flex-col items-end gap-1">
+                      <span class="px-2 py-0.5 rounded text-[11px] font-bold font-mono border"
+                            style="color: ${badgeColor}; background-color: ${badgeColor}20; border-color: ${badgeColor}60;">
+                        ${sunStatus}
+                      </span>
+                      <span class="text-[11px] font-mono px-1.5 py-0.5 rounded border ${mosBadgeClass}">
+                        MoS ${mosStr}
+                      </span>
+                    </div>
+                  </div>
+
+                  <!-- 核心關鍵數值三欄網格 -->
+                  <div class="grid grid-cols-3 gap-2 py-2 px-3 bg-slate-950/60 rounded-lg border border-slate-800/80 font-mono text-center">
+                    <div>
+                      <div class="text-[10px] text-slate-400 uppercase tracking-wider mb-0.5">現價</div>
+                      <div class="text-base font-black text-white">$${r.close}</div>
+                    </div>
+                    <div>
+                      <div class="text-[10px] text-slate-400 uppercase tracking-wider mb-0.5">合理價 (1.0x)</div>
+                      <div class="text-sm font-bold text-slate-200">${pFairStr}</div>
+                    </div>
+                    <div>
+                      <div class="text-[10px] text-slate-400 uppercase tracking-wider mb-0.5">建議部位</div>
+                      <div class="text-xs font-bold text-cyan-300 mt-0.5">${sunPos}</div>
+                    </div>
+                  </div>
+
+                  <!-- 展開/收合詳細五大價位抽屜按鈕 -->
+                  <button onclick="window.toggleCardDetails('${cardId}')"
+                          class="w-full py-1.5 px-3 bg-slate-800/60 hover:bg-slate-800 text-slate-300 text-xs flex items-center justify-between rounded-lg border border-slate-700/60 font-mono transition-colors active:scale-[0.99]">
+                    <span class="flex items-center gap-1.5 font-medium text-slate-200">
+                      <span>🔍</span> 孫慶龍五大價位 & 遠期預估
+                    </span>
+                    <span id="${cardId}-arrow" class="text-slate-400 text-[10px] transform transition-transform">▼ 展開</span>
+                  </button>
+
+                  <!-- 抽屜隱藏區 -->
+                  <div id="${cardId}-details" class="hidden pt-3 border-t border-slate-800/80 space-y-2.5 text-xs font-mono">
+                    <!-- 五大估值階梯 -->
+                    <div>
+                      <div class="text-[11px] font-bold text-slate-400 mb-1.5 flex items-center justify-between">
+                        <span>五大位階階梯價 (本益比法)</span>
+                        <span class="text-[10px] text-slate-500">特/便/合/昂/狂</span>
+                      </div>
+                      <div class="grid grid-cols-5 gap-1 text-center text-[10px]">
+                        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded py-1">
+                          <div class="text-slate-400">特價</div>
+                          <div class="text-emerald-400 font-bold">${pBargainStr}</div>
+                        </div>
+                        <div class="bg-emerald-500/10 border border-emerald-500/30 rounded py-1">
+                          <div class="text-slate-400">便宜</div>
+                          <div class="text-emerald-300 font-bold">${pCheapStr}</div>
+                        </div>
+                        <div class="bg-slate-800/60 border border-slate-700 rounded py-1">
+                          <div class="text-slate-400">合理</div>
+                          <div class="text-white font-bold">${pFairStr}</div>
+                        </div>
+                        <div class="bg-amber-500/10 border border-amber-500/30 rounded py-1">
+                          <div class="text-slate-400">昂貴</div>
+                          <div class="text-amber-400 font-bold">${pExpStr}</div>
+                        </div>
+                        <div class="bg-rose-500/10 border border-rose-500/30 rounded py-1">
+                          <div class="text-slate-400">瘋狂</div>
+                          <div class="text-rose-400 font-bold">${pCrazyStr}</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- 財務與預估指標 -->
+                    <div class="grid grid-cols-2 gap-2 text-[11px] pt-1 border-t border-slate-800/60">
+                      <div class="flex justify-between text-slate-400">
+                        <span>保守底價 (4季×15):</span>
+                        <span class="text-slate-200 font-bold">${floorStr}</span>
+                      </div>
+                      <div class="flex justify-between text-slate-400">
+                        <span>PEG:</span>
+                        <span class="text-slate-200 font-bold">${pegStr}</span>
+                      </div>
+                      <div class="flex justify-between text-slate-400 col-span-2">
+                        <span>預估 EPS (26E/27E/28E):</span>
+                        <span class="text-cyan-300 font-bold">${epsStr}</span>
+                      </div>
+                      <div class="flex justify-between text-slate-400 col-span-2">
+                        <span>遠期目標 (27E/28E):</span>
+                        <span class="text-emerald-300 font-bold">${targetStr}</span>
+                      </div>
+                    </div>
+
+                    <!-- 操盤行動指令 -->
+                    <div class="p-2 rounded bg-slate-950 border border-slate-800 text-[11px] text-slate-300 flex items-start gap-1.5">
+                      <span class="text-amber-400">💡</span>
+                      <span><strong>操盤指引：</strong>${sunAction}</span>
+                    </div>
+                  </div>
                 </div>
-                <div class="text-[10px] text-cyan-400 font-mono mt-0.5">${r.category || r.sub_industry || ''}</div>
-              </td>
-              <td class="py-2.5 px-2 font-black text-white font-mono text-sm">$${r.close}</td>
-              <td class="py-2.5 px-2 font-mono text-slate-400 text-[11px]" title="近4季EPS × 15">${floorStr}</td>
-              <td class="py-2.5 px-2 font-mono text-emerald-400 font-semibold">${pCheapStr}</td>
-              <td class="py-2.5 px-2 font-mono text-white font-semibold">${pFairStr}</td>
-              <td class="py-2.5 px-2 font-mono text-amber-300">${pExpStr}</td>
-              <td class="py-2.5 px-2 font-mono ${mosColor}">${mosStr}</td>
-              <td class="py-2.5 px-2 font-mono text-slate-300">${pegStr}</td>
-              <td class="py-2.5 px-2 font-mono text-cyan-300 text-[11px]">${epsStr}</td>
-              <td class="py-2.5 px-2 font-mono font-bold text-emerald-300 text-[11px]">${targetStr}</td>
-              <td class="py-2.5 px-2">
-                <span class="px-2 py-0.5 rounded text-[11px] font-bold font-mono inline-block shadow-sm"
-                      style="color: ${badgeColor}; background-color: ${badgeColor}20; border: 1px solid ${badgeColor}60;">
-                  ${sunStatus}
-                </span>
-              </td>
-              <td class="py-2.5 px-2 text-right font-mono font-bold text-cyan-300 text-[11px]">${sunPos}</td>
-            </tr>
-          `;
-        }).join("");
+              `;
+            }).join("");
+          }
+        }
       }
+
+      // 卡片折疊切換
+      window.toggleCardDetails = function(cardId) {
+        const details = document.getElementById(`${cardId}-details`);
+        const arrow = document.getElementById(`${cardId}-arrow`);
+        if (!details) return;
+        const isHidden = details.classList.contains("hidden");
+        if (isHidden) {
+          details.classList.remove("hidden");
+          if (arrow) arrow.textContent = "▲ 收合";
+        } else {
+          details.classList.add("hidden");
+          if (arrow) arrow.textContent = "▼ 展開";
+        }
+      };
+
+      // 分類篩選功能
+      window.filterStocks = function(type) {
+        // 更新按鈕樣式
+        const buttons = document.querySelectorAll("#stockFilterGroup .stock-filter-btn");
+        buttons.forEach(btn => {
+          if (btn.getAttribute("data-type") === type) {
+            btn.className = "stock-filter-btn px-2.5 py-1 rounded-full border border-cyan-500/50 bg-cyan-500/20 text-cyan-300 font-bold";
+          } else {
+            btn.className = "stock-filter-btn px-2.5 py-1 rounded-full border border-slate-700 bg-slate-900/80 text-slate-400 hover:bg-slate-800";
+          }
+        });
+
+        let filtered = rawCoreList;
+        if (type === "cheap") {
+          filtered = rawCoreList.filter(r => (r.rank_tier === 1 || r.rank_tier === 2 || (r.margin_of_safety_pct !== undefined && r.margin_of_safety_pct >= 10.0)));
+        } else if (type === "fair") {
+          filtered = rawCoreList.filter(r => (r.rank_tier === 3 || (r.sun_status && r.sun_status.includes("合理偏低"))));
+        } else if (type === "watch") {
+          filtered = rawCoreList.filter(r => (r.rank_tier === 4 || (r.sun_status && r.sun_status.includes("合理偏高"))));
+        } else if (type === "overheat") {
+          filtered = rawCoreList.filter(r => (r.rank_tier >= 5 || (r.sun_status && (r.sun_status.includes("昂貴") || r.sun_status.includes("過熱") || r.sun_status.includes("瘋狂")))));
+        }
+
+        renderWatchlist(filtered);
+      };
+
+      // 計算各類數量並更新按鈕文字
+      const cheapCount = rawCoreList.filter(r => (r.rank_tier === 1 || r.rank_tier === 2 || (r.margin_of_safety_pct !== undefined && r.margin_of_safety_pct >= 10.0))).length;
+      const fairCount = rawCoreList.filter(r => (r.rank_tier === 3 || (r.sun_status && r.sun_status.includes("合理偏低")))).length;
+      const watchCount = rawCoreList.filter(r => (r.rank_tier === 4 || (r.sun_status && r.sun_status.includes("合理偏高")))).length;
+      const overheatCount = rawCoreList.filter(r => (r.rank_tier >= 5 || (r.sun_status && (r.sun_status.includes("昂貴") || r.sun_status.includes("過熱") || r.sun_status.includes("瘋狂"))))).length;
+
+      const btnAll = document.querySelector(`button[data-type="all"]`);
+      const btnCheap = document.querySelector(`button[data-type="cheap"]`);
+      const btnFair = document.querySelector(`button[data-type="fair"]`);
+      const btnWatch = document.querySelector(`button[data-type="watch"]`);
+      const btnOverheat = document.querySelector(`button[data-type="overheat"]`);
+
+      if (btnAll) btnAll.textContent = `全部 (${rawCoreList.length})`;
+      if (btnCheap) btnCheap.textContent = `🟢 好球帶 (${cheapCount})`;
+      if (btnFair) btnFair.textContent = `⚪ 合理偏低 (${fairCount})`;
+      if (btnWatch) btnWatch.textContent = `🟡 停止追高 (${watchCount})`;
+      if (btnOverheat) btnOverheat.textContent = `🟠 逢高調節 (${overheatCount})`;
+
+      // 預設渲染全部名單
+      renderWatchlist(rawCoreList);
 
     });
   </script>
+
+  <!-- 手機專用單手拇指底部導航列 (Sticky Bottom Bar, md 以上隱藏) -->
+  <nav class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-[#0B0F19]/95 backdrop-blur-md border-t border-slate-800 px-2 py-2 flex items-center justify-around shadow-2xl" style="padding-bottom: max(0.5rem, env(safe-area-inset-bottom));">
+    <a href="#market-status" class="flex flex-col items-center gap-0.5 text-slate-400 hover:text-cyan-300 transition-colors py-1 px-2">
+      <span class="text-base">🚦</span>
+      <span class="text-[10px] font-medium tracking-tight">大盤燈號</span>
+    </a>
+    <a href="#mindset-coach" class="flex flex-col items-center gap-0.5 text-slate-400 hover:text-cyan-300 transition-colors py-1 px-2">
+      <span class="text-base">🧘</span>
+      <span class="text-[10px] font-medium tracking-tight">心法教練</span>
+    </a>
+    <a href="#core-stocks" class="flex flex-col items-center gap-0.5 text-cyan-400 hover:text-cyan-300 transition-colors py-1 px-2 font-bold">
+      <span class="text-base">🎯</span>
+      <span class="text-[10px] tracking-tight">核心好球帶</span>
+    </a>
+    <a href="#ai-radar" class="flex flex-col items-center gap-0.5 text-slate-400 hover:text-cyan-300 transition-colors py-1 px-2">
+      <span class="text-base">📡</span>
+      <span class="text-[10px] font-medium tracking-tight">AI雷達</span>
+    </a>
+    <a href="#trend-chart" class="flex flex-col items-center gap-0.5 text-slate-400 hover:text-cyan-300 transition-colors py-1 px-2">
+      <span class="text-base">📈</span>
+      <span class="text-[10px] font-medium tracking-tight">走勢驗證</span>
+    </a>
+  </nav>
 </body>
 </html>
