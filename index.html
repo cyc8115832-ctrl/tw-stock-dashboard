@@ -1,0 +1,5464 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>台股領先指標即時監控儀表板 | Taiwan Leading Indicators Dashboard</title>
+  <!-- TailwindCSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Chart.js via CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#0a0f1d',
+              card: '#131b2e',
+              border: '#23314f',
+              accent: '#38bdf8',
+              success: '#10b981',
+              warning: '#f59e0b',
+              danger: '#ef4444',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #0a0f1d;
+      color: #e2e8f0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+    .glow-accent {
+      box-shadow: 0 0 25px -5px rgba(56, 189, 248, 0.25);
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #0f172a;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #334155;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body class="min-h-screen p-4 md:p-8 custom-scrollbar">
+
+  <div class="max-w-7xl mx-auto space-y-6">
+
+    <!-- 頂部標題列 -->
+    <header class="flex flex-col md:flex-row md:items-center justify-between pb-6 border-b border-brand-border gap-4">
+      <div>
+        <div class="flex items-center gap-3">
+          <span class="text-2xl">⚡</span>
+          <h1 class="text-2xl md:text-3xl font-black tracking-tight text-white flex items-center gap-2">
+            台股領先指標即時監控儀表板
+            <span class="text-xs font-mono font-normal px-2.5 py-0.5 rounded-full bg-cyan-500/20 text-cyan-400 border border-cyan-500/30">
+              Phase 1–6 整合版 v2.2
+            </span>
+          </h1>
+        </div>
+        <p class="text-sm text-slate-400 mt-1">
+          多源宏觀資金、半導體設備、CSP 雲端資本支出、AI 循環自適應記分卡與「投資 2.0」個股動態投組
+        </p>
+      </div>
+      <div class="flex items-center gap-4 text-xs font-mono">
+        <div class="px-3 py-2 rounded-lg bg-brand-card border border-brand-border text-slate-300">
+          <span class="text-slate-500">最後更新：</span>
+          <span id="genTime" class="text-cyan-400 font-semibold">—</span>
+        </div>
+        <div class="px-3 py-2 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span>系統運作正常 (Online)</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- 1. 即時總覽狀態卡 (Status Header) -->
+    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <!-- 卡片 1: 綜合信心總分 -->
+      <div class="bg-brand-card p-5 rounded-xl border border-brand-border flex flex-col justify-between glow-accent">
+        <div class="flex justify-between items-start">
+          <span class="text-xs font-mono text-slate-400 uppercase tracking-wider">當前綜合評分 (SCORE)</span>
+          <span class="text-xs px-2 py-0.5 rounded font-mono bg-cyan-500/20 text-cyan-300" id="evalDate">2026-09</span>
+        </div>
+        <div class="my-3 flex items-baseline gap-2">
+          <span class="text-5xl font-black tracking-tight text-white font-mono" id="mainScore">77.0</span>
+          <span class="text-sm text-slate-400">/ 100 分</span>
+        </div>
+        <div class="text-xs flex items-center justify-between text-slate-400 pt-2 border-t border-slate-800">
+          <span>基礎分：<strong class="text-slate-200" id="baseScore">62.0</strong></span>
+          <span class="px-1.5 py-0.5 rounded bg-cyan-500/20 text-cyan-300 font-mono text-[11px]" id="aiBoostBadge">+15 AI加成 (自適應)</span>
+        </div>
+      </div>
+
+      <!-- 卡片 2: 市場燈號狀態 -->
+      <div class="bg-brand-card p-5 rounded-xl border border-brand-border flex flex-col justify-between">
+        <div class="flex justify-between items-start">
+          <span class="text-xs font-mono text-slate-400 uppercase tracking-wider">市場燈號 (REGIME & STATE)</span>
+          <span class="text-xs px-2 py-0.5 rounded font-mono bg-purple-500/20 text-purple-300" id="regimeBadge">AI 結構擴張期</span>
+        </div>
+        <div class="my-3">
+          <div class="flex items-center gap-2" id="stateBadge">
+            <span class="w-3.5 h-3.5 rounded-full bg-emerald-400 animate-ping"></span>
+            <span class="text-2xl font-black text-emerald-400">[主升擴張] BULL</span>
+          </div>
+          <p class="text-xs text-slate-400 mt-1" id="stateDesc">
+            宏觀半導體與 AI 雲端資本支出全面爆發，進入多頭主升波段。
+          </p>
+        </div>
+        <div class="text-xs text-slate-400 pt-2 border-t border-slate-800 flex justify-between">
+          <span>建議持股水位：</span>
+          <strong class="text-emerald-400 font-mono text-sm" id="stockRatio">80% ~ 100%</strong>
+        </div>
+      </div>
+
+      <!-- 卡片 3: AI 資本支出與巨頭動能 -->
+      <div class="bg-brand-card p-5 rounded-xl border border-brand-border flex flex-col justify-between">
+        <div class="flex justify-between items-start">
+          <span class="text-xs font-mono text-slate-400 uppercase tracking-wider">AI 循環核心動能 (AI CAPEX)</span>
+          <span class="text-xs font-mono text-emerald-400 font-semibold">強勁擴張</span>
+        </div>
+        <div class="my-2 space-y-2">
+          <div>
+            <div class="flex justify-between text-xs mb-1">
+              <span class="text-slate-300">NVIDIA 60日動能</span>
+              <span class="text-emerald-400 font-mono font-bold">+28.4%</span>
+            </div>
+            <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+              <div class="bg-emerald-400 h-full rounded-full" style="width: 85%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between text-xs mb-1">
+              <span class="text-slate-300">4大 CSP 均線站上比例</span>
+              <span class="text-cyan-400 font-mono font-bold">100% (4/4)</span>
+            </div>
+            <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+              <div class="bg-cyan-400 h-full rounded-full" style="width: 100%"></div>
+            </div>
+          </div>
+        </div>
+        <div class="text-xs text-slate-400 pt-2 border-t border-slate-800 flex justify-between">
+          <span>半導體設備進口 YoY：</span>
+          <span class="text-emerald-400 font-mono font-bold">+34.8%</span>
+        </div>
+      </div>
+
+      <!-- 卡片 4: 四階段傳導累計落實度 -->
+      <div class="bg-brand-card p-5 rounded-xl border border-brand-border flex flex-col justify-between">
+        <span class="text-xs font-mono text-slate-400 uppercase tracking-wider">四階段傳導進度 (PROGRESS)</span>
+        <div class="space-y-1.5 my-2">
+          <div>
+            <div class="flex justify-between text-[11px] mb-0.5">
+              <span class="text-slate-300">1. 全球科技先行 (35分)</span>
+              <span class="text-cyan-400 font-mono" id="s1Score">35.0 / 35</span>
+            </div>
+            <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+              <div id="s1Bar" class="bg-cyan-400 h-full rounded-full" style="width: 100%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between text-[11px] mb-0.5">
+              <span class="text-slate-300">2. 宏觀景氣復甦 (20分)</span>
+              <span class="text-amber-400 font-mono" id="s2Score">6.0 / 20</span>
+            </div>
+            <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+              <div id="s2Bar" class="bg-amber-400 h-full rounded-full" style="width: 30%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between text-[11px] mb-0.5">
+              <span class="text-slate-300">3. 實體獲利改善 (25分)</span>
+              <span class="text-emerald-400 font-mono" id="s3Score">23.0 / 25</span>
+            </div>
+            <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+              <div id="s3Bar" class="bg-emerald-400 h-full rounded-full" style="width: 92%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between text-[11px] mb-0.5">
+              <span class="text-slate-300">4. 股價籌碼爆發 (20分)</span>
+              <span class="text-blue-400 font-mono" id="s4Score">7.0 / 20</span>
+            </div>
+            <div class="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
+              <div id="s4Bar" class="bg-blue-400 h-full rounded-full" style="width: 35%"></div>
+            </div>
+          </div>
+        </div>
+        <div class="text-[11px] text-slate-400 pt-1.5 border-t border-slate-800 flex justify-between">
+          <span>傳導瓶頸檢測：</span>
+          <span class="text-cyan-300">第 1、3 階段超前加速</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 1.5 AI 投資心法教練 (心理建設與大腦紀律導航) -->
+    <section class="bg-brand-card p-6 rounded-xl border border-cyan-500/50 glow-accent space-y-4">
+      <div class="flex flex-col md:flex-row md:items-center justify-between pb-3 border-b border-slate-800 gap-2">
+        <div class="flex items-center gap-2.5">
+          <span class="text-2xl">🧘</span>
+          <div>
+            <h2 class="text-lg font-black text-white flex items-center gap-2">
+              AI 投資心法教練 · 心理建設與買賣紀律導航
+              <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                克服恐懼與貪婪
+              </span>
+            </h2>
+            <p class="text-xs text-slate-400 mt-0.5">
+              拒絕憑感覺盲目操作！該買的時候大膽分批進場，該賣的時候果斷收兵冬藏
+            </p>
+          </div>
+        </div>
+        <div class="text-xs font-mono text-cyan-400 bg-cyan-500/10 px-3 py-1.5 rounded-lg border border-cyan-500/20">
+          ★ 操盤真諦：以客觀數學模型對抗人性的軟弱與僥倖
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="mindsetCoachCards">
+        <!-- 卡片 1: 該買的時候 -->
+        <div class="bg-slate-900/80 p-4 rounded-xl border border-emerald-500/40 space-y-2">
+          <div class="flex items-center gap-2 text-emerald-400 font-bold text-sm">
+            <span class="text-lg">🎯</span>
+            <span>【該買的時候】大膽出手，切勿猶豫</span>
+          </div>
+          <p class="text-xs text-slate-200 leading-relaxed" id="coachBuyAdvice">
+            當宏觀領先指標站上景氣確認線（≥60分），且個股落入「合理偏低區 / 便宜價」時，這是市場贈予的安全邊際禮物。克服對市場雜音的恐懼，以金字塔式大膽分批建倉！
+          </p>
+        </div>
+
+        <!-- 卡片 2: 該賣的時候 -->
+        <div class="bg-slate-900/80 p-4 rounded-xl border border-rose-500/40 space-y-2">
+          <div class="flex items-center gap-2 text-rose-400 font-bold text-sm">
+            <span class="text-lg">⏳</span>
+            <span>【該賣的時候】果斷冬藏，切莫留戀</span>
+          </div>
+          <p class="text-xs text-slate-200 leading-relaxed" id="coachSellAdvice">
+            當個股衝破「昂貴價 / 瘋狂價」，遠期獲利已被提早透支時，別想賺最後一塊錢！落袋收回本金才是真財富；若大盤跌破熄燈線（<40分）或個股跌破 -15% 停損紅線，像外科醫生一樣冷血切除，絕不向下攤平！
+          </p>
+        </div>
+
+        <!-- 卡片 3: 人性盲區與金句 -->
+        <div class="bg-slate-900/80 p-4 rounded-xl border border-amber-500/40 space-y-2">
+          <div class="flex items-center gap-2 text-amber-400 font-bold text-sm">
+            <span class="text-lg">⚠️</span>
+            <span>【警惕人性盲區】戒除處分效應與成本錨定</span>
+          </div>
+          <p class="text-xs text-slate-300 leading-relaxed" id="coachTrapAdvice">
+            散戶最大死穴是「賺 10% 抱不住急著跑，賠 30% 卻裝死不賣」。忘記你的買進成本，讓千里馬的利潤奔跑，市場不在乎你的成本是多少！
+          </p>
+          <div class="pt-2 border-t border-slate-800 text-[11px] text-cyan-300 italic font-medium" id="coachGoldenQuote">
+            「多頭市場最大的風險不是套牢，而是過早下車；空頭市場最大的智慧不是抄底，而是空倉冬藏。」
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. 加權指數 vs 複合記分卡雙軸對照走勢圖 -->
+    <section class="bg-brand-card p-6 rounded-xl border border-brand-border">
+      <div class="flex flex-col md:flex-row md:items-center justify-between pb-4 border-b border-slate-800 gap-2 mb-4">
+        <div>
+          <h2 class="text-lg font-bold text-white flex items-center gap-2">
+            <span>📈</span> 2018–2026 台股加權指數 vs 領先指標記分卡走勢對照
+          </h2>
+          <p class="text-xs text-slate-400">
+            驗證六大波段起漲點（綠色底框）與記分卡警戒線 (40分)、確認線 (60分)、主升線 (75分) 之領先連動性
+          </p>
+        </div>
+        <div class="flex items-center gap-4 text-xs font-mono">
+          <div class="flex items-center gap-1.5">
+            <span class="w-3 h-0.5 bg-cyan-400"></span>
+            <span class="text-slate-300">自適應記分卡總分</span>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <span class="w-3 h-0.5 bg-blue-500"></span>
+            <span class="text-slate-300">台股加權指數 (月K)</span>
+          </div>
+        </div>
+      </div>
+      <div class="h-[380px] w-full">
+        <canvas id="trendChart"></canvas>
+      </div>
+    </section>
+
+    <!-- 3. 雷達圖與波段實測 -->
+    <section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <!-- 雷達圖 -->
+      <div class="bg-brand-card p-6 rounded-xl border border-brand-border flex flex-col">
+        <h3 class="text-base font-bold text-white flex items-center gap-2 mb-1">
+          <span>🎯</span> 四階段傳導雷達
+        </h3>
+        <p class="text-xs text-slate-400 mb-4">各維度達成率百分比 (0~100%)</p>
+        <div class="h-[280px] w-full flex items-center justify-center my-auto">
+          <canvas id="radarChart"></canvas>
+        </div>
+      </div>
+
+      <!-- 六大波段驗證成效 -->
+      <div class="lg:col-span-2 bg-brand-card p-6 rounded-xl border border-brand-border flex flex-col">
+        <div class="flex justify-between items-center mb-3">
+          <h3 class="text-base font-bold text-white flex items-center gap-2">
+            <span>🛡️</span> 六大歷史波段雙階梯實測成效
+          </h3>
+          <span class="text-xs text-slate-400">2018–2026 實測結果</span>
+        </div>
+        <div class="overflow-x-auto custom-scrollbar">
+          <table class="w-full text-left text-xs">
+            <thead class="bg-slate-900/60 text-slate-400 uppercase font-mono border-b border-slate-800">
+              <tr>
+                <th class="py-2.5 px-3">事件名稱</th>
+                <th class="py-2.5 px-3">低點日期</th>
+                <th class="py-2.5 px-3">警戒(40分)</th>
+                <th class="py-2.5 px-3">確認(60分)</th>
+                <th class="py-2.5 px-3">提前天數</th>
+                <th class="py-2.5 px-3 text-right">階梯成效</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-800/60 font-mono text-slate-300" id="waveTableBody">
+              <!-- 動態渲染 -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 20 項領先指標全景排行榜 -->
+    <section class="bg-brand-card p-6 rounded-xl border border-brand-border">
+      <div class="flex flex-col md:flex-row md:items-center justify-between pb-4 border-b border-slate-800 gap-2 mb-4">
+        <div>
+          <h2 class="text-lg font-bold text-white flex items-center gap-2">
+            <span>🏆</span> 領先指標全景成績單排行榜 (20 項指標)
+          </h2>
+          <p class="text-xs text-slate-400">依領先天數與歷史命中率驗證排序</p>
+        </div>
+        <div class="text-xs font-mono text-slate-400">
+          前瞻驗證窗口：<span class="text-cyan-400">6 個月</span> | 門檻：<span class="text-cyan-400">≥15%</span>
+        </div>
+      </div>
+      <div class="overflow-x-auto custom-scrollbar">
+        <table class="w-full text-left text-xs">
+          <thead class="bg-slate-900/60 text-slate-400 uppercase font-mono border-b border-slate-800">
+            <tr>
+              <th class="py-3 px-3">指標名稱</th>
+              <th class="py-3 px-3">傳導階段</th>
+              <th class="py-3 px-3">領先天數 (中位數)</th>
+              <th class="py-3 px-3">歷史命中率 (95% CI)</th>
+              <th class="py-3 px-3">假訊號率</th>
+              <th class="py-3 px-3">AI 循環特異性</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800/60 font-mono" id="scorecardTableBody">
+            <!-- 動態渲染 -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 5. 投資 2.0 個股選擇系統與動態投組 Alpha 戰報 (Phase 6 新增) -->
+    <section class="bg-brand-card p-6 rounded-xl border border-cyan-500/40 glow-accent space-y-6">
+      <div class="flex flex-col md:flex-row md:items-center justify-between pb-4 border-b border-slate-800 gap-2">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="text-xl">🚀</span>
+            <h2 class="text-lg font-bold text-white">
+              「投資 2.0」個股選擇系統與動態投組 Alpha 戰報
+            </h2>
+            <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
+              Macro Top-Down + RS Bottom-Up
+            </span>
+          </div>
+          <p class="text-xs text-slate-400 mt-1">
+            以自適應記分卡總分控制整體持股水位（0%~100%），於多頭/景氣確認時重倉相對強度 (RS) 最高的 AI 龍頭族群
+          </p>
+        </div>
+        <div class="flex items-center gap-3 text-xs font-mono">
+          <span class="text-slate-400">回測區間：2018–2026</span>
+          <span class="px-2 py-1 rounded bg-slate-800 text-emerald-400 font-bold border border-slate-700">Alpha: +21.0%</span>
+        </div>
+      </div>
+
+      <!-- 投組三大關鍵量化指標卡 -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div class="bg-slate-900/60 p-4 rounded-lg border border-slate-800">
+          <span class="text-[11px] font-mono text-slate-400 uppercase">策略累積報酬 (TOTAL RETURN)</span>
+          <div class="text-3xl font-black font-mono text-cyan-400 my-1">+362.2%</div>
+          <div class="text-[11px] text-slate-400 flex justify-between">
+            <span>年化 CAGR：<strong class="text-white">19.6%</strong></span>
+            <span>大盤: 18.9%</span>
+          </div>
+        </div>
+
+        <div class="bg-slate-900/60 p-4 rounded-lg border border-slate-800">
+          <span class="text-[11px] font-mono text-slate-400 uppercase">最大回撤控制 (MAX DRAWDOWN)</span>
+          <div class="text-3xl font-black font-mono text-emerald-400 my-1">-23.6%</div>
+          <div class="text-[11px] text-slate-400 flex justify-between">
+            <span>大盤 MDD：<strong class="text-amber-400">-28.9%</strong></span>
+            <span>台積電: -38.7%</span>
+          </div>
+        </div>
+
+        <div class="bg-slate-900/60 p-4 rounded-lg border border-slate-800">
+          <span class="text-[11px] font-mono text-slate-400 uppercase">夏普比率 (SHARPE RATIO)</span>
+          <div class="text-3xl font-black font-mono text-white my-1">0.90</div>
+          <div class="text-[11px] text-slate-400 flex justify-between">
+            <span>卡瑪比率 Calmar：<strong class="text-cyan-300">0.83</strong></span>
+            <span>大盤: 0.65</span>
+          </div>
+        </div>
+
+        <div class="bg-slate-900/60 p-4 rounded-lg border border-slate-800">
+          <span class="text-[11px] font-mono text-slate-400 uppercase">月度勝率 (WIN RATE)</span>
+          <div class="text-3xl font-black font-mono text-purple-400 my-1">69.9%</div>
+          <div class="text-[11px] text-slate-400 flex justify-between">
+            <span>2022 空頭精準降至 0% 現金</span>
+            <span>避開重跌</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 投組淨值走勢圖 (Chart.js) -->
+      <div>
+        <div class="flex justify-between items-center mb-2">
+          <h3 class="text-sm font-bold text-white flex items-center gap-2">
+            <span>📊</span> 2018–2026 動態投組 vs 加權指數 vs 台積電 累積淨值走勢
+          </h3>
+          <div class="flex items-center gap-4 text-xs font-mono">
+            <div class="flex items-center gap-1.5">
+              <span class="w-3 h-0.5 bg-cyan-400"></span>
+              <span class="text-slate-300">投資 2.0 策略 (Dynamic Portfolio)</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="w-3 h-0.5 bg-blue-500"></span>
+              <span class="text-slate-400">台股加權指數 (TAIEX)</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="w-3 h-0.5 bg-emerald-400"></span>
+              <span class="text-slate-400">台積電 (2330.TW)</span>
+            </div>
+          </div>
+        </div>
+        <div class="h-[340px] w-full">
+          <canvas id="portfolioChart"></canvas>
+        </div>
+      </div>
+
+      <!-- 第一層｜AI 產業景氣雷達 (10 大 AI 子產業 · 50 檔代表觀察池) -->
+      <div class="border-t border-slate-800 pt-6">
+        <div class="flex flex-col md:flex-row md:items-center justify-between pb-3 gap-2">
+          <div>
+            <h3 class="text-base font-bold text-white flex items-center gap-2">
+              <span>📡</span> 第一層｜AI 產業景氣雷達 (10 大 AI 子產業 · 50 檔代表觀察池)
+            </h3>
+            <p class="text-xs text-slate-400 mt-0.5">
+              循環階段判定：A 起步 → B 初升 → C 成長 → D 高峰 → E 衰退 ｜ 動態修正 PE 乘數與遠期獲利權重
+            </p>
+          </div>
+          <div class="flex items-center gap-2 text-[11px] font-mono">
+            <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">C 成長 (擴產主升)</span>
+            <span class="px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">B 初升 (量產前哨)</span>
+            <span class="px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30">D 高峰 (下修PE 0.85x)</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3" id="aiRadarContainer">
+          <!-- JS 動態渲染 10 大子產業卡片 -->
+        </div>
+      </div>
+
+      <!-- 第三層｜20 檔核心監控名單 — AI 投資 2.0 估值矩陣與位階色標 -->
+      <div class="border-t border-slate-800 pt-6">
+        <div class="flex flex-col md:flex-row md:items-center justify-between mb-3 gap-2">
+          <div>
+            <h3 class="text-base font-bold text-white flex items-center gap-2">
+              <span>🎯</span> 第三層｜20 檔核心監控名單 — AI 投資 2.0 估值矩陣與位階色標
+            </h3>
+            <p class="text-xs text-slate-400 mt-0.5">
+              🚦 觸發原則：綠燈優先 (低風險 → 高風險) · 依照【低於合理價 / 便宜價】安全邊際降序排列
+            </p>
+          </div>
+          <div class="text-xs font-mono text-slate-400 flex items-center gap-2">
+            <span>排序標準：</span>
+            <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold border border-emerald-500/30">安全邊際 MoS% 由大到小 (便宜優先)</span>
+          </div>
+        </div>
+
+        <div class="overflow-x-auto custom-scrollbar">
+          <table class="w-full text-left text-xs">
+            <thead class="bg-slate-900/80 text-slate-400 uppercase font-mono border-b border-slate-800 text-xs">
+              <tr>
+                <th class="py-2.5 px-2">排序</th>
+                <th class="py-2.5 px-2">標的代號/名稱</th>
+                <th class="py-2.5 px-2">收盤價</th>
+                <th class="py-2.5 px-2">保守底價 (4季×15)</th>
+                <th class="py-2.5 px-2">便宜價 (0.8x)</th>
+                <th class="py-2.5 px-2">合理價 (1.0x)</th>
+                <th class="py-2.5 px-2">昂貴價 (1.2x)</th>
+                <th class="py-2.5 px-2">安全邊際 (MoS%)</th>
+                <th class="py-2.5 px-2">PEG</th>
+                <th class="py-2.5 px-2">預估EPS (26E/27E/28E)</th>
+                <th class="py-2.5 px-2">遠期合理目標 (27E/28E)</th>
+                <th class="py-2.5 px-2">孫慶龍位階色標</th>
+                <th class="py-2.5 px-2 text-right">建議合理部位</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-800/60 font-mono text-slate-300" id="coreWatchlistTableBody">
+              <!-- 動態渲染 -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 頁尾 -->
+    <footer class="pt-6 pb-12 text-center text-xs text-slate-500 border-t border-slate-800 space-y-2">
+      <p>台股領先指標研究計畫 (Taiwan Stock Leading Indicators Research) · Phase 1–6 全功能監控儀表板</p>
+      <p class="font-mono">版本：v2.2 · 引擎：AdaptiveScorecard, RelativeStrengthRanker & PortfolioBacktester · 授權：MIT</p>
+    </footer>
+
+  </div>
+
+  <!-- 嵌入真實數據資料庫 -->
+  <script>
+    const DASHBOARD_DATA = {
+  "generated_at": "2026-09-23 08:02",
+  "latest_signal": {
+    "date": "2026-09",
+    "total_score": 67.0,
+    "base_score": 62.0,
+    "ai_boost": 5.0,
+    "stage_breakdown": {
+      "stage1_global": 25.0,
+      "stage2_macro": 7.0,
+      "stage3_fundamental": 23.0,
+      "stage4_momentum": 7.0
+    },
+    "state": "CONFIRM",
+    "state_name": "景氣確認",
+    "state_emoji": "🟠",
+    "target_position": "60% ~ 70%",
+    "is_exit_alert": false
+  },
+  "scorecard_history": [
+    {
+      "date": "2018-01",
+      "total_score": 19.0,
+      "traditional_score": 19.0,
+      "adaptive_score": 19.0,
+      "regime": "MACRO_CYCLE",
+      "base_score": 19.0,
+      "ai_boost": 0.0,
+      "stage1_score": 7.0,
+      "stage2_score": 0.0,
+      "stage3_score": 12.0,
+      "stage4_score": 0.0,
+      "market_state": "",
+      "twii_close": 11103.8
+    },
+    {
+      "date": "2018-02",
+      "total_score": 32.0,
+      "traditional_score": 32.0,
+      "adaptive_score": 32.0,
+      "regime": "MACRO_CYCLE",
+      "base_score": 32.0,
+      "ai_boost": 0.0,
+      "stage1_score": 7.0,
+      "stage2_score": 0.0,
+      "stage3_score": 15.0,
+      "stage4_score": 10.0,
+      "market_state": "",
+      "twii_close": 10815.5
+    },
+    {
+      "date": "2018-03",
+      "total_score": 29.0,
+      "traditional_score": 29.0,
+      "adaptive_score": 29.0,
+      "regime": "MACRO_CYCLE",
+      "base_score": 24.0,
+      "ai_boost": 5.0,
+      "stage1_score": 7.0,
+      "stage2_score": 10.0,
+      "stage3_score": 0.0,
+      "stage4_score": 7.0,
+      "market_state": "",
+      "twii_close": 10906.2
+    },
+    {
+      "date": "2018-04",
+      "total_score": 34.0,
+      "traditional_score": 38.0,
+      "adaptive_score": 34.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 29.0,
+      "ai_boost": 5.0,
+      "stage1_score": 5.0,
+      "stage2_score": 6.0,
+      "stage3_score": 18.0,
+      "stage4_score": 0.0,
+      "market_state": "",
+      "twii_close": 10657.9
+    },
+    {
+      "date": "2018-05",
+      "total_score": 74.0,
+      "traditional_score": 65.0,
+      "adaptive_score": 74.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 64.0,
+      "ai_boost": 10.0,
+      "stage1_score": 33.0,
+      "stage2_score": 6.0,
+      "stage3_score": 15.0,
+      "stage4_score": 10.0,
+      "market_state": "",
+      "twii_close": 10875.0
+    },
+    {
+      "date": "2018-06",
+      "total_score": 60.0,
+      "traditional_score": 53.0,
+      "adaptive_score": 60.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 50.0,
+      "ai_boost": 10.0,
+      "stage1_score": 19.0,
+      "stage2_score": 6.0,
+      "stage3_score": 18.0,
+      "stage4_score": 7.0,
+      "market_state": "",
+      "twii_close": 10836.9
+    },
+    {
+      "date": "2018-07",
+      "total_score": 61.0,
+      "traditional_score": 52.0,
+      "adaptive_score": 61.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 56.0,
+      "ai_boost": 5.0,
+      "stage1_score": 31.0,
+      "stage2_score": 6.0,
+      "stage3_score": 12.0,
+      "stage4_score": 7.0,
+      "market_state": "",
+      "twii_close": 11057.5
+    },
+    {
+      "date": "2018-08",
+      "total_score": 70.0,
+      "traditional_score": 62.0,
+      "adaptive_score": 70.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 60.0,
+      "ai_boost": 10.0,
+      "stage1_score": 29.0,
+      "stage2_score": 12.0,
+      "stage3_score": 12.0,
+      "stage4_score": 7.0,
+      "market_state": "",
+      "twii_close": 11063.9
+    },
+    {
+      "date": "2018-09",
+      "total_score": 57.0,
+      "traditional_score": 61.0,
+      "adaptive_score": 57.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 52.0,
+      "ai_boost": 5.0,
+      "stage1_score": 14.0,
+      "stage2_score": 12.0,
+      "stage3_score": 19.0,
+      "stage4_score": 7.0,
+      "market_state": "",
+      "twii_close": 11006.3
+    },
+    {
+      "date": "2018-10",
+      "total_score": 34.0,
+      "traditional_score": 34.0,
+      "adaptive_score": 34.0,
+      "regime": "MACRO_CYCLE",
+      "base_score": 34.0,
+      "ai_boost": 0.0,
+      "stage1_score": 7.0,
+      "stage2_score": 15.0,
+      "stage3_score": 12.0,
+      "stage4_score": 0.0,
+      "market_state": "",
+      "twii_close": 9802.1
+    },
+    {
+      "date": "2018-11",
+      "total_score": 37.0,
+      "traditional_score": 37.0,
+      "adaptive_score": 37.0,
+      "regime": "MACRO_CYCLE",
+      "base_score": 37.0,
+      "ai_boost": 0.0,
+      "stage1_score": 7.0,
+      "stage2_score": 8.0,
+      "stage3_score": 22.0,
+      "stage4_score": 0.0,
+      "market_state": "",
+      "twii_close": 9888.0
+    },
+    {
+      "date": "2018-12",
+      "total_score": 30.0,
+      "traditional_score": 30.0,
+      "adaptive_score": 30.0,
+      "regime": "MACRO_CYCLE",
+      "base_score": 30.0,
+      "ai_boost": 0.0,
+      "stage1_score": 7.0,
+      "stage2_score": 8.0,
+      "stage3_score": 5.0,
+      "stage4_score": 10.0,
+      "market_state": "",
+      "twii_close": 9727.4
+    },
+    {
+      "date": "2019-01",
+      "total_score": 49.0,
+      "traditional_score": 49.0,
+      "adaptive_score": 49.0,
+      "regime": "MACRO_CYCLE",
+      "base_score": 49.0,
+      "ai_boost": 0.0,
+      "stage1_score": 27.0,
+      "stage2_score": 15.0,
+      "stage3_score": 7.0,
+      "stage4_score": 0.0,
+      "market_state": "",
+      "twii_close": 9932.3
+    },
+    {
+      "date": "2019-02",
+      "total_score": 79.0,
+      "traditional_score": 71.0,
+      "adaptive_score": 79.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 74.0,
+      "ai_boost": 5.0,
+      "stage1_score": 29.0,
+      "stage2_score": 12.0,
+      "stage3_score": 23.0,
+      "stage4_score": 10.0,
+      "market_state": "",
+      "twii_close": 10389.2
+    },
+    {
+      "date": "2019-03",
+      "total_score": 68.0,
+      "traditional_score": 60.0,
+      "adaptive_score": 68.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 53.0,
+      "ai_boost": 15.0,
+      "stage1_score": 29.0,
+      "stage2_score": 12.0,
+      "stage3_score": 5.0,
+      "stage4_score": 7.0,
+      "market_state": "",
+      "twii_close": 10641.0
+    },
+    {
+      "date": "2019-04",
+      "total_score": 71.0,
+      "traditional_score": 63.0,
+      "adaptive_score": 71.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 56.0,
+      "ai_boost": 15.0,
+      "stage1_score": 29.0,
+      "stage2_score": 12.0,
+      "stage3_score": 15.0,
+      "stage4_score": 0.0,
+      "market_state": "",
+      "twii_close": 10967.7
+    },
+    {
+      "date": "2019-05",
+      "total_score": 47.0,
+      "traditional_score": 47.0,
+      "adaptive_score": 47.0,
+      "regime": "MACRO_CYCLE",
+      "base_score": 47.0,
+      "ai_boost": 0.0,
+      "stage1_score": 7.0,
+      "stage2_score": 15.0,
+      "stage3_score": 15.0,
+      "stage4_score": 10.0,
+      "market_state": "",
+      "twii_close": 10498.5
+    },
+    {
+      "date": "2019-06",
+      "total_score": 55.0,
+      "traditional_score": 47.0,
+      "adaptive_score": 55.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 50.0,
+      "ai_boost": 5.0,
+      "stage1_score": 33.0,
+      "stage2_score": 10.0,
+      "stage3_score": 0.0,
+      "stage4_score": 7.0,
+      "market_state": "",
+      "twii_close": 10730.8
+    },
+    {
+      "date": "2019-07",
+      "total_score": 63.0,
+      "traditional_score": 55.0,
+      "adaptive_score": 63.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 58.0,
+      "ai_boost": 5.0,
+      "stage1_score": 29.0,
+      "stage2_score": 12.0,
+      "stage3_score": 10.0,
+      "stage4_score": 7.0,
+      "market_state": "",
+      "twii_close": 10823.8
+    },
+    {
+      "date": "2019-08",
+      "total_score": 57.0,
+      "traditional_score": 58.0,
+      "adaptive_score": 57.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 52.0,
+      "ai_boost": 5.0,
+      "stage1_score": 24.0,
+      "stage2_score": 6.0,
+      "stage3_score": 15.0,
+      "stage4_score": 7.0,
+      "market_state": "",
+      "twii_close": 10618.0
+    },
+    {
+      "date": "2019-09",
+      "total_score": 55.0,
+      "traditional_score": 55.0,
+      "adaptive_score": 55.0,
+      "regime": "MACRO_CYCLE",
+      "base_score": 50.0,
+      "ai_boost": 5.0,
+      "stage1_score": 23.0,
+      "stage2_score": 8.0,
+      "stage3_score": 12.0,
+      "stage4_score": 7.0,
+      "market_state": "",
+      "twii_close": 10829.7
+    },
+    {
+      "date": "2019-10",
+      "total_score": 75.0,
+      "traditional_score": 67.0,
+      "adaptive_score": 75.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 60.0,
+      "ai_boost": 15.0,
+      "stage1_score": 29.0,
+      "stage2_score": 12.0,
+      "stage3_score": 12.0,
+      "stage4_score": 7.0,
+      "market_state": "",
+      "twii_close": 11358.7
+    },
+    {
+      "date": "2019-11",
+      "total_score": 61.0,
+      "traditional_score": 53.0,
+      "adaptive_score": 61.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 46.0,
+      "ai_boost": 15.0,
+      "stage1_score": 29.0,
+      "stage2_score": 12.0,
+      "stage3_score": 5.0,
+      "stage4_score": 0.0,
+      "market_state": "",
+      "twii_close": 11489.6
+    },
+    {
+      "date": "2019-12",
+      "total_score": 79.0,
+      "traditional_score": 71.0,
+      "adaptive_score": 79.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 64.0,
+      "ai_boost": 15.0,
+      "stage1_score": 29.0,
+      "stage2_score": 12.0,
+      "stage3_score": 23.0,
+      "stage4_score": 0.0,
+      "market_state": "",
+      "twii_close": 11997.1
+    },
+    {
+      "date": "2020-01",
+      "total_score": 66.0,
+      "traditional_score": 58.0,
+      "adaptive_score": 66.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 56.0,
+      "ai_boost": 10.0,
+      "stage1_score": 29.0,
+      "stage2_score": 12.0,
+      "stage3_score": 15.0,
+      "stage4_score": 0.0,
+      "market_state": "",
+      "twii_close": 11495.1
+    },
+    {
+      "date": "2020-02",
+      "total_score": 37.0,
+      "traditional_score": 42.0,
+      "adaptive_score": 37.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 27.0,
+      "ai_boost": 10.0,
+      "stage1_score": 5.0,
+      "stage2_score": 12.0,
+      "stage3_score": 0.0,
+      "stage4_score": 10.0,
+      "market_state": "",
+      "twii_close": 11292.2
+    },
+    {
+      "date": "2020-03",
+      "total_score": 40.0,
+      "traditional_score": 45.0,
+      "adaptive_score": 40.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 35.0,
+      "ai_boost": 5.0,
+      "stage1_score": 5.0,
+      "stage2_score": 12.0,
+      "stage3_score": 18.0,
+      "stage4_score": 0.0,
+      "market_state": "",
+      "twii_close": 9708.1
+    },
+    {
+      "date": "2020-04",
+      "total_score": 55.0,
+      "traditional_score": 48.0,
+      "adaptive_score": 55.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 45.0,
+      "ai_boost": 10.0,
+      "stage1_score": 21.0,
+      "stage2_score": 6.0,
+      "stage3_score": 8.0,
+      "stage4_score": 10.0,
+      "market_state": "",
+      "twii_close": 10992.1
+    },
+    {
+      "date": "2020-05",
+      "total_score": 73.0,
+      "traditional_score": 65.0,
+      "adaptive_score": 73.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 58.0,
+      "ai_boost": 15.0,
+      "stage1_score": 31.0,
+      "stage2_score": 12.0,
+      "stage3_score": 15.0,
+      "stage4_score": 0.0,
+      "market_state": "",
+      "twii_close": 10942.2
+    },
+    {
+      "date": "2020-06",
+      "total_score": 74.0,
+      "traditional_score": 66.0,
+      "adaptive_score": 74.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 59.0,
+      "ai_boost": 15.0,
+      "stage1_score": 29.0,
+      "stage2_score": 10.0,
+      "stage3_score": 10.0,
+      "stage4_score": 10.0,
+      "market_state": "",
+      "twii_close": 11621.2
+    },
+    {
+      "date": "2020-07",
+      "total_score": 70.0,
+      "traditional_score": 61.0,
+      "adaptive_score": 70.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 55.0,
+      "ai_boost": 15.0,
+      "stage1_score": 29.0,
+      "stage2_score": 6.0,
+      "stage3_score": 13.0,
+      "stage4_score": 7.0,
+      "market_state": "",
+      "twii_close": 12664.8
+    },
+    {
+      "date": "2020-08",
+      "total_score": 69.0,
+      "traditional_score": 61.0,
+      "adaptive_score": 69.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 54.0,
+      "ai_boost": 15.0,
+      "stage1_score": 29.0,
+      "stage2_score": 12.0,
+      "stage3_score": 13.0,
+      "stage4_score": 0.0,
+      "market_state": "",
+      "twii_close": 12591.5
+    },
+    {
+      "date": "2020-09",
+      "total_score": 69.0,
+      "traditional_score": 71.0,
+      "adaptive_score": 69.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 59.0,
+      "ai_boost": 10.0,
+      "stage1_score": 24.0,
+      "stage2_score": 12.0,
+      "stage3_score": 23.0,
+      "stage4_score": 0.0,
+      "market_state": "",
+      "twii_close": 12515.6
+    },
+    {
+      "date": "2020-10",
+      "total_score": 58.0,
+      "traditional_score": 58.0,
+      "adaptive_score": 58.0,
+      "regime": "MACRO_CYCLE",
+      "base_score": 53.0,
+      "ai_boost": 5.0,
+      "stage1_score": 15.0,
+      "stage2_score": 8.0,
+      "stage3_score": 20.0,
+      "stage4_score": 10.0,
+      "market_state": "",
+      "twii_close": 12546.3
+    },
+    {
+      "date": "2020-11",
+      "total_score": 63.0,
+      "traditional_score": 65.0,
+      "adaptive_score": 63.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 58.0,
+      "ai_boost": 5.0,
+      "stage1_score": 26.0,
+      "stage2_score": 12.0,
+      "stage3_score": 20.0,
+      "stage4_score": 0.0,
+      "market_state": "",
+      "twii_close": 13722.9
+    },
+    {
+      "date": "2020-12",
+      "total_score": 70.0,
+      "traditional_score": 61.0,
+      "adaptive_score": 70.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 65.0,
+      "ai_boost": 5.0,
+      "stage1_score": 29.0,
+      "stage2_score": 6.0,
+      "stage3_score": 20.0,
+      "stage4_score": 10.0,
+      "market_state": "",
+      "twii_close": 14732.5
+    },
+    {
+      "date": "2021-01",
+      "total_score": 51.0,
+      "traditional_score": 51.0,
+      "adaptive_score": 51.0,
+      "regime": "MACRO_CYCLE",
+      "base_score": 51.0,
+      "ai_boost": 0.0,
+      "stage1_score": 23.0,
+      "stage2_score": 8.0,
+      "stage3_score": 20.0,
+      "stage4_score": 0.0,
+      "market_state": "",
+      "twii_close": 15138.3
+    },
+    {
+      "date": "2021-02",
+      "total_score": 69.0,
+      "traditional_score": 69.0,
+      "adaptive_score": 69.0,
+      "regime": "MACRO_CYCLE",
+      "base_score": 64.0,
+      "ai_boost": 5.0,
+      "stage1_score": 23.0,
+      "stage2_score": 8.0,
+      "stage3_score": 23.0,
+      "stage4_score": 10.0,
+      "market_state": "",
+      "twii_close": 15953.8
+    },
+    {
+      "date": "2021-03",
+      "total_score": 75.0,
+      "traditional_score": 67.0,
+      "adaptive_score": 75.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 65.0,
+      "ai_boost": 10.0,
+      "stage1_score": 29.0,
+      "stage2_score": 12.0,
+      "stage3_score": 17.0,
+      "stage4_score": 7.0,
+      "market_state": "",
+      "twii_close": 16431.1
+    },
+    {
+      "date": "2021-04",
+      "total_score": 81.0,
+      "traditional_score": 73.0,
+      "adaptive_score": 81.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 71.0,
+      "ai_boost": 10.0,
+      "stage1_score": 29.0,
+      "stage2_score": 12.0,
+      "stage3_score": 23.0,
+      "stage4_score": 7.0,
+      "market_state": "",
+      "twii_close": 17566.7
+    },
+    {
+      "date": "2021-05",
+      "total_score": 86.0,
+      "traditional_score": 78.0,
+      "adaptive_score": 86.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 71.0,
+      "ai_boost": 15.0,
+      "stage1_score": 29.0,
+      "stage2_score": 12.0,
+      "stage3_score": 23.0,
+      "stage4_score": 7.0,
+      "market_state": "",
+      "twii_close": 17068.4
+    },
+    {
+      "date": "2021-06",
+      "total_score": 81.0,
+      "traditional_score": 73.0,
+      "adaptive_score": 81.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 66.0,
+      "ai_boost": 15.0,
+      "stage1_score": 29.0,
+      "stage2_score": 12.0,
+      "stage3_score": 18.0,
+      "stage4_score": 7.0,
+      "market_state": "",
+      "twii_close": 17755.5
+    },
+    {
+      "date": "2021-07",
+      "total_score": 79.0,
+      "traditional_score": 71.0,
+      "adaptive_score": 79.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 64.0,
+      "ai_boost": 15.0,
+      "stage1_score": 29.0,
+      "stage2_score": 10.0,
+      "stage3_score": 25.0,
+      "stage4_score": 0.0,
+      "market_state": "",
+      "twii_close": 17247.4
+    },
+    {
+      "date": "2021-08",
+      "total_score": 89.0,
+      "traditional_score": 81.0,
+      "adaptive_score": 89.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 74.0,
+      "ai_boost": 15.0,
+      "stage1_score": 29.0,
+      "stage2_score": 12.0,
+      "stage3_score": 23.0,
+      "stage4_score": 10.0,
+      "market_state": "",
+      "twii_close": 17490.3
+    },
+    {
+      "date": "2021-09",
+      "total_score": 52.0,
+      "traditional_score": 52.0,
+      "adaptive_score": 52.0,
+      "regime": "MACRO_CYCLE",
+      "base_score": 47.0,
+      "ai_boost": 5.0,
+      "stage1_score": 7.0,
+      "stage2_score": 15.0,
+      "stage3_score": 18.0,
+      "stage4_score": 7.0,
+      "market_state": "",
+      "twii_close": 16934.8
+    },
+    {
+      "date": "2021-10",
+      "total_score": 85.0,
+      "traditional_score": 77.0,
+      "adaptive_score": 85.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 70.0,
+      "ai_boost": 15.0,
+      "stage1_score": 33.0,
+      "stage2_score": 12.0,
+      "stage3_score": 25.0,
+      "stage4_score": 0.0,
+      "market_state": "",
+      "twii_close": 16987.4
+    },
+    {
+      "date": "2021-11",
+      "total_score": 74.0,
+      "traditional_score": 76.0,
+      "adaptive_score": 74.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 64.0,
+      "ai_boost": 10.0,
+      "stage1_score": 24.0,
+      "stage2_score": 12.0,
+      "stage3_score": 18.0,
+      "stage4_score": 10.0,
+      "market_state": "",
+      "twii_close": 17427.8
+    },
+    {
+      "date": "2021-12",
+      "total_score": 88.0,
+      "traditional_score": 80.0,
+      "adaptive_score": 88.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 73.0,
+      "ai_boost": 15.0,
+      "stage1_score": 29.0,
+      "stage2_score": 12.0,
+      "stage3_score": 25.0,
+      "stage4_score": 7.0,
+      "market_state": "",
+      "twii_close": 18218.8
+    },
+    {
+      "date": "2022-01",
+      "total_score": 38.0,
+      "traditional_score": 38.0,
+      "adaptive_score": 38.0,
+      "regime": "MACRO_CYCLE",
+      "base_score": 38.0,
+      "ai_boost": 0.0,
+      "stage1_score": 7.0,
+      "stage2_score": 13.0,
+      "stage3_score": 18.0,
+      "stage4_score": 0.0,
+      "market_state": "",
+      "twii_close": 17674.4
+    },
+    {
+      "date": "2022-02",
+      "total_score": 57.0,
+      "traditional_score": 57.0,
+      "adaptive_score": 57.0,
+      "regime": "MACRO_CYCLE",
+      "base_score": 57.0,
+      "ai_boost": 0.0,
+      "stage1_score": 7.0,
+      "stage2_score": 15.0,
+      "stage3_score": 25.0,
+      "stage4_score": 10.0,
+      "market_state": "",
+      "twii_close": 17652.2
+    },
+    {
+      "date": "2022-03",
+      "total_score": 38.0,
+      "traditional_score": 38.0,
+      "adaptive_score": 38.0,
+      "regime": "MACRO_CYCLE",
+      "base_score": 38.0,
+      "ai_boost": 0.0,
+      "stage1_score": 7.0,
+      "stage2_score": 8.0,
+      "stage3_score": 23.0,
+      "stage4_score": 0.0,
+      "market_state": "",
+      "twii_close": 17693.5
+    },
+    {
+      "date": "2022-04",
+      "total_score": 47.0,
+      "traditional_score": 47.0,
+      "adaptive_score": 47.0,
+      "regime": "MACRO_CYCLE",
+      "base_score": 47.0,
+      "ai_boost": 0.0,
+      "stage1_score": 7.0,
+      "stage2_score": 15.0,
+      "stage3_score": 15.0,
+      "stage4_score": 10.0,
+      "market_state": "",
+      "twii_close": 16592.2
+    },
+    {
+      "date": "2022-05",
+      "total_score": 44.0,
+      "traditional_score": 44.0,
+      "adaptive_score": 44.0,
+      "regime": "MACRO_CYCLE",
+      "base_score": 44.0,
+      "ai_boost": 0.0,
+      "stage1_score": 7.0,
+      "stage2_score": 15.0,
+      "stage3_score": 15.0,
+      "stage4_score": 7.0,
+      "market_state": "",
+      "twii_close": 16807.8
+    },
+    {
+      "date": "2022-06",
+      "total_score": 37.0,
+      "traditional_score": 37.0,
+      "adaptive_score": 37.0,
+      "regime": "MACRO_CYCLE",
+      "base_score": 37.0,
+      "ai_boost": 0.0,
+      "stage1_score": 7.0,
+      "stage2_score": 15.0,
+      "stage3_score": 15.0,
+      "stage4_score": 0.0,
+      "market_state": "",
+      "twii_close": 14825.7
+    },
+    {
+      "date": "2022-07",
+      "total_score": 45.0,
+      "traditional_score": 45.0,
+      "adaptive_score": 45.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 45.0,
+      "ai_boost": 0.0,
+      "stage1_score": 23.0,
+      "stage2_score": 12.0,
+      "stage3_score": 10.0,
+      "stage4_score": 0.0,
+      "market_state": "",
+      "twii_close": 15000.1
+    },
+    {
+      "date": "2022-08",
+      "total_score": 27.0,
+      "traditional_score": 27.0,
+      "adaptive_score": 27.0,
+      "regime": "MACRO_CYCLE",
+      "base_score": 27.0,
+      "ai_boost": 0.0,
+      "stage1_score": 0.0,
+      "stage2_score": 7.0,
+      "stage3_score": 10.0,
+      "stage4_score": 10.0,
+      "market_state": "",
+      "twii_close": 15095.4
+    },
+    {
+      "date": "2022-09",
+      "total_score": 29.0,
+      "traditional_score": 29.0,
+      "adaptive_score": 29.0,
+      "regime": "MACRO_CYCLE",
+      "base_score": 29.0,
+      "ai_boost": 0.0,
+      "stage1_score": 0.0,
+      "stage2_score": 15.0,
+      "stage3_score": 7.0,
+      "stage4_score": 7.0,
+      "market_state": "",
+      "twii_close": 13424.6
+    },
+    {
+      "date": "2022-10",
+      "total_score": 7.0,
+      "traditional_score": 7.0,
+      "adaptive_score": 7.0,
+      "regime": "MACRO_CYCLE",
+      "base_score": 7.0,
+      "ai_boost": 0.0,
+      "stage1_score": 0.0,
+      "stage2_score": 0.0,
+      "stage3_score": 7.0,
+      "stage4_score": 0.0,
+      "market_state": "",
+      "twii_close": 12949.8
+    },
+    {
+      "date": "2022-11",
+      "total_score": 55.0,
+      "traditional_score": 54.0,
+      "adaptive_score": 55.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 45.0,
+      "ai_boost": 10.0,
+      "stage1_score": 12.0,
+      "stage2_score": 6.0,
+      "stage3_score": 17.0,
+      "stage4_score": 10.0,
+      "market_state": "",
+      "twii_close": 14879.5
+    },
+    {
+      "date": "2022-12",
+      "total_score": 21.0,
+      "traditional_score": 22.0,
+      "adaptive_score": 21.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 11.0,
+      "ai_boost": 10.0,
+      "stage1_score": 0.0,
+      "stage2_score": 6.0,
+      "stage3_score": 5.0,
+      "stage4_score": 0.0,
+      "market_state": "",
+      "twii_close": 14137.7
+    },
+    {
+      "date": "2023-01",
+      "total_score": 64.0,
+      "traditional_score": 52.0,
+      "adaptive_score": 64.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 49.0,
+      "ai_boost": 15.0,
+      "stage1_score": 28.0,
+      "stage2_score": 6.0,
+      "stage3_score": 5.0,
+      "stage4_score": 10.0,
+      "market_state": "",
+      "twii_close": 15265.2
+    },
+    {
+      "date": "2023-02",
+      "total_score": 57.0,
+      "traditional_score": 45.0,
+      "adaptive_score": 57.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 42.0,
+      "ai_boost": 15.0,
+      "stage1_score": 24.0,
+      "stage2_score": 6.0,
+      "stage3_score": 5.0,
+      "stage4_score": 7.0,
+      "market_state": "",
+      "twii_close": 15503.8
+    },
+    {
+      "date": "2023-03",
+      "total_score": 45.0,
+      "traditional_score": 33.0,
+      "adaptive_score": 45.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 30.0,
+      "ai_boost": 15.0,
+      "stage1_score": 24.0,
+      "stage2_score": 6.0,
+      "stage3_score": 0.0,
+      "stage4_score": 0.0,
+      "market_state": "",
+      "twii_close": 15868.1
+    },
+    {
+      "date": "2023-04",
+      "total_score": 43.0,
+      "traditional_score": 31.0,
+      "adaptive_score": 43.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 28.0,
+      "ai_boost": 15.0,
+      "stage1_score": 24.0,
+      "stage2_score": 4.0,
+      "stage3_score": 0.0,
+      "stage4_score": 0.0,
+      "market_state": "",
+      "twii_close": 15579.2
+    },
+    {
+      "date": "2023-05",
+      "total_score": 49.0,
+      "traditional_score": 36.0,
+      "adaptive_score": 49.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 34.0,
+      "ai_boost": 15.0,
+      "stage1_score": 24.0,
+      "stage2_score": 0.0,
+      "stage3_score": 0.0,
+      "stage4_score": 10.0,
+      "market_state": "",
+      "twii_close": 16579.0
+    },
+    {
+      "date": "2023-06",
+      "total_score": 49.0,
+      "traditional_score": 36.0,
+      "adaptive_score": 49.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 34.0,
+      "ai_boost": 15.0,
+      "stage1_score": 24.0,
+      "stage2_score": 0.0,
+      "stage3_score": 0.0,
+      "stage4_score": 10.0,
+      "market_state": "",
+      "twii_close": 16915.5
+    },
+    {
+      "date": "2023-07",
+      "total_score": 56.0,
+      "traditional_score": 43.0,
+      "adaptive_score": 56.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 41.0,
+      "ai_boost": 15.0,
+      "stage1_score": 24.0,
+      "stage2_score": 0.0,
+      "stage3_score": 7.0,
+      "stage4_score": 10.0,
+      "market_state": "",
+      "twii_close": 17145.4
+    },
+    {
+      "date": "2023-08",
+      "total_score": 39.0,
+      "traditional_score": 26.0,
+      "adaptive_score": 39.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 24.0,
+      "ai_boost": 15.0,
+      "stage1_score": 24.0,
+      "stage2_score": 0.0,
+      "stage3_score": 0.0,
+      "stage4_score": 0.0,
+      "market_state": "",
+      "twii_close": 16634.5
+    },
+    {
+      "date": "2023-09",
+      "total_score": 15.0,
+      "traditional_score": 15.0,
+      "adaptive_score": 15.0,
+      "regime": "MACRO_CYCLE",
+      "base_score": 10.0,
+      "ai_boost": 5.0,
+      "stage1_score": 0.0,
+      "stage2_score": 0.0,
+      "stage3_score": 0.0,
+      "stage4_score": 10.0,
+      "market_state": "",
+      "twii_close": 16353.7
+    },
+    {
+      "date": "2023-10",
+      "total_score": 10.0,
+      "traditional_score": 10.0,
+      "adaptive_score": 10.0,
+      "regime": "MACRO_CYCLE",
+      "base_score": 10.0,
+      "ai_boost": 0.0,
+      "stage1_score": 0.0,
+      "stage2_score": 0.0,
+      "stage3_score": 10.0,
+      "stage4_score": 0.0,
+      "market_state": "",
+      "twii_close": 16001.3
+    },
+    {
+      "date": "2023-11",
+      "total_score": 55.0,
+      "traditional_score": 42.0,
+      "adaptive_score": 55.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 45.0,
+      "ai_boost": 10.0,
+      "stage1_score": 28.0,
+      "stage2_score": 0.0,
+      "stage3_score": 7.0,
+      "stage4_score": 10.0,
+      "market_state": "",
+      "twii_close": 17433.8
+    },
+    {
+      "date": "2023-12",
+      "total_score": 56.0,
+      "traditional_score": 43.0,
+      "adaptive_score": 56.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 46.0,
+      "ai_boost": 10.0,
+      "stage1_score": 24.0,
+      "stage2_score": 0.0,
+      "stage3_score": 15.0,
+      "stage4_score": 7.0,
+      "market_state": "",
+      "twii_close": 17930.8
+    },
+    {
+      "date": "2024-01",
+      "total_score": 61.0,
+      "traditional_score": 48.0,
+      "adaptive_score": 61.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 46.0,
+      "ai_boost": 15.0,
+      "stage1_score": 24.0,
+      "stage2_score": 0.0,
+      "stage3_score": 15.0,
+      "stage4_score": 7.0,
+      "market_state": "",
+      "twii_close": 17889.6
+    },
+    {
+      "date": "2024-02",
+      "total_score": 79.0,
+      "traditional_score": 66.0,
+      "adaptive_score": 79.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 64.0,
+      "ai_boost": 15.0,
+      "stage1_score": 24.0,
+      "stage2_score": 0.0,
+      "stage3_score": 23.0,
+      "stage4_score": 17.0,
+      "market_state": "",
+      "twii_close": 18966.8
+    },
+    {
+      "date": "2024-03",
+      "total_score": 68.0,
+      "traditional_score": 55.0,
+      "adaptive_score": 68.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 53.0,
+      "ai_boost": 15.0,
+      "stage1_score": 24.0,
+      "stage2_score": 0.0,
+      "stage3_score": 12.0,
+      "stage4_score": 17.0,
+      "market_state": "",
+      "twii_close": 20294.4
+    },
+    {
+      "date": "2024-04",
+      "total_score": 59.0,
+      "traditional_score": 56.0,
+      "adaptive_score": 59.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 49.0,
+      "ai_boost": 10.0,
+      "stage1_score": 19.0,
+      "stage2_score": 0.0,
+      "stage3_score": 23.0,
+      "stage4_score": 7.0,
+      "market_state": "",
+      "twii_close": 20396.6
+    },
+    {
+      "date": "2024-05",
+      "total_score": 55.0,
+      "traditional_score": 53.0,
+      "adaptive_score": 55.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 45.0,
+      "ai_boost": 10.0,
+      "stage1_score": 19.0,
+      "stage2_score": 6.0,
+      "stage3_score": 20.0,
+      "stage4_score": 0.0,
+      "market_state": "",
+      "twii_close": 21174.2
+    },
+    {
+      "date": "2024-06",
+      "total_score": 64.0,
+      "traditional_score": 51.0,
+      "adaptive_score": 64.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 49.0,
+      "ai_boost": 15.0,
+      "stage1_score": 24.0,
+      "stage2_score": 0.0,
+      "stage3_score": 15.0,
+      "stage4_score": 10.0,
+      "market_state": "",
+      "twii_close": 23032.2
+    },
+    {
+      "date": "2024-07",
+      "total_score": 53.0,
+      "traditional_score": 51.0,
+      "adaptive_score": 53.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 43.0,
+      "ai_boost": 10.0,
+      "stage1_score": 19.0,
+      "stage2_score": 6.0,
+      "stage3_score": 18.0,
+      "stage4_score": 0.0,
+      "market_state": "",
+      "twii_close": 22199.3
+    },
+    {
+      "date": "2024-08",
+      "total_score": 36.0,
+      "traditional_score": 36.0,
+      "adaptive_score": 36.0,
+      "regime": "MACRO_CYCLE",
+      "base_score": 36.0,
+      "ai_boost": 0.0,
+      "stage1_score": 16.0,
+      "stage2_score": 5.0,
+      "stage3_score": 15.0,
+      "stage4_score": 0.0,
+      "market_state": "",
+      "twii_close": 22268.1
+    },
+    {
+      "date": "2024-09",
+      "total_score": 45.0,
+      "traditional_score": 47.0,
+      "adaptive_score": 45.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 45.0,
+      "ai_boost": 0.0,
+      "stage1_score": 14.0,
+      "stage2_score": 6.0,
+      "stage3_score": 25.0,
+      "stage4_score": 0.0,
+      "market_state": "",
+      "twii_close": 22224.5
+    },
+    {
+      "date": "2024-10",
+      "total_score": 70.0,
+      "traditional_score": 62.0,
+      "adaptive_score": 70.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 55.0,
+      "ai_boost": 15.0,
+      "stage1_score": 19.0,
+      "stage2_score": 6.0,
+      "stage3_score": 20.0,
+      "stage4_score": 10.0,
+      "market_state": "",
+      "twii_close": 22820.4
+    },
+    {
+      "date": "2024-11",
+      "total_score": 55.0,
+      "traditional_score": 47.0,
+      "adaptive_score": 55.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 40.0,
+      "ai_boost": 15.0,
+      "stage1_score": 19.0,
+      "stage2_score": 6.0,
+      "stage3_score": 15.0,
+      "stage4_score": 0.0,
+      "market_state": "",
+      "twii_close": 22262.5
+    },
+    {
+      "date": "2024-12",
+      "total_score": 52.0,
+      "traditional_score": 52.0,
+      "adaptive_score": 52.0,
+      "regime": "MACRO_CYCLE",
+      "base_score": 47.0,
+      "ai_boost": 5.0,
+      "stage1_score": 15.0,
+      "stage2_score": 7.0,
+      "stage3_score": 15.0,
+      "stage4_score": 10.0,
+      "market_state": "",
+      "twii_close": 23035.1
+    },
+    {
+      "date": "2025-01",
+      "total_score": 55.0,
+      "traditional_score": 47.0,
+      "adaptive_score": 55.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 50.0,
+      "ai_boost": 5.0,
+      "stage1_score": 19.0,
+      "stage2_score": 6.0,
+      "stage3_score": 25.0,
+      "stage4_score": 0.0,
+      "market_state": "",
+      "twii_close": 23525.4
+    },
+    {
+      "date": "2025-02",
+      "total_score": 37.0,
+      "traditional_score": 37.0,
+      "adaptive_score": 37.0,
+      "regime": "MACRO_CYCLE",
+      "base_score": 37.0,
+      "ai_boost": 0.0,
+      "stage1_score": 7.0,
+      "stage2_score": 7.0,
+      "stage3_score": 23.0,
+      "stage4_score": 0.0,
+      "market_state": "",
+      "twii_close": 23053.2
+    },
+    {
+      "date": "2025-03",
+      "total_score": 37.0,
+      "traditional_score": 37.0,
+      "adaptive_score": 37.0,
+      "regime": "MACRO_CYCLE",
+      "base_score": 37.0,
+      "ai_boost": 0.0,
+      "stage1_score": 7.0,
+      "stage2_score": 7.0,
+      "stage3_score": 23.0,
+      "stage4_score": 0.0,
+      "market_state": "",
+      "twii_close": 20695.9
+    },
+    {
+      "date": "2025-04",
+      "total_score": 32.0,
+      "traditional_score": 32.0,
+      "adaptive_score": 32.0,
+      "regime": "MACRO_CYCLE",
+      "base_score": 32.0,
+      "ai_boost": 0.0,
+      "stage1_score": 7.0,
+      "stage2_score": 7.0,
+      "stage3_score": 18.0,
+      "stage4_score": 0.0,
+      "market_state": "",
+      "twii_close": 20235.0
+    },
+    {
+      "date": "2025-05",
+      "total_score": 67.0,
+      "traditional_score": 57.0,
+      "adaptive_score": 67.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 57.0,
+      "ai_boost": 10.0,
+      "stage1_score": 33.0,
+      "stage2_score": 6.0,
+      "stage3_score": 18.0,
+      "stage4_score": 0.0,
+      "market_state": "",
+      "twii_close": 21347.3
+    },
+    {
+      "date": "2025-06",
+      "total_score": 75.0,
+      "traditional_score": 65.0,
+      "adaptive_score": 75.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 60.0,
+      "ai_boost": 15.0,
+      "stage1_score": 29.0,
+      "stage2_score": 6.0,
+      "stage3_score": 25.0,
+      "stage4_score": 0.0,
+      "market_state": "",
+      "twii_close": 22256.0
+    },
+    {
+      "date": "2025-07",
+      "total_score": 78.0,
+      "traditional_score": 68.0,
+      "adaptive_score": 78.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 63.0,
+      "ai_boost": 15.0,
+      "stage1_score": 29.0,
+      "stage2_score": 6.0,
+      "stage3_score": 18.0,
+      "stage4_score": 10.0,
+      "market_state": "",
+      "twii_close": 23542.5
+    },
+    {
+      "date": "2025-08",
+      "total_score": 78.0,
+      "traditional_score": 68.0,
+      "adaptive_score": 78.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 63.0,
+      "ai_boost": 15.0,
+      "stage1_score": 29.0,
+      "stage2_score": 6.0,
+      "stage3_score": 18.0,
+      "stage4_score": 10.0,
+      "market_state": "",
+      "twii_close": 24233.1
+    },
+    {
+      "date": "2025-09",
+      "total_score": 73.0,
+      "traditional_score": 73.0,
+      "adaptive_score": 73.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 68.0,
+      "ai_boost": 5.0,
+      "stage1_score": 24.0,
+      "stage2_score": 6.0,
+      "stage3_score": 18.0,
+      "stage4_score": 20.0,
+      "market_state": "",
+      "twii_close": 25820.5
+    },
+    {
+      "date": "2025-10",
+      "total_score": 87.0,
+      "traditional_score": 77.0,
+      "adaptive_score": 87.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 77.0,
+      "ai_boost": 10.0,
+      "stage1_score": 29.0,
+      "stage2_score": 6.0,
+      "stage3_score": 25.0,
+      "stage4_score": 17.0,
+      "market_state": "",
+      "twii_close": 28233.3
+    },
+    {
+      "date": "2025-11",
+      "total_score": 56.0,
+      "traditional_score": 56.0,
+      "adaptive_score": 56.0,
+      "regime": "MACRO_CYCLE",
+      "base_score": 51.0,
+      "ai_boost": 5.0,
+      "stage1_score": 23.0,
+      "stage2_score": 5.0,
+      "stage3_score": 23.0,
+      "stage4_score": 0.0,
+      "market_state": "",
+      "twii_close": 27626.5
+    },
+    {
+      "date": "2025-12",
+      "total_score": 68.0,
+      "traditional_score": 68.0,
+      "adaptive_score": 68.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 63.0,
+      "ai_boost": 5.0,
+      "stage1_score": 24.0,
+      "stage2_score": 6.0,
+      "stage3_score": 23.0,
+      "stage4_score": 10.0,
+      "market_state": "",
+      "twii_close": 28963.6
+    },
+    {
+      "date": "2026-01",
+      "total_score": 78.0,
+      "traditional_score": 68.0,
+      "adaptive_score": 78.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 73.0,
+      "ai_boost": 5.0,
+      "stage1_score": 29.0,
+      "stage2_score": 4.0,
+      "stage3_score": 23.0,
+      "stage4_score": 17.0,
+      "market_state": "",
+      "twii_close": 32063.8
+    },
+    {
+      "date": "2026-02",
+      "total_score": 69.0,
+      "traditional_score": 72.0,
+      "adaptive_score": 69.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 69.0,
+      "ai_boost": 0.0,
+      "stage1_score": 15.0,
+      "stage2_score": 14.0,
+      "stage3_score": 23.0,
+      "stage4_score": 17.0,
+      "market_state": "",
+      "twii_close": 35414.5
+    },
+    {
+      "date": "2026-03",
+      "total_score": 41.0,
+      "traditional_score": 41.0,
+      "adaptive_score": 41.0,
+      "regime": "MACRO_CYCLE",
+      "base_score": 41.0,
+      "ai_boost": 0.0,
+      "stage1_score": 15.0,
+      "stage2_score": 8.0,
+      "stage3_score": 18.0,
+      "stage4_score": 0.0,
+      "market_state": "",
+      "twii_close": 31723.0
+    },
+    {
+      "date": "2026-04",
+      "total_score": 88.0,
+      "traditional_score": 80.0,
+      "adaptive_score": 88.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 78.0,
+      "ai_boost": 10.0,
+      "stage1_score": 31.0,
+      "stage2_score": 12.0,
+      "stage3_score": 25.0,
+      "stage4_score": 10.0,
+      "market_state": "",
+      "twii_close": 38926.6
+    },
+    {
+      "date": "2026-05",
+      "total_score": 91.0,
+      "traditional_score": 83.0,
+      "adaptive_score": 91.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 81.0,
+      "ai_boost": 10.0,
+      "stage1_score": 29.0,
+      "stage2_score": 12.0,
+      "stage3_score": 23.0,
+      "stage4_score": 17.0,
+      "market_state": "",
+      "twii_close": 44732.9
+    },
+    {
+      "date": "2026-06",
+      "total_score": 76.0,
+      "traditional_score": 78.0,
+      "adaptive_score": 76.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 71.0,
+      "ai_boost": 5.0,
+      "stage1_score": 24.0,
+      "stage2_score": 12.0,
+      "stage3_score": 18.0,
+      "stage4_score": 17.0,
+      "market_state": "",
+      "twii_close": 46125.9
+    },
+    {
+      "date": "2026-07",
+      "total_score": 63.0,
+      "traditional_score": 63.0,
+      "adaptive_score": 63.0,
+      "regime": "MACRO_CYCLE",
+      "base_score": 63.0,
+      "ai_boost": 0.0,
+      "stage1_score": 23.0,
+      "stage2_score": 15.0,
+      "stage3_score": 25.0,
+      "stage4_score": 0.0,
+      "market_state": "",
+      "twii_close": 43119.8
+    },
+    {
+      "date": "2026-08",
+      "total_score": 58.0,
+      "traditional_score": 60.0,
+      "adaptive_score": 58.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 53.0,
+      "ai_boost": 5.0,
+      "stage1_score": 14.0,
+      "stage2_score": 6.0,
+      "stage3_score": 23.0,
+      "stage4_score": 10.0,
+      "market_state": "",
+      "twii_close": 46128.5
+    },
+    {
+      "date": "2026-09",
+      "total_score": 77.0,
+      "traditional_score": 67.0,
+      "adaptive_score": 77.0,
+      "regime": "AI_EXPANSION",
+      "base_score": 67.0,
+      "ai_boost": 10.0,
+      "stage1_score": 31.0,
+      "stage2_score": 6.0,
+      "stage3_score": 23.0,
+      "stage4_score": 7.0,
+      "market_state": "",
+      "twii_close": 47180.8
+    }
+  ],
+  "scorecard": [
+    {
+      "指標名稱": "SOX 突破站上 20週均線",
+      "階段": "轉折",
+      "訊號欄位": "sox_breakout_ma100",
+      "事件數": 5,
+      "領先天數(中位數)": 305.0,
+      "領先天數(平均)": 304.0,
+      "成功率": "100%",
+      "成功率_95CI": "[100%, 100%]",
+      "假訊號率": "73%",
+      "AI循環特異性": "略強",
+      "AI前領先天數": 305.0,
+      "AI後領先天數": 319.5,
+      "通過篩選": "FAIL"
+    },
+    {
+      "指標名稱": "NASDAQ 突破站上 20週均線",
+      "階段": "轉折",
+      "訊號欄位": "nasdaq_breakout_ma100",
+      "事件數": 5,
+      "領先天數(中位數)": 305.0,
+      "領先天數(平均)": 304.0,
+      "成功率": "100%",
+      "成功率_95CI": "[100%, 100%]",
+      "假訊號率": "55%",
+      "AI循環特異性": "略強",
+      "AI前領先天數": 305.0,
+      "AI後領先天數": 319.5,
+      "通過篩選": "FAIL"
+    },
+    {
+      "指標名稱": "殖利率曲線正常化",
+      "階段": "轉折",
+      "訊號欄位": "yield_curve_normalized",
+      "事件數": 5,
+      "領先天數(中位數)": NaN,
+      "領先天數(平均)": NaN,
+      "成功率": "0%",
+      "成功率_95CI": "[0%, 0%]",
+      "假訊號率": "0%",
+      "AI循環特異性": NaN,
+      "AI前領先天數": NaN,
+      "AI後領先天數": NaN,
+      "通過篩選": "FAIL"
+    },
+    {
+      "指標名稱": "台股相對全球轉強（突破強勢）",
+      "階段": "轉折",
+      "訊號欄位": "tw_rs_breakout",
+      "事件數": 5,
+      "領先天數(中位數)": 365.0,
+      "領先天數(平均)": 353.0,
+      "成功率": "100%",
+      "成功率_95CI": "[100%, 100%]",
+      "假訊號率": "66%",
+      "AI循環特異性": "更強",
+      "AI前領先天數": 335.0,
+      "AI後領先天數": 395.0,
+      "通過篩選": "FAIL"
+    },
+    {
+      "指標名稱": "景氣對策信號由跌轉升",
+      "階段": "景氣",
+      "訊號欄位": "ndc_score_turn_rising",
+      "事件數": 5,
+      "領先天數(中位數)": 335.0,
+      "領先天數(平均)": 317.0,
+      "成功率": "100%",
+      "成功率_95CI": "[100%, 100%]",
+      "假訊號率": "65%",
+      "AI循環特異性": "略弱",
+      "AI前領先天數": 366.0,
+      "AI後領先天數": 305.5,
+      "通過篩選": "FAIL"
+    },
+    {
+      "指標名稱": "景氣對策信號 > 25分",
+      "階段": "景氣",
+      "訊號欄位": "ndc_score_above25",
+      "事件數": 5,
+      "領先天數(中位數)": 395.0,
+      "領先天數(平均)": 377.0,
+      "成功率": "100%",
+      "成功率_95CI": "[100%, 100%]",
+      "假訊號率": "67%",
+      "AI循環特異性": "相同",
+      "AI前領先天數": 395.0,
+      "AI後領先天數": 395.0,
+      "通過篩選": "FAIL"
+    },
+    {
+      "指標名稱": "M1B 年增率轉正（CBC）",
+      "階段": "景氣",
+      "訊號欄位": "m1b_yoy_turn_positive",
+      "事件數": 5,
+      "領先天數(中位數)": NaN,
+      "領先天數(平均)": NaN,
+      "成功率": "0%",
+      "成功率_95CI": "[0%, 0%]",
+      "假訊號率": "0%",
+      "AI循環特異性": NaN,
+      "AI前領先天數": NaN,
+      "AI後領先天數": NaN,
+      "通過篩選": "FAIL"
+    },
+    {
+      "指標名稱": "M1B-M2 黃金交叉（CBC）",
+      "階段": "景氣",
+      "訊號欄位": "golden_cross",
+      "事件數": 5,
+      "領先天數(中位數)": 61.0,
+      "領先天數(平均)": 92.0,
+      "成功率": "40%",
+      "成功率_95CI": "[0%, 80%]",
+      "假訊號率": "33%",
+      "AI循環特異性": "略弱",
+      "AI前領先天數": 152.5,
+      "AI後領先天數": -28.0,
+      "通過篩選": "FAIL"
+    },
+    {
+      "指標名稱": "外銷訂單動向指數擴張（>100）",
+      "階段": "景氣",
+      "訊號欄位": "export_orders_expansion",
+      "事件數": 5,
+      "領先天數(中位數)": NaN,
+      "領先天數(平均)": NaN,
+      "成功率": "0%",
+      "成功率_95CI": "[0%, 0%]",
+      "假訊號率": "0%",
+      "AI循環特異性": NaN,
+      "AI前領先天數": NaN,
+      "AI後領先天數": NaN,
+      "通過篩選": "FAIL"
+    },
+    {
+      "指標名稱": "半導體設備進口 YoY 轉正",
+      "階段": "景氣",
+      "訊號欄位": "semi_equipment_import_yoy_turn_pos",
+      "事件數": 5,
+      "領先天數(中位數)": 136.0,
+      "領先天數(平均)": 100.0,
+      "成功率": "60%",
+      "成功率_95CI": "[20%, 100%]",
+      "假訊號率": "67%",
+      "AI循環特異性": "略弱",
+      "AI前領先天數": 182.0,
+      "AI後領先天數": -89.0,
+      "通過篩選": "FAIL"
+    },
+    {
+      "指標名稱": "工業生產指數 YoY 轉正",
+      "階段": "景氣",
+      "訊號欄位": "ipi_yoy_turn_pos",
+      "事件數": 5,
+      "領先天數(中位數)": 214.0,
+      "領先天數(平均)": 183.0,
+      "成功率": "40%",
+      "成功率_95CI": "[0%, 80%]",
+      "假訊號率": "75%",
+      "AI循環特異性": "略弱",
+      "AI前領先天數": 274.5,
+      "AI後領先天數": 0.0,
+      "通過篩選": "FAIL"
+    },
+    {
+      "指標名稱": "海關出口 YoY 轉正",
+      "階段": "景氣",
+      "訊號欄位": "customs_export_yoy_turn_pos",
+      "事件數": 5,
+      "領先天數(中位數)": 214.0,
+      "領先天數(平均)": 234.0,
+      "成功率": "60%",
+      "成功率_95CI": "[20%, 100%]",
+      "假訊號率": "56%",
+      "AI循環特異性": "略弱",
+      "AI前領先天數": 290.0,
+      "AI後領先天數": 121.0,
+      "通過篩選": "FAIL"
+    },
+    {
+      "指標名稱": "銅價突破 60日均線",
+      "階段": "商品",
+      "訊號欄位": "copper_breakout_ma60",
+      "事件數": 5,
+      "領先天數(中位數)": 213.0,
+      "領先天數(平均)": 243.0,
+      "成功率": "100%",
+      "成功率_95CI": "[100%, 100%]",
+      "假訊號率": "72%",
+      "AI循環特異性": "更強",
+      "AI前領先天數": 182.0,
+      "AI後領先天數": 289.0,
+      "通過篩選": "FAIL"
+    },
+    {
+      "指標名稱": "製造業銷售量指數 YoY 轉正",
+      "階段": "獲利",
+      "訊號欄位": "manufacturing_sales_yoy_pos",
+      "事件數": 5,
+      "領先天數(中位數)": 260.0,
+      "領先天數(平均)": 214.0,
+      "成功率": "60%",
+      "成功率_95CI": "[20%, 100%]",
+      "假訊號率": "67%",
+      "AI循環特異性": "略弱",
+      "AI前領先天數": 274.5,
+      "AI後領先天數": 153.0,
+      "通過篩選": "FAIL"
+    },
+    {
+      "指標名稱": "外資期貨翻多（淨多單）",
+      "階段": "籌碼",
+      "訊號欄位": "txf_foreign_net_positive",
+      "事件數": 5,
+      "領先天數(中位數)": NaN,
+      "領先天數(平均)": NaN,
+      "成功率": "0%",
+      "成功率_95CI": "[0%, 0%]",
+      "假訊號率": "0%",
+      "AI循環特異性": NaN,
+      "AI前領先天數": NaN,
+      "AI後領先天數": NaN,
+      "通過篩選": "FAIL"
+    },
+    {
+      "指標名稱": "大盤成交金額日均突增",
+      "階段": "股價",
+      "訊號欄位": "market_turnover_surge",
+      "事件數": 5,
+      "領先天數(中位數)": 198.0,
+      "領先天數(平均)": 198.0,
+      "成功率": "40%",
+      "成功率_95CI": "[0%, 80%]",
+      "假訊號率": "45%",
+      "AI循環特異性": "案例研究",
+      "AI前領先天數": NaN,
+      "AI後領先天數": 198.5,
+      "通過篩選": "FAIL"
+    },
+    {
+      "指標名稱": "外資股票淨買超",
+      "階段": "籌碼",
+      "訊號欄位": "fi_net_buy_positive",
+      "事件數": 5,
+      "領先天數(中位數)": NaN,
+      "領先天數(平均)": NaN,
+      "成功率": "0%",
+      "成功率_95CI": "[0%, 0%]",
+      "假訊號率": "0%",
+      "AI循環特異性": NaN,
+      "AI前領先天數": NaN,
+      "AI後領先天數": NaN,
+      "通過篩選": "FAIL"
+    },
+    {
+      "指標名稱": "NVIDIA 60日報酬轉正",
+      "階段": "AI循環",
+      "訊號欄位": "nvidia_ret_60d_positive",
+      "事件數": 5,
+      "領先天數(中位數)": 91.0,
+      "領先天數(平均)": 165.0,
+      "成功率": "80%",
+      "成功率_95CI": "[40%, 100%]",
+      "假訊號率": "70%",
+      "AI循環特異性": "更強",
+      "AI前領先天數": 91.0,
+      "AI後領先天數": 168.0,
+      "通過篩選": "FAIL"
+    },
+    {
+      "指標名稱": "NVIDIA 60日報酬 > 20%",
+      "階段": "AI循環",
+      "訊號欄位": "nvidia_ret_60d_high",
+      "事件數": 5,
+      "領先天數(中位數)": 305.0,
+      "領先天數(平均)": 259.0,
+      "成功率": "80%",
+      "成功率_95CI": "[40%, 100%]",
+      "假訊號率": "70%",
+      "AI循環特異性": "略弱",
+      "AI前領先天數": 395.5,
+      "AI後領先天數": 122.0,
+      "通過篩選": "FAIL"
+    },
+    {
+      "指標名稱": "台股相對全球強勢（持續跑贏）",
+      "階段": "AI循環",
+      "訊號欄位": "tw_rs_rising",
+      "事件數": 5,
+      "領先天數(中位數)": 394.0,
+      "領先天數(平均)": 365.0,
+      "成功率": "100%",
+      "成功率_95CI": "[100%, 100%]",
+      "假訊號率": "70%",
+      "AI循環特異性": "略強",
+      "AI前領先天數": 365.0,
+      "AI後領先天數": 395.0,
+      "通過篩選": "FAIL"
+    }
+  ],
+  "portfolio_series": [
+    {
+      "date": "2018-02",
+      "portfolio": 1001250.0,
+      "taiex": 974034.1,
+      "tsmc": 964705.9,
+      "score": 19.0,
+      "cash_pct": 100.0,
+      "holdings": ""
+    },
+    {
+      "date": "2018-03",
+      "portfolio": 1002501.6,
+      "taiex": 982206.9,
+      "tsmc": 964705.9,
+      "score": 32.0,
+      "cash_pct": 100.0,
+      "holdings": ""
+    },
+    {
+      "date": "2018-04",
+      "portfolio": 1003754.7,
+      "taiex": 959841.6,
+      "tsmc": 890196.1,
+      "score": 29.0,
+      "cash_pct": 100.0,
+      "holdings": ""
+    },
+    {
+      "date": "2018-05",
+      "portfolio": 1005009.4,
+      "taiex": 979391.7,
+      "tsmc": 878431.4,
+      "score": 34.0,
+      "cash_pct": 100.0,
+      "holdings": ""
+    },
+    {
+      "date": "2018-06",
+      "portfolio": 1011352.3,
+      "taiex": 975965.0,
+      "tsmc": 849019.6,
+      "score": 74.0,
+      "cash_pct": 25.0,
+      "holdings": "2330.TW(25%), 6451.TW(25%), 6274.TWO(25%)"
+    },
+    {
+      "date": "2018-07",
+      "portfolio": 1057802.4,
+      "taiex": 995832.0,
+      "tsmc": 964705.9,
+      "score": 60.0,
+      "cash_pct": 25.0,
+      "holdings": "2330.TW(25%), 6274.TWO(25%), 1303.TW(25%)"
+    },
+    {
+      "date": "2018-08",
+      "portfolio": 1058722.4,
+      "taiex": 996411.2,
+      "tsmc": 1003921.6,
+      "score": 61.0,
+      "cash_pct": 25.0,
+      "holdings": "2330.TW(25%), 6274.TWO(25%), 3264.TWO(25%)"
+    },
+    {
+      "date": "2018-09",
+      "portfolio": 1028385.7,
+      "taiex": 991223.7,
+      "tsmc": 1029411.8,
+      "score": 70.0,
+      "cash_pct": 25.0,
+      "holdings": "2330.TW(25%), 2356.TW(25%), 6274.TWO(25%)"
+    },
+    {
+      "date": "2018-10",
+      "portfolio": 1000544.0,
+      "taiex": 882773.3,
+      "tsmc": 917647.1,
+      "score": 57.0,
+      "cash_pct": 50.0,
+      "holdings": "2330.TW(25%), 2308.TW(25%)"
+    },
+    {
+      "date": "2018-11",
+      "portfolio": 1001063.0,
+      "taiex": 890509.5,
+      "tsmc": 884313.7,
+      "score": 34.0,
+      "cash_pct": 100.0,
+      "holdings": ""
+    },
+    {
+      "date": "2018-12",
+      "portfolio": 1002314.4,
+      "taiex": 876044.1,
+      "tsmc": 884313.7,
+      "score": 37.0,
+      "cash_pct": 100.0,
+      "holdings": ""
+    },
+    {
+      "date": "2019-01",
+      "portfolio": 1003567.3,
+      "taiex": 894492.8,
+      "tsmc": 866666.7,
+      "score": 30.0,
+      "cash_pct": 100.0,
+      "holdings": ""
+    },
+    {
+      "date": "2019-02",
+      "portfolio": 1010248.2,
+      "taiex": 935641.8,
+      "tsmc": 937254.9,
+      "score": 49.0,
+      "cash_pct": 50.0,
+      "holdings": "2330.TW(25%), 3363.TWO(25%)"
+    },
+    {
+      "date": "2019-03",
+      "portfolio": 1086019.4,
+      "taiex": 958325.0,
+      "tsmc": 962745.1,
+      "score": 79.0,
+      "cash_pct": 0.0,
+      "holdings": "3363.TWO(25%), 3081.TWO(25%), 3211.TWO(25%), 8299.TWO(25%)"
+    },
+    {
+      "date": "2019-04",
+      "portfolio": 1087192.5,
+      "taiex": 987746.6,
+      "tsmc": 1015686.3,
+      "score": 68.0,
+      "cash_pct": 25.0,
+      "holdings": "2330.TW(25%), 3363.TWO(25%), 6451.TW(25%)"
+    },
+    {
+      "date": "2019-05",
+      "portfolio": 971356.3,
+      "taiex": 945487.1,
+      "tsmc": 923529.4,
+      "score": 71.0,
+      "cash_pct": 25.0,
+      "holdings": "2330.TW(25%), 3363.TWO(25%), 6451.TW(25%)"
+    },
+    {
+      "date": "2019-06",
+      "portfolio": 993102.1,
+      "taiex": 966411.5,
+      "tsmc": 937254.9,
+      "score": 47.0,
+      "cash_pct": 50.0,
+      "holdings": "2330.TW(25%), 1519.TW(25%)"
+    },
+    {
+      "date": "2019-07",
+      "portfolio": 998322.6,
+      "taiex": 974785.1,
+      "tsmc": 1017647.1,
+      "score": 55.0,
+      "cash_pct": 50.0,
+      "holdings": "2330.TW(25%), 6274.TWO(25%)"
+    },
+    {
+      "date": "2019-08",
+      "portfolio": 985096.6,
+      "taiex": 956254.6,
+      "tsmc": 1015686.3,
+      "score": 63.0,
+      "cash_pct": 25.0,
+      "holdings": "2330.TW(25%), 6274.TWO(25%), 8299.TWO(25%)"
+    },
+    {
+      "date": "2019-09",
+      "portfolio": 998499.7,
+      "taiex": 975313.8,
+      "tsmc": 1066666.7,
+      "score": 57.0,
+      "cash_pct": 50.0,
+      "holdings": "2330.TW(25%), 6451.TW(25%)"
+    },
+    {
+      "date": "2019-10",
+      "portfolio": 996747.8,
+      "taiex": 1022957.9,
+      "tsmc": 1170588.2,
+      "score": 55.0,
+      "cash_pct": 50.0,
+      "holdings": "2330.TW(25%), 6274.TWO(25%)"
+    },
+    {
+      "date": "2019-11",
+      "portfolio": 949872.4,
+      "taiex": 1034743.1,
+      "tsmc": 1196078.4,
+      "score": 75.0,
+      "cash_pct": 0.0,
+      "holdings": "6451.TW(25%), 3211.TWO(25%), 2330.TW(25%), 3231.TW(25%)"
+    },
+    {
+      "date": "2019-12",
+      "portfolio": 967835.5,
+      "taiex": 1080454.5,
+      "tsmc": 1298039.2,
+      "score": 61.0,
+      "cash_pct": 25.0,
+      "holdings": "2330.TW(25%), 2317.TW(25%), 3211.TWO(25%)"
+    },
+    {
+      "date": "2020-01",
+      "portfolio": 896232.0,
+      "taiex": 1035241.1,
+      "tsmc": 1254902.0,
+      "score": 79.0,
+      "cash_pct": 0.0,
+      "holdings": "3081.TWO(25%), 1513.TW(25%), 2421.TW(25%), 8299.TWO(25%)"
+    },
+    {
+      "date": "2020-02",
+      "portfolio": 867783.3,
+      "taiex": 1016965.4,
+      "tsmc": 1239215.7,
+      "score": 66.0,
+      "cash_pct": 25.0,
+      "holdings": "2330.TW(25%), 1513.TW(25%), 3211.TWO(25%)"
+    },
+    {
+      "date": "2020-03",
+      "portfolio": 867916.2,
+      "taiex": 874301.4,
+      "tsmc": 1074509.8,
+      "score": 37.0,
+      "cash_pct": 100.0,
+      "holdings": ""
+    },
+    {
+      "date": "2020-04",
+      "portfolio": 923173.7,
+      "taiex": 989944.8,
+      "tsmc": 1194117.6,
+      "score": 40.0,
+      "cash_pct": 50.0,
+      "holdings": "2330.TW(25%), 3211.TWO(25%)"
+    },
+    {
+      "date": "2020-05",
+      "portfolio": 959486.2,
+      "taiex": 985443.7,
+      "tsmc": 1145098.0,
+      "score": 55.0,
+      "cash_pct": 50.0,
+      "holdings": "2330.TW(25%), 3211.TWO(25%)"
+    },
+    {
+      "date": "2020-06",
+      "portfolio": 947712.8,
+      "taiex": 1046601.2,
+      "tsmc": 1227451.0,
+      "score": 73.0,
+      "cash_pct": 25.0,
+      "holdings": "2330.TW(25%), 3211.TWO(25%), 2421.TW(25%)"
+    },
+    {
+      "date": "2020-07",
+      "portfolio": 1055040.9,
+      "taiex": 1140583.5,
+      "tsmc": 1668627.4,
+      "score": 74.0,
+      "cash_pct": 25.0,
+      "holdings": "2330.TW(25%), 3231.TW(25%), 2308.TW(25%)"
+    },
+    {
+      "date": "2020-08",
+      "portfolio": 1055981.3,
+      "taiex": 1133977.7,
+      "tsmc": 1672549.0,
+      "score": 70.0,
+      "cash_pct": 25.0,
+      "holdings": "2330.TW(25%), 2308.TW(25%), 2421.TW(25%)"
+    },
+    {
+      "date": "2020-09",
+      "portfolio": 1089036.7,
+      "taiex": 1127147.6,
+      "tsmc": 1698039.2,
+      "score": 69.0,
+      "cash_pct": 25.0,
+      "holdings": "2330.TW(25%), 1513.TW(25%), 1519.TW(25%)"
+    },
+    {
+      "date": "2020-10",
+      "portfolio": 1139378.5,
+      "taiex": 1129915.1,
+      "tsmc": 1694117.6,
+      "score": 69.0,
+      "cash_pct": 25.0,
+      "holdings": "2330.TW(25%), 1513.TW(25%), 1519.TW(25%)"
+    },
+    {
+      "date": "2020-11",
+      "portfolio": 1223985.2,
+      "taiex": 1235874.4,
+      "tsmc": 1884313.7,
+      "score": 58.0,
+      "cash_pct": 50.0,
+      "holdings": "2330.TW(25%), 1513.TW(25%)"
+    },
+    {
+      "date": "2020-12",
+      "portfolio": 1274214.0,
+      "taiex": 1326801.9,
+      "tsmc": 2078431.4,
+      "score": 63.0,
+      "cash_pct": 25.0,
+      "holdings": "2330.TW(25%), 1513.TW(25%), 2308.TW(25%)"
+    },
+    {
+      "date": "2021-01",
+      "portfolio": 1301639.0,
+      "taiex": 1363346.2,
+      "tsmc": 2317647.1,
+      "score": 70.0,
+      "cash_pct": 25.0,
+      "holdings": "2330.TW(25%), 2308.TW(25%), 6451.TW(25%)"
+    },
+    {
+      "date": "2021-02",
+      "portfolio": 1295482.1,
+      "taiex": 1436788.7,
+      "tsmc": 2376470.6,
+      "score": 51.0,
+      "cash_pct": 50.0,
+      "holdings": "2330.TW(25%), 2317.TW(25%)"
+    },
+    {
+      "date": "2021-03",
+      "portfolio": 1352891.7,
+      "taiex": 1479776.8,
+      "tsmc": 2301960.8,
+      "score": 69.0,
+      "cash_pct": 25.0,
+      "holdings": "2330.TW(25%), 8299.TWO(25%), 2317.TW(25%)"
+    },
+    {
+      "date": "2021-04",
+      "portfolio": 1385590.0,
+      "taiex": 1582041.8,
+      "tsmc": 2352941.2,
+      "score": 75.0,
+      "cash_pct": 0.0,
+      "holdings": "3211.TWO(25%), 8299.TWO(25%), 2324.TW(25%), 2301.TW(25%)"
+    },
+    {
+      "date": "2021-05",
+      "portfolio": 1335531.8,
+      "taiex": 1537171.5,
+      "tsmc": 2341176.5,
+      "score": 81.0,
+      "cash_pct": 0.0,
+      "holdings": "8299.TWO(25%), 1303.TW(25%), 2301.TW(25%), 2059.TW(25%)"
+    },
+    {
+      "date": "2021-06",
+      "portfolio": 1296612.3,
+      "taiex": 1599045.1,
+      "tsmc": 2333333.3,
+      "score": 86.0,
+      "cash_pct": 0.0,
+      "holdings": "2059.TW(25%), 2301.TW(25%), 1303.TW(25%), 1503.TW(25%)"
+    },
+    {
+      "date": "2021-07",
+      "portfolio": 1380122.1,
+      "taiex": 1553290.4,
+      "tsmc": 2274509.8,
+      "score": 81.0,
+      "cash_pct": 0.0,
+      "holdings": "2059.TW(25%), 3264.TWO(25%), 2308.TW(25%), 1503.TW(25%)"
+    },
+    {
+      "date": "2021-08",
+      "portfolio": 1407884.8,
+      "taiex": 1575163.9,
+      "tsmc": 2407843.1,
+      "score": 79.0,
+      "cash_pct": 0.0,
+      "holdings": "3264.TWO(25%), 1303.TW(25%), 1503.TW(25%), 6274.TWO(25%)"
+    },
+    {
+      "date": "2021-09",
+      "portfolio": 1327753.0,
+      "taiex": 1525134.2,
+      "tsmc": 2274509.8,
+      "score": 89.0,
+      "cash_pct": 0.0,
+      "holdings": "3264.TWO(25%), 1303.TW(25%), 2330.TW(25%), 6274.TWO(25%)"
+    },
+    {
+      "date": "2021-10",
+      "portfolio": 1331090.7,
+      "taiex": 1529874.9,
+      "tsmc": 2313725.5,
+      "score": 52.0,
+      "cash_pct": 50.0,
+      "holdings": "2330.TW(25%), 2301.TW(25%)"
+    },
+    {
+      "date": "2021-11",
+      "portfolio": 1349866.3,
+      "taiex": 1569532.5,
+      "tsmc": 2337254.9,
+      "score": 85.0,
+      "cash_pct": 0.0,
+      "holdings": "3363.TWO(25%), 2059.TW(25%), 2356.TW(25%), 2324.TW(25%)"
+    },
+    {
+      "date": "2021-12",
+      "portfolio": 1359176.7,
+      "taiex": 1640776.7,
+      "tsmc": 2411764.7,
+      "score": 74.0,
+      "cash_pct": 25.0,
+      "holdings": "2330.TW(25%), 3363.TWO(25%), 2059.TW(25%)"
+    },
+    {
+      "date": "2022-01",
+      "portfolio": 1270363.8,
+      "taiex": 1591744.8,
+      "tsmc": 2494117.6,
+      "score": 88.0,
+      "cash_pct": 0.0,
+      "holdings": "2059.TW(25%), 8299.TWO(25%), 2330.TW(25%), 2308.TW(25%)"
+    },
+    {
+      "date": "2022-02",
+      "portfolio": 1270093.9,
+      "taiex": 1589743.6,
+      "tsmc": 2368627.5,
+      "score": 38.0,
+      "cash_pct": 100.0,
+      "holdings": ""
+    },
+    {
+      "date": "2022-03",
+      "portfolio": 1240791.1,
+      "taiex": 1593462.3,
+      "tsmc": 2341176.5,
+      "score": 57.0,
+      "cash_pct": 50.0,
+      "holdings": "2330.TW(25%), 8299.TWO(25%)"
+    },
+    {
+      "date": "2022-04",
+      "portfolio": 1241434.8,
+      "taiex": 1494280.8,
+      "tsmc": 2109803.9,
+      "score": 38.0,
+      "cash_pct": 100.0,
+      "holdings": ""
+    },
+    {
+      "date": "2022-05",
+      "portfolio": 1252341.2,
+      "taiex": 1513696.6,
+      "tsmc": 2196078.4,
+      "score": 47.0,
+      "cash_pct": 50.0,
+      "holdings": "2330.TW(25%), 1513.TW(25%)"
+    },
+    {
+      "date": "2022-06",
+      "portfolio": 1216777.2,
+      "taiex": 1335195.5,
+      "tsmc": 1866666.7,
+      "score": 44.0,
+      "cash_pct": 50.0,
+      "holdings": "2330.TW(25%), 1503.TW(25%)"
+    },
+    {
+      "date": "2022-07",
+      "portfolio": 1217408.4,
+      "taiex": 1350896.4,
+      "tsmc": 1996078.4,
+      "score": 37.0,
+      "cash_pct": 100.0,
+      "holdings": ""
+    },
+    {
+      "date": "2022-08",
+      "portfolio": 1254446.4,
+      "taiex": 1359485.4,
+      "tsmc": 1980392.2,
+      "score": 45.0,
+      "cash_pct": 50.0,
+      "holdings": "2330.TW(25%), 1513.TW(25%)"
+    },
+    {
+      "date": "2022-09",
+      "portfolio": 1255097.1,
+      "taiex": 1209008.8,
+      "tsmc": 1654902.0,
+      "score": 27.0,
+      "cash_pct": 100.0,
+      "holdings": ""
+    },
+    {
+      "date": "2022-10",
+      "portfolio": 1256666.0,
+      "taiex": 1166245.9,
+      "tsmc": 1529411.8,
+      "score": 29.0,
+      "cash_pct": 100.0,
+      "holdings": ""
+    },
+    {
+      "date": "2022-11",
+      "portfolio": 1258236.9,
+      "taiex": 1340042.4,
+      "tsmc": 1921568.6,
+      "score": 7.0,
+      "cash_pct": 100.0,
+      "holdings": ""
+    },
+    {
+      "date": "2022-12",
+      "portfolio": 1196562.8,
+      "taiex": 1273231.1,
+      "tsmc": 1758823.5,
+      "score": 55.0,
+      "cash_pct": 50.0,
+      "holdings": "2330.TW(25%), 2421.TW(25%)"
+    },
+    {
+      "date": "2023-01",
+      "portfolio": 1197183.6,
+      "taiex": 1374773.9,
+      "tsmc": 2047058.8,
+      "score": 21.0,
+      "cash_pct": 100.0,
+      "holdings": ""
+    },
+    {
+      "date": "2023-02",
+      "portfolio": 1275397.5,
+      "taiex": 1396261.1,
+      "tsmc": 2003921.6,
+      "score": 64.0,
+      "cash_pct": 25.0,
+      "holdings": "2330.TW(25%), 1513.TW(25%), 1519.TW(25%)"
+    },
+    {
+      "date": "2023-03",
+      "portfolio": 1276169.5,
+      "taiex": 1429067.0,
+      "tsmc": 2090196.1,
+      "score": 57.0,
+      "cash_pct": 50.0,
+      "holdings": "2330.TW(25%), 1513.TW(25%)"
+    },
+    {
+      "date": "2023-04",
+      "portfolio": 1352631.3,
+      "taiex": 1403050.6,
+      "tsmc": 1968627.4,
+      "score": 45.0,
+      "cash_pct": 50.0,
+      "holdings": "2330.TW(25%), 1519.TW(25%)"
+    },
+    {
+      "date": "2023-05",
+      "portfolio": 1527539.6,
+      "taiex": 1493090.3,
+      "tsmc": 2188235.3,
+      "score": 43.0,
+      "cash_pct": 50.0,
+      "holdings": "2330.TW(25%), 1519.TW(25%)"
+    },
+    {
+      "date": "2023-06",
+      "portfolio": 1555103.1,
+      "taiex": 1523402.3,
+      "tsmc": 2258823.5,
+      "score": 49.0,
+      "cash_pct": 50.0,
+      "holdings": "2330.TW(25%), 1519.TW(25%)"
+    },
+    {
+      "date": "2023-07",
+      "portfolio": 1731597.4,
+      "taiex": 1544106.1,
+      "tsmc": 2215686.3,
+      "score": 49.0,
+      "cash_pct": 50.0,
+      "holdings": "2330.TW(25%), 3231.TW(25%)"
+    },
+    {
+      "date": "2023-08",
+      "portfolio": 1661216.9,
+      "taiex": 1498093.0,
+      "tsmc": 2152941.2,
+      "score": 56.0,
+      "cash_pct": 50.0,
+      "holdings": "2330.TW(25%), 3231.TW(25%)"
+    },
+    {
+      "date": "2023-09",
+      "portfolio": 1662078.6,
+      "taiex": 1472807.1,
+      "tsmc": 2050980.4,
+      "score": 39.0,
+      "cash_pct": 100.0,
+      "holdings": ""
+    },
+    {
+      "date": "2023-10",
+      "portfolio": 1664156.2,
+      "taiex": 1441063.8,
+      "tsmc": 2074509.8,
+      "score": 15.0,
+      "cash_pct": 100.0,
+      "holdings": ""
+    },
+    {
+      "date": "2023-11",
+      "portfolio": 1666236.4,
+      "taiex": 1570081.0,
+      "tsmc": 2262745.1,
+      "score": 10.0,
+      "cash_pct": 100.0,
+      "holdings": ""
+    },
+    {
+      "date": "2023-12",
+      "portfolio": 1611361.8,
+      "taiex": 1614837.0,
+      "tsmc": 2325490.2,
+      "score": 55.0,
+      "cash_pct": 50.0,
+      "holdings": "2330.TW(25%), 6451.TW(25%)"
+    },
+    {
+      "date": "2024-01",
+      "portfolio": 1755112.4,
+      "taiex": 1611122.0,
+      "tsmc": 2462745.1,
+      "score": 56.0,
+      "cash_pct": 50.0,
+      "holdings": "2330.TW(25%), 1519.TW(25%)"
+    },
+    {
+      "date": "2024-02",
+      "portfolio": 1926531.8,
+      "taiex": 1708134.7,
+      "tsmc": 2705882.4,
+      "score": 61.0,
+      "cash_pct": 25.0,
+      "holdings": "2330.TW(25%), 1519.TW(25%), 6451.TW(25%)"
+    },
+    {
+      "date": "2024-03",
+      "portfolio": 1981007.7,
+      "taiex": 1827704.7,
+      "tsmc": 3043137.2,
+      "score": 79.0,
+      "cash_pct": 0.0,
+      "holdings": "1519.TW(25%), 2059.TW(25%), 6451.TW(25%), 6274.TWO(25%)"
+    },
+    {
+      "date": "2024-04",
+      "portfolio": 2038281.7,
+      "taiex": 1836904.3,
+      "tsmc": 3098039.2,
+      "score": 68.0,
+      "cash_pct": 25.0,
+      "holdings": "2330.TW(25%), 1503.TW(25%), 1519.TW(25%)"
+    },
+    {
+      "date": "2024-05",
+      "portfolio": 2015240.7,
+      "taiex": 1906936.3,
+      "tsmc": 3219607.8,
+      "score": 59.0,
+      "cash_pct": 50.0,
+      "holdings": "2330.TW(25%), 1519.TW(25%)"
+    },
+    {
+      "date": "2024-06",
+      "portfolio": 2193530.8,
+      "taiex": 2074269.2,
+      "tsmc": 3788235.3,
+      "score": 55.0,
+      "cash_pct": 50.0,
+      "holdings": "2330.TW(25%), 2317.TW(25%)"
+    },
+    {
+      "date": "2024-07",
+      "portfolio": 2040138.0,
+      "taiex": 1999258.8,
+      "tsmc": 3662745.1,
+      "score": 64.0,
+      "cash_pct": 25.0,
+      "holdings": "2330.TW(25%), 6451.TW(25%), 2317.TW(25%)"
+    },
+    {
+      "date": "2024-08",
+      "portfolio": 2082719.1,
+      "taiex": 2005449.5,
+      "tsmc": 3701960.8,
+      "score": 53.0,
+      "cash_pct": 50.0,
+      "holdings": "2330.TW(25%), 3363.TWO(25%)"
+    },
+    {
+      "date": "2024-09",
+      "portfolio": 2083799.5,
+      "taiex": 2001527.3,
+      "tsmc": 3752941.2,
+      "score": 36.0,
+      "cash_pct": 100.0,
+      "holdings": ""
+    },
+    {
+      "date": "2024-10",
+      "portfolio": 2110656.3,
+      "taiex": 2055192.8,
+      "tsmc": 4039215.7,
+      "score": 45.0,
+      "cash_pct": 50.0,
+      "holdings": "2330.TW(25%), 3081.TWO(25%)"
+    },
+    {
+      "date": "2024-11",
+      "portfolio": 2095615.1,
+      "taiex": 2004946.1,
+      "tsmc": 3905882.4,
+      "score": 70.0,
+      "cash_pct": 25.0,
+      "holdings": "2330.TW(25%), 3081.TWO(25%), 3363.TWO(25%)"
+    },
+    {
+      "date": "2024-12",
+      "portfolio": 2125046.6,
+      "taiex": 2074525.9,
+      "tsmc": 4215686.3,
+      "score": 55.0,
+      "cash_pct": 50.0,
+      "holdings": "2330.TW(25%), 3211.TWO(25%)"
+    },
+    {
+      "date": "2025-01",
+      "portfolio": 2140092.8,
+      "taiex": 2118682.9,
+      "tsmc": 4450980.4,
+      "score": 52.0,
+      "cash_pct": 50.0,
+      "holdings": "2330.TW(25%), 3211.TWO(25%)"
+    },
+    {
+      "date": "2025-02",
+      "portfolio": 2104926.0,
+      "taiex": 2076154.1,
+      "tsmc": 4078431.4,
+      "score": 55.0,
+      "cash_pct": 50.0,
+      "holdings": "2330.TW(25%), 3363.TWO(25%)"
+    },
+    {
+      "date": "2025-03",
+      "portfolio": 2106017.9,
+      "taiex": 1863859.1,
+      "tsmc": 3568627.5,
+      "score": 37.0,
+      "cash_pct": 100.0,
+      "holdings": ""
+    },
+    {
+      "date": "2025-04",
+      "portfolio": 2108650.5,
+      "taiex": 1822353.4,
+      "tsmc": 3560784.3,
+      "score": 37.0,
+      "cash_pct": 100.0,
+      "holdings": ""
+    },
+    {
+      "date": "2025-05",
+      "portfolio": 2111286.3,
+      "taiex": 1922523.8,
+      "tsmc": 3792156.9,
+      "score": 32.0,
+      "cash_pct": 100.0,
+      "holdings": ""
+    },
+    {
+      "date": "2025-06",
+      "portfolio": 2237248.1,
+      "taiex": 2004362.4,
+      "tsmc": 4156862.8,
+      "score": 67.0,
+      "cash_pct": 25.0,
+      "holdings": "2330.TW(25%), 3211.TWO(25%), 2059.TW(25%)"
+    },
+    {
+      "date": "2025-07",
+      "portfolio": 2555792.0,
+      "taiex": 2120223.8,
+      "tsmc": 4549019.6,
+      "score": 75.0,
+      "cash_pct": 0.0,
+      "holdings": "6274.TWO(25%), 3363.TWO(25%), 1519.TW(25%), 3211.TWO(25%)"
+    },
+    {
+      "date": "2025-08",
+      "portfolio": 3003824.3,
+      "taiex": 2182417.0,
+      "tsmc": 4549019.6,
+      "score": 78.0,
+      "cash_pct": 0.0,
+      "holdings": "1519.TW(25%), 6274.TWO(25%), 2308.TW(25%), 2059.TW(25%)"
+    },
+    {
+      "date": "2025-09",
+      "portfolio": 3158265.2,
+      "taiex": 2325380.7,
+      "tsmc": 5117647.1,
+      "score": 78.0,
+      "cash_pct": 0.0,
+      "holdings": "3211.TWO(25%), 6274.TWO(25%), 2308.TW(25%), 3081.TWO(25%)"
+    },
+    {
+      "date": "2025-10",
+      "portfolio": 3229302.3,
+      "taiex": 2542676.8,
+      "tsmc": 5882352.9,
+      "score": 73.0,
+      "cash_pct": 25.0,
+      "holdings": "2330.TW(25%), 2308.TW(25%), 3211.TWO(25%)"
+    },
+    {
+      "date": "2025-11",
+      "portfolio": 3203253.0,
+      "taiex": 2488022.6,
+      "tsmc": 5647058.8,
+      "score": 87.0,
+      "cash_pct": 0.0,
+      "holdings": "2059.TW(25%), 6274.TWO(25%), 2308.TW(25%), 2421.TW(25%)"
+    },
+    {
+      "date": "2025-12",
+      "portfolio": 3265945.3,
+      "taiex": 2608442.7,
+      "tsmc": 6078431.4,
+      "score": 56.0,
+      "cash_pct": 50.0,
+      "holdings": "2330.TW(25%), 1303.TW(25%)"
+    },
+    {
+      "date": "2026-01",
+      "portfolio": 4102570.1,
+      "taiex": 2887640.2,
+      "tsmc": 6960784.3,
+      "score": 68.0,
+      "cash_pct": 25.0,
+      "holdings": "2330.TW(25%), 8299.TWO(25%), 3264.TWO(25%)"
+    },
+    {
+      "date": "2026-02",
+      "portfolio": 4533437.0,
+      "taiex": 3189405.4,
+      "tsmc": 7823529.4,
+      "score": 78.0,
+      "cash_pct": 0.0,
+      "holdings": "8299.TWO(25%), 3264.TWO(25%), 1303.TW(25%), 2308.TW(25%)"
+    },
+    {
+      "date": "2026-03",
+      "portfolio": 4423957.3,
+      "taiex": 2856951.6,
+      "tsmc": 6901960.8,
+      "score": 69.0,
+      "cash_pct": 25.0,
+      "holdings": "2330.TW(25%), 3081.TWO(25%), 3363.TWO(25%)"
+    },
+    {
+      "date": "2026-04",
+      "portfolio": 5173809.7,
+      "taiex": 3505706.5,
+      "tsmc": 8372549.0,
+      "score": 41.0,
+      "cash_pct": 50.0,
+      "holdings": "2330.TW(25%), 3081.TWO(25%)"
+    },
+    {
+      "date": "2026-05",
+      "portfolio": 5478540.5,
+      "taiex": 4028619.2,
+      "tsmc": 9235294.1,
+      "score": 88.0,
+      "cash_pct": 0.0,
+      "holdings": "3081.TWO(25%), 6451.TW(25%), 3264.TWO(25%), 3363.TWO(25%)"
+    },
+    {
+      "date": "2026-06",
+      "portfolio": 4861190.3,
+      "taiex": 4154069.0,
+      "tsmc": 9450980.4,
+      "score": 91.0,
+      "cash_pct": 0.0,
+      "holdings": "6274.TWO(25%), 6451.TW(25%), 8299.TWO(25%), 2308.TW(25%)"
+    },
+    {
+      "date": "2026-07",
+      "portfolio": 3950881.9,
+      "taiex": 3883336.2,
+      "tsmc": 9509803.9,
+      "score": 76.0,
+      "cash_pct": 0.0,
+      "holdings": "6274.TWO(25%), 2059.TW(25%), 2356.TW(25%), 6451.TW(25%)"
+    },
+    {
+      "date": "2026-08",
+      "portfolio": 5057678.4,
+      "taiex": 4154299.4,
+      "tsmc": 9431372.6,
+      "score": 63.0,
+      "cash_pct": 25.0,
+      "holdings": "2330.TW(25%), 2059.TW(25%), 1303.TW(25%)"
+    },
+    {
+      "date": "2026-09",
+      "portfolio": 4959084.7,
+      "taiex": 4297527.2,
+      "tsmc": 9725490.2,
+      "score": 58.0,
+      "cash_pct": 50.0,
+      "holdings": "2330.TW(25%), 2059.TW(25%)"
+    }
+  ],
+  "portfolio_metrics": {
+    "total_return": 395.3,
+    "cagr": 20.5,
+    "mdd": 27.9,
+    "sharpe": 0.88,
+    "calmar": 0.74,
+    "win_rate": 71.8,
+    "taiex_total_return": 341.2,
+    "taiex_cagr": 18.9,
+    "taiex_mdd": 28.9,
+    "tsmc_total_return": 908.1,
+    "tsmc_cagr": 31.0,
+    "tsmc_mdd": 38.7
+  },
+  "ai_radar": [
+    {
+      "sub_industry_id": "foundry_cowos",
+      "name": "晶圓代工與先進封裝",
+      "stage": "C 成長",
+      "stage_code": "C",
+      "pe_multiplier": 1.05,
+      "description": "CoWoS/SoIC 產能嚴重吃緊，台積電先進製程擴產倍增，訂單滿載至 2027",
+      "key_metrics": "月營收年增率 > 30%、CoWoS 產能利用率 100%、毛利率 > 53%",
+      "radar_stocks_count": 5,
+      "core_stocks": "台積電(2330)",
+      "representative_stocks": "台積電(2330), 日月光投控(3711), 弘塑(3131), 辛耘(3583), 萬潤(6187)"
+    },
+    {
+      "sub_industry_id": "asic_design",
+      "name": "IC 設計與客製化晶片",
+      "stage": "C 成長",
+      "stage_code": "C",
+      "pe_multiplier": 1.0,
+      "description": "北美雲端 CSP (微軟/亞馬遜/Google/Meta) 自研 ASIC 晶片需求爆發，權利金擴增",
+      "key_metrics": "ASIC 專案開案量、NRE 委託設計營收佔比、毛利率 > 45%",
+      "radar_stocks_count": 5,
+      "core_stocks": "無核心股",
+      "representative_stocks": "聯發科(2454), 世芯-KY(3661), 創意(3443), 智原(3035), 祥碩(5269)"
+    },
+    {
+      "sub_industry_id": "server_odm",
+      "name": "AI 伺服器代工與機櫃",
+      "stage": "C 成長",
+      "stage_code": "C",
+      "pe_multiplier": 1.0,
+      "description": "GB200/GB300 機櫃型伺服器放量量產出貨，ASP 巨幅攀升帶動營收高成長",
+      "key_metrics": "AI 伺服器營收佔比 > 35%、伺服器出貨量年增率、營益率穩定提升",
+      "radar_stocks_count": 6,
+      "core_stocks": "仁寶(2324), 英業達(2356), 鴻海(2317), 緯創(3231)",
+      "representative_stocks": "鴻海(2317), 廣達(2382), 緯創(3231), 緯穎(6669), 英業達(2356), 仁寶(2324)"
+    },
+    {
+      "sub_industry_id": "liquid_cooling",
+      "name": "散熱與水冷液冷",
+      "stage": "D 高峰",
+      "stage_code": "D",
+      "pe_multiplier": 0.85,
+      "description": "水冷板/分歧管滲透率自 10% 躍升至 30%+，短線股價大幅透支，邁向高原期",
+      "key_metrics": "水冷出貨滲透率、CDU/水冷板產能擴充速度、價格競爭壓力",
+      "radar_stocks_count": 5,
+      "core_stocks": "建準(2421)",
+      "representative_stocks": "奇鋐(3017), 雙鴻(3324), 建準(2421), 力致(3483), 高力(8996)"
+    },
+    {
+      "sub_industry_id": "power_bbu",
+      "name": "AI 高階電源與 BBU 備援電池",
+      "stage": "B 初升",
+      "stage_code": "B",
+      "pe_multiplier": 1.1,
+      "description": "5.5kW/8kW 鈦金級高功率電源與伺服器 BBU 備援電池由選配轉為標準配備",
+      "key_metrics": "BBU 模組訂單能見度、高瓦數電源出貨滲透率、毛利率 > 25%",
+      "radar_stocks_count": 5,
+      "core_stocks": "台達電(2308), 光寶科(2301), 順達(3211)",
+      "representative_stocks": "台達電(2308), 光寶科(2301), 順達(3211), AES-KY(6781), 新普(6121)"
+    },
+    {
+      "sub_industry_id": "power_grid",
+      "name": "重電與電網基礎設施",
+      "stage": "C 成長",
+      "stage_code": "C",
+      "pe_multiplier": 1.05,
+      "description": "美國 AI 資料中心用電需求激增，大型變壓器與 GIS 開關外銷交期長達 2 年",
+      "key_metrics": "北美變壓器在手訂單金額、訂單交期 (Lead Time)、外銷營收年增率",
+      "radar_stocks_count": 5,
+      "core_stocks": "華城(1519), 士電(1503), 中興電(1513)",
+      "representative_stocks": "華城(1519), 士電(1503), 中興電(1513), 亞力(1514), 大同(2371)"
+    },
+    {
+      "sub_industry_id": "silicon_photonics",
+      "name": "矽光子與 CPO 光通訊",
+      "stage": "B 初升",
+      "stage_code": "B",
+      "pe_multiplier": 1.15,
+      "description": "800G/1.6T 光模組商轉放量，CPO 進入工程驗證轉量產與測試效率關鍵期",
+      "key_metrics": "800G/1.6T 光模組出貨量、矽光子光纖對位良率、雷達新專案開案數",
+      "radar_stocks_count": 5,
+      "core_stocks": "聯亞(3081), 上詮(3363), 訊芯-KY(6451)",
+      "representative_stocks": "聯亞(3081), 上詮(3363), 訊芯-KY(6451), 聯鈞(3450), 波若威(3163)"
+    },
+    {
+      "sub_industry_id": "ccl_materials",
+      "name": "高頻材料與 CCL 銅箔基板",
+      "stage": "C 成長",
+      "stage_code": "C",
+      "pe_multiplier": 1.0,
+      "description": "M7/M8 超低損耗高頻銅箔基板供需吃緊，AI 主板與加速卡不可或缺原料",
+      "key_metrics": "高階極低損耗 CCL 出貨比重、銅箔加工費 (TC)、毛利率",
+      "radar_stocks_count": 5,
+      "core_stocks": "南亞(1303), 台燿(6274)",
+      "representative_stocks": "台燿(6274), 台光電(2383), 南亞(1303), 聯茂(6213), 金像電(2368)"
+    },
+    {
+      "sub_industry_id": "rail_mechanical",
+      "name": "高速傳輸與滑軌機構件",
+      "stage": "C 成長",
+      "stage_code": "C",
+      "pe_multiplier": 1.0,
+      "description": "AI 伺服器機箱重載滑軌專利高壁壘，全球市佔率逾 50%，毛利率突破 65%",
+      "key_metrics": "AI 伺服器滑軌出貨套數、高毛利產品比重、全球專利護城河",
+      "radar_stocks_count": 5,
+      "core_stocks": "川湖(2059)",
+      "representative_stocks": "川湖(2059), 勤誠(8210), 嘉澤(3533), 貿聯-KY(3665), 健策(3653)"
+    },
+    {
+      "sub_industry_id": "memory_testing",
+      "name": "記憶體控制與晶圓測試",
+      "stage": "B 初升",
+      "stage_code": "B",
+      "pe_multiplier": 1.05,
+      "description": "HBM/DDR5/PCIe Gen5 供需緊平衡，AI 晶片先進測試與高階封測產能滿載",
+      "key_metrics": "NAND/DRAM 控制晶片出貨量、晶圓高階測試稼動率、ASP 報價趨勢",
+      "radar_stocks_count": 5,
+      "core_stocks": "群聯(8299), 欣銓(3264)",
+      "representative_stocks": "群聯(8299), 欣銓(3264), 京元電子(2449), 國巨(2327), 愛普*(6531)"
+    }
+  ],
+  "core_watchlist_20": [
+    {
+      "symbol": "6451.TW",
+      "name": "訊芯-KY",
+      "category": "矽光子與CPO光通訊",
+      "sub_industry": "silicon_photonics",
+      "industry_stage": "B 初升",
+      "radar_multiplier": 1.15,
+      "close": 434.0,
+      "ma60": 443.7,
+      "current_pe": 37.7,
+      "adjusted_pe": 44.4,
+      "peer_pe": 42.0,
+      "peg": 0.79,
+      "growth_g": 47.8,
+      "eps_ttm": 5.5,
+      "floor_value": 82.5,
+      "eps_2026e": 11.5,
+      "eps_2027e": 17.0,
+      "eps_2028e": 24.0,
+      "p_bargain": 315.3,
+      "p_cheap": 408.2,
+      "p_fair": 510.2,
+      "p_expensive": 612.2,
+      "p_crazy": 705.1,
+      "margin_of_safety_pct": 14.9,
+      "target_fair_2027": 754.8,
+      "target_fair_2028": 1065.6,
+      "sun_status": "⚪ 合理偏低區",
+      "badge_color": "#F8FAFC",
+      "sun_action": "平價穩健區間，耐心抱牢享受成長",
+      "sun_position": "50% (穩健持有)",
+      "rank_tier": 3,
+      "rank": 18,
+      "rs_score": 29.9,
+      "ret_3m": -22.91,
+      "bias_ma20": -1.0,
+      "trend_bullish": false,
+      "action_advice": "⏸️ 均線整理中，暫先觀望"
+    },
+    {
+      "symbol": "1503.TW",
+      "name": "士電",
+      "category": "重電與電網基礎設施",
+      "sub_industry": "power_grid",
+      "industry_stage": "C 成長",
+      "radar_multiplier": 1.05,
+      "close": 198.5,
+      "ma60": 205.7,
+      "current_pe": 20.9,
+      "adjusted_pe": 22.7,
+      "peer_pe": 32.0,
+      "peg": 0.66,
+      "growth_g": 31.6,
+      "eps_ttm": 6.8,
+      "floor_value": 102.0,
+      "eps_2026e": 9.5,
+      "eps_2027e": 12.5,
+      "eps_2028e": 16.0,
+      "p_bargain": 133.5,
+      "p_cheap": 172.8,
+      "p_fair": 216.0,
+      "p_expensive": 259.2,
+      "p_crazy": 298.5,
+      "margin_of_safety_pct": 8.1,
+      "target_fair_2027": 283.8,
+      "target_fair_2028": 363.2,
+      "sun_status": "⚪ 合理偏低區",
+      "badge_color": "#F8FAFC",
+      "sun_action": "平價穩健區間，耐心抱牢享受成長",
+      "sun_position": "50% (穩健持有)",
+      "rank_tier": 3,
+      "rank": 20,
+      "rs_score": 12.8,
+      "ret_3m": -16.42,
+      "bias_ma20": -2.0,
+      "trend_bullish": false,
+      "action_advice": "⏸️ 均線整理中，暫先觀望"
+    },
+    {
+      "symbol": "3211.TWO",
+      "name": "順達",
+      "category": "AI高階電源與BBU備援",
+      "sub_industry": "power_bbu",
+      "industry_stage": "B 初升",
+      "radar_multiplier": 1.1,
+      "close": 387.5,
+      "ma60": 378.8,
+      "current_pe": 42.1,
+      "adjusted_pe": 45.3,
+      "peer_pe": 25.0,
+      "peg": 1.08,
+      "growth_g": 39.1,
+      "eps_ttm": 6.1,
+      "floor_value": 91.5,
+      "eps_2026e": 9.2,
+      "eps_2027e": 12.8,
+      "eps_2028e": 17.5,
+      "p_bargain": 257.5,
+      "p_cheap": 333.4,
+      "p_fair": 416.7,
+      "p_expensive": 500.0,
+      "p_crazy": 575.9,
+      "margin_of_safety_pct": 7.0,
+      "target_fair_2027": 579.8,
+      "target_fair_2028": 792.8,
+      "sun_status": "⚪ 合理偏低區",
+      "badge_color": "#F8FAFC",
+      "sun_action": "平價穩健區間，耐心抱牢享受成長",
+      "sun_position": "50% (穩健持有)",
+      "rank_tier": 3,
+      "rank": 13,
+      "rs_score": 38.7,
+      "ret_3m": -1.27,
+      "bias_ma20": 3.2,
+      "trend_bullish": false,
+      "action_advice": "⏸️ 均線整理中，暫先觀望"
+    },
+    {
+      "symbol": "3363.TWO",
+      "name": "上詮",
+      "category": "矽光子與CPO光通訊",
+      "sub_industry": "silicon_photonics",
+      "industry_stage": "B 初升",
+      "radar_multiplier": 1.15,
+      "close": 661.0,
+      "ma60": 615.5,
+      "current_pe": 132.2,
+      "adjusted_pe": 141.6,
+      "peer_pe": 45.0,
+      "peg": 1.47,
+      "growth_g": 90.0,
+      "eps_ttm": 1.8,
+      "floor_value": 27.0,
+      "eps_2026e": 5.0,
+      "eps_2027e": 9.5,
+      "eps_2028e": 15.0,
+      "p_bargain": 437.4,
+      "p_cheap": 566.2,
+      "p_fair": 707.8,
+      "p_expensive": 849.4,
+      "p_crazy": 978.2,
+      "margin_of_safety_pct": 6.6,
+      "target_fair_2027": 1345.2,
+      "target_fair_2028": 2124.0,
+      "sun_status": "⚪ 合理偏低區",
+      "badge_color": "#F8FAFC",
+      "sun_action": "平價穩健區間，耐心抱牢享受成長",
+      "sun_position": "50% (穩健持有)",
+      "rank_tier": 3,
+      "rank": 8,
+      "rs_score": 51.0,
+      "ret_3m": 16.58,
+      "bias_ma20": -5.9,
+      "trend_bullish": true,
+      "action_advice": "📈 均線多頭排列，可逢低分批布局"
+    },
+    {
+      "symbol": "2308.TW",
+      "name": "台達電",
+      "category": "AI高階電源與BBU備援",
+      "sub_industry": "power_bbu",
+      "industry_stage": "B 初升",
+      "radar_multiplier": 1.1,
+      "close": 1875.0,
+      "ma60": 1784.3,
+      "current_pe": 94.7,
+      "adjusted_pe": 99.1,
+      "peer_pe": 32.0,
+      "peg": 4.0,
+      "growth_g": 23.7,
+      "eps_ttm": 14.8,
+      "floor_value": 222.0,
+      "eps_2026e": 19.8,
+      "eps_2027e": 24.5,
+      "eps_2028e": 30.0,
+      "p_bargain": 1213.0,
+      "p_cheap": 1570.2,
+      "p_fair": 1962.8,
+      "p_expensive": 2355.4,
+      "p_crazy": 2712.6,
+      "margin_of_safety_pct": 4.5,
+      "target_fair_2027": 2427.9,
+      "target_fair_2028": 2973.0,
+      "sun_status": "⚪ 合理偏低區",
+      "badge_color": "#F8FAFC",
+      "sun_action": "平價穩健區間，耐心抱牢享受成長",
+      "sun_position": "50% (穩健持有)",
+      "rank_tier": 3,
+      "rank": 10,
+      "rs_score": 48.5,
+      "ret_3m": -1.57,
+      "bias_ma20": 6.8,
+      "trend_bullish": false,
+      "action_advice": "⏸️ 均線整理中，暫先觀望"
+    },
+    {
+      "symbol": "2356.TW",
+      "name": "英業達",
+      "category": "AI伺服器代工與機櫃",
+      "sub_industry": "server_odm",
+      "industry_stage": "C 成長",
+      "radar_multiplier": 1.0,
+      "close": 61.79999923706055,
+      "ma60": 64.4,
+      "current_pe": 19.3,
+      "adjusted_pe": 20.1,
+      "peer_pe": 20.0,
+      "peg": 0.77,
+      "growth_g": 25.0,
+      "eps_ttm": 2.3,
+      "floor_value": 34.5,
+      "eps_2026e": 3.2,
+      "eps_2027e": 4.0,
+      "eps_2028e": 5.0,
+      "p_bargain": 39.8,
+      "p_cheap": 51.5,
+      "p_fair": 64.4,
+      "p_expensive": 77.3,
+      "p_crazy": 89.0,
+      "margin_of_safety_pct": 4.0,
+      "target_fair_2027": 80.4,
+      "target_fair_2028": 100.5,
+      "sun_status": "⚪ 合理偏低區",
+      "badge_color": "#F8FAFC",
+      "sun_action": "平價穩健區間，耐心抱牢享受成長",
+      "sun_position": "50% (穩健持有)",
+      "rank_tier": 3,
+      "rank": 17,
+      "rs_score": 32.4,
+      "ret_3m": -3.89,
+      "bias_ma20": -3.7,
+      "trend_bullish": false,
+      "action_advice": "⏸️ 均線整理中，暫先觀望"
+    },
+    {
+      "symbol": "1513.TW",
+      "name": "中興電",
+      "category": "重電與電網基礎設施",
+      "sub_industry": "power_grid",
+      "industry_stage": "C 成長",
+      "radar_multiplier": 1.05,
+      "close": 166.5,
+      "ma60": 164.8,
+      "current_pe": 18.9,
+      "adjusted_pe": 19.7,
+      "peer_pe": 28.0,
+      "peg": 0.69,
+      "growth_g": 27.3,
+      "eps_ttm": 6.2,
+      "floor_value": 93.0,
+      "eps_2026e": 8.8,
+      "eps_2027e": 11.2,
+      "eps_2028e": 14.0,
+      "p_bargain": 106.9,
+      "p_cheap": 138.4,
+      "p_fair": 173.0,
+      "p_expensive": 207.6,
+      "p_crazy": 239.1,
+      "margin_of_safety_pct": 3.8,
+      "target_fair_2027": 220.6,
+      "target_fair_2028": 275.8,
+      "sun_status": "⚪ 合理偏低區",
+      "badge_color": "#F8FAFC",
+      "sun_action": "平價穩健區間，耐心抱牢享受成長",
+      "sun_position": "50% (穩健持有)",
+      "rank_tier": 3,
+      "rank": 19,
+      "rs_score": 26.0,
+      "ret_3m": -5.13,
+      "bias_ma20": 0.6,
+      "trend_bullish": true,
+      "action_advice": "📈 均線多頭排列，可逢低分批布局"
+    },
+    {
+      "symbol": "2330.TW",
+      "name": "台積電",
+      "category": "晶圓代工與先進封裝",
+      "sub_industry": "foundry_cowos",
+      "industry_stage": "C 成長",
+      "radar_multiplier": 1.05,
+      "close": 2480.0,
+      "ma60": 2400.1,
+      "current_pe": 44.3,
+      "adjusted_pe": 45.0,
+      "peer_pe": 38.0,
+      "peg": 2.07,
+      "growth_g": 21.4,
+      "eps_ttm": 44.5,
+      "floor_value": 667.5,
+      "eps_2026e": 56.0,
+      "eps_2027e": 68.0,
+      "eps_2028e": 82.0,
+      "p_bargain": 1557.4,
+      "p_cheap": 2016.1,
+      "p_fair": 2520.1,
+      "p_expensive": 3024.1,
+      "p_crazy": 3482.8,
+      "margin_of_safety_pct": 1.6,
+      "target_fair_2027": 3060.0,
+      "target_fair_2028": 3690.0,
+      "sun_status": "⚪ 合理偏低區",
+      "badge_color": "#F8FAFC",
+      "sun_action": "平價穩健區間，耐心抱牢享受成長",
+      "sun_position": "50% (穩健持有)",
+      "rank_tier": 3,
+      "rank": 11,
+      "rs_score": 47.6,
+      "ret_3m": 4.64,
+      "bias_ma20": 2.4,
+      "trend_bullish": true,
+      "action_advice": "🛡️ 權值護城河，穩健長線配置"
+    },
+    {
+      "symbol": "1519.TW",
+      "name": "華城",
+      "category": "重電與電網基礎設施",
+      "sub_industry": "power_grid",
+      "industry_stage": "C 成長",
+      "radar_multiplier": 1.05,
+      "close": 718.0,
+      "ma60": 687.1,
+      "current_pe": 25.2,
+      "adjusted_pe": 25.3,
+      "peer_pe": 35.0,
+      "peg": 0.76,
+      "growth_g": 33.3,
+      "eps_ttm": 18.2,
+      "floor_value": 273.0,
+      "eps_2026e": 28.5,
+      "eps_2027e": 38.0,
+      "eps_2028e": 50.0,
+      "p_bargain": 445.9,
+      "p_cheap": 577.2,
+      "p_fair": 721.5,
+      "p_expensive": 865.8,
+      "p_crazy": 997.1,
+      "margin_of_safety_pct": 0.5,
+      "target_fair_2027": 961.4,
+      "target_fair_2028": 1265.0,
+      "sun_status": "⚪ 合理偏低區",
+      "badge_color": "#F8FAFC",
+      "sun_action": "平價穩健區間，耐心抱牢享受成長",
+      "sun_position": "50% (穩健持有)",
+      "rank_tier": 3,
+      "rank": 15,
+      "rs_score": 35.3,
+      "ret_3m": 0.87,
+      "bias_ma20": -1.2,
+      "trend_bullish": true,
+      "action_advice": "📈 均線多頭排列，可逢低分批布局"
+    },
+    {
+      "symbol": "2324.TW",
+      "name": "仁寶",
+      "category": "AI伺服器代工與機櫃",
+      "sub_industry": "server_odm",
+      "industry_stage": "C 成長",
+      "radar_multiplier": 1.0,
+      "close": 37.599998474121094,
+      "ma60": 37.6,
+      "current_pe": 13.4,
+      "adjusted_pe": 13.4,
+      "peer_pe": 18.0,
+      "peg": 0.54,
+      "growth_g": 25.0,
+      "eps_ttm": 2.1,
+      "floor_value": 31.5,
+      "eps_2026e": 2.8,
+      "eps_2027e": 3.5,
+      "eps_2028e": 4.2,
+      "p_bargain": 23.2,
+      "p_cheap": 30.1,
+      "p_fair": 37.6,
+      "p_expensive": 45.1,
+      "p_crazy": 52.0,
+      "margin_of_safety_pct": 0.0,
+      "target_fair_2027": 46.9,
+      "target_fair_2028": 56.3,
+      "sun_status": "⚪ 合理偏低區",
+      "badge_color": "#F8FAFC",
+      "sun_action": "平價穩健區間，耐心抱牢享受成長",
+      "sun_position": "50% (穩健持有)",
+      "rank_tier": 3,
+      "rank": 14,
+      "rs_score": 35.8,
+      "ret_3m": 9.94,
+      "bias_ma20": -3.7,
+      "trend_bullish": false,
+      "action_advice": "⏸️ 均線整理中，暫先觀望"
+    },
+    {
+      "symbol": "6274.TWO",
+      "name": "台燿",
+      "category": "高頻材料與CCL銅箔基板",
+      "sub_industry": "ccl_materials",
+      "industry_stage": "C 成長",
+      "radar_multiplier": 1.0,
+      "close": 1435.0,
+      "ma60": 1428.6,
+      "current_pe": 99.0,
+      "adjusted_pe": 98.5,
+      "peer_pe": 26.0,
+      "peg": 3.19,
+      "growth_g": 31.0,
+      "eps_ttm": 9.8,
+      "floor_value": 147.0,
+      "eps_2026e": 14.5,
+      "eps_2027e": 19.0,
+      "eps_2028e": 24.5,
+      "p_bargain": 882.9,
+      "p_cheap": 1142.9,
+      "p_fair": 1428.6,
+      "p_expensive": 1714.3,
+      "p_crazy": 1974.3,
+      "margin_of_safety_pct": -0.4,
+      "target_fair_2027": 1871.5,
+      "target_fair_2028": 2413.2,
+      "sun_status": "🟡 合理偏高區",
+      "badge_color": "#FBBF24",
+      "sun_action": "估值稍微偏貴，嚴禁追高，可續抱",
+      "sun_position": "30% (停止追高)",
+      "rank_tier": 4,
+      "rank": 12,
+      "rs_score": 47.1,
+      "ret_3m": -7.72,
+      "bias_ma20": 2.2,
+      "trend_bullish": false,
+      "action_advice": "⏸️ 均線整理中，暫先觀望"
+    },
+    {
+      "symbol": "2317.TW",
+      "name": "鴻海",
+      "category": "AI伺服器代工與機櫃",
+      "sub_industry": "server_odm",
+      "industry_stage": "C 成長",
+      "radar_multiplier": 1.0,
+      "close": 250.0,
+      "ma60": 248.4,
+      "current_pe": 16.4,
+      "adjusted_pe": 16.3,
+      "peer_pe": 18.0,
+      "peg": 0.76,
+      "growth_g": 21.7,
+      "eps_ttm": 11.2,
+      "floor_value": 168.0,
+      "eps_2026e": 15.2,
+      "eps_2027e": 18.5,
+      "eps_2028e": 22.5,
+      "p_bargain": 153.5,
+      "p_cheap": 198.7,
+      "p_fair": 248.4,
+      "p_expensive": 298.1,
+      "p_crazy": 343.3,
+      "margin_of_safety_pct": -0.6,
+      "target_fair_2027": 301.6,
+      "target_fair_2028": 366.8,
+      "sun_status": "🟡 合理偏高區",
+      "badge_color": "#FBBF24",
+      "sun_action": "估值稍微偏貴，嚴禁追高，可續抱",
+      "sun_position": "30% (停止追高)",
+      "rank_tier": 4,
+      "rank": 16,
+      "rs_score": 32.4,
+      "ret_3m": 1.42,
+      "bias_ma20": -0.1,
+      "trend_bullish": true,
+      "action_advice": "📈 均線多頭排列，可逢低分批布局"
+    },
+    {
+      "symbol": "8299.TWO",
+      "name": "群聯",
+      "category": "記憶體控制與晶圓測試",
+      "sub_industry": "memory_testing",
+      "industry_stage": "B 初升",
+      "radar_multiplier": 1.05,
+      "close": 2150.0,
+      "ma60": 2023.2,
+      "current_pe": 34.7,
+      "adjusted_pe": 34.3,
+      "peer_pe": 25.0,
+      "peg": 1.34,
+      "growth_g": 25.8,
+      "eps_ttm": 45.0,
+      "floor_value": 675.0,
+      "eps_2026e": 62.0,
+      "eps_2027e": 78.0,
+      "eps_2028e": 96.0,
+      "p_bargain": 1312.9,
+      "p_cheap": 1699.5,
+      "p_fair": 2124.4,
+      "p_expensive": 2549.3,
+      "p_crazy": 2935.9,
+      "margin_of_safety_pct": -1.2,
+      "target_fair_2027": 2675.4,
+      "target_fair_2028": 3292.8,
+      "sun_status": "🟡 合理偏高區",
+      "badge_color": "#FBBF24",
+      "sun_action": "估值稍微偏貴，嚴禁追高，可續抱",
+      "sun_position": "30% (停止追高)",
+      "rank_tier": 4,
+      "rank": 9,
+      "rs_score": 49.0,
+      "ret_3m": -8.12,
+      "bias_ma20": 4.1,
+      "trend_bullish": true,
+      "action_advice": "📈 均線多頭排列，可逢低分批布局"
+    },
+    {
+      "symbol": "2301.TW",
+      "name": "光寶科",
+      "category": "AI高階電源與BBU備援",
+      "sub_industry": "power_bbu",
+      "industry_stage": "B 初升",
+      "radar_multiplier": 1.1,
+      "close": 288.5,
+      "ma60": 252.2,
+      "current_pe": 37.0,
+      "adjusted_pe": 35.6,
+      "peer_pe": 22.0,
+      "peg": 1.6,
+      "growth_g": 23.1,
+      "eps_ttm": 5.9,
+      "floor_value": 88.5,
+      "eps_2026e": 7.8,
+      "eps_2027e": 9.6,
+      "eps_2028e": 12.0,
+      "p_bargain": 171.5,
+      "p_cheap": 222.0,
+      "p_fair": 277.5,
+      "p_expensive": 333.0,
+      "p_crazy": 383.5,
+      "margin_of_safety_pct": -4.0,
+      "target_fair_2027": 341.8,
+      "target_fair_2028": 427.2,
+      "sun_status": "🟡 合理偏高區",
+      "badge_color": "#FBBF24",
+      "sun_action": "估值稍微偏貴，嚴禁追高，可續抱",
+      "sun_position": "30% (停止追高)",
+      "rank_tier": 4,
+      "rank": 5,
+      "rs_score": 80.4,
+      "ret_3m": 36.41,
+      "bias_ma20": -1.8,
+      "trend_bullish": true,
+      "action_advice": "🎯 均線多頭+乖離適中，最佳進場區間"
+    },
+    {
+      "symbol": "3081.TWO",
+      "name": "聯亞",
+      "category": "矽光子與CPO光通訊",
+      "sub_industry": "silicon_photonics",
+      "industry_stage": "B 初升",
+      "radar_multiplier": 1.15,
+      "close": 2875.0,
+      "ma60": 2370.9,
+      "current_pe": 326.7,
+      "adjusted_pe": 309.8,
+      "peer_pe": 45.0,
+      "peg": 5.04,
+      "growth_g": 64.8,
+      "eps_ttm": 3.2,
+      "floor_value": 48.0,
+      "eps_2026e": 8.8,
+      "eps_2027e": 14.5,
+      "eps_2028e": 22.0,
+      "p_bargain": 1685.0,
+      "p_cheap": 2181.2,
+      "p_fair": 2726.5,
+      "p_expensive": 3271.8,
+      "p_crazy": 3768.0,
+      "margin_of_safety_pct": -5.4,
+      "target_fair_2027": 4492.1,
+      "target_fair_2028": 6815.6,
+      "sun_status": "🟡 合理偏高區",
+      "badge_color": "#FBBF24",
+      "sun_action": "估值稍微偏貴，嚴禁追高，可續抱",
+      "sun_position": "30% (停止追高)",
+      "rank_tier": 4,
+      "rank": 3,
+      "rs_score": 86.3,
+      "ret_3m": 55.41,
+      "bias_ma20": -5.2,
+      "trend_bullish": true,
+      "action_advice": "🎯 均線多頭+乖離適中，最佳進場區間"
+    },
+    {
+      "symbol": "3231.TW",
+      "name": "緯創",
+      "category": "AI伺服器代工與機櫃",
+      "sub_industry": "server_odm",
+      "industry_stage": "C 成長",
+      "radar_multiplier": 1.0,
+      "close": 186.5,
+      "ma60": 174.3,
+      "current_pe": 17.8,
+      "adjusted_pe": 16.6,
+      "peer_pe": 20.0,
+      "peg": 0.62,
+      "growth_g": 28.6,
+      "eps_ttm": 7.2,
+      "floor_value": 108.0,
+      "eps_2026e": 10.5,
+      "eps_2027e": 13.5,
+      "eps_2028e": 16.8,
+      "p_bargain": 107.7,
+      "p_cheap": 139.4,
+      "p_fair": 174.3,
+      "p_expensive": 209.2,
+      "p_crazy": 240.9,
+      "margin_of_safety_pct": -7.0,
+      "target_fair_2027": 224.1,
+      "target_fair_2028": 278.9,
+      "sun_status": "🟡 合理偏高區",
+      "badge_color": "#FBBF24",
+      "sun_action": "估值稍微偏貴，嚴禁追高，可續抱",
+      "sun_position": "30% (停止追高)",
+      "rank_tier": 4,
+      "rank": 7,
+      "rs_score": 59.8,
+      "ret_3m": 20.71,
+      "bias_ma20": 0.8,
+      "trend_bullish": true,
+      "action_advice": "📈 均線多頭排列，可逢低分批布局"
+    },
+    {
+      "symbol": "2059.TW",
+      "name": "川湖",
+      "category": "高速傳輸與滑軌機構件",
+      "sub_industry": "rail_mechanical",
+      "industry_stage": "C 成長",
+      "radar_multiplier": 1.0,
+      "close": 12800.0,
+      "ma60": 10797.2,
+      "current_pe": 134.7,
+      "adjusted_pe": 113.7,
+      "peer_pe": 35.0,
+      "peg": 4.26,
+      "growth_g": 31.6,
+      "eps_ttm": 68.0,
+      "floor_value": 1020.0,
+      "eps_2026e": 95.0,
+      "eps_2027e": 125.0,
+      "eps_2028e": 155.0,
+      "p_bargain": 6672.7,
+      "p_cheap": 8637.8,
+      "p_fair": 10797.2,
+      "p_expensive": 12956.6,
+      "p_crazy": 14921.7,
+      "margin_of_safety_pct": -18.5,
+      "target_fair_2027": 14212.5,
+      "target_fair_2028": 17623.5,
+      "sun_status": "🟡 合理偏高區",
+      "badge_color": "#FBBF24",
+      "sun_action": "估值稍微偏貴，嚴禁追高，可續抱",
+      "sun_position": "30% (停止追高)",
+      "rank_tier": 4,
+      "rank": 2,
+      "rs_score": 93.1,
+      "ret_3m": 80.03,
+      "bias_ma20": -3.0,
+      "trend_bullish": true,
+      "action_advice": "🎯 均線多頭+乖離適中，最佳進場區間"
+    },
+    {
+      "symbol": "1303.TW",
+      "name": "南亞",
+      "category": "高頻材料與CCL銅箔基板",
+      "sub_industry": "ccl_materials",
+      "industry_stage": "C 成長",
+      "radar_multiplier": 1.0,
+      "close": 239.5,
+      "ma60": 200.0,
+      "current_pe": 108.9,
+      "adjusted_pe": 90.9,
+      "peer_pe": 22.0,
+      "peg": 2.39,
+      "growth_g": 45.5,
+      "eps_ttm": 1.1,
+      "floor_value": 16.5,
+      "eps_2026e": 2.2,
+      "eps_2027e": 3.2,
+      "eps_2028e": 4.5,
+      "p_bargain": 123.6,
+      "p_cheap": 160.0,
+      "p_fair": 200.0,
+      "p_expensive": 240.0,
+      "p_crazy": 276.4,
+      "margin_of_safety_pct": -19.8,
+      "target_fair_2027": 290.9,
+      "target_fair_2028": 409.1,
+      "sun_status": "🟡 合理偏高區",
+      "badge_color": "#FBBF24",
+      "sun_action": "估值稍微偏貴，嚴禁追高，可續抱",
+      "sun_position": "30% (停止追高)",
+      "rank_tier": 4,
+      "rank": 1,
+      "rs_score": 94.1,
+      "ret_3m": 58.09,
+      "bias_ma20": 4.6,
+      "trend_bullish": true,
+      "action_advice": "🎯 均線多頭+乖離適中，最佳進場區間"
+    },
+    {
+      "symbol": "3264.TWO",
+      "name": "欣銓",
+      "category": "記憶體控制與晶圓測試",
+      "sub_industry": "memory_testing",
+      "industry_stage": "B 初升",
+      "radar_multiplier": 1.05,
+      "close": 284.0,
+      "ma60": 220.6,
+      "current_pe": 41.8,
+      "adjusted_pe": 34.1,
+      "peer_pe": 18.0,
+      "peg": 2.03,
+      "growth_g": 20.6,
+      "eps_ttm": 5.2,
+      "floor_value": 78.0,
+      "eps_2026e": 6.8,
+      "eps_2027e": 8.2,
+      "eps_2028e": 9.8,
+      "p_bargain": 143.2,
+      "p_cheap": 185.4,
+      "p_fair": 231.7,
+      "p_expensive": 278.0,
+      "p_crazy": 320.2,
+      "margin_of_safety_pct": -22.6,
+      "target_fair_2027": 279.6,
+      "target_fair_2028": 334.2,
+      "sun_status": "🟠 昂貴高檔區",
+      "badge_color": "#FB923C",
+      "sun_action": "市場給予高溢價，逢高分批減碼",
+      "sun_position": "15% (逢高調節)",
+      "rank_tier": 5,
+      "rank": 4,
+      "rs_score": 85.8,
+      "ret_3m": 31.79,
+      "bias_ma20": 21.9,
+      "trend_bullish": true,
+      "action_advice": "⏳ 短線過熱 (乖離>15%)，等拉回月線再接"
+    },
+    {
+      "symbol": "2421.TW",
+      "name": "建準",
+      "category": "散熱與水冷液冷",
+      "sub_industry": "liquid_cooling",
+      "industry_stage": "D 高峰",
+      "radar_multiplier": 0.85,
+      "close": 166.5,
+      "ma60": 148.2,
+      "current_pe": 20.3,
+      "adjusted_pe": 15.4,
+      "peer_pe": 28.0,
+      "peg": 0.64,
+      "growth_g": 31.7,
+      "eps_ttm": 5.8,
+      "floor_value": 87.0,
+      "eps_2026e": 8.2,
+      "eps_2027e": 10.8,
+      "eps_2028e": 13.8,
+      "p_bargain": 77.9,
+      "p_cheap": 100.8,
+      "p_fair": 126.0,
+      "p_expensive": 151.2,
+      "p_crazy": 174.1,
+      "margin_of_safety_pct": -32.1,
+      "target_fair_2027": 166.3,
+      "target_fair_2028": 212.5,
+      "sun_status": "🟠 昂貴高檔區",
+      "badge_color": "#FB923C",
+      "sun_action": "市場給予高溢價，逢高分批減碼",
+      "sun_position": "15% (逢高調節)",
+      "rank_tier": 5,
+      "rank": 6,
+      "rs_score": 63.2,
+      "ret_3m": 20.65,
+      "bias_ma20": 0.9,
+      "trend_bullish": true,
+      "action_advice": "📈 均線多頭排列，可逢低分批布局"
+    }
+  ],
+  "rs_rankings": [
+    {
+      "symbol": "6451.TW",
+      "name": "訊芯-KY",
+      "category": "矽光子與CPO光通訊",
+      "sub_industry": "silicon_photonics",
+      "industry_stage": "B 初升",
+      "radar_multiplier": 1.15,
+      "close": 434.0,
+      "ma60": 443.7,
+      "current_pe": 37.7,
+      "adjusted_pe": 44.4,
+      "peer_pe": 42.0,
+      "peg": 0.79,
+      "growth_g": 47.8,
+      "eps_ttm": 5.5,
+      "floor_value": 82.5,
+      "eps_2026e": 11.5,
+      "eps_2027e": 17.0,
+      "eps_2028e": 24.0,
+      "p_bargain": 315.3,
+      "p_cheap": 408.2,
+      "p_fair": 510.2,
+      "p_expensive": 612.2,
+      "p_crazy": 705.1,
+      "margin_of_safety_pct": 14.9,
+      "target_fair_2027": 754.8,
+      "target_fair_2028": 1065.6,
+      "sun_status": "⚪ 合理偏低區",
+      "badge_color": "#F8FAFC",
+      "sun_action": "平價穩健區間，耐心抱牢享受成長",
+      "sun_position": "50% (穩健持有)",
+      "rank_tier": 3,
+      "rank": 18,
+      "rs_score": 29.9,
+      "ret_3m": -22.91,
+      "bias_ma20": -1.0,
+      "trend_bullish": false,
+      "action_advice": "⏸️ 均線整理中，暫先觀望"
+    },
+    {
+      "symbol": "1503.TW",
+      "name": "士電",
+      "category": "重電與電網基礎設施",
+      "sub_industry": "power_grid",
+      "industry_stage": "C 成長",
+      "radar_multiplier": 1.05,
+      "close": 198.5,
+      "ma60": 205.7,
+      "current_pe": 20.9,
+      "adjusted_pe": 22.7,
+      "peer_pe": 32.0,
+      "peg": 0.66,
+      "growth_g": 31.6,
+      "eps_ttm": 6.8,
+      "floor_value": 102.0,
+      "eps_2026e": 9.5,
+      "eps_2027e": 12.5,
+      "eps_2028e": 16.0,
+      "p_bargain": 133.5,
+      "p_cheap": 172.8,
+      "p_fair": 216.0,
+      "p_expensive": 259.2,
+      "p_crazy": 298.5,
+      "margin_of_safety_pct": 8.1,
+      "target_fair_2027": 283.8,
+      "target_fair_2028": 363.2,
+      "sun_status": "⚪ 合理偏低區",
+      "badge_color": "#F8FAFC",
+      "sun_action": "平價穩健區間，耐心抱牢享受成長",
+      "sun_position": "50% (穩健持有)",
+      "rank_tier": 3,
+      "rank": 20,
+      "rs_score": 12.8,
+      "ret_3m": -16.42,
+      "bias_ma20": -2.0,
+      "trend_bullish": false,
+      "action_advice": "⏸️ 均線整理中，暫先觀望"
+    },
+    {
+      "symbol": "3211.TWO",
+      "name": "順達",
+      "category": "AI高階電源與BBU備援",
+      "sub_industry": "power_bbu",
+      "industry_stage": "B 初升",
+      "radar_multiplier": 1.1,
+      "close": 387.5,
+      "ma60": 378.8,
+      "current_pe": 42.1,
+      "adjusted_pe": 45.3,
+      "peer_pe": 25.0,
+      "peg": 1.08,
+      "growth_g": 39.1,
+      "eps_ttm": 6.1,
+      "floor_value": 91.5,
+      "eps_2026e": 9.2,
+      "eps_2027e": 12.8,
+      "eps_2028e": 17.5,
+      "p_bargain": 257.5,
+      "p_cheap": 333.4,
+      "p_fair": 416.7,
+      "p_expensive": 500.0,
+      "p_crazy": 575.9,
+      "margin_of_safety_pct": 7.0,
+      "target_fair_2027": 579.8,
+      "target_fair_2028": 792.8,
+      "sun_status": "⚪ 合理偏低區",
+      "badge_color": "#F8FAFC",
+      "sun_action": "平價穩健區間，耐心抱牢享受成長",
+      "sun_position": "50% (穩健持有)",
+      "rank_tier": 3,
+      "rank": 13,
+      "rs_score": 38.7,
+      "ret_3m": -1.27,
+      "bias_ma20": 3.2,
+      "trend_bullish": false,
+      "action_advice": "⏸️ 均線整理中，暫先觀望"
+    },
+    {
+      "symbol": "3363.TWO",
+      "name": "上詮",
+      "category": "矽光子與CPO光通訊",
+      "sub_industry": "silicon_photonics",
+      "industry_stage": "B 初升",
+      "radar_multiplier": 1.15,
+      "close": 661.0,
+      "ma60": 615.5,
+      "current_pe": 132.2,
+      "adjusted_pe": 141.6,
+      "peer_pe": 45.0,
+      "peg": 1.47,
+      "growth_g": 90.0,
+      "eps_ttm": 1.8,
+      "floor_value": 27.0,
+      "eps_2026e": 5.0,
+      "eps_2027e": 9.5,
+      "eps_2028e": 15.0,
+      "p_bargain": 437.4,
+      "p_cheap": 566.2,
+      "p_fair": 707.8,
+      "p_expensive": 849.4,
+      "p_crazy": 978.2,
+      "margin_of_safety_pct": 6.6,
+      "target_fair_2027": 1345.2,
+      "target_fair_2028": 2124.0,
+      "sun_status": "⚪ 合理偏低區",
+      "badge_color": "#F8FAFC",
+      "sun_action": "平價穩健區間，耐心抱牢享受成長",
+      "sun_position": "50% (穩健持有)",
+      "rank_tier": 3,
+      "rank": 8,
+      "rs_score": 51.0,
+      "ret_3m": 16.58,
+      "bias_ma20": -5.9,
+      "trend_bullish": true,
+      "action_advice": "📈 均線多頭排列，可逢低分批布局"
+    },
+    {
+      "symbol": "2308.TW",
+      "name": "台達電",
+      "category": "AI高階電源與BBU備援",
+      "sub_industry": "power_bbu",
+      "industry_stage": "B 初升",
+      "radar_multiplier": 1.1,
+      "close": 1875.0,
+      "ma60": 1784.3,
+      "current_pe": 94.7,
+      "adjusted_pe": 99.1,
+      "peer_pe": 32.0,
+      "peg": 4.0,
+      "growth_g": 23.7,
+      "eps_ttm": 14.8,
+      "floor_value": 222.0,
+      "eps_2026e": 19.8,
+      "eps_2027e": 24.5,
+      "eps_2028e": 30.0,
+      "p_bargain": 1213.0,
+      "p_cheap": 1570.2,
+      "p_fair": 1962.8,
+      "p_expensive": 2355.4,
+      "p_crazy": 2712.6,
+      "margin_of_safety_pct": 4.5,
+      "target_fair_2027": 2427.9,
+      "target_fair_2028": 2973.0,
+      "sun_status": "⚪ 合理偏低區",
+      "badge_color": "#F8FAFC",
+      "sun_action": "平價穩健區間，耐心抱牢享受成長",
+      "sun_position": "50% (穩健持有)",
+      "rank_tier": 3,
+      "rank": 10,
+      "rs_score": 48.5,
+      "ret_3m": -1.57,
+      "bias_ma20": 6.8,
+      "trend_bullish": false,
+      "action_advice": "⏸️ 均線整理中，暫先觀望"
+    },
+    {
+      "symbol": "2356.TW",
+      "name": "英業達",
+      "category": "AI伺服器代工與機櫃",
+      "sub_industry": "server_odm",
+      "industry_stage": "C 成長",
+      "radar_multiplier": 1.0,
+      "close": 61.79999923706055,
+      "ma60": 64.4,
+      "current_pe": 19.3,
+      "adjusted_pe": 20.1,
+      "peer_pe": 20.0,
+      "peg": 0.77,
+      "growth_g": 25.0,
+      "eps_ttm": 2.3,
+      "floor_value": 34.5,
+      "eps_2026e": 3.2,
+      "eps_2027e": 4.0,
+      "eps_2028e": 5.0,
+      "p_bargain": 39.8,
+      "p_cheap": 51.5,
+      "p_fair": 64.4,
+      "p_expensive": 77.3,
+      "p_crazy": 89.0,
+      "margin_of_safety_pct": 4.0,
+      "target_fair_2027": 80.4,
+      "target_fair_2028": 100.5,
+      "sun_status": "⚪ 合理偏低區",
+      "badge_color": "#F8FAFC",
+      "sun_action": "平價穩健區間，耐心抱牢享受成長",
+      "sun_position": "50% (穩健持有)",
+      "rank_tier": 3,
+      "rank": 17,
+      "rs_score": 32.4,
+      "ret_3m": -3.89,
+      "bias_ma20": -3.7,
+      "trend_bullish": false,
+      "action_advice": "⏸️ 均線整理中，暫先觀望"
+    },
+    {
+      "symbol": "1513.TW",
+      "name": "中興電",
+      "category": "重電與電網基礎設施",
+      "sub_industry": "power_grid",
+      "industry_stage": "C 成長",
+      "radar_multiplier": 1.05,
+      "close": 166.5,
+      "ma60": 164.8,
+      "current_pe": 18.9,
+      "adjusted_pe": 19.7,
+      "peer_pe": 28.0,
+      "peg": 0.69,
+      "growth_g": 27.3,
+      "eps_ttm": 6.2,
+      "floor_value": 93.0,
+      "eps_2026e": 8.8,
+      "eps_2027e": 11.2,
+      "eps_2028e": 14.0,
+      "p_bargain": 106.9,
+      "p_cheap": 138.4,
+      "p_fair": 173.0,
+      "p_expensive": 207.6,
+      "p_crazy": 239.1,
+      "margin_of_safety_pct": 3.8,
+      "target_fair_2027": 220.6,
+      "target_fair_2028": 275.8,
+      "sun_status": "⚪ 合理偏低區",
+      "badge_color": "#F8FAFC",
+      "sun_action": "平價穩健區間，耐心抱牢享受成長",
+      "sun_position": "50% (穩健持有)",
+      "rank_tier": 3,
+      "rank": 19,
+      "rs_score": 26.0,
+      "ret_3m": -5.13,
+      "bias_ma20": 0.6,
+      "trend_bullish": true,
+      "action_advice": "📈 均線多頭排列，可逢低分批布局"
+    },
+    {
+      "symbol": "2330.TW",
+      "name": "台積電",
+      "category": "晶圓代工與先進封裝",
+      "sub_industry": "foundry_cowos",
+      "industry_stage": "C 成長",
+      "radar_multiplier": 1.05,
+      "close": 2480.0,
+      "ma60": 2400.1,
+      "current_pe": 44.3,
+      "adjusted_pe": 45.0,
+      "peer_pe": 38.0,
+      "peg": 2.07,
+      "growth_g": 21.4,
+      "eps_ttm": 44.5,
+      "floor_value": 667.5,
+      "eps_2026e": 56.0,
+      "eps_2027e": 68.0,
+      "eps_2028e": 82.0,
+      "p_bargain": 1557.4,
+      "p_cheap": 2016.1,
+      "p_fair": 2520.1,
+      "p_expensive": 3024.1,
+      "p_crazy": 3482.8,
+      "margin_of_safety_pct": 1.6,
+      "target_fair_2027": 3060.0,
+      "target_fair_2028": 3690.0,
+      "sun_status": "⚪ 合理偏低區",
+      "badge_color": "#F8FAFC",
+      "sun_action": "平價穩健區間，耐心抱牢享受成長",
+      "sun_position": "50% (穩健持有)",
+      "rank_tier": 3,
+      "rank": 11,
+      "rs_score": 47.6,
+      "ret_3m": 4.64,
+      "bias_ma20": 2.4,
+      "trend_bullish": true,
+      "action_advice": "🛡️ 權值護城河，穩健長線配置"
+    },
+    {
+      "symbol": "1519.TW",
+      "name": "華城",
+      "category": "重電與電網基礎設施",
+      "sub_industry": "power_grid",
+      "industry_stage": "C 成長",
+      "radar_multiplier": 1.05,
+      "close": 718.0,
+      "ma60": 687.1,
+      "current_pe": 25.2,
+      "adjusted_pe": 25.3,
+      "peer_pe": 35.0,
+      "peg": 0.76,
+      "growth_g": 33.3,
+      "eps_ttm": 18.2,
+      "floor_value": 273.0,
+      "eps_2026e": 28.5,
+      "eps_2027e": 38.0,
+      "eps_2028e": 50.0,
+      "p_bargain": 445.9,
+      "p_cheap": 577.2,
+      "p_fair": 721.5,
+      "p_expensive": 865.8,
+      "p_crazy": 997.1,
+      "margin_of_safety_pct": 0.5,
+      "target_fair_2027": 961.4,
+      "target_fair_2028": 1265.0,
+      "sun_status": "⚪ 合理偏低區",
+      "badge_color": "#F8FAFC",
+      "sun_action": "平價穩健區間，耐心抱牢享受成長",
+      "sun_position": "50% (穩健持有)",
+      "rank_tier": 3,
+      "rank": 15,
+      "rs_score": 35.3,
+      "ret_3m": 0.87,
+      "bias_ma20": -1.2,
+      "trend_bullish": true,
+      "action_advice": "📈 均線多頭排列，可逢低分批布局"
+    },
+    {
+      "symbol": "2324.TW",
+      "name": "仁寶",
+      "category": "AI伺服器代工與機櫃",
+      "sub_industry": "server_odm",
+      "industry_stage": "C 成長",
+      "radar_multiplier": 1.0,
+      "close": 37.599998474121094,
+      "ma60": 37.6,
+      "current_pe": 13.4,
+      "adjusted_pe": 13.4,
+      "peer_pe": 18.0,
+      "peg": 0.54,
+      "growth_g": 25.0,
+      "eps_ttm": 2.1,
+      "floor_value": 31.5,
+      "eps_2026e": 2.8,
+      "eps_2027e": 3.5,
+      "eps_2028e": 4.2,
+      "p_bargain": 23.2,
+      "p_cheap": 30.1,
+      "p_fair": 37.6,
+      "p_expensive": 45.1,
+      "p_crazy": 52.0,
+      "margin_of_safety_pct": 0.0,
+      "target_fair_2027": 46.9,
+      "target_fair_2028": 56.3,
+      "sun_status": "⚪ 合理偏低區",
+      "badge_color": "#F8FAFC",
+      "sun_action": "平價穩健區間，耐心抱牢享受成長",
+      "sun_position": "50% (穩健持有)",
+      "rank_tier": 3,
+      "rank": 14,
+      "rs_score": 35.8,
+      "ret_3m": 9.94,
+      "bias_ma20": -3.7,
+      "trend_bullish": false,
+      "action_advice": "⏸️ 均線整理中，暫先觀望"
+    },
+    {
+      "symbol": "6274.TWO",
+      "name": "台燿",
+      "category": "高頻材料與CCL銅箔基板",
+      "sub_industry": "ccl_materials",
+      "industry_stage": "C 成長",
+      "radar_multiplier": 1.0,
+      "close": 1435.0,
+      "ma60": 1428.6,
+      "current_pe": 99.0,
+      "adjusted_pe": 98.5,
+      "peer_pe": 26.0,
+      "peg": 3.19,
+      "growth_g": 31.0,
+      "eps_ttm": 9.8,
+      "floor_value": 147.0,
+      "eps_2026e": 14.5,
+      "eps_2027e": 19.0,
+      "eps_2028e": 24.5,
+      "p_bargain": 882.9,
+      "p_cheap": 1142.9,
+      "p_fair": 1428.6,
+      "p_expensive": 1714.3,
+      "p_crazy": 1974.3,
+      "margin_of_safety_pct": -0.4,
+      "target_fair_2027": 1871.5,
+      "target_fair_2028": 2413.2,
+      "sun_status": "🟡 合理偏高區",
+      "badge_color": "#FBBF24",
+      "sun_action": "估值稍微偏貴，嚴禁追高，可續抱",
+      "sun_position": "30% (停止追高)",
+      "rank_tier": 4,
+      "rank": 12,
+      "rs_score": 47.1,
+      "ret_3m": -7.72,
+      "bias_ma20": 2.2,
+      "trend_bullish": false,
+      "action_advice": "⏸️ 均線整理中，暫先觀望"
+    },
+    {
+      "symbol": "2317.TW",
+      "name": "鴻海",
+      "category": "AI伺服器代工與機櫃",
+      "sub_industry": "server_odm",
+      "industry_stage": "C 成長",
+      "radar_multiplier": 1.0,
+      "close": 250.0,
+      "ma60": 248.4,
+      "current_pe": 16.4,
+      "adjusted_pe": 16.3,
+      "peer_pe": 18.0,
+      "peg": 0.76,
+      "growth_g": 21.7,
+      "eps_ttm": 11.2,
+      "floor_value": 168.0,
+      "eps_2026e": 15.2,
+      "eps_2027e": 18.5,
+      "eps_2028e": 22.5,
+      "p_bargain": 153.5,
+      "p_cheap": 198.7,
+      "p_fair": 248.4,
+      "p_expensive": 298.1,
+      "p_crazy": 343.3,
+      "margin_of_safety_pct": -0.6,
+      "target_fair_2027": 301.6,
+      "target_fair_2028": 366.8,
+      "sun_status": "🟡 合理偏高區",
+      "badge_color": "#FBBF24",
+      "sun_action": "估值稍微偏貴，嚴禁追高，可續抱",
+      "sun_position": "30% (停止追高)",
+      "rank_tier": 4,
+      "rank": 16,
+      "rs_score": 32.4,
+      "ret_3m": 1.42,
+      "bias_ma20": -0.1,
+      "trend_bullish": true,
+      "action_advice": "📈 均線多頭排列，可逢低分批布局"
+    },
+    {
+      "symbol": "8299.TWO",
+      "name": "群聯",
+      "category": "記憶體控制與晶圓測試",
+      "sub_industry": "memory_testing",
+      "industry_stage": "B 初升",
+      "radar_multiplier": 1.05,
+      "close": 2150.0,
+      "ma60": 2023.2,
+      "current_pe": 34.7,
+      "adjusted_pe": 34.3,
+      "peer_pe": 25.0,
+      "peg": 1.34,
+      "growth_g": 25.8,
+      "eps_ttm": 45.0,
+      "floor_value": 675.0,
+      "eps_2026e": 62.0,
+      "eps_2027e": 78.0,
+      "eps_2028e": 96.0,
+      "p_bargain": 1312.9,
+      "p_cheap": 1699.5,
+      "p_fair": 2124.4,
+      "p_expensive": 2549.3,
+      "p_crazy": 2935.9,
+      "margin_of_safety_pct": -1.2,
+      "target_fair_2027": 2675.4,
+      "target_fair_2028": 3292.8,
+      "sun_status": "🟡 合理偏高區",
+      "badge_color": "#FBBF24",
+      "sun_action": "估值稍微偏貴，嚴禁追高，可續抱",
+      "sun_position": "30% (停止追高)",
+      "rank_tier": 4,
+      "rank": 9,
+      "rs_score": 49.0,
+      "ret_3m": -8.12,
+      "bias_ma20": 4.1,
+      "trend_bullish": true,
+      "action_advice": "📈 均線多頭排列，可逢低分批布局"
+    },
+    {
+      "symbol": "2301.TW",
+      "name": "光寶科",
+      "category": "AI高階電源與BBU備援",
+      "sub_industry": "power_bbu",
+      "industry_stage": "B 初升",
+      "radar_multiplier": 1.1,
+      "close": 288.5,
+      "ma60": 252.2,
+      "current_pe": 37.0,
+      "adjusted_pe": 35.6,
+      "peer_pe": 22.0,
+      "peg": 1.6,
+      "growth_g": 23.1,
+      "eps_ttm": 5.9,
+      "floor_value": 88.5,
+      "eps_2026e": 7.8,
+      "eps_2027e": 9.6,
+      "eps_2028e": 12.0,
+      "p_bargain": 171.5,
+      "p_cheap": 222.0,
+      "p_fair": 277.5,
+      "p_expensive": 333.0,
+      "p_crazy": 383.5,
+      "margin_of_safety_pct": -4.0,
+      "target_fair_2027": 341.8,
+      "target_fair_2028": 427.2,
+      "sun_status": "🟡 合理偏高區",
+      "badge_color": "#FBBF24",
+      "sun_action": "估值稍微偏貴，嚴禁追高，可續抱",
+      "sun_position": "30% (停止追高)",
+      "rank_tier": 4,
+      "rank": 5,
+      "rs_score": 80.4,
+      "ret_3m": 36.41,
+      "bias_ma20": -1.8,
+      "trend_bullish": true,
+      "action_advice": "🎯 均線多頭+乖離適中，最佳進場區間"
+    },
+    {
+      "symbol": "3081.TWO",
+      "name": "聯亞",
+      "category": "矽光子與CPO光通訊",
+      "sub_industry": "silicon_photonics",
+      "industry_stage": "B 初升",
+      "radar_multiplier": 1.15,
+      "close": 2875.0,
+      "ma60": 2370.9,
+      "current_pe": 326.7,
+      "adjusted_pe": 309.8,
+      "peer_pe": 45.0,
+      "peg": 5.04,
+      "growth_g": 64.8,
+      "eps_ttm": 3.2,
+      "floor_value": 48.0,
+      "eps_2026e": 8.8,
+      "eps_2027e": 14.5,
+      "eps_2028e": 22.0,
+      "p_bargain": 1685.0,
+      "p_cheap": 2181.2,
+      "p_fair": 2726.5,
+      "p_expensive": 3271.8,
+      "p_crazy": 3768.0,
+      "margin_of_safety_pct": -5.4,
+      "target_fair_2027": 4492.1,
+      "target_fair_2028": 6815.6,
+      "sun_status": "🟡 合理偏高區",
+      "badge_color": "#FBBF24",
+      "sun_action": "估值稍微偏貴，嚴禁追高，可續抱",
+      "sun_position": "30% (停止追高)",
+      "rank_tier": 4,
+      "rank": 3,
+      "rs_score": 86.3,
+      "ret_3m": 55.41,
+      "bias_ma20": -5.2,
+      "trend_bullish": true,
+      "action_advice": "🎯 均線多頭+乖離適中，最佳進場區間"
+    },
+    {
+      "symbol": "3231.TW",
+      "name": "緯創",
+      "category": "AI伺服器代工與機櫃",
+      "sub_industry": "server_odm",
+      "industry_stage": "C 成長",
+      "radar_multiplier": 1.0,
+      "close": 186.5,
+      "ma60": 174.3,
+      "current_pe": 17.8,
+      "adjusted_pe": 16.6,
+      "peer_pe": 20.0,
+      "peg": 0.62,
+      "growth_g": 28.6,
+      "eps_ttm": 7.2,
+      "floor_value": 108.0,
+      "eps_2026e": 10.5,
+      "eps_2027e": 13.5,
+      "eps_2028e": 16.8,
+      "p_bargain": 107.7,
+      "p_cheap": 139.4,
+      "p_fair": 174.3,
+      "p_expensive": 209.2,
+      "p_crazy": 240.9,
+      "margin_of_safety_pct": -7.0,
+      "target_fair_2027": 224.1,
+      "target_fair_2028": 278.9,
+      "sun_status": "🟡 合理偏高區",
+      "badge_color": "#FBBF24",
+      "sun_action": "估值稍微偏貴，嚴禁追高，可續抱",
+      "sun_position": "30% (停止追高)",
+      "rank_tier": 4,
+      "rank": 7,
+      "rs_score": 59.8,
+      "ret_3m": 20.71,
+      "bias_ma20": 0.8,
+      "trend_bullish": true,
+      "action_advice": "📈 均線多頭排列，可逢低分批布局"
+    },
+    {
+      "symbol": "2059.TW",
+      "name": "川湖",
+      "category": "高速傳輸與滑軌機構件",
+      "sub_industry": "rail_mechanical",
+      "industry_stage": "C 成長",
+      "radar_multiplier": 1.0,
+      "close": 12800.0,
+      "ma60": 10797.2,
+      "current_pe": 134.7,
+      "adjusted_pe": 113.7,
+      "peer_pe": 35.0,
+      "peg": 4.26,
+      "growth_g": 31.6,
+      "eps_ttm": 68.0,
+      "floor_value": 1020.0,
+      "eps_2026e": 95.0,
+      "eps_2027e": 125.0,
+      "eps_2028e": 155.0,
+      "p_bargain": 6672.7,
+      "p_cheap": 8637.8,
+      "p_fair": 10797.2,
+      "p_expensive": 12956.6,
+      "p_crazy": 14921.7,
+      "margin_of_safety_pct": -18.5,
+      "target_fair_2027": 14212.5,
+      "target_fair_2028": 17623.5,
+      "sun_status": "🟡 合理偏高區",
+      "badge_color": "#FBBF24",
+      "sun_action": "估值稍微偏貴，嚴禁追高，可續抱",
+      "sun_position": "30% (停止追高)",
+      "rank_tier": 4,
+      "rank": 2,
+      "rs_score": 93.1,
+      "ret_3m": 80.03,
+      "bias_ma20": -3.0,
+      "trend_bullish": true,
+      "action_advice": "🎯 均線多頭+乖離適中，最佳進場區間"
+    },
+    {
+      "symbol": "1303.TW",
+      "name": "南亞",
+      "category": "高頻材料與CCL銅箔基板",
+      "sub_industry": "ccl_materials",
+      "industry_stage": "C 成長",
+      "radar_multiplier": 1.0,
+      "close": 239.5,
+      "ma60": 200.0,
+      "current_pe": 108.9,
+      "adjusted_pe": 90.9,
+      "peer_pe": 22.0,
+      "peg": 2.39,
+      "growth_g": 45.5,
+      "eps_ttm": 1.1,
+      "floor_value": 16.5,
+      "eps_2026e": 2.2,
+      "eps_2027e": 3.2,
+      "eps_2028e": 4.5,
+      "p_bargain": 123.6,
+      "p_cheap": 160.0,
+      "p_fair": 200.0,
+      "p_expensive": 240.0,
+      "p_crazy": 276.4,
+      "margin_of_safety_pct": -19.8,
+      "target_fair_2027": 290.9,
+      "target_fair_2028": 409.1,
+      "sun_status": "🟡 合理偏高區",
+      "badge_color": "#FBBF24",
+      "sun_action": "估值稍微偏貴，嚴禁追高，可續抱",
+      "sun_position": "30% (停止追高)",
+      "rank_tier": 4,
+      "rank": 1,
+      "rs_score": 94.1,
+      "ret_3m": 58.09,
+      "bias_ma20": 4.6,
+      "trend_bullish": true,
+      "action_advice": "🎯 均線多頭+乖離適中，最佳進場區間"
+    },
+    {
+      "symbol": "3264.TWO",
+      "name": "欣銓",
+      "category": "記憶體控制與晶圓測試",
+      "sub_industry": "memory_testing",
+      "industry_stage": "B 初升",
+      "radar_multiplier": 1.05,
+      "close": 284.0,
+      "ma60": 220.6,
+      "current_pe": 41.8,
+      "adjusted_pe": 34.1,
+      "peer_pe": 18.0,
+      "peg": 2.03,
+      "growth_g": 20.6,
+      "eps_ttm": 5.2,
+      "floor_value": 78.0,
+      "eps_2026e": 6.8,
+      "eps_2027e": 8.2,
+      "eps_2028e": 9.8,
+      "p_bargain": 143.2,
+      "p_cheap": 185.4,
+      "p_fair": 231.7,
+      "p_expensive": 278.0,
+      "p_crazy": 320.2,
+      "margin_of_safety_pct": -22.6,
+      "target_fair_2027": 279.6,
+      "target_fair_2028": 334.2,
+      "sun_status": "🟠 昂貴高檔區",
+      "badge_color": "#FB923C",
+      "sun_action": "市場給予高溢價，逢高分批減碼",
+      "sun_position": "15% (逢高調節)",
+      "rank_tier": 5,
+      "rank": 4,
+      "rs_score": 85.8,
+      "ret_3m": 31.79,
+      "bias_ma20": 21.9,
+      "trend_bullish": true,
+      "action_advice": "⏳ 短線過熱 (乖離>15%)，等拉回月線再接"
+    },
+    {
+      "symbol": "2421.TW",
+      "name": "建準",
+      "category": "散熱與水冷液冷",
+      "sub_industry": "liquid_cooling",
+      "industry_stage": "D 高峰",
+      "radar_multiplier": 0.85,
+      "close": 166.5,
+      "ma60": 148.2,
+      "current_pe": 20.3,
+      "adjusted_pe": 15.4,
+      "peer_pe": 28.0,
+      "peg": 0.64,
+      "growth_g": 31.7,
+      "eps_ttm": 5.8,
+      "floor_value": 87.0,
+      "eps_2026e": 8.2,
+      "eps_2027e": 10.8,
+      "eps_2028e": 13.8,
+      "p_bargain": 77.9,
+      "p_cheap": 100.8,
+      "p_fair": 126.0,
+      "p_expensive": 151.2,
+      "p_crazy": 174.1,
+      "margin_of_safety_pct": -32.1,
+      "target_fair_2027": 166.3,
+      "target_fair_2028": 212.5,
+      "sun_status": "🟠 昂貴高檔區",
+      "badge_color": "#FB923C",
+      "sun_action": "市場給予高溢價，逢高分批減碼",
+      "sun_position": "15% (逢高調節)",
+      "rank_tier": 5,
+      "rank": 6,
+      "rs_score": 63.2,
+      "ret_3m": 20.65,
+      "bias_ma20": 0.9,
+      "trend_bullish": true,
+      "action_advice": "📈 均線多頭排列，可逢低分批布局"
+    }
+  ]
+};
+  </script>
+
+  <!-- 互動圖表與數據渲染腳本 -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const data = DASHBOARD_DATA;
+
+      // 1. 頂部狀態渲染
+      document.getElementById("genTime").textContent = data.generated_at || "2026-09-22 11:00";
+      const sig = data.latest_signal || {};
+
+      const latestHist = (data.scorecard_history && data.scorecard_history.length > 0)
+        ? data.scorecard_history[data.scorecard_history.length - 1]
+        : {};
+
+      const totalScore = latestHist.adaptive_score || latestHist.total_score || sig.composite_score || 77.0;
+      const baseScore = latestHist.base_score || sig.base_score || 62.0;
+      const aiBoost = latestHist.ai_boost !== undefined ? latestHist.ai_boost : 15.0;
+
+      document.getElementById("mainScore").textContent = totalScore.toFixed(1);
+      document.getElementById("baseScore").textContent = baseScore.toFixed(1);
+      document.getElementById("aiBoostBadge").textContent = `+${aiBoost.toFixed(1)} AI加成 (自適應)`;
+      document.getElementById("evalDate").textContent = latestHist.date || sig.evaluation_date || "2026-09";
+
+      // 狀態燈號
+      if (totalScore >= 75) {
+        document.getElementById("stateBadge").innerHTML = `
+          <span class="w-3.5 h-3.5 rounded-full bg-emerald-400 animate-ping"></span>
+          <span class="text-2xl font-black text-emerald-400">[主升擴張] BULL</span>
+        `;
+        document.getElementById("stateDesc").textContent = "宏觀半導體與 AI 雲端資本支出全面爆發，進入多頭主升波段。";
+        document.getElementById("stockRatio").textContent = "80% ~ 100%";
+        document.getElementById("regimeBadge").textContent = "AI 結構擴張期";
+      } else if (totalScore >= 60) {
+        document.getElementById("stateBadge").innerHTML = `
+          <span class="w-3.5 h-3.5 rounded-full bg-amber-400 animate-ping"></span>
+          <span class="text-2xl font-black text-amber-400">[景氣確認] CONFIRM</span>
+        `;
+        document.getElementById("stockRatio").textContent = "60% ~ 75%";
+      }
+
+      // 四階段細項分數
+      const s1 = latestHist.stage1_score || 35.0;
+      const s2 = latestHist.stage2_score || 6.0;
+      const s3 = latestHist.stage3_score || 23.0;
+      const s4 = latestHist.stage4_score || 7.0;
+
+      document.getElementById("s1Score").textContent = `${s1.toFixed(1)} / 35`;
+      document.getElementById("s2Score").textContent = `${s2.toFixed(1)} / 20`;
+      document.getElementById("s3Score").textContent = `${s3.toFixed(1)} / 25`;
+      document.getElementById("s4Score").textContent = `${s4.toFixed(1)} / 20`;
+
+      setTimeout(() => {
+        document.getElementById("s1Bar").style.width = `${Math.min(100, (s1 / 35) * 100)}%`;
+        document.getElementById("s2Bar").style.width = `${Math.min(100, (s2 / 20) * 100)}%`;
+        document.getElementById("s3Bar").style.width = `${Math.min(100, (s3 / 25) * 100)}%`;
+        document.getElementById("s4Bar").style.width = `${Math.min(100, (s4 / 20) * 100)}%`;
+      }, 150);
+
+      // 2. 渲染雙軸走勢圖 (trendChart)
+      const history = data.scorecard_history || [];
+      const labels = history.map(d => d.date);
+      const scores = history.map(d => d.adaptive_score || d.total_score);
+      const twii = history.map(d => d.twii_close);
+
+      const ctxTrend = document.getElementById("trendChart").getContext("2d");
+      new Chart(ctxTrend, {
+        type: "line",
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              label: "自適應記分卡總分",
+              data: scores,
+              borderColor: "#38bdf8",
+              backgroundColor: "rgba(56, 189, 248, 0.15)",
+              borderWidth: 2.5,
+              fill: true,
+              tension: 0.3,
+              pointRadius: 0,
+              pointHoverRadius: 5,
+              yAxisID: "yScore",
+            },
+            {
+              label: "台股加權指數",
+              data: twii,
+              borderColor: "#3b82f6",
+              borderWidth: 1.5,
+              pointRadius: 0,
+              tension: 0.2,
+              yAxisID: "yTwii",
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: {
+            mode: "index",
+            intersect: false,
+          },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: "#1e293b",
+              titleColor: "#ffffff",
+              bodyColor: "#cbd5e1",
+              borderColor: "#334155",
+              borderWidth: 1,
+            }
+          },
+          scales: {
+            x: {
+              grid: { color: "rgba(51, 65, 85, 0.4)" },
+              ticks: { color: "#94a3b8", maxTicksLimit: 12, font: { family: "monospace", size: 10 } }
+            },
+            yScore: {
+              type: "linear",
+              position: "right",
+              min: 0,
+              max: 100,
+              grid: { color: "rgba(51, 65, 85, 0.3)" },
+              ticks: { color: "#38bdf8", font: { family: "monospace", size: 10 } }
+            },
+            yTwii: {
+              type: "linear",
+              position: "left",
+              grid: { display: false },
+              ticks: { color: "#3b82f6", font: { family: "monospace", size: 10 } }
+            }
+          }
+        }
+      });
+
+      // 3. 渲染四階段傳導雷達圖 (radarChart)
+      const ctxRadar = document.getElementById("radarChart").getContext("2d");
+      new Chart(ctxRadar, {
+        type: "radar",
+        data: {
+          labels: [
+            "全球科技先行 (35%)",
+            "宏觀景氣復甦 (20%)",
+            "實體獲利改善 (25%)",
+            "股價籌碼爆發 (20%)"
+          ],
+          datasets: [{
+            data: [
+              Math.round((s1 / 35) * 100),
+              Math.round((s2 / 20) * 100),
+              Math.round((s3 / 25) * 100),
+              Math.round((s4 / 20) * 100)
+            ],
+            borderColor: "#38bdf8",
+            backgroundColor: "rgba(56, 189, 248, 0.25)",
+            pointBackgroundColor: "#38bdf8",
+            borderWidth: 2,
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: {
+            r: {
+              angleLines: { color: "rgba(51, 65, 85, 0.6)" },
+              grid: { color: "rgba(51, 65, 85, 0.6)" },
+              pointLabels: { color: "#cbd5e1", font: { size: 11 } },
+              ticks: { display: false, min: 0, max: 100 }
+            }
+          }
+        }
+      });
+
+      // 4. 渲染波段驗證表格
+      const waveData = [
+        { name: "2018 中美貿易戰底", date: "2018-10", watch: "2018-05", confirm: "2018-05", days: "領先低點 153天", badge: "全波段確認", color: "emerald" },
+        { name: "2020 COVID 急跌底", date: "2020-03", watch: "2019-09", confirm: "2019-10", days: "領先低點 183天", badge: "全波段確認", color: "emerald" },
+        { name: "2021 高點向 2022 熊市", date: "2021-07", watch: "—", confirm: "2022-01 (熄燈)", days: "提前避險", badge: "反向熄燈驗證", color: "amber" },
+        { name: "2022 熊市底 + AI 起漲", date: "2022-10", watch: "2022-11 (54分)", confirm: "未達60分", days: "同步精準捕捉", badge: "轉折警戒先導", color: "cyan" },
+        { name: "2024 AI 擴張第二波", date: "2024-01", watch: "2023-07", confirm: "2024-02", days: "領先低點 184天", badge: "全波段確認", color: "emerald" },
+        { name: "2026 最新循環 (進行中)", date: "2025-12", watch: "2025-06", confirm: "2025-06", days: "領先低點 184天", badge: "全波段確認", color: "emerald" }
+      ];
+
+      const waveTbody = document.getElementById("waveTableBody");
+      waveTbody.innerHTML = waveData.map(w => `
+        <tr class="hover:bg-slate-800/40 transition-colors">
+          <td class="py-2.5 px-3 font-semibold text-white">${w.name}</td>
+          <td class="py-2.5 px-3 text-slate-400">${w.date}</td>
+          <td class="py-2.5 px-3 text-cyan-400">${w.watch}</td>
+          <td class="py-2.5 px-3 text-emerald-400">${w.confirm}</td>
+          <td class="py-2.5 px-3 font-semibold text-white">${w.days}</td>
+          <td class="py-2.5 px-3 text-right">
+            <span class="px-2 py-0.5 rounded text-[10px] bg-${w.color}-500/20 text-${w.color}-400 border border-${w.color}-500/30">${w.badge}</span>
+          </td>
+        </tr>
+      `).join("");
+
+      // 5. 渲染 20 項指標排行榜表格
+      const scorecard = data.scorecard || [];
+      const scTbody = document.getElementById("scorecardTableBody");
+      scTbody.innerHTML = scorecard.map(s => {
+        const hitVal = parseInt(s["成功率"]) || 0;
+        const hitColor = hitVal >= 80 ? "text-emerald-400" : (hitVal >= 60 ? "text-cyan-400" : "text-slate-400");
+        const days = s["領先天數(中位數)"] ? `+${s["領先天數(中位數)"]} 天` : "—";
+        const falseRate = s["假訊號率"] || "—";
+        const falseColor = parseInt(falseRate) <= 40 ? "text-emerald-400 font-bold" : "text-slate-400";
+        const aiSpec = s["AI循環特異性"] || "—";
+
+        return `
+          <tr class="hover:bg-slate-800/40 transition-colors text-slate-300">
+            <td class="py-2.5 px-3 font-medium text-white">${s["指標名稱"]}</td>
+            <td class="py-2.5 px-3">
+              <span class="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px] border border-slate-700">${s["階段"]}</span>
+            </td>
+            <td class="py-2.5 px-3 font-semibold text-cyan-300">${days}</td>
+            <td class="py-2.5 px-3 font-semibold ${hitColor}">${s["成功率"]} <span class="text-[10px] text-slate-500">${s["成功率_95CI"] || ''}</span></td>
+            <td class="py-2.5 px-3 ${falseColor}">${falseRate}</td>
+            <td class="py-2.5 px-3 text-slate-400">${aiSpec}</td>
+          </tr>
+        `;
+      }).join("");
+
+      // 6. 渲染 Phase 6 投資 2.0 投組淨值走勢圖 (portfolioChart)
+      const pSeries = data.portfolio_series || [];
+      if (pSeries.length > 0) {
+        const pLabels = pSeries.map(d => d.date);
+        const pValues = pSeries.map(d => d.portfolio);
+        const taiexValues = pSeries.map(d => d.taiex);
+        const tsmcValues = pSeries.map(d => d.tsmc);
+
+        const ctxPort = document.getElementById("portfolioChart").getContext("2d");
+        new Chart(ctxPort, {
+          type: "line",
+          data: {
+            labels: pLabels,
+            datasets: [
+              {
+                label: "投資 2.0 策略 (Dynamic Portfolio)",
+                data: pValues,
+                borderColor: "#38bdf8",
+                backgroundColor: "rgba(56, 189, 248, 0.12)",
+                borderWidth: 2.5,
+                fill: true,
+                tension: 0.2,
+                pointRadius: 0,
+                pointHoverRadius: 5,
+              },
+              {
+                label: "台股加權指數 (TAIEX)",
+                data: taiexValues,
+                borderColor: "#3b82f6",
+                borderWidth: 1.5,
+                pointRadius: 0,
+                tension: 0.2,
+              },
+              {
+                label: "台積電 (2330.TW)",
+                data: tsmcValues,
+                borderColor: "#10b981",
+                borderWidth: 1.5,
+                pointRadius: 0,
+                tension: 0.2,
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: { mode: "index", intersect: false },
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                backgroundColor: "#1e293b",
+                titleColor: "#ffffff",
+                bodyColor: "#cbd5e1",
+                borderColor: "#334155",
+                borderWidth: 1,
+                callbacks: {
+                  label: function(context) {
+                    let label = context.dataset.label || '';
+                    if (label) { label += ': '; }
+                    if (context.parsed.y !== null) {
+                      label += '$' + Number(context.parsed.y).toLocaleString(undefined, {minimumFractionDigits: 0, maximumFractionDigits: 0});
+                    }
+                    return label;
+                  }
+                }
+              }
+            },
+            scales: {
+              x: {
+                grid: { color: "rgba(51, 65, 85, 0.4)" },
+                ticks: { color: "#94a3b8", maxTicksLimit: 12, font: { family: "monospace", size: 10 } }
+              },
+              y: {
+                type: "linear",
+                grid: { color: "rgba(51, 65, 85, 0.3)" },
+                ticks: {
+                  color: "#cbd5e1",
+                  font: { family: "monospace", size: 10 },
+                  callback: (val) => '$' + (val / 1000000).toFixed(1) + 'M'
+                }
+              }
+            }
+          }
+        });
+      }
+
+      // 7. 渲染第一層 AI 產業景氣雷達 (10 大子產業卡片)
+      const aiRadar = data.ai_radar || [];
+      const radarContainer = document.getElementById("aiRadarContainer");
+      if (radarContainer && aiRadar.length > 0) {
+        radarContainer.innerHTML = aiRadar.map(ind => {
+          let stageColor = "text-emerald-400 bg-emerald-500/15 border-emerald-500/40";
+          if (ind.stage_code === "B") stageColor = "text-cyan-300 bg-cyan-500/15 border-cyan-500/40";
+          if (ind.stage_code === "D") stageColor = "text-rose-400 bg-rose-500/15 border-rose-500/40";
+          if (ind.stage_code === "E") stageColor = "text-purple-400 bg-purple-500/15 border-purple-500/40";
+
+          return `
+            <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-800 flex flex-col justify-between hover:border-slate-700 transition-all">
+              <div>
+                <div class="flex items-center justify-between gap-1 mb-1.5">
+                  <span class="font-bold text-white text-xs truncate" title="${ind.name}">${ind.name}</span>
+                  <span class="text-[10px] px-1.5 py-0.5 rounded font-mono font-bold border ${stageColor}">
+                    ${ind.stage}
+                  </span>
+                </div>
+                <p class="text-[11px] text-slate-400 line-clamp-2 leading-relaxed mb-2" title="${ind.description}">
+                  ${ind.description}
+                </p>
+              </div>
+              <div class="pt-2 border-t border-slate-800/80 text-[10px] font-mono flex items-center justify-between text-slate-400">
+                <span>PE乘數：<strong class="text-cyan-300">${ind.pe_multiplier}x</strong></span>
+                <span class="text-slate-300 truncate max-w-[110px]" title="${ind.core_stocks}">${ind.core_stocks}</span>
+              </div>
+            </div>
+          `;
+        }).join("");
+      }
+
+      // 8. 渲染第三層 20 檔核心監控名單 (安全邊際降序，便宜優先)
+      const coreList = data.core_watchlist_20 || data.rs_rankings || [];
+      const coreTbody = document.getElementById("coreWatchlistTableBody");
+      if (coreTbody) {
+        coreTbody.innerHTML = coreList.map((r, idx) => {
+          const mos = r.margin_of_safety_pct !== undefined ? r.margin_of_safety_pct : 0.0;
+          let mosColor = "text-rose-400 font-bold";
+          if (mos >= 15.0) mosColor = "text-emerald-400 font-black text-sm";
+          else if (mos > 0.0) mosColor = "text-emerald-300 font-bold";
+          else if (mos >= -10.0) mosColor = "text-amber-300 font-medium";
+
+          const mosStr = (mos > 0 ? '+' : '') + mos.toFixed(1) + '%';
+          const floorStr = r.floor_value ? `$${Math.round(r.floor_value)}` : '-';
+          const pCheapStr = r.p_cheap ? `$${Math.round(r.p_cheap)}` : '-';
+          const pFairStr = r.p_fair ? `$${Math.round(r.p_fair)}` : '-';
+          const pExpStr = r.p_expensive ? `$${Math.round(r.p_expensive)}` : '-';
+          const epsStr = (r.eps_2026e && r.eps_2027e && r.eps_2028e) ? `$${r.eps_2026e}/$${r.eps_2027e}/$${r.eps_2028e}` : '-';
+          const targetStr = (r.target_fair_2027 && r.target_fair_2028) ? `$${Math.round(r.target_fair_2027)} / $${Math.round(r.target_fair_2028)}` : '-';
+          const pegStr = r.peg !== undefined ? r.peg : '-';
+          const badgeColor = r.badge_color || '#F8FAFC';
+          const sunStatus = r.sun_status || '⚪ 合理偏低區';
+          const sunPos = r.sun_position || '50% (持有)';
+
+          return `
+            <tr class="hover:bg-slate-800/40 transition-colors text-xs">
+              <td class="py-2.5 px-2 font-bold text-slate-300 font-mono">#${idx + 1}</td>
+              <td class="py-2.5 px-2">
+                <div class="font-bold text-white text-sm flex items-center gap-1.5">
+                  <span>${r.name}</span>
+                  <span class="text-[10px] font-mono font-normal px-1 rounded bg-slate-800 text-slate-400">${r.symbol}</span>
+                </div>
+                <div class="text-[10px] text-cyan-400 font-mono mt-0.5">${r.category || r.sub_industry || ''}</div>
+              </td>
+              <td class="py-2.5 px-2 font-black text-white font-mono text-sm">$${r.close}</td>
+              <td class="py-2.5 px-2 font-mono text-slate-400 text-[11px]" title="近4季EPS × 15">${floorStr}</td>
+              <td class="py-2.5 px-2 font-mono text-emerald-400 font-semibold">${pCheapStr}</td>
+              <td class="py-2.5 px-2 font-mono text-white font-semibold">${pFairStr}</td>
+              <td class="py-2.5 px-2 font-mono text-amber-300">${pExpStr}</td>
+              <td class="py-2.5 px-2 font-mono ${mosColor}">${mosStr}</td>
+              <td class="py-2.5 px-2 font-mono text-slate-300">${pegStr}</td>
+              <td class="py-2.5 px-2 font-mono text-cyan-300 text-[11px]">${epsStr}</td>
+              <td class="py-2.5 px-2 font-mono font-bold text-emerald-300 text-[11px]">${targetStr}</td>
+              <td class="py-2.5 px-2">
+                <span class="px-2 py-0.5 rounded text-[11px] font-bold font-mono inline-block shadow-sm"
+                      style="color: ${badgeColor}; background-color: ${badgeColor}20; border: 1px solid ${badgeColor}60;">
+                  ${sunStatus}
+                </span>
+              </td>
+              <td class="py-2.5 px-2 text-right font-mono font-bold text-cyan-300 text-[11px]">${sunPos}</td>
+            </tr>
+          `;
+        }).join("");
+      }
+
+    });
+  </script>
+</body>
+</html>
