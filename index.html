@@ -52,60 +52,124 @@
       border-radius: 3px;
     }
 
-    /* ===== 👵👴 65歲長者友善特大字體規範 (Senior 2X Mode) ===== */
-    /* 手機端 (<768px) 預設全面啟動 2 倍大字體與高對比增強 */
-    @media (max-width: 768px) {
-      html:not(.normal-font-mode) {
-        font-size: 20px !important; /* 根字級放大至 20px (原 16px 的 1.25x) */
-      }
-      html:not(.normal-font-mode) body {
-        font-size: 1.15rem !important;
-        line-height: 1.65 !important;
-      }
-      /* 極小字級強制放大 ~2x，告別吃力小字 */
-      html:not(.normal-font-mode) .text-\[10px\],
-      html:not(.normal-font-mode) .text-\[11px\],
-      html:not(.normal-font-mode) .text-xs {
-        font-size: 1.05rem !important; /* 約 21px */
-        line-height: 1.55 !important;
-      }
-      html:not(.normal-font-mode) .text-sm {
-        font-size: 1.25rem !important; /* 約 25px */
-        line-height: 1.55 !important;
-      }
-      html:not(.normal-font-mode) .text-base {
-        font-size: 1.45rem !important; /* 約 29px */
-        line-height: 1.5 !important;
-      }
-      html:not(.normal-font-mode) .text-lg {
-        font-size: 1.65rem !important; /* 約 33px */
-      }
-      html:not(.normal-font-mode) .text-xl {
-        font-size: 1.85rem !important; /* 約 37px */
-      }
-      html:not(.normal-font-mode) .text-2xl {
-        font-size: 2.2rem !important; /* 約 44px */
-      }
-      html:not(.normal-font-mode) .text-5xl {
-        font-size: 4.2rem !important; /* 約 84px，超大清晰數字 */
-      }
+    /* ===== 👵👴 65歲長者友善特大字體規範 (Senior 2X Mode - 全域直豎與橫幅皆生效) ===== */
+    /* 核心規則：預設直接開啟 2X 特大字體模式，無論手機直豎、橫幅、iPad 均全面放大 */
+    html:not(.normal-font-mode), html.senior-mode {
+      font-size: 20px !important; /* 根字級放大至 20px (原 16px 的 1.25x) */
+    }
+    html:not(.normal-font-mode) body, html.senior-mode body {
+      font-size: 1.15rem !important;
+      line-height: 1.65 !important;
+    }
+    /* 極小字級強制放大 ~2x，告別吃力小字 (直豎與橫幅皆生效) */
+    html:not(.normal-font-mode) .text-\[10px\], html.senior-mode .text-\[10px\],
+    html:not(.normal-font-mode) .text-\[11px\], html.senior-mode .text-\[11px\],
+    html:not(.normal-font-mode) .text-xs, html.senior-mode .text-xs {
+      font-size: 1.05rem !important; /* 約 21px */
+      line-height: 1.55 !important;
+    }
+    html:not(.normal-font-mode) .text-sm, html.senior-mode .text-sm {
+      font-size: 1.25rem !important; /* 約 25px */
+      line-height: 1.55 !important;
+    }
+    html:not(.normal-font-mode) .text-base, html.senior-mode .text-base {
+      font-size: 1.45rem !important; /* 約 29px */
+      line-height: 1.5 !important;
+    }
+    html:not(.normal-font-mode) .text-lg, html.senior-mode .text-lg {
+      font-size: 1.65rem !important; /* 約 33px */
+    }
+    html:not(.normal-font-mode) .text-xl, html.senior-mode .text-xl {
+      font-size: 1.85rem !important; /* 約 37px */
+    }
+    html:not(.normal-font-mode) .text-2xl, html.senior-mode .text-2xl {
+      font-size: 2.2rem !important; /* 約 44px */
+    }
+    html:not(.normal-font-mode) .text-5xl, html.senior-mode .text-5xl {
+      font-size: 4.2rem !important; /* 約 84px，超大清晰數字 */
+    }
 
-      /* 觸控按鈕加大，長者手指輕鬆點擊 */
-      html:not(.normal-font-mode) .stock-filter-btn {
-        font-size: 1.15rem !important; /* 約 23px */
-        padding: 0.65rem 1.25rem !important;
-        min-height: 50px !important;
-      }
+    /* 橫幅 (Landscape) 專屬：表格儲存格、表頭與標籤全面 2X 放大 */
+    html:not(.normal-font-mode) table th, html.senior-mode table th {
+      font-size: 1.1rem !important; /* 表頭 22px */
+      padding: 0.85rem 0.6rem !important;
+      font-weight: 800 !important;
+      white-space: nowrap !important;
+    }
+    html:not(.normal-font-mode) table td, html.senior-mode table td {
+      font-size: 1.2rem !important; /* 儲存格 24px */
+      padding: 0.95rem 0.6rem !important;
+      line-height: 1.5 !important;
+      white-space: nowrap !important;
+    }
+    html:not(.normal-font-mode) table td .text-sm, html.senior-mode table td .text-sm {
+      font-size: 1.45rem !important; /* 表格內個股名稱 29px 超大粗體 */
+      font-weight: 900 !important;
+    }
+    html:not(.normal-font-mode) table td .text-\[10px\], html.senior-mode table td .text-\[10px\],
+    html:not(.normal-font-mode) table td .text-\[11px\], html.senior-mode table td .text-\[11px\] {
+      font-size: 1.05rem !important; /* 表格代號與預估 21px */
+    }
 
-      /* 底部單手拇指導航列加大 */
-      html:not(.normal-font-mode) nav.fixed a span.text-base {
-        font-size: 1.75rem !important;
+    /* 觸控按鈕加大，長者手指輕鬆點擊 (直立與橫幅皆生效) */
+    html:not(.normal-font-mode) .stock-filter-btn, html.senior-mode .stock-filter-btn {
+      font-size: 1.15rem !important; /* 約 23px */
+      padding: 0.65rem 1.25rem !important;
+      min-height: 50px !important;
+    }
+
+    /* 底部單手拇指導航列加大 */
+    html:not(.normal-font-mode) nav.fixed a span.text-base, html.senior-mode nav.fixed a span.text-base,
+    html:not(.normal-font-mode) nav.fixed a span.text-xl, html.senior-mode nav.fixed a span.text-xl,
+    html:not(.normal-font-mode) nav.fixed a span.text-2xl, html.senior-mode nav.fixed a span.text-2xl {
+      font-size: 1.75rem !important;
+    }
+    html:not(.normal-font-mode) nav.fixed a span.text-xs, html.senior-mode nav.fixed a span.text-xs,
+    html:not(.normal-font-mode) nav.fixed a span.text-\[10px\], html.senior-mode nav.fixed a span.text-\[10px\] {
+      font-size: 1.05rem !important;
+      font-weight: 800 !important;
+    }
+
+    /* 手機橫幅 (Landscape) 視窗高度較窄時，底部導航條高度微調避免遮擋過多垂直視野 */
+    @media (orientation: landscape) and (max-height: 520px) {
+      nav.fixed {
+        padding-top: 0.25rem !important;
+        padding-bottom: max(0.25rem, env(safe-area-inset-bottom)) !important;
       }
-      html:not(.normal-font-mode) nav.fixed a span.text-\[10px\] {
-        font-size: 1.05rem !important;
-        font-weight: 800 !important;
+      nav.fixed a {
+        padding: 0.2rem 0.5rem !important;
+      }
+      nav.fixed a span.text-2xl, nav.fixed a span.text-xl {
+        font-size: 1.35rem !important;
+      }
+      nav.fixed a span.text-xs {
+        font-size: 0.95rem !important;
       }
     }
+
+    /* 標準 1X 模式 (手動切換) */
+    html.normal-font-mode {
+      font-size: 16px !important;
+    }
+    html.normal-font-mode body {
+      font-size: 1rem !important;
+      line-height: 1.5 !important;
+    }
+    html.normal-font-mode .text-\[10px\] { font-size: 10px !important; }
+    html.normal-font-mode .text-\[11px\] { font-size: 11px !important; }
+    html.normal-font-mode .text-xs { font-size: 12px !important; }
+    html.normal-font-mode .text-sm { font-size: 14px !important; }
+    html.normal-font-mode .text-base { font-size: 16px !important; }
+    html.normal-font-mode .text-lg { font-size: 18px !important; }
+    html.normal-font-mode .text-xl { font-size: 20px !important; }
+    html.normal-font-mode .text-2xl { font-size: 24px !important; }
+    html.normal-font-mode .text-5xl { font-size: 48px !important; }
+    html.normal-font-mode table th { font-size: 12px !important; padding: 0.625rem 0.5rem !important; }
+    html.normal-font-mode table td { font-size: 12px !important; padding: 0.625rem 0.5rem !important; }
+    html.normal-font-mode table td .text-sm { font-size: 14px !important; }
+    html.normal-font-mode .stock-filter-btn { font-size: 12px !important; padding: 0.25rem 0.625rem !important; min-height: 32px !important; }
+    html.normal-font-mode nav.fixed a span.text-2xl, html.normal-font-mode nav.fixed a span.text-xl { font-size: 16px !important; }
+    html.normal-font-mode nav.fixed a span.text-xs { font-size: 10px !important; }
   </style>
 </head>
 <body class="min-h-screen p-3 md:p-8 pb-28 md:pb-8 custom-scrollbar">
@@ -560,10 +624,27 @@
           </div>
         </div>
 
-        <!-- 電腦版完整寬表格 (md 以上顯示) -->
-        <div class="hidden md:block overflow-x-auto custom-scrollbar">
-          <table class="w-full text-left text-xs">
-            <thead class="bg-slate-900/80 text-slate-400 uppercase font-mono border-b border-slate-800 text-xs">
+        <!-- 顯示模式切換按鈕 (卡片模式 / 寬表格模式，手機直拿或橫放皆可一鍵切換) -->
+        <div class="flex items-center justify-between mb-3 text-sm flex-wrap gap-2">
+          <div class="text-xs text-slate-400 font-mono">
+            💡 觀看切換：手機橫拿（橫幅）推薦「寬表格」，直拿推薦「大卡片模式」
+          </div>
+          <div class="flex items-center gap-2">
+            <button id="viewToggleCardsBtn" onclick="window.switchWatchlistView('cards')"
+                    class="px-3.5 py-1.5 rounded-lg border-2 border-cyan-400 bg-cyan-500/20 text-cyan-200 text-xs md:text-sm font-bold shadow-md">
+              📱 大卡片模式
+            </button>
+            <button id="viewToggleTableBtn" onclick="window.switchWatchlistView('table')"
+                    class="px-3.5 py-1.5 rounded-lg border-2 border-slate-700 bg-slate-900 text-slate-300 text-xs md:text-sm font-bold hover:bg-slate-800">
+              📊 寬表格模式
+            </button>
+          </div>
+        </div>
+
+        <!-- 寬表格容器 (支援橫幅滾動，大字體) -->
+        <div class="overflow-x-auto custom-scrollbar" id="coreWatchlistTableWrapper">
+          <table class="w-full text-left text-xs min-w-[1100px]">
+            <thead class="bg-slate-900/90 text-slate-300 uppercase font-mono border-b-2 border-slate-700 text-xs">
               <tr>
                 <th class="py-2.5 px-2">排序</th>
                 <th class="py-2.5 px-2">標的代號/名稱</th>
@@ -586,8 +667,8 @@
           </table>
         </div>
 
-        <!-- 手機版高對比卡片流 (md 隱藏，手機專用) -->
-        <div class="md:hidden space-y-3" id="coreWatchlistMobileCards">
+        <!-- 手機版高對比卡片流 -->
+        <div class="space-y-4" id="coreWatchlistMobileCards">
           <!-- JS 動態渲染手機卡片 -->
         </div>
       </div>
@@ -605,7 +686,7 @@
   <!-- 嵌入真實數據資料庫 -->
   <script>
     const DASHBOARD_DATA = {
-  "generated_at": "2026-09-23 10:04",
+  "generated_at": "2026-09-23 10:36",
   "latest_signal": {
     "date": "2026-09",
     "total_score": 67.0,
@@ -5726,6 +5807,40 @@
         if (btn) btn.className = "px-3.5 py-2 rounded-xl bg-slate-800 text-slate-300 border border-slate-600 font-bold text-sm flex items-center gap-2 active:scale-95 transition-all";
       }
 
+      // 顯示模式切換（卡片 / 寬表格）
+      window.switchWatchlistView = function(mode) {
+        const tableWrapper = document.getElementById("coreWatchlistTableWrapper");
+        const cardsContainer = document.getElementById("coreWatchlistMobileCards");
+        const btnCards = document.getElementById("viewToggleCardsBtn");
+        const btnTable = document.getElementById("viewToggleTableBtn");
+
+        if (mode === "cards") {
+          if (cardsContainer) cardsContainer.style.display = "block";
+          if (tableWrapper) tableWrapper.style.display = "none";
+          if (btnCards) btnCards.className = "px-3.5 py-1.5 rounded-lg border-2 border-cyan-400 bg-cyan-500/20 text-cyan-200 text-xs md:text-sm font-bold shadow-md";
+          if (btnTable) btnTable.className = "px-3.5 py-1.5 rounded-lg border-2 border-slate-700 bg-slate-900 text-slate-300 text-xs md:text-sm font-bold hover:bg-slate-800";
+          localStorage.setItem("user-watchlist-view", "cards");
+        } else {
+          if (cardsContainer) cardsContainer.style.display = "none";
+          if (tableWrapper) tableWrapper.style.display = "block";
+          if (btnCards) btnCards.className = "px-3.5 py-1.5 rounded-lg border-2 border-slate-700 bg-slate-900 text-slate-300 text-xs md:text-sm font-bold hover:bg-slate-800";
+          if (btnTable) btnTable.className = "px-3.5 py-1.5 rounded-lg border-2 border-cyan-400 bg-cyan-500/20 text-cyan-200 text-xs md:text-sm font-bold shadow-md";
+          localStorage.setItem("user-watchlist-view", "table");
+        }
+      };
+
+      // 初始化顯示模式：手機直豎預設卡片，寬螢幕/橫幅預設表格 (或依使用者選擇)
+      const savedView = localStorage.getItem("user-watchlist-view");
+      if (savedView) {
+        window.switchWatchlistView(savedView);
+      } else {
+        if (window.innerWidth < 768 && window.innerHeight > window.innerWidth) {
+          window.switchWatchlistView("cards");
+        } else {
+          window.switchWatchlistView("table");
+        }
+      }
+
       // 分類篩選功能 (按鈕樣式保持大字體)
       window.filterStocks = function(type) {
         // 更新按鈕樣式
@@ -5776,8 +5891,8 @@
     });
   </script>
 
-  <!-- 手機專用單手拇指底部導航列 (Sticky Bottom Bar, 65歲長者大按鈕) -->
-  <nav class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-[#0B0F19]/95 backdrop-blur-md border-t-2 border-slate-800 px-3 py-2 flex items-center justify-around shadow-2xl" style="padding-bottom: max(0.6rem, env(safe-area-inset-bottom));">
+  <!-- 手機專用單手拇指底部導航列 (Sticky Bottom Bar, 65歲長者大按鈕, 支援直立與橫幅) -->
+  <nav class="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-[#0B0F19]/95 backdrop-blur-md border-t-2 border-slate-800 px-3 py-2 flex items-center justify-around shadow-2xl" style="padding-bottom: max(0.6rem, env(safe-area-inset-bottom));">
     <a href="#market-status" class="flex flex-col items-center gap-1 text-slate-300 hover:text-cyan-300 transition-colors py-1.5 px-2">
       <span class="text-2xl">🚦</span>
       <span class="text-xs font-black tracking-tight">大盤燈號</span>
