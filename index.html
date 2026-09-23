@@ -52,83 +52,84 @@
       border-radius: 3px;
     }
 
-    /* ===== 👵👴 65歲長者友善特大字體規範 (Senior 2X Mode - 全域直豎與橫幅皆生效) ===== */
-    /* 核心規則：預設直接開啟 2X 特大字體模式，無論手機直豎、橫幅、iPad 均全面放大 */
+    /* ===== 👵👴 65歲長者友善大字體規範 (Senior 1.6X Mode - 精緻舒適大字版) ===== */
+    /* 核心規則：預設直接開啟 1.6X 友善大字體模式，兼顧長者視覺清晰與版面美感留白 */
     html:not(.normal-font-mode), html.senior-mode {
-      font-size: 20px !important; /* 根字級放大至 20px (原 16px 的 1.25x) */
+      font-size: 17.5px !important; /* 根字級微調至 17.5px (標準 1.6x 友善尺度) */
     }
     html:not(.normal-font-mode) body, html.senior-mode body {
-      font-size: 1.15rem !important;
-      line-height: 1.65 !important;
+      font-size: 1.05rem !important;
+      line-height: 1.6 !important;
     }
-    /* 極小字級強制放大 ~2x，告別吃力小字 (直豎與橫幅皆生效) */
+    /* 字級精細校準為 1.6x，告別吃力小字與擁擠換行 */
     html:not(.normal-font-mode) .text-\[10px\], html.senior-mode .text-\[10px\],
     html:not(.normal-font-mode) .text-\[11px\], html.senior-mode .text-\[11px\],
     html:not(.normal-font-mode) .text-xs, html.senior-mode .text-xs {
-      font-size: 1.05rem !important; /* 約 21px */
-      line-height: 1.55 !important;
+      font-size: 0.95rem !important; /* 約 16.5px */
+      line-height: 1.45 !important;
     }
     html:not(.normal-font-mode) .text-sm, html.senior-mode .text-sm {
-      font-size: 1.25rem !important; /* 約 25px */
-      line-height: 1.55 !important;
+      font-size: 1.15rem !important; /* 約 20px */
+      line-height: 1.45 !important;
     }
     html:not(.normal-font-mode) .text-base, html.senior-mode .text-base {
-      font-size: 1.45rem !important; /* 約 29px */
-      line-height: 1.5 !important;
+      font-size: 1.3rem !important; /* 約 22.8px */
+      line-height: 1.45 !important;
     }
     html:not(.normal-font-mode) .text-lg, html.senior-mode .text-lg {
-      font-size: 1.65rem !important; /* 約 33px */
+      font-size: 1.45rem !important; /* 約 25.4px */
     }
     html:not(.normal-font-mode) .text-xl, html.senior-mode .text-xl {
-      font-size: 1.85rem !important; /* 約 37px */
+      font-size: 1.6rem !important; /* 約 28px */
     }
     html:not(.normal-font-mode) .text-2xl, html.senior-mode .text-2xl {
-      font-size: 2.2rem !important; /* 約 44px */
+      font-size: 1.85rem !important; /* 約 32.4px */
     }
     html:not(.normal-font-mode) .text-5xl, html.senior-mode .text-5xl {
-      font-size: 4.2rem !important; /* 約 84px，超大清晰數字 */
+      font-size: 3.4rem !important; /* 約 60px，清晰易讀不霸屏 */
     }
 
-    /* 橫幅 (Landscape) 專屬：表格儲存格、表頭與標籤全面 2X 放大 */
+    /* 橫幅 (Landscape) 專屬：表格儲存格、表頭與標籤 1.6X 放大 */
     html:not(.normal-font-mode) table th, html.senior-mode table th {
-      font-size: 1.1rem !important; /* 表頭 22px */
-      padding: 0.85rem 0.6rem !important;
+      font-size: 0.95rem !important;
+      padding: 0.65rem 0.5rem !important;
       font-weight: 800 !important;
       white-space: nowrap !important;
     }
     html:not(.normal-font-mode) table td, html.senior-mode table td {
-      font-size: 1.2rem !important; /* 儲存格 24px */
-      padding: 0.95rem 0.6rem !important;
-      line-height: 1.5 !important;
+      font-size: 1.05rem !important;
+      padding: 0.75rem 0.5rem !important;
+      line-height: 1.45 !important;
       white-space: nowrap !important;
     }
     html:not(.normal-font-mode) table td .text-sm, html.senior-mode table td .text-sm {
-      font-size: 1.45rem !important; /* 表格內個股名稱 29px 超大粗體 */
+      font-size: 1.25rem !important; /* 表格內個股名稱超大粗體 */
       font-weight: 900 !important;
     }
     html:not(.normal-font-mode) table td .text-\[10px\], html.senior-mode table td .text-\[10px\],
     html:not(.normal-font-mode) table td .text-\[11px\], html.senior-mode table td .text-\[11px\] {
-      font-size: 1.05rem !important; /* 表格代號與預估 21px */
+      font-size: 0.95rem !important;
     }
 
     /* 觸控按鈕加大，長者手指輕鬆點擊 (直立與橫幅皆生效) */
     html:not(.normal-font-mode) .stock-filter-btn, html.senior-mode .stock-filter-btn {
-      font-size: 1.15rem !important; /* 約 23px */
-      padding: 0.65rem 1.25rem !important;
-      min-height: 50px !important;
+      font-size: 1.0rem !important;
+      padding: 0.55rem 1.05rem !important;
+      min-height: 44px !important;
     }
 
-    /* 底部單手拇指導航列加大 */
+    /* 底部單手拇指導航列 */
     html:not(.normal-font-mode) nav.fixed a span.text-base, html.senior-mode nav.fixed a span.text-base,
     html:not(.normal-font-mode) nav.fixed a span.text-xl, html.senior-mode nav.fixed a span.text-xl,
     html:not(.normal-font-mode) nav.fixed a span.text-2xl, html.senior-mode nav.fixed a span.text-2xl {
-      font-size: 1.75rem !important;
+      font-size: 1.45rem !important;
     }
     html:not(.normal-font-mode) nav.fixed a span.text-xs, html.senior-mode nav.fixed a span.text-xs,
     html:not(.normal-font-mode) nav.fixed a span.text-\[10px\], html.senior-mode nav.fixed a span.text-\[10px\] {
-      font-size: 1.05rem !important;
+      font-size: 0.95rem !important;
       font-weight: 800 !important;
     }
+
 
     /* 手機橫幅 (Landscape) 視窗高度較窄時，底部導航條高度微調避免遮擋過多垂直視野 */
     @media (orientation: landscape) and (max-height: 520px) {
@@ -191,11 +192,11 @@
       </div>
 
       <div class="flex items-center gap-3 flex-wrap">
-        <!-- 65歲長者 2X 大字體切換鈕 -->
+        <!-- 65歲長者 1.6X 大字體切換鈕 -->
         <button id="seniorToggleBtn" onclick="window.toggleSeniorFont()"
                 class="px-3.5 py-2 rounded-xl bg-amber-500/20 text-amber-300 border-2 border-amber-500/50 font-bold text-sm flex items-center gap-2 shadow-lg active:scale-95 transition-all">
           <span class="text-xl">👵</span>
-          <span id="seniorToggleText">長者特大字 (2X)：開啟中</span>
+          <span id="seniorToggleText">長者友善大字 (1.6X)：開啟中</span>
         </button>
 
         <div class="px-3 py-2 rounded-lg bg-brand-card border border-brand-border text-slate-300 text-xs font-mono">
@@ -413,8 +414,25 @@
           </div>
         </div>
       </div>
-      <div class="h-[380px] w-full">
-        <canvas id="trendChart"></canvas>
+      <!-- 左右拖曳提示與回到最新控制列 -->
+      <div class="flex items-center justify-between pb-3 text-xs">
+        <div class="flex items-center gap-2">
+          <span class="inline-flex items-center px-2.5 py-1 rounded bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 font-semibold text-xs">
+            👈 左右拖曳/滑動檢視歷史月份細節
+          </span>
+          <span class="text-slate-400 text-xs hidden sm:inline">（以「月」為單位格展開，預設定位最新資料）</span>
+        </div>
+        <button id="trendResetBtn" onclick="window.resetTrendChartScroll()" 
+                class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 active:scale-95 text-cyan-300 border border-cyan-500/40 text-xs font-mono font-bold flex items-center gap-1.5 transition-all shadow">
+          <span>⏭️</span> 回到最新月份
+        </button>
+      </div>
+
+      <!-- 滾動容器與寬幅 Wrapper -->
+      <div id="trendChartScrollContainer" class="overflow-x-auto overflow-y-hidden custom-scrollbar border border-slate-800/80 rounded-xl p-2 bg-slate-950/40 select-none cursor-grab active:cursor-grabbing" style="-webkit-overflow-scrolling: touch;">
+        <div id="trendChartWrapper" class="h-[380px]" style="min-width: 100%;">
+          <canvas id="trendChart"></canvas>
+        </div>
       </div>
     </section>
 
@@ -555,11 +573,11 @@
 
       <!-- 投組淨值走勢圖 (Chart.js) -->
       <div>
-        <div class="flex justify-between items-center mb-2">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-2 mb-2 gap-2">
           <h3 class="text-sm font-bold text-white flex items-center gap-2">
             <span>📊</span> 2018–2026 動態投組 vs 加權指數 vs 台積電 累積淨值走勢
           </h3>
-          <div class="flex items-center gap-4 text-xs font-mono">
+          <div class="flex items-center gap-4 text-xs font-mono flex-wrap">
             <div class="flex items-center gap-1.5">
               <span class="w-3 h-0.5 bg-cyan-400"></span>
               <span class="text-slate-300">投資 2.0 策略 (Dynamic Portfolio)</span>
@@ -574,8 +592,26 @@
             </div>
           </div>
         </div>
-        <div class="h-[340px] w-full">
-          <canvas id="portfolioChart"></canvas>
+
+        <!-- 左右拖曳提示與回到最新控制列 -->
+        <div class="flex items-center justify-between pb-3 text-xs">
+          <div class="flex items-center gap-2">
+            <span class="inline-flex items-center px-2.5 py-1 rounded bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 font-semibold text-xs">
+              👈 左右拖曳/滑動檢視歷史淨值細節
+            </span>
+            <span class="text-slate-400 text-xs hidden sm:inline">（以「月」為單位格展開，預設定位最新資料）</span>
+          </div>
+          <button id="portfolioResetBtn" onclick="window.resetPortfolioChartScroll()" 
+                  class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 active:scale-95 text-cyan-300 border border-cyan-500/40 text-xs font-mono font-bold flex items-center gap-1.5 transition-all shadow">
+            <span>⏭️</span> 回到最新月份
+          </button>
+        </div>
+
+        <!-- 滾動容器與寬幅 Wrapper -->
+        <div id="portfolioChartScrollContainer" class="overflow-x-auto overflow-y-hidden custom-scrollbar border border-slate-800/80 rounded-xl p-2 bg-slate-950/40 select-none cursor-grab active:cursor-grabbing" style="-webkit-overflow-scrolling: touch;">
+          <div id="portfolioChartWrapper" class="h-[340px]" style="min-width: 100%;">
+            <canvas id="portfolioChart"></canvas>
+          </div>
         </div>
       </div>
 
@@ -721,7 +757,7 @@
   <!-- 嵌入真實數據資料庫 -->
   <script>
     const DASHBOARD_DATA = {
-  "generated_at": "2026-09-23 20:43",
+  "generated_at": "2026-09-23 22:08",
   "latest_signal": {
     "date": "2026-09",
     "total_score": 67.0,
@@ -5476,11 +5512,61 @@
         document.getElementById("s4Bar").style.width = `${Math.min(100, (s4 / 20) * 100)}%`;
       }, 150);
 
+      // 通用滑鼠拖曳滑動支援 (Drag-to-Scroll for Desktop)
+      function enableDragToScroll(container) {
+        if (!container) return;
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        container.addEventListener("mousedown", (e) => {
+          if (e.target.tagName === 'BUTTON' || e.target.closest('button')) return;
+          isDown = true;
+          container.classList.add("cursor-grabbing");
+          container.classList.remove("cursor-grab");
+          startX = e.pageX - container.offsetLeft;
+          scrollLeft = container.scrollLeft;
+        });
+
+        container.addEventListener("mouseleave", () => {
+          isDown = false;
+          container.classList.remove("cursor-grabbing");
+          container.classList.add("cursor-grab");
+        });
+
+        container.addEventListener("mouseup", () => {
+          isDown = false;
+          container.classList.remove("cursor-grabbing");
+          container.classList.add("cursor-grab");
+        });
+
+        container.addEventListener("mousemove", (e) => {
+          if (!isDown) return;
+          e.preventDefault();
+          const x = e.pageX - container.offsetLeft;
+          const walk = (x - startX) * 1.5;
+          container.scrollLeft = scrollLeft - walk;
+        });
+      }
+
       // 2. 渲染雙軸走勢圖 (trendChart)
       const history = data.scorecard_history || [];
       const labels = history.map(d => d.date);
       const scores = history.map(d => d.adaptive_score || d.total_score);
       const twii = history.map(d => d.twii_close);
+
+      const trendContainer = document.getElementById("trendChartScrollContainer");
+      const trendWrapper = document.getElementById("trendChartWrapper");
+      if (trendWrapper && labels.length > 0) {
+        const desiredWidth = Math.max(trendContainer ? trendContainer.clientWidth : 0, labels.length * 36);
+        trendWrapper.style.width = `${desiredWidth}px`;
+      }
+
+      window.resetTrendChartScroll = function() {
+        if (trendContainer) {
+          trendContainer.scrollTo({ left: trendContainer.scrollWidth, behavior: "smooth" });
+        }
+      };
 
       const ctxTrend = document.getElementById("trendChart").getContext("2d");
       new Chart(ctxTrend, {
@@ -5530,8 +5616,15 @@
           },
           scales: {
             x: {
-              grid: { color: "rgba(51, 65, 85, 0.4)" },
-              ticks: { color: "#94a3b8", maxTicksLimit: 12, font: { family: "monospace", size: 10 } }
+              grid: { color: "rgba(51, 65, 85, 0.35)" },
+              ticks: { 
+                color: "#94a3b8", 
+                maxRotation: 45,
+                minRotation: 0,
+                autoSkip: true,
+                maxTicksLimit: Math.max(24, Math.floor(labels.length / 2)),
+                font: { family: "monospace", size: 10, weight: "600" } 
+              }
             },
             yScore: {
               type: "linear",
@@ -5548,6 +5641,19 @@
               ticks: { color: "#3b82f6", font: { family: "monospace", size: 10 } }
             }
           }
+        }
+      });
+
+      setTimeout(() => {
+        if (trendContainer) {
+          trendContainer.scrollLeft = trendContainer.scrollWidth;
+        }
+      }, 100);
+      enableDragToScroll(trendContainer);
+      window.addEventListener("resize", () => {
+        if (trendContainer && trendWrapper && labels.length > 0) {
+          const desiredWidth = Math.max(trendContainer.clientWidth, labels.length * 36);
+          trendWrapper.style.width = `${desiredWidth}px`;
         }
       });
 
@@ -5647,6 +5753,19 @@
         const taiexValues = pSeries.map(d => d.taiex);
         const tsmcValues = pSeries.map(d => d.tsmc);
 
+        const portContainer = document.getElementById("portfolioChartScrollContainer");
+        const portWrapper = document.getElementById("portfolioChartWrapper");
+        if (portWrapper && pLabels.length > 0) {
+          const desiredWidth = Math.max(portContainer ? portContainer.clientWidth : 0, pLabels.length * 36);
+          portWrapper.style.width = `${desiredWidth}px`;
+        }
+
+        window.resetPortfolioChartScroll = function() {
+          if (portContainer) {
+            portContainer.scrollTo({ left: portContainer.scrollWidth, behavior: "smooth" });
+          }
+        };
+
         const ctxPort = document.getElementById("portfolioChart").getContext("2d");
         new Chart(ctxPort, {
           type: "line",
@@ -5708,8 +5827,15 @@
             },
             scales: {
               x: {
-                grid: { color: "rgba(51, 65, 85, 0.4)" },
-                ticks: { color: "#94a3b8", maxTicksLimit: 12, font: { family: "monospace", size: 10 } }
+                grid: { color: "rgba(51, 65, 85, 0.35)" },
+                ticks: { 
+                  color: "#94a3b8", 
+                  maxRotation: 45,
+                  minRotation: 0,
+                  autoSkip: true,
+                  maxTicksLimit: Math.max(24, Math.floor(pLabels.length / 2)),
+                  font: { family: "monospace", size: 10, weight: "600" } 
+                }
               },
               y: {
                 type: "linear",
@@ -5721,6 +5847,19 @@
                 }
               }
             }
+          }
+        });
+
+        setTimeout(() => {
+          if (portContainer) {
+            portContainer.scrollLeft = portContainer.scrollWidth;
+          }
+        }, 100);
+        enableDragToScroll(portContainer);
+        window.addEventListener("resize", () => {
+          if (portContainer && portWrapper && pLabels.length > 0) {
+            const desiredWidth = Math.max(portContainer.clientWidth, pLabels.length * 36);
+            portWrapper.style.width = `${desiredWidth}px`;
           }
         });
       }
@@ -5823,7 +5962,7 @@
           }
         }
 
-        // 手機版高對比卡片流 (65歲長者 2X 大字體與高辨識度優化)
+        // 手機版高對比卡片流 (65歲長者 1.6X 大字體與高辨識度優化)
         const mobileContainer = document.getElementById("coreWatchlistMobileCards");
         if (mobileContainer) {
           if (list.length === 0) {
@@ -6001,7 +6140,7 @@
         const btn = document.getElementById("seniorToggleBtn");
         if (html.classList.contains("normal-font-mode")) {
           html.classList.remove("normal-font-mode");
-          if (btnText) btnText.textContent = "長者特大字 (2X)：開啟中";
+          if (btnText) btnText.textContent = "長者友善大字 (1.6X)：開啟中";
           if (btn) btn.className = "px-3.5 py-2 rounded-xl bg-amber-500/20 text-amber-300 border-2 border-amber-500/50 font-bold text-sm flex items-center gap-2 shadow-lg active:scale-95 transition-all";
           localStorage.setItem("user-font-pref", "senior");
         } else {
