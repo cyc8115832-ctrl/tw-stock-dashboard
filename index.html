@@ -768,7 +768,7 @@
   <!-- 嵌入真實數據資料庫 -->
   <script>
     const DASHBOARD_DATA = {
-  "generated_at": "2026-09-24 18:42",
+  "generated_at": "2026-09-24 19:17",
   "latest_signal": {
     "date": "2026-09",
     "total_score": 67.0,
@@ -7498,6 +7498,8 @@
             coreTbody.innerHTML = `<tr><td colspan="12" class="py-8 text-center text-slate-500 font-mono">此分類目前無符合之標的</td></tr>`;
           } else {
             coreTbody.innerHTML = list.map((r, idx) => {
+              const stockId = String(r.symbol || '').replace('.TW', '').replace('.TWO', '');
+              const goodinfoUrl = `https://goodinfo.tw/tw/ShowK_ChartFlow.asp?RPT_CAT=PER&STOCK_ID=${stockId}&CHT_CAT=WEEK`;
               const isPSR = r.val_mode === 'PSR';
               const mos = r.margin_of_safety_pct !== undefined ? r.margin_of_safety_pct : 0.0;
               let mosColor = "text-rose-400 font-bold";
@@ -7544,6 +7546,11 @@
                     <div class="font-bold text-white text-sm flex items-center gap-1.5 flex-wrap">
                       <span>${r.name}</span>
                       <span class="text-[10px] font-mono font-normal px-1 rounded bg-slate-800 text-slate-400">${r.symbol}</span>
+                      <a href="${goodinfoUrl}" target="_blank" rel="noopener noreferrer"
+                         class="text-[10px] font-mono font-bold text-cyan-400 hover:text-cyan-200 bg-cyan-950/70 hover:bg-cyan-900 px-1.5 py-0.5 rounded border border-cyan-500/40 inline-flex items-center gap-0.5 transition-colors"
+                         title="前往 Goodinfo 查看 ${r.name}(${stockId}) K線與本益比河流圖">
+                        <span>Goodinfo</span><span class="text-[9px]">↗</span>
+                      </a>
                       ${valBadgeTable}
                       ${chipBadgeTable}
                     </div>
@@ -7590,6 +7597,8 @@
             mobileContainer.innerHTML = `<div class="p-8 text-center text-slate-400 font-mono text-base border-2 border-slate-800 rounded-xl">此分類目前無符合之標的</div>`;
           } else {
             mobileContainer.innerHTML = list.map((r, idx) => {
+              const stockId = String(r.symbol || '').replace('.TW', '').replace('.TWO', '');
+              const goodinfoUrl = `https://goodinfo.tw/tw/ShowK_ChartFlow.asp?RPT_CAT=PER&STOCK_ID=${stockId}&CHT_CAT=WEEK`;
               const isPSR = r.val_mode === 'PSR';
               const mos = r.margin_of_safety_pct !== undefined ? r.margin_of_safety_pct : 0.0;
               let mosBadgeClass = "text-rose-300 bg-rose-500/20 border-rose-500/50";
@@ -7662,6 +7671,13 @@
                             style="color: ${rightColor}; background-color: ${rightColor}25; border-color: ${rightColor}80;">
                         ${rightStatus}
                       </span>
+                      <!-- Goodinfo 外部 K 線與河流圖連結 (位於卡片右側留白處) -->
+                      <a href="${goodinfoUrl}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()"
+                         class="mt-1 px-2.5 py-1.5 rounded-lg text-xs font-black font-mono flex items-center gap-1.5 bg-cyan-950/80 hover:bg-cyan-900 text-cyan-300 border border-cyan-400/60 shadow-sm transition-all active:scale-95 text-right"
+                         title="前往 Goodinfo 查看 ${r.name}(${stockId}) K線與河流圖">
+                        <span>📊 Goodinfo</span>
+                        <span class="text-[10px] text-cyan-400">↗</span>
+                      </a>
                     </div>
                   </div>
 
