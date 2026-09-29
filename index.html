@@ -238,15 +238,15 @@
         <div class="my-3">
           <div class="flex items-center gap-2" id="stateBadge">
             <span class="w-3.5 h-3.5 rounded-full bg-amber-400 animate-ping"></span>
-            <span class="text-2xl font-black text-amber-400">[景氣確認] CONFIRM</span>
+            <span class="text-2xl font-black text-amber-400">[景氣確認中] CONFIRMING</span>
           </div>
           <p class="text-xs text-slate-400 mt-1" id="stateDesc">
-            AI基本面強，但宏觀與市場傳導尚未完全確認，維持穩健持股布局。
+            AI基本面強，但宏觀景氣確認中，依映射表維持 75% 穩健持股布局。
           </p>
         </div>
         <div class="text-xs text-slate-400 pt-2 border-t border-slate-800 flex justify-between">
           <span>建議持股水位：</span>
-          <strong class="text-amber-400 font-mono text-sm" id="stockRatio">60% ~ 75%</strong>
+          <strong class="text-amber-400 font-mono text-sm" id="stockRatio">75%</strong>
         </div>
       </div>
 
@@ -384,7 +384,7 @@
               <span class="text-[10px] text-slate-400">(紅燈41分 剪刀差校準)</span>
             </div>
           </div>
-          <div class="p-2 rounded-lg bg-slate-900/80 border border-slate-800">
+          <div class="p-2 rounded-lg bg-slate-900/80 border border-slate-800" id="healthCheckPe">
             <div class="text-[11px] text-slate-400">③ 合理價隱含 PE 檢核</div>
             <div class="font-bold text-emerald-400 flex items-center gap-1 mt-0.5">
               <span>🟢 PASS</span>
@@ -628,10 +628,38 @@
         <div class="h-[280px] w-full flex items-center justify-center my-auto">
           <canvas id="radarChart"></canvas>
         </div>
+        <!-- A5 規格：宏觀階段 2 輸入指標詳情與國發會連 8 紅燈客觀揭露 -->
+        <div class="mt-3 p-3 rounded-xl bg-slate-950/80 border border-slate-800 text-[11px] font-mono text-slate-300">
+          <div class="text-cyan-300 font-bold mb-1.5 flex items-center justify-between flex-wrap gap-1">
+            <span>📋 階段 2【宏觀景氣】(6.0 / 20 分) 實績輸入指標與國發會燈號</span>
+            <span class="text-[10px] px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30">國發會連續 8 個月紅燈 (41分)</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+            <div class="p-1.5 rounded bg-slate-900 border border-slate-800">
+              <div class="text-slate-400">半導體設備進口 YoY</div>
+              <div class="text-emerald-400 font-bold">+28.4% (🟢 6/6分)</div>
+              <div class="text-[10px] text-slate-500">2026-07 ｜ 實體需求強勁</div>
+            </div>
+            <div class="p-1.5 rounded bg-slate-900 border border-slate-800">
+              <div class="text-slate-400">外銷訂單動向指數</div>
+              <div class="text-slate-400 font-bold">N/A (⚪ 0/6分)</div>
+              <div class="text-[10px] text-slate-500">資料延遲 ｜ 保守計分</div>
+            </div>
+            <div class="p-1.5 rounded bg-slate-900 border border-slate-800">
+              <div class="text-slate-400">M1B-M2 年增剪刀差</div>
+              <div class="text-slate-400 font-bold">N/A (⚪ 0/8分)</div>
+              <div class="text-[10px] text-slate-500">央行待公佈 ｜ 保守計分</div>
+            </div>
+          </div>
+          <div class="text-[10px] text-slate-400 mt-2 leading-relaxed">
+            💡 國發會 2026-07 景氣對策信號為 41 分紅燈（已連續 8 個月紅燈）；8 月燈號於 9/29 公布，收到後更新連紅月數。因部分傳統貨幣/訂單指標數據延遲，本系統嚴守客觀，不填補虛擬數值，當前 6.0 分為已公佈實績項之保守評分。
+          </div>
+        </div>
       </div>
 
       <!-- 六大波段驗證成效 -->
       <div class="lg:col-span-2 bg-brand-card p-6 rounded-xl border border-brand-border flex flex-col">
+        <div class="text-[11px] text-cyan-400 font-mono mb-2 flex items-center gap-1 sm:hidden"><span>👈👉</span> 手機請左右滑動檢視完整歷史波段驗證欄位</div>
         <div class="flex justify-between items-center mb-3">
           <h3 class="text-base font-bold text-white flex items-center gap-2">
             <span>🛡️</span> 六大歷史波段雙階梯實測成效
@@ -639,7 +667,7 @@
           <span class="text-xs text-slate-400">2018–2026 實測結果</span>
         </div>
         <div class="overflow-x-auto custom-scrollbar">
-          <table class="w-full text-left text-xs">
+          <table class="w-full text-left text-xs min-w-[680px]">
             <thead class="bg-slate-900/60 text-slate-400 uppercase font-mono border-b border-slate-800">
               <tr>
                 <th class="py-2.5 px-3">事件名稱</th>
@@ -666,6 +694,7 @@
             <span>🏆</span> 領先指標全景成績單排行榜 (20 項指標)
           </h2>
           <p class="text-xs text-slate-400">依領先天數與歷史命中率驗證排序</p>
+          <div class="text-[11px] text-cyan-400 font-mono mt-1 flex items-center gap-1 sm:hidden"><span>👈👉</span> 手機請左右滑動檢視完整排行榜欄位</div>
         </div>
         <div class="text-xs font-mono text-slate-400">
           前瞻驗證窗口：<span class="text-cyan-400 font-bold">24 個月長週期驗證</span> ｜ 門檻：<span class="text-cyan-400 font-bold">≥15%</span>
@@ -673,7 +702,7 @@
         </div>
       </div>
       <div class="overflow-x-auto custom-scrollbar">
-        <table class="w-full text-left text-xs">
+        <table class="w-full text-left text-xs min-w-[680px]">
           <thead class="bg-slate-900/60 text-slate-400 uppercase font-mono border-b border-slate-800">
             <tr>
               <th class="py-3 px-3">指標名稱</th>
@@ -693,131 +722,13 @@
 
     <!-- 5. 第三層｜投資 2.0 個股選擇系統與動態投組 Alpha 戰報 (Phase 6 新增) -->
     <section class="bg-brand-card p-6 rounded-xl border border-cyan-500/40 glow-accent space-y-6">
-      <div class="flex flex-col md:flex-row md:items-center justify-between pb-4 border-b border-slate-800 gap-2">
-        <div>
-          <div class="flex items-center gap-2">
-            <span class="text-xl">🚀</span>
-            <h2 class="text-lg font-bold text-white">
-              第三層｜「投資 2.0」個股選擇系統與動態投組 Alpha 戰報
-            </h2>
-            <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
-              Macro Top-Down + RS Bottom-Up
-            </span>
-          </div>
-          <p class="text-xs text-slate-400 mt-1">
-            以自適應記分卡總分控制整體持股水位（0%~100%），於多頭/景氣確認時重倉相對強度 (RS) 最高的 AI 龍頭族群
-          </p>
-        </div>
-        <div class="flex items-center gap-3 text-xs font-mono">
-          <span class="text-slate-400">回測區間：2018–2026</span>
-          <span class="px-2.5 py-1 rounded-lg bg-slate-800 text-emerald-300 font-bold border border-emerald-500/40 shadow-sm" title="策略 CAGR 19.6% vs 大盤 18.9%，年化超額 +0.7 pp；累積超額報酬 +21.0 個百分點">
-            累積超額 +21.0 pp ｜ 年化 Alpha +0.7 pp
-          </span>
-        </div>
-      </div>
 
-      <!-- 量化回測方法論與邊界約束嚴格揭露 (C2 規格要求) -->
-      <div class="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 text-xs font-mono text-slate-300 space-y-1.5 leading-relaxed">
-        <div class="text-cyan-300 font-bold flex items-center gap-1.5">
-          <span>⚖️</span>【量化回測方法論與邊界約束嚴格揭露 (C2)】
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-[11px] text-slate-400">
-          <div>• <strong>樣本內校準 (In-Sample Calibration)</strong>：領先指標權重由 2018–2026 歷史資料校驗，尚未歷經跨市場樣本外盲測。</div>
-          <div>• <strong>真實交易摩擦成本</strong>：已全額扣除券商手續費 0.1425% 與證券交易稅 0.3%，非虛擬免成本理想曲線。</div>
-          <div>• <strong>存活者偏誤說明</strong>：目前觀察池涵蓋現行 AI 核心代表成分，回溯歷史時存在成分股存活者效應。</div>
-          <div>• <strong>買進持有對照</strong>：台積電 Buy & Hold 累積 +585.2% (MDD -38.7%) ｜ 加權指數 Buy & Hold +218.4% (MDD -28.9%) ｜ 本策略透過 2022 熊市精準降至 0% 現金，將 MDD 收斂至 -23.6%。</div>
-        </div>
-      </div>
-
-      <!-- 投組三大關鍵量化指標卡 -->
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div class="bg-slate-900/60 p-4 rounded-lg border border-slate-800">
-          <span class="text-[11px] font-mono text-slate-400 uppercase">策略累積報酬 (TOTAL RETURN)</span>
-          <div class="text-3xl font-black font-mono text-cyan-400 my-1">+362.2%</div>
-          <div class="text-[11px] text-slate-400 flex justify-between">
-            <span>年化超額 (Alpha)：<strong class="text-emerald-400">+0.7 pp</strong></span>
-            <span>CAGR: 19.6% vs 18.9%</span>
-          </div>
-        </div>
-
-        <div class="bg-slate-900/60 p-4 rounded-lg border border-slate-800">
-          <span class="text-[11px] font-mono text-slate-400 uppercase">最大回撤控制 (MAX DRAWDOWN)</span>
-          <div class="text-3xl font-black font-mono text-emerald-400 my-1">-23.6%</div>
-          <div class="text-[11px] text-slate-400 flex justify-between">
-            <span>大盤 MDD：<strong class="text-amber-400">-28.9%</strong></span>
-            <span>台積電: -38.7%</span>
-          </div>
-        </div>
-
-        <div class="bg-slate-900/60 p-4 rounded-lg border border-slate-800">
-          <span class="text-[11px] font-mono text-slate-400 uppercase">夏普比率 (SHARPE RATIO)</span>
-          <div class="text-3xl font-black font-mono text-white my-1">0.90</div>
-          <div class="text-[11px] text-slate-400 flex justify-between">
-            <span>卡瑪比率 Calmar：<strong class="text-cyan-300">0.83</strong></span>
-            <span>大盤: 0.65</span>
-          </div>
-        </div>
-
-        <div class="bg-slate-900/60 p-4 rounded-lg border border-slate-800">
-          <span class="text-[11px] font-mono text-slate-400 uppercase">月度勝率 (WIN RATE)</span>
-          <div class="text-3xl font-black font-mono text-purple-400 my-1">69.9%</div>
-          <div class="text-[11px] text-slate-400 flex justify-between">
-            <span>2022 空頭精準降至 0% 現金</span>
-            <span>避開重跌</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 投組淨值走勢圖 (Chart.js) -->
-      <div>
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-2 mb-2 gap-2">
-          <h3 class="text-sm font-bold text-white flex items-center gap-2">
-            <span>📊</span> 2018–2026 動態投組 vs 加權指數 vs 台積電 累積淨值走勢
-          </h3>
-          <div class="flex items-center gap-4 text-xs font-mono flex-wrap">
-            <div class="flex items-center gap-1.5">
-              <span class="w-3 h-0.5 bg-cyan-400"></span>
-              <span class="text-slate-300">投資 2.0 策略 (Dynamic Portfolio)</span>
-            </div>
-            <div class="flex items-center gap-1.5">
-              <span class="w-3 h-0.5 bg-blue-500"></span>
-              <span class="text-slate-400">台股加權指數 (TAIEX)</span>
-            </div>
-            <div class="flex items-center gap-1.5">
-              <span class="w-3 h-0.5 bg-emerald-400"></span>
-              <span class="text-slate-400">台積電 (2330.TW)</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- 左右拖曳提示與回到最新控制列 -->
-        <div class="flex items-center justify-between pb-3 text-xs">
-          <div class="flex items-center gap-2">
-            <span class="inline-flex items-center px-2.5 py-1 rounded bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 font-semibold text-xs">
-              👈 左右拖曳/滑動檢視歷史淨值細節
-            </span>
-            <span class="text-slate-400 text-xs hidden sm:inline">（以「月」為單位格展開，預設定位最新資料）</span>
-          </div>
-          <button id="portfolioResetBtn" onclick="window.resetPortfolioChartScroll()" 
-                  class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 active:scale-95 text-cyan-300 border border-cyan-500/40 text-xs font-mono font-bold flex items-center gap-1.5 transition-all shadow">
-            <span>⏭️</span> 回到最新月份
-          </button>
-        </div>
-
-        <!-- 滾動容器與寬幅 Wrapper -->
-        <div id="portfolioChartScrollContainer" class="overflow-x-auto overflow-y-hidden custom-scrollbar border border-slate-800/80 rounded-xl p-2 bg-slate-950/40 select-none cursor-grab active:cursor-grabbing" style="-webkit-overflow-scrolling: touch;">
-          <div id="portfolioChartWrapper" class="h-[340px]" style="min-width: 100%;">
-            <canvas id="portfolioChart"></canvas>
-          </div>
-        </div>
-      </div>
-
-      <!-- 第一層｜AI 產業景氣雷達 (10 大 AI 子產業 · 50 檔代表觀察池) -->
+      <!-- 第一層｜AI 產業景氣雷達 (10 大 AI 子產業 · 核心代表觀察池) -->
       <div id="ai-radar" class="border-t border-slate-800 pt-6">
         <div class="flex flex-col md:flex-row md:items-center justify-between pb-3 gap-2">
           <div>
             <h3 class="text-base font-bold text-white flex items-center gap-2">
-              <span>📡</span> 第一層｜AI 產業景氣雷達 (10 大 AI 子產業 · 50 檔代表觀察池)
+              <span>📡</span> 第一層｜AI 產業景氣雷達 (10 大 AI 子產業 · 核心代表觀察池)
             </h3>
             <p class="text-xs text-slate-400 mt-0.5">
               循環階段判定：A 起步 → B 初升 → C 成長 → D 高峰 → E 衰退 ｜ 動態修正 PE 乘數與遠期獲利權重
@@ -835,7 +746,7 @@
         </div>
       </div>
 
-      <!-- 第三層｜20 檔核心監控名單 — AI 投資 2.0 估值矩陣與位階色標 -->
+      <!-- 第二層｜20 檔核心監控名單 — 孫慶龍估值矩陣與位階色標 -->
       <div id="core-stocks" class="border-t border-slate-800 pt-6">
         <div class="flex flex-col md:flex-row md:items-center justify-between mb-3 gap-3">
           <div>
@@ -916,7 +827,128 @@
           <!-- JS 動態渲染手機卡片 -->
         </div>
 
-        <!-- 📚 高中版白話操作手冊與指標深度解析連結框 -->
+      <div id="portfolio-section" class="border-t border-slate-800 pt-6 space-y-6">
+        <div class="flex flex-col md:flex-row md:items-center justify-between pb-4 border-b border-slate-800 gap-2">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="text-xl">🚀</span>
+            <h2 class="text-lg font-bold text-white">
+              第三層｜「投資 2.0」個股選擇系統與動態投組 Alpha 戰報
+            </h2>
+            <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">
+              Macro Top-Down + RS Bottom-Up
+            </span>
+          </div>
+          <p class="text-xs text-slate-400 mt-1">
+            以自適應記分卡總分控制整體持股水位（0%~100%），於多頭/景氣確認時重倉相對強度 (RS) 最高的 AI 龍頭族群
+          </p>
+        </div>
+        <div class="flex items-center gap-3 text-xs font-mono">
+          <span class="text-slate-400">回測區間：2018–2026</span>
+          <span class="px-2.5 py-1 rounded-lg bg-slate-800 text-emerald-300 font-bold border border-emerald-500/40 shadow-sm" title="策略 CAGR 19.6% vs 大盤 18.9%，年化超額 +0.7 pp；累積超額報酬 +21.0 個百分點">
+            累積超額 +47.0 pp ｜ 年化 Alpha +1.4 pp
+          </span>
+        </div>
+      </div>
+
+      <!-- 量化回測方法論與邊界約束嚴格揭露 (C2 規格要求) -->
+      <div class="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 text-xs font-mono text-slate-300 space-y-1.5 leading-relaxed">
+        <div class="text-cyan-300 font-bold flex items-center gap-1.5">
+          <span>⚖️</span>【量化回測方法論與邊界約束嚴格揭露 (C2)】
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-[11px] text-slate-400">
+          <div>• <strong>樣本內校準 (In-Sample Calibration)</strong>：領先指標權重由 2018–2026 歷史資料校驗，尚未歷經跨市場樣本外盲測。</div>
+          <div>• <strong>真實交易摩擦成本</strong>：已全額扣除券商手續費 0.1425% 與證券交易稅 0.3%，非虛擬免成本理想曲線。</div>
+          <div>• <strong>存活者偏誤說明</strong>：目前觀察池涵蓋現行 AI 核心代表成分，回溯歷史時存在成分股存活者效應。</div>
+          <div>• <strong>買進持有對照</strong>：台積電 Buy & Hold 累積 +906.1% (CAGR 30.9%, MDD -38.7%) ｜ 加權指數 Buy & Hold +344.0% (CAGR 19.0%, MDD -28.9%) ｜ 本策略累積 +391.0% (CAGR 20.4%, MDD -23.6%)，累積超額 +47.0 pp，年化超額 +1.4 pp (2018-02 至 2026-09 價格報酬口徑，已扣除交易摩擦成本)。</div>
+        </div>
+      </div>
+
+      <!-- 投組三大關鍵量化指標卡 -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div class="bg-slate-900/60 p-4 rounded-lg border border-slate-800">
+          <span class="text-[11px] font-mono text-slate-400 uppercase">策略累積報酬 (TOTAL RETURN)</span>
+          <div id="backtestTotalRet" class="text-3xl font-black font-mono text-cyan-400 my-1">+391.0%</div>
+          <div class="text-[11px] text-slate-400 flex justify-between">
+            <span>年化超額 (Alpha)：<strong id="backtestAlpha" class="text-emerald-400">+1.4 pp</strong></span>
+            <span id="backtestCagrCompare">CAGR: 20.4% vs 19.0%</span>
+          </div>
+        </div>
+
+        <div class="bg-slate-900/60 p-4 rounded-lg border border-slate-800">
+          <span class="text-[11px] font-mono text-slate-400 uppercase">最大回撤控制 (MAX DRAWDOWN)</span>
+          <div class="text-3xl font-black font-mono text-emerald-400 my-1">-23.6%</div>
+          <div class="text-[11px] text-slate-400 flex justify-between">
+            <span>大盤 MDD：<strong class="text-amber-400">-28.9%</strong></span>
+            <span>台積電: -38.7%</span>
+          </div>
+        </div>
+
+        <div class="bg-slate-900/60 p-4 rounded-lg border border-slate-800">
+          <span class="text-[11px] font-mono text-slate-400 uppercase">夏普比率 (SHARPE RATIO)</span>
+          <div class="text-3xl font-black font-mono text-white my-1">0.90</div>
+          <div class="text-[11px] text-slate-400 flex justify-between">
+            <span>卡瑪比率 Calmar：<strong class="text-cyan-300">0.83</strong></span>
+            <span>大盤: 0.65</span>
+          </div>
+        </div>
+
+        <div class="bg-slate-900/60 p-4 rounded-lg border border-slate-800">
+          <span class="text-[11px] font-mono text-slate-400 uppercase">月度勝率 (WIN RATE)</span>
+          <div class="text-3xl font-black font-mono text-purple-400 my-1">69.9%</div>
+          <div class="text-[11px] text-slate-400 flex justify-between">
+            <span>2022 空頭精準降至 0% 現金</span>
+            <span>避開重跌</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 投組淨值走勢圖 (Chart.js) -->
+      <div>
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-2 mb-2 gap-2">
+          <h3 class="text-sm font-bold text-white flex items-center gap-2">
+            <span>📊</span> 2018–2026 動態投組 vs 加權指數 vs 台積電 累積淨值走勢
+          </h3>
+          <div class="flex items-center gap-4 text-xs font-mono flex-wrap">
+            <div class="flex items-center gap-1.5">
+              <span class="w-3 h-0.5 bg-cyan-400"></span>
+              <span class="text-slate-300">投資 2.0 策略 (Dynamic Portfolio)</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="w-3 h-0.5 bg-blue-500"></span>
+              <span class="text-slate-400">台股加權指數 (TAIEX)</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="w-3 h-0.5 bg-emerald-400"></span>
+              <span class="text-slate-400">台積電 (2330.TW)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 左右拖曳提示與回到最新控制列 -->
+        <div class="flex items-center justify-between pb-3 text-xs">
+          <div class="flex items-center gap-2">
+            <span class="inline-flex items-center px-2.5 py-1 rounded bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 font-semibold text-xs">
+              👈 左右拖曳/滑動檢視歷史淨值細節
+            </span>
+            <span class="text-slate-400 text-xs hidden sm:inline">（以「月」為單位格展開，預設定位最新資料）</span>
+          </div>
+          <button id="portfolioResetBtn" onclick="window.resetPortfolioChartScroll()" 
+                  class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 active:scale-95 text-cyan-300 border border-cyan-500/40 text-xs font-mono font-bold flex items-center gap-1.5 transition-all shadow">
+            <span>⏭️</span> 回到最新月份
+          </button>
+        </div>
+
+        <!-- 滾動容器與寬幅 Wrapper -->
+        <div id="portfolioChartScrollContainer" class="overflow-x-auto overflow-y-hidden custom-scrollbar border border-slate-800/80 rounded-xl p-2 bg-slate-950/40 select-none cursor-grab active:cursor-grabbing" style="-webkit-overflow-scrolling: touch;">
+          <div id="portfolioChartWrapper" class="h-[340px]" style="min-width: 100%;">
+            <canvas id="portfolioChart"></canvas>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <!-- 📚 高中版白話操作手冊與指標深度解析連結框 -->
         <div class="mt-8 p-5 md:p-6 rounded-2xl bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 border-2 border-cyan-400/80 shadow-[0_0_25px_rgba(56,189,248,0.25)] relative overflow-hidden group">
           <!-- 裝飾微光背景 -->
           <div class="absolute -right-10 -top-10 w-44 h-44 bg-cyan-500/15 rounded-full blur-3xl pointer-events-none"></div>
@@ -968,7 +1000,7 @@
   <!-- 嵌入真實數據資料庫 -->
   <script>
     const DASHBOARD_DATA = {
-  "generated_at": "2026-09-29 12:30",
+  "generated_at": "2026-09-29 13:39",
   "latest_signal": {
     "date": "2026-09",
     "total_score": 67.0,
@@ -3815,7 +3847,12 @@
     "taiex_mdd": 28.9,
     "tsmc_total_return": 906.1,
     "tsmc_cagr": 30.9,
-    "tsmc_mdd": 38.7
+    "tsmc_mdd": 38.7,
+    "excess_return_pp": 47.0,
+    "alpha_pp": 1.4,
+    "backtest_start": "2018-02",
+    "backtest_end": "2026-09",
+    "backtest_period_desc": "2018-02 至 2026-09 (共 8.6 年，價格報酬口徑，已扣除手續費與證交稅)"
   },
   "ai_radar": [
     {
@@ -3845,7 +3882,7 @@
       "description": "北美雲端 CSP (微軟/亞馬遜/Google/Meta) 自研 ASIC 晶片需求爆發，權利金擴增",
       "key_metrics": "ASIC 專案開案量、NRE 委託設計營收佔比、毛利率 > 45%",
       "radar_stocks_count": 5,
-      "core_stocks": "無核心股",
+      "core_stocks": "聯發科(2454)",
       "representative_stocks": "聯發科(2454), 世芯-KY(3661), 創意(3443), 智原(3035), 祥碩(5269)"
     },
     {
@@ -3860,7 +3897,7 @@
       "description": "GB200/GB300 機櫃型伺服器放量量產出貨，ASP 巨幅攀升帶動營收高成長",
       "key_metrics": "AI 伺服器營收佔比 > 35%、伺服器出貨量年增率、營益率穩定提升",
       "radar_stocks_count": 6,
-      "core_stocks": "仁寶(2324), 英業達(2356), 鴻海(2317), 緯創(3231)",
+      "core_stocks": "英業達(2356), 鴻海(2317), 緯創(3231)",
       "representative_stocks": "鴻海(2317), 廣達(2382), 緯創(3231), 緯穎(6669), 英業達(2356), 仁寶(2324)"
     },
     {
@@ -3985,6 +4022,8 @@
       "pe_forward_2027": 24.47,
       "fair_implied_pe": 54.2,
       "fair_implied_pe_ttm": 551.6,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
       "val_defensive_icon": "🟢",
       "val_defensive_tag": "安全邊際防守",
       "val_defensive_color": "emerald",
@@ -4054,7 +4093,7 @@
       "ttm_revenue": 73.36,
       "shares_out": 1.177,
       "rank": 19,
-      "rs_score": 22.6,
+      "rs_score": 20.6,
       "ret_3m": -23.39,
       "bias_ma20": -3.8,
       "trend_bullish": false,
@@ -4081,6 +4120,8 @@
       "pe_forward_2027": 15.56,
       "fair_implied_pe": 22.4,
       "fair_implied_pe_ttm": 31.3,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
       "val_defensive_icon": "🟢",
       "val_defensive_tag": "安全邊際防守",
       "val_defensive_color": "emerald",
@@ -4150,7 +4191,7 @@
       "ttm_revenue": 350.0,
       "shares_out": 5.2,
       "rank": 20,
-      "rs_score": 19.1,
+      "rs_score": 17.2,
       "ret_3m": -18.28,
       "bias_ma20": -3.1,
       "trend_bullish": false,
@@ -4177,6 +4218,8 @@
       "pe_forward_2027": 14.88,
       "fair_implied_pe": 20.0,
       "fair_implied_pe_ttm": 27.8,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
       "val_defensive_icon": "🟢",
       "val_defensive_tag": "安全邊際防守",
       "val_defensive_color": "emerald",
@@ -4246,7 +4289,7 @@
       "ttm_revenue": 5500.0,
       "shares_out": 35.8,
       "rank": 18,
-      "rs_score": 29.4,
+      "rs_score": 28.0,
       "ret_3m": -11.98,
       "bias_ma20": -5.7,
       "trend_bullish": false,
@@ -4273,12 +4316,14 @@
       "pe_forward_2027": 102.19,
       "fair_implied_pe": 137.4,
       "fair_implied_pe_ttm": 183.2,
-      "val_defensive_icon": "🟢",
-      "val_defensive_tag": "安全邊際防守",
-      "val_defensive_color": "emerald",
+      "is_pe_extreme": true,
+      "pe_extreme_msg": "合理價隱含 PE 137x 超過上限 (60x)",
+      "val_defensive_icon": "⚠️",
+      "val_defensive_tag": "估值待驗證",
+      "val_defensive_color": "amber",
       "dim_fundamental": "🟢 績優高成長",
       "dim_cycle": "🟢 Stage C 成長主升",
-      "dim_valuation": "⚪ 合理偏低區",
+      "dim_valuation": "⚠️ 估值待驗證",
       "adjusted_pe": 137.43,
       "peer_pe": 26.0,
       "peg": 4.91,
@@ -4300,10 +4345,10 @@
       "target_fair_2027": 6596.64,
       "target_fair_2028": 8245.8,
       "target_formula_note": "2027E 高成長情境 EPS $48.0 × 雷達修正本益比 137.43x = $6596.64 (折現PV約 $5855.7，現值空間 +19.4%，年化約 +15.2%)",
-      "sun_status": "⚪ 合理偏低區",
-      "badge_color": "#F8FAFC",
-      "sun_action": "平價穩健區間，耐心抱牢享受成長",
-      "sun_position": "50% (單檔上限，穩健持有)",
+      "sun_status": "⚠️ 估值待驗證",
+      "badge_color": "#F59E0B",
+      "sun_action": "合理價隱含 PE 137x 超過上限 (60x)，禁止標註合理偏低，嚴控下檔風險",
+      "sun_position": "30% (單檔上限，觸發極端PE阻斷)",
       "rank_tier": 3,
       "val_mode": "PER",
       "val_mode_tag": "📈 PER 穩健獲利模式",
@@ -4342,7 +4387,7 @@
       "ttm_revenue": 650.0,
       "shares_out": 3.4,
       "rank": 16,
-      "rs_score": 32.8,
+      "rs_score": 31.4,
       "ret_3m": -18.96,
       "bias_ma20": -5.8,
       "trend_bullish": false,
@@ -4369,12 +4414,14 @@
       "pe_forward_2027": 75.31,
       "fair_implied_pe": 98.7,
       "fair_implied_pe_ttm": 132.1,
-      "val_defensive_icon": "🟢",
-      "val_defensive_tag": "安全邊際防守",
-      "val_defensive_color": "emerald",
+      "is_pe_extreme": true,
+      "pe_extreme_msg": "合理價隱含 PE 99x 超過上限 (60x)",
+      "val_defensive_icon": "⚠️",
+      "val_defensive_tag": "估值待驗證",
+      "val_defensive_color": "amber",
       "dim_fundamental": "🟢 穩健增長",
       "dim_cycle": "🟢 Stage B 初升量產",
-      "dim_valuation": "⚪ 合理偏低區",
+      "dim_valuation": "⚠️ 估值待驗證",
       "adjusted_pe": 98.73,
       "peer_pe": 32.0,
       "peg": 3.93,
@@ -4396,10 +4443,10 @@
       "target_fair_2027": 2418.89,
       "target_fair_2028": 2961.9,
       "target_formula_note": "2027E 高成長情境 EPS $24.5 × 雷達修正本益比 98.73x = $2418.89 (折現PV約 $2147.2，現值空間 +16.4%，年化約 +12.9%)",
-      "sun_status": "⚪ 合理偏低區",
-      "badge_color": "#F8FAFC",
-      "sun_action": "平價穩健區間，耐心抱牢享受成長",
-      "sun_position": "50% (單檔上限，穩健持有)",
+      "sun_status": "⚠️ 估值待驗證",
+      "badge_color": "#F59E0B",
+      "sun_action": "合理價隱含 PE 99x 超過上限 (60x)，禁止標註合理偏低，嚴控下檔風險",
+      "sun_position": "30% (單檔上限，觸發極端PE阻斷)",
       "rank_tier": 3,
       "val_mode": "PER",
       "val_mode_tag": "📈 PER 穩健獲利模式",
@@ -4437,8 +4484,8 @@
       "divergence_note": "",
       "ttm_revenue": 4200.0,
       "shares_out": 25.9,
-      "rank": 13,
-      "rs_score": 44.6,
+      "rank": 14,
+      "rs_score": 42.6,
       "ret_3m": -11.08,
       "bias_ma20": 3.6,
       "trend_bullish": true,
@@ -4465,6 +4512,8 @@
       "pe_forward_2027": 18.26,
       "fair_implied_pe": 25.3,
       "fair_implied_pe_ttm": 47.2,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
       "val_defensive_icon": "🟢",
       "val_defensive_tag": "安全邊際防守",
       "val_defensive_color": "emerald",
@@ -4534,7 +4583,7 @@
       "ttm_revenue": 165.0,
       "shares_out": 3.1,
       "rank": 17,
-      "rs_score": 31.9,
+      "rs_score": 29.9,
       "ret_3m": -1.24,
       "bias_ma20": -3.5,
       "trend_bullish": true,
@@ -4545,102 +4594,6 @@
       "chip_badge": "⚠️ 資金流出",
       "chip_status": "🔴 資金流出",
       "chip_detail": "資金流向偏弱 (CMF: -0.46, 短線法人偏賣方)"
-    },
-    {
-      "symbol": "2324.TW",
-      "name": "仁寶",
-      "category": "AI伺服器代工與機櫃",
-      "sub_industry": "server_odm",
-      "industry_stage": "C 成長",
-      "radar_multiplier": 1.0,
-      "close": 36.3,
-      "ma60": 37.7,
-      "current_pe": 12.96,
-      "trailing_pe": 17.29,
-      "pe_forward_2026": 12.96,
-      "pe_forward_2027": 10.37,
-      "fair_implied_pe": 13.5,
-      "fair_implied_pe_ttm": 18.0,
-      "val_defensive_icon": "🟢",
-      "val_defensive_tag": "安全邊際防守",
-      "val_defensive_color": "emerald",
-      "dim_fundamental": "🟢 穩健增長",
-      "dim_cycle": "🟢 Stage C 成長主升",
-      "dim_valuation": "⚪ 合理偏低區",
-      "adjusted_pe": 13.48,
-      "peer_pe": 18.0,
-      "peg": 0.52,
-      "growth_g": 25.0,
-      "eps_ttm": 2.1,
-      "floor_value": 31.5,
-      "stop_loss_price": 31.9,
-      "stop_loss_pct": -12.1,
-      "extreme_floor": 18.66,
-      "eps_2026e": 2.8,
-      "eps_2027e": 3.5,
-      "eps_2028e": 4.2,
-      "p_bargain": 23.32,
-      "p_cheap": 30.19,
-      "p_fair": 37.74,
-      "p_expensive": 45.29,
-      "p_crazy": 52.16,
-      "margin_of_safety_pct": 3.82,
-      "target_fair_2027": 47.18,
-      "target_fair_2028": 56.62,
-      "target_formula_note": "2027E 高成長情境 EPS $3.5 × 雷達修正本益比 13.48x = $47.18 (折現PV約 $41.9，現值空間 +15.4%，年化約 +12.2%)",
-      "sun_status": "⚪ 合理偏低區",
-      "badge_color": "#F8FAFC",
-      "sun_action": "平價穩健區間，耐心抱牢享受成長",
-      "sun_position": "50% (單檔上限，穩健持有)",
-      "rank_tier": 3,
-      "val_mode": "PER",
-      "val_mode_tag": "📈 PER 穩健獲利模式",
-      "val_reason": "獲利模式成熟穩定(近4季實績EPS $2.1，2026E前瞻PE 13.0x)，採用經典孫慶龍本益比折現估值",
-      "rev_yoy_3m": 8.5,
-      "sps": 215.42,
-      "current_psr": 0.17,
-      "base_psr_tiers": [
-        0.15,
-        0.2,
-        0.28,
-        0.38,
-        0.52
-      ],
-      "psr_tiers": [
-        0.15,
-        0.2,
-        0.28,
-        0.38,
-        0.52
-      ],
-      "implied_pe_fair_trailing": 18.0,
-      "implied_pe_fair_forward": 13.5,
-      "implied_pe_fair_forward_2027": 10.8,
-      "val_basis": "2026E 前瞻 EPS $2.8 (高成長情境)",
-      "eps_2026e_cons": 1.96,
-      "p_fair_conservative": 26.4,
-      "pv_target_2027": 41.9,
-      "pv_upside_total": 15.4,
-      "pv_upside_ann": 12.2,
-      "peg_consensus": NaN,
-      "peg_scenario": 0.52,
-      "is_divergent": false,
-      "divergence_alert": "",
-      "divergence_note": "",
-      "ttm_revenue": 9500.0,
-      "shares_out": 44.1,
-      "rank": 14,
-      "rs_score": 43.6,
-      "ret_3m": 3.86,
-      "bias_ma20": -5.3,
-      "trend_bullish": false,
-      "action_advice": "⏸️ 均線整理中，暫先觀望",
-      "right_status": "⏸️ 築底觀望",
-      "right_advice": "均線仍在整理打底(負乖離 -5.3%)，動能未表態，右側先觀望",
-      "right_badge_color": "#94A3B8",
-      "chip_badge": "⚠️ 資金流出",
-      "chip_status": "🔴 資金流出",
-      "chip_detail": "資金流向偏弱 (CMF: -0.23, 短線法人偏賣方)"
     },
     {
       "symbol": "1513.TW",
@@ -4657,6 +4610,8 @@
       "pe_forward_2027": 14.96,
       "fair_implied_pe": 19.6,
       "fair_implied_pe_ttm": 27.8,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
       "val_defensive_icon": "🟢",
       "val_defensive_tag": "安全邊際防守",
       "val_defensive_color": "emerald",
@@ -4726,7 +4681,7 @@
       "ttm_revenue": 240.0,
       "shares_out": 5.0,
       "rank": 15,
-      "rs_score": 39.2,
+      "rs_score": 37.3,
       "ret_3m": -5.1,
       "bias_ma20": 1.4,
       "trend_bullish": true,
@@ -4753,6 +4708,8 @@
       "pe_forward_2027": 36.4,
       "fair_implied_pe": 45.0,
       "fair_implied_pe_ttm": 56.7,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
       "val_defensive_icon": "🟢",
       "val_defensive_tag": "安全邊際防守",
       "val_defensive_color": "emerald",
@@ -4821,8 +4778,8 @@
       "divergence_note": "",
       "ttm_revenue": 28500.0,
       "shares_out": 259.3,
-      "rank": 9,
-      "rs_score": 56.4,
+      "rank": 10,
+      "rs_score": 54.4,
       "ret_3m": 1.23,
       "bias_ma20": 1.6,
       "trend_bullish": true,
@@ -4849,6 +4806,8 @@
       "pe_forward_2027": 29.22,
       "fair_implied_pe": 36.2,
       "fair_implied_pe_ttm": 47.8,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
       "val_defensive_icon": "🟢",
       "val_defensive_tag": "安全邊際防守",
       "val_defensive_color": "emerald",
@@ -4917,8 +4876,8 @@
       "divergence_note": "",
       "ttm_revenue": 1550.0,
       "shares_out": 23.5,
-      "rank": 1,
-      "rs_score": 89.2,
+      "rank": 2,
+      "rs_score": 85.8,
       "ret_3m": 28.08,
       "bias_ma20": -3.1,
       "trend_bullish": true,
@@ -4945,6 +4904,8 @@
       "pe_forward_2027": 26.99,
       "fair_implied_pe": 34.1,
       "fair_implied_pe_ttm": 47.0,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
       "val_defensive_icon": "🟢",
       "val_defensive_tag": "安全邊際防守",
       "val_defensive_color": "emerald",
@@ -5013,8 +4974,8 @@
       "divergence_note": "",
       "ttm_revenue": 650.0,
       "shares_out": 2.05,
-      "rank": 8,
-      "rs_score": 56.4,
+      "rank": 9,
+      "rs_score": 54.4,
       "ret_3m": -8.28,
       "bias_ma20": 1.6,
       "trend_bullish": true,
@@ -5041,6 +5002,8 @@
       "pe_forward_2027": 13.62,
       "fair_implied_pe": 16.4,
       "fair_implied_pe_ttm": 22.2,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
       "val_defensive_icon": "🟡",
       "val_defensive_tag": "偏高震盪位階",
       "val_defensive_color": "amber",
@@ -5109,8 +5072,8 @@
       "divergence_note": "",
       "ttm_revenue": 65000.0,
       "shares_out": 138.6,
-      "rank": 11,
-      "rs_score": 50.0,
+      "rank": 12,
+      "rs_score": 46.6,
       "ret_3m": 4.78,
       "bias_ma20": 0.3,
       "trend_bullish": true,
@@ -5137,6 +5100,8 @@
       "pe_forward_2027": 29.45,
       "fair_implied_pe": 34.2,
       "fair_implied_pe_ttm": 44.8,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
       "val_defensive_icon": "🟡",
       "val_defensive_tag": "偏高震盪位階",
       "val_defensive_color": "amber",
@@ -5205,8 +5170,8 @@
       "divergence_note": "",
       "ttm_revenue": 148.0,
       "shares_out": 4.9,
-      "rank": 3,
-      "rs_score": 78.4,
+      "rank": 4,
+      "rs_score": 75.0,
       "ret_3m": -2.23,
       "bias_ma20": 0.8,
       "trend_bullish": true,
@@ -5233,8 +5198,10 @@
       "pe_forward_2027": 77.37,
       "fair_implied_pe": 97.4,
       "fair_implied_pe_ttm": 144.1,
-      "val_defensive_icon": "🟡",
-      "val_defensive_tag": "偏高震盪位階",
+      "is_pe_extreme": true,
+      "pe_extreme_msg": "合理價隱含 PE 97x 超過上限 (60x)",
+      "val_defensive_icon": "⚠️",
+      "val_defensive_tag": "估值待驗證",
       "val_defensive_color": "amber",
       "dim_fundamental": "🟢 績優高成長",
       "dim_cycle": "🟢 Stage C 成長主升",
@@ -5263,7 +5230,7 @@
       "sun_status": "🟡 合理偏高區",
       "badge_color": "#FBBF24",
       "sun_action": "估值稍微偏貴，嚴禁追高，可續抱",
-      "sun_position": "30% (單檔上限，停止追高)",
+      "sun_position": "30% (單檔上限，觸發極端PE阻斷)",
       "rank_tier": 4,
       "val_mode": "PER",
       "val_mode_tag": "📈 PER 穩健獲利模式",
@@ -5301,8 +5268,8 @@
       "divergence_note": "",
       "ttm_revenue": 220.0,
       "shares_out": 2.7,
-      "rank": 6,
-      "rs_score": 66.2,
+      "rank": 7,
+      "rs_score": 62.7,
       "ret_3m": -17.88,
       "bias_ma20": 5.0,
       "trend_bullish": false,
@@ -5329,6 +5296,8 @@
       "pe_forward_2027": 13.74,
       "fair_implied_pe": 16.8,
       "fair_implied_pe_ttm": 24.4,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
       "val_defensive_icon": "🟡",
       "val_defensive_tag": "偏高震盪位階",
       "val_defensive_color": "amber",
@@ -5397,14 +5366,14 @@
       "divergence_note": "",
       "ttm_revenue": 9800.0,
       "shares_out": 28.9,
-      "rank": 7,
-      "rs_score": 62.2,
+      "rank": 8,
+      "rs_score": 57.4,
       "ret_3m": 16.67,
-      "bias_ma20": -0.0,
+      "bias_ma20": 0.0,
       "trend_bullish": true,
-      "action_advice": "⏸️ 跌破月線回測中(乖離 -0.0%)，等待站回月線確認",
+      "action_advice": "⏸️ 月線持平整理中，等待方向確認",
       "right_status": "⏸️ 回測整理",
-      "right_advice": "中多格局但短線跌破月線(負乖離 -0.0%)，暫緩追價，靜待止跌收復月線",
+      "right_advice": "中多格局短線月線持平整理 (0.0%)，等待方向確認",
       "right_badge_color": "#F59E0B",
       "chip_badge": "",
       "chip_status": "⚪ 平穩沉澱",
@@ -5425,8 +5394,10 @@
       "pe_forward_2027": 95.68,
       "fair_implied_pe": 116.9,
       "fair_implied_pe_ttm": 163.3,
-      "val_defensive_icon": "🟡",
-      "val_defensive_tag": "偏高震盪位階",
+      "is_pe_extreme": true,
+      "pe_extreme_msg": "合理價隱含 PE 117x 超過上限 (60x)",
+      "val_defensive_icon": "⚠️",
+      "val_defensive_tag": "估值待驗證",
       "val_defensive_color": "amber",
       "dim_fundamental": "🟢 績優高成長",
       "dim_cycle": "🟢 Stage C 成長主升",
@@ -5455,7 +5426,7 @@
       "sun_status": "🟡 合理偏高區",
       "badge_color": "#FBBF24",
       "sun_action": "估值稍微偏貴，嚴禁追高，可續抱",
-      "sun_position": "30% (單檔上限，停止追高)",
+      "sun_position": "30% (單檔上限，觸發極端PE阻斷)",
       "rank_tier": 4,
       "val_mode": "PER",
       "val_mode_tag": "📈 PER 穩健獲利模式",
@@ -5493,8 +5464,8 @@
       "divergence_note": "",
       "ttm_revenue": 105.0,
       "shares_out": 0.95,
-      "rank": 2,
-      "rs_score": 79.4,
+      "rank": 3,
+      "rs_score": 77.4,
       "ret_3m": 49.5,
       "bias_ma20": -6.5,
       "trend_bullish": true,
@@ -5521,9 +5492,11 @@
       "pe_forward_2027": 69.05,
       "fair_implied_pe": 108.9,
       "fair_implied_pe_ttm": 302.5,
-      "val_defensive_icon": "🔴",
-      "val_defensive_tag": "嚴重溢價警戒",
-      "val_defensive_color": "rose",
+      "is_pe_extreme": true,
+      "pe_extreme_msg": "合理價隱含 PE 109x 超過上限 (60x)",
+      "val_defensive_icon": "⚠️",
+      "val_defensive_tag": "估值待驗證",
+      "val_defensive_color": "amber",
       "dim_fundamental": "🟢 績優高成長",
       "dim_cycle": "🟢 Stage B 初升量產",
       "dim_valuation": "🟡 合理偏高區",
@@ -5551,7 +5524,7 @@
       "sun_status": "🟡 合理偏高區",
       "badge_color": "#FBBF24",
       "sun_action": "估值稍微偏貴，嚴禁追高，可續抱",
-      "sun_position": "30% (單檔上限，停止追高)",
+      "sun_position": "30% (單檔上限，觸發極端PE阻斷)",
       "rank_tier": 4,
       "val_mode": "PSR",
       "val_mode_tag": "📊 PSR 營收爆發模式",
@@ -5589,8 +5562,8 @@
       "divergence_note": "",
       "ttm_revenue": 25.0,
       "shares_out": 1.01,
-      "rank": 10,
-      "rs_score": 51.5,
+      "rank": 11,
+      "rs_score": 48.0,
       "ret_3m": 12.91,
       "bias_ma20": -6.1,
       "trend_bullish": true,
@@ -5601,6 +5574,104 @@
       "chip_badge": "",
       "chip_status": "⚪ 平穩沉澱",
       "chip_detail": "籌碼平穩沉澱 (CMF: -0.25)"
+    },
+    {
+      "symbol": "2454.TW",
+      "name": "聯發科",
+      "category": "IC設計與客製化晶片",
+      "sub_industry": "asic_design",
+      "industry_stage": "C 成長",
+      "radar_multiplier": 1.0,
+      "close": 4955.0,
+      "ma60": 4088.3,
+      "current_pe": 60.43,
+      "trailing_pe": 76.23,
+      "pe_forward_2026": 60.43,
+      "pe_forward_2027": 50.56,
+      "fair_implied_pe": 49.9,
+      "fair_implied_pe_ttm": 62.9,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
+      "val_defensive_icon": "🔴",
+      "val_defensive_tag": "嚴重溢價警戒",
+      "val_defensive_color": "rose",
+      "dim_fundamental": "🟢 穩健增長",
+      "dim_cycle": "🟢 Stage C 成長主升",
+      "dim_valuation": "🟠 昂貴高檔區",
+      "adjusted_pe": 49.86,
+      "peer_pe": 25.0,
+      "peg": 3.1,
+      "growth_g": 19.5,
+      "eps_ttm": 65.0,
+      "floor_value": 975.0,
+      "stop_loss_price": 4360.4,
+      "stop_loss_pct": -12.0,
+      "extreme_floor": 2021.23,
+      "eps_2026e": 82.0,
+      "eps_2027e": 98.0,
+      "eps_2028e": 115.0,
+      "p_bargain": 2526.54,
+      "p_cheap": 3270.61,
+      "p_fair": 4088.26,
+      "p_expensive": 4905.91,
+      "p_crazy": 5649.98,
+      "margin_of_safety_pct": -21.2,
+      "target_fair_2027": 4886.28,
+      "target_fair_2028": 5733.9,
+      "target_formula_note": "2027E 高成長情境 EPS $98.0 × 雷達修正本益比 49.86x = $4886.28 (折現PV約 $4337.5，現值空間 +-12.5%，年化約 +0.0%)",
+      "sun_status": "🟠 昂貴高檔區",
+      "badge_color": "#FB923C",
+      "sun_action": "市場給予高溢價，逢高分批減碼",
+      "sun_position": "15% (單檔上限，逢高調節)",
+      "rank_tier": 5,
+      "val_mode": "PER",
+      "val_mode_tag": "📈 PER 穩健獲利模式",
+      "val_reason": "獲利模式成熟穩定(近4季實績EPS $65，2026E前瞻PE 60.4x)，採用經典孫慶龍本益比折現估值",
+      "rev_yoy_3m": 19.0,
+      "sps": 343.75,
+      "current_psr": 14.41,
+      "base_psr_tiers": [
+        3.0,
+        4.0,
+        5.5,
+        7.5,
+        10.0
+      ],
+      "psr_tiers": [
+        3.0,
+        4.0,
+        5.5,
+        7.5,
+        10.0
+      ],
+      "implied_pe_fair_trailing": 62.9,
+      "implied_pe_fair_forward": 49.9,
+      "implied_pe_fair_forward_2027": 41.7,
+      "val_basis": "2026E 前瞻 EPS $82.0 (高成長情境)",
+      "eps_2026e_cons": 57.4,
+      "p_fair_conservative": 2862.0,
+      "pv_target_2027": 4337.5,
+      "pv_upside_total": -12.5,
+      "pv_upside_ann": 0.0,
+      "peg_consensus": NaN,
+      "peg_scenario": 3.1,
+      "is_divergent": false,
+      "divergence_alert": "",
+      "divergence_note": "",
+      "ttm_revenue": 5500.0,
+      "shares_out": 16.0,
+      "rank": 1,
+      "rs_score": 93.1,
+      "ret_3m": 18.82,
+      "bias_ma20": 6.5,
+      "trend_bullish": true,
+      "action_advice": "📈 均線突破但估值偏高(MoS -21.2%)，順勢操作",
+      "right_status": "📈 順勢突破",
+      "right_advice": "站穩月線突破(乖離 +6.5%)，但左側估值已高於合理價(MoS -21.2%)，僅適合右側趨勢交易，不屬價值型低接買點",
+      "right_badge_color": "#00F59B",
+      "chip_badge": "⚠️ 資金流出",
+      "chip_status": "🔴 資金流出",
+      "chip_detail": "資金流向偏弱 (CMF: -0.13, 短線法人偏賣方)"
     },
     {
       "symbol": "3211.TWO",
@@ -5617,6 +5688,8 @@
       "pe_forward_2027": 30.16,
       "fair_implied_pe": 33.6,
       "fair_implied_pe_ttm": 50.7,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
       "val_defensive_icon": "🔴",
       "val_defensive_tag": "嚴重溢價警戒",
       "val_defensive_color": "rose",
@@ -5685,8 +5758,8 @@
       "divergence_note": "",
       "ttm_revenue": 165.0,
       "shares_out": 1.5,
-      "rank": 12,
-      "rs_score": 48.0,
+      "rank": 13,
+      "rs_score": 46.1,
       "ret_3m": -3.74,
       "bias_ma20": 2.3,
       "trend_bullish": true,
@@ -5713,6 +5786,8 @@
       "pe_forward_2027": 15.19,
       "fair_implied_pe": 15.5,
       "fair_implied_pe_ttm": 21.9,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
       "val_defensive_icon": "🔴",
       "val_defensive_tag": "嚴重溢價警戒",
       "val_defensive_color": "rose",
@@ -5781,8 +5856,8 @@
       "divergence_note": "",
       "ttm_revenue": 145.0,
       "shares_out": 2.7,
-      "rank": 5,
-      "rs_score": 73.5,
+      "rank": 6,
+      "rs_score": 70.1,
       "ret_3m": 10.07,
       "bias_ma20": -1.8,
       "trend_bullish": true,
@@ -5809,9 +5884,11 @@
       "pe_forward_2027": 183.45,
       "fair_implied_pe": 122.7,
       "fair_implied_pe_ttm": 337.4,
-      "val_defensive_icon": "🔴",
-      "val_defensive_tag": "嚴重溢價警戒",
-      "val_defensive_color": "rose",
+      "is_pe_extreme": true,
+      "pe_extreme_msg": "合理價隱含 PE 123x 超過上限 (60x)",
+      "val_defensive_icon": "⚠️",
+      "val_defensive_tag": "估值待驗證",
+      "val_defensive_color": "amber",
       "dim_fundamental": "🟢 績優高成長",
       "dim_cycle": "🟢 Stage B 初升量產",
       "dim_valuation": "🔴 瘋狂過熱區",
@@ -5839,7 +5916,7 @@
       "sun_status": "🔴 瘋狂過熱區",
       "badge_color": "#FF5252",
       "sun_action": "極度狂熱泡沫，預支遠期獲利，全部賣光光",
-      "sun_position": "0% (出清冬藏現金)",
+      "sun_position": "30% (單檔上限，觸發極端PE阻斷)",
       "rank_tier": 6,
       "val_mode": "PSR",
       "val_mode_tag": "📊 PSR 營收爆發模式",
@@ -5877,8 +5954,8 @@
       "divergence_note": "",
       "ttm_revenue": 45.0,
       "shares_out": 0.917,
-      "rank": 4,
-      "rs_score": 74.5,
+      "rank": 5,
+      "rs_score": 71.1,
       "ret_3m": 39.33,
       "bias_ma20": -9.3,
       "trend_bullish": true,
@@ -5907,6 +5984,8 @@
       "pe_forward_2027": 17.0,
       "fair_implied_pe": 19.6,
       "fair_implied_pe_ttm": 21.5,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
       "val_defensive_icon": "🟢",
       "val_defensive_tag": "安全邊際防守",
       "val_defensive_color": "emerald",
@@ -6004,6 +6083,8 @@
       "pe_forward_2027": 18.17,
       "fair_implied_pe": 20.1,
       "fair_implied_pe_ttm": 21.8,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
       "val_defensive_icon": "🟢",
       "val_defensive_tag": "安全邊際防守",
       "val_defensive_color": "emerald",
@@ -6101,6 +6182,8 @@
       "pe_forward_2027": 15.54,
       "fair_implied_pe": 23.7,
       "fair_implied_pe_ttm": 47.4,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
       "val_defensive_icon": "🟢",
       "val_defensive_tag": "安全邊際防守",
       "val_defensive_color": "emerald",
@@ -6198,6 +6281,8 @@
       "pe_forward_2027": 8.75,
       "fair_implied_pe": 9.3,
       "fair_implied_pe_ttm": 10.0,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
       "val_defensive_icon": "🟢",
       "val_defensive_tag": "安全邊際防守",
       "val_defensive_color": "emerald",
@@ -6295,6 +6380,8 @@
       "pe_forward_2027": 17.71,
       "fair_implied_pe": 18.8,
       "fair_implied_pe_ttm": 20.4,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
       "val_defensive_icon": "🟡",
       "val_defensive_tag": "偏高震盪位階",
       "val_defensive_color": "amber",
@@ -6392,6 +6479,8 @@
       "pe_forward_2027": 5.42,
       "fair_implied_pe": 5.8,
       "fair_implied_pe_ttm": 6.4,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
       "val_defensive_icon": "🟡",
       "val_defensive_tag": "偏高震盪位階",
       "val_defensive_color": "amber",
@@ -6489,6 +6578,8 @@
       "pe_forward_2027": 27.05,
       "fair_implied_pe": 28.5,
       "fair_implied_pe_ttm": 31.0,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
       "val_defensive_icon": "🟡",
       "val_defensive_tag": "偏高震盪位階",
       "val_defensive_color": "amber",
@@ -6586,6 +6677,8 @@
       "pe_forward_2027": 18.51,
       "fair_implied_pe": 19.5,
       "fair_implied_pe_ttm": 20.7,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
       "val_defensive_icon": "🟡",
       "val_defensive_tag": "偏高震盪位階",
       "val_defensive_color": "amber",
@@ -6683,6 +6776,8 @@
       "pe_forward_2027": 10.2,
       "fair_implied_pe": 10.7,
       "fair_implied_pe_ttm": 11.8,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
       "val_defensive_icon": "🟡",
       "val_defensive_tag": "偏高震盪位階",
       "val_defensive_color": "amber",
@@ -6780,6 +6875,8 @@
       "pe_forward_2027": 12.62,
       "fair_implied_pe": 16.1,
       "fair_implied_pe_ttm": 22.0,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
       "val_defensive_icon": "🟡",
       "val_defensive_tag": "偏高震盪位階",
       "val_defensive_color": "amber",
@@ -6877,6 +6974,8 @@
       "pe_forward_2027": 27.88,
       "fair_implied_pe": 27.7,
       "fair_implied_pe_ttm": 28.8,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
       "val_defensive_icon": "🟡",
       "val_defensive_tag": "偏高震盪位階",
       "val_defensive_color": "amber",
@@ -6974,6 +7073,8 @@
       "pe_forward_2027": 22.32,
       "fair_implied_pe": 23.4,
       "fair_implied_pe_ttm": 26.2,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
       "val_defensive_icon": "🟡",
       "val_defensive_tag": "偏高震盪位階",
       "val_defensive_color": "amber",
@@ -7071,6 +7172,8 @@
       "pe_forward_2027": 25.0,
       "fair_implied_pe": 25.5,
       "fair_implied_pe_ttm": 28.0,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
       "val_defensive_icon": "🟡",
       "val_defensive_tag": "偏高震盪位階",
       "val_defensive_color": "amber",
@@ -7168,6 +7271,8 @@
       "pe_forward_2027": 16.25,
       "fair_implied_pe": 16.5,
       "fair_implied_pe_ttm": 18.3,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
       "val_defensive_icon": "🟡",
       "val_defensive_tag": "偏高震盪位階",
       "val_defensive_color": "amber",
@@ -7265,6 +7370,8 @@
       "pe_forward_2027": 7.95,
       "fair_implied_pe": 6.1,
       "fair_implied_pe_ttm": 4.6,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
       "val_defensive_icon": "🟡",
       "val_defensive_tag": "偏高震盪位階",
       "val_defensive_color": "amber",
@@ -7362,6 +7469,8 @@
       "pe_forward_2027": 10.12,
       "fair_implied_pe": 7.8,
       "fair_implied_pe_ttm": 6.3,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
       "val_defensive_icon": "🟡",
       "val_defensive_tag": "偏高震盪位階",
       "val_defensive_color": "amber",
@@ -7459,6 +7568,8 @@
       "pe_forward_2027": 21.5,
       "fair_implied_pe": 21.5,
       "fair_implied_pe_ttm": 24.0,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
       "val_defensive_icon": "🟡",
       "val_defensive_tag": "偏高震盪位階",
       "val_defensive_color": "amber",
@@ -7556,6 +7667,8 @@
       "pe_forward_2027": 16.3,
       "fair_implied_pe": 15.9,
       "fair_implied_pe_ttm": 17.3,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
       "val_defensive_icon": "🟡",
       "val_defensive_tag": "偏高震盪位階",
       "val_defensive_color": "amber",
@@ -7653,6 +7766,8 @@
       "pe_forward_2027": 17.95,
       "fair_implied_pe": 17.7,
       "fair_implied_pe_ttm": 19.7,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
       "val_defensive_icon": "🟡",
       "val_defensive_tag": "偏高震盪位階",
       "val_defensive_color": "amber",
@@ -7750,6 +7865,8 @@
       "pe_forward_2027": 22.8,
       "fair_implied_pe": 21.8,
       "fair_implied_pe_ttm": 24.5,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
       "val_defensive_icon": "🟡",
       "val_defensive_tag": "偏高震盪位階",
       "val_defensive_color": "amber",
@@ -7849,6 +7966,8 @@
       "pe_forward_2027": 24.47,
       "fair_implied_pe": 54.2,
       "fair_implied_pe_ttm": 551.6,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
       "val_defensive_icon": "🟢",
       "val_defensive_tag": "安全邊際防守",
       "val_defensive_color": "emerald",
@@ -7918,7 +8037,7 @@
       "ttm_revenue": 73.36,
       "shares_out": 1.177,
       "rank": 19,
-      "rs_score": 22.6,
+      "rs_score": 20.6,
       "ret_3m": -23.39,
       "bias_ma20": -3.8,
       "trend_bullish": false,
@@ -7945,6 +8064,8 @@
       "pe_forward_2027": 15.56,
       "fair_implied_pe": 22.4,
       "fair_implied_pe_ttm": 31.3,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
       "val_defensive_icon": "🟢",
       "val_defensive_tag": "安全邊際防守",
       "val_defensive_color": "emerald",
@@ -8014,7 +8135,7 @@
       "ttm_revenue": 350.0,
       "shares_out": 5.2,
       "rank": 20,
-      "rs_score": 19.1,
+      "rs_score": 17.2,
       "ret_3m": -18.28,
       "bias_ma20": -3.1,
       "trend_bullish": false,
@@ -8041,6 +8162,8 @@
       "pe_forward_2027": 14.88,
       "fair_implied_pe": 20.0,
       "fair_implied_pe_ttm": 27.8,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
       "val_defensive_icon": "🟢",
       "val_defensive_tag": "安全邊際防守",
       "val_defensive_color": "emerald",
@@ -8110,7 +8233,7 @@
       "ttm_revenue": 5500.0,
       "shares_out": 35.8,
       "rank": 18,
-      "rs_score": 29.4,
+      "rs_score": 28.0,
       "ret_3m": -11.98,
       "bias_ma20": -5.7,
       "trend_bullish": false,
@@ -8137,12 +8260,14 @@
       "pe_forward_2027": 102.19,
       "fair_implied_pe": 137.4,
       "fair_implied_pe_ttm": 183.2,
-      "val_defensive_icon": "🟢",
-      "val_defensive_tag": "安全邊際防守",
-      "val_defensive_color": "emerald",
+      "is_pe_extreme": true,
+      "pe_extreme_msg": "合理價隱含 PE 137x 超過上限 (60x)",
+      "val_defensive_icon": "⚠️",
+      "val_defensive_tag": "估值待驗證",
+      "val_defensive_color": "amber",
       "dim_fundamental": "🟢 績優高成長",
       "dim_cycle": "🟢 Stage C 成長主升",
-      "dim_valuation": "⚪ 合理偏低區",
+      "dim_valuation": "⚠️ 估值待驗證",
       "adjusted_pe": 137.43,
       "peer_pe": 26.0,
       "peg": 4.91,
@@ -8164,10 +8289,10 @@
       "target_fair_2027": 6596.64,
       "target_fair_2028": 8245.8,
       "target_formula_note": "2027E 高成長情境 EPS $48.0 × 雷達修正本益比 137.43x = $6596.64 (折現PV約 $5855.7，現值空間 +19.4%，年化約 +15.2%)",
-      "sun_status": "⚪ 合理偏低區",
-      "badge_color": "#F8FAFC",
-      "sun_action": "平價穩健區間，耐心抱牢享受成長",
-      "sun_position": "50% (單檔上限，穩健持有)",
+      "sun_status": "⚠️ 估值待驗證",
+      "badge_color": "#F59E0B",
+      "sun_action": "合理價隱含 PE 137x 超過上限 (60x)，禁止標註合理偏低，嚴控下檔風險",
+      "sun_position": "30% (單檔上限，觸發極端PE阻斷)",
       "rank_tier": 3,
       "val_mode": "PER",
       "val_mode_tag": "📈 PER 穩健獲利模式",
@@ -8206,7 +8331,7 @@
       "ttm_revenue": 650.0,
       "shares_out": 3.4,
       "rank": 16,
-      "rs_score": 32.8,
+      "rs_score": 31.4,
       "ret_3m": -18.96,
       "bias_ma20": -5.8,
       "trend_bullish": false,
@@ -8233,12 +8358,14 @@
       "pe_forward_2027": 75.31,
       "fair_implied_pe": 98.7,
       "fair_implied_pe_ttm": 132.1,
-      "val_defensive_icon": "🟢",
-      "val_defensive_tag": "安全邊際防守",
-      "val_defensive_color": "emerald",
+      "is_pe_extreme": true,
+      "pe_extreme_msg": "合理價隱含 PE 99x 超過上限 (60x)",
+      "val_defensive_icon": "⚠️",
+      "val_defensive_tag": "估值待驗證",
+      "val_defensive_color": "amber",
       "dim_fundamental": "🟢 穩健增長",
       "dim_cycle": "🟢 Stage B 初升量產",
-      "dim_valuation": "⚪ 合理偏低區",
+      "dim_valuation": "⚠️ 估值待驗證",
       "adjusted_pe": 98.73,
       "peer_pe": 32.0,
       "peg": 3.93,
@@ -8260,10 +8387,10 @@
       "target_fair_2027": 2418.89,
       "target_fair_2028": 2961.9,
       "target_formula_note": "2027E 高成長情境 EPS $24.5 × 雷達修正本益比 98.73x = $2418.89 (折現PV約 $2147.2，現值空間 +16.4%，年化約 +12.9%)",
-      "sun_status": "⚪ 合理偏低區",
-      "badge_color": "#F8FAFC",
-      "sun_action": "平價穩健區間，耐心抱牢享受成長",
-      "sun_position": "50% (單檔上限，穩健持有)",
+      "sun_status": "⚠️ 估值待驗證",
+      "badge_color": "#F59E0B",
+      "sun_action": "合理價隱含 PE 99x 超過上限 (60x)，禁止標註合理偏低，嚴控下檔風險",
+      "sun_position": "30% (單檔上限，觸發極端PE阻斷)",
       "rank_tier": 3,
       "val_mode": "PER",
       "val_mode_tag": "📈 PER 穩健獲利模式",
@@ -8301,8 +8428,8 @@
       "divergence_note": "",
       "ttm_revenue": 4200.0,
       "shares_out": 25.9,
-      "rank": 13,
-      "rs_score": 44.6,
+      "rank": 14,
+      "rs_score": 42.6,
       "ret_3m": -11.08,
       "bias_ma20": 3.6,
       "trend_bullish": true,
@@ -8329,6 +8456,8 @@
       "pe_forward_2027": 18.26,
       "fair_implied_pe": 25.3,
       "fair_implied_pe_ttm": 47.2,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
       "val_defensive_icon": "🟢",
       "val_defensive_tag": "安全邊際防守",
       "val_defensive_color": "emerald",
@@ -8398,7 +8527,7 @@
       "ttm_revenue": 165.0,
       "shares_out": 3.1,
       "rank": 17,
-      "rs_score": 31.9,
+      "rs_score": 29.9,
       "ret_3m": -1.24,
       "bias_ma20": -3.5,
       "trend_bullish": true,
@@ -8409,102 +8538,6 @@
       "chip_badge": "⚠️ 資金流出",
       "chip_status": "🔴 資金流出",
       "chip_detail": "資金流向偏弱 (CMF: -0.46, 短線法人偏賣方)"
-    },
-    {
-      "symbol": "2324.TW",
-      "name": "仁寶",
-      "category": "AI伺服器代工與機櫃",
-      "sub_industry": "server_odm",
-      "industry_stage": "C 成長",
-      "radar_multiplier": 1.0,
-      "close": 36.3,
-      "ma60": 37.7,
-      "current_pe": 12.96,
-      "trailing_pe": 17.29,
-      "pe_forward_2026": 12.96,
-      "pe_forward_2027": 10.37,
-      "fair_implied_pe": 13.5,
-      "fair_implied_pe_ttm": 18.0,
-      "val_defensive_icon": "🟢",
-      "val_defensive_tag": "安全邊際防守",
-      "val_defensive_color": "emerald",
-      "dim_fundamental": "🟢 穩健增長",
-      "dim_cycle": "🟢 Stage C 成長主升",
-      "dim_valuation": "⚪ 合理偏低區",
-      "adjusted_pe": 13.48,
-      "peer_pe": 18.0,
-      "peg": 0.52,
-      "growth_g": 25.0,
-      "eps_ttm": 2.1,
-      "floor_value": 31.5,
-      "stop_loss_price": 31.9,
-      "stop_loss_pct": -12.1,
-      "extreme_floor": 18.66,
-      "eps_2026e": 2.8,
-      "eps_2027e": 3.5,
-      "eps_2028e": 4.2,
-      "p_bargain": 23.32,
-      "p_cheap": 30.19,
-      "p_fair": 37.74,
-      "p_expensive": 45.29,
-      "p_crazy": 52.16,
-      "margin_of_safety_pct": 3.82,
-      "target_fair_2027": 47.18,
-      "target_fair_2028": 56.62,
-      "target_formula_note": "2027E 高成長情境 EPS $3.5 × 雷達修正本益比 13.48x = $47.18 (折現PV約 $41.9，現值空間 +15.4%，年化約 +12.2%)",
-      "sun_status": "⚪ 合理偏低區",
-      "badge_color": "#F8FAFC",
-      "sun_action": "平價穩健區間，耐心抱牢享受成長",
-      "sun_position": "50% (單檔上限，穩健持有)",
-      "rank_tier": 3,
-      "val_mode": "PER",
-      "val_mode_tag": "📈 PER 穩健獲利模式",
-      "val_reason": "獲利模式成熟穩定(近4季實績EPS $2.1，2026E前瞻PE 13.0x)，採用經典孫慶龍本益比折現估值",
-      "rev_yoy_3m": 8.5,
-      "sps": 215.42,
-      "current_psr": 0.17,
-      "base_psr_tiers": [
-        0.15,
-        0.2,
-        0.28,
-        0.38,
-        0.52
-      ],
-      "psr_tiers": [
-        0.15,
-        0.2,
-        0.28,
-        0.38,
-        0.52
-      ],
-      "implied_pe_fair_trailing": 18.0,
-      "implied_pe_fair_forward": 13.5,
-      "implied_pe_fair_forward_2027": 10.8,
-      "val_basis": "2026E 前瞻 EPS $2.8 (高成長情境)",
-      "eps_2026e_cons": 1.96,
-      "p_fair_conservative": 26.4,
-      "pv_target_2027": 41.9,
-      "pv_upside_total": 15.4,
-      "pv_upside_ann": 12.2,
-      "peg_consensus": NaN,
-      "peg_scenario": 0.52,
-      "is_divergent": false,
-      "divergence_alert": "",
-      "divergence_note": "",
-      "ttm_revenue": 9500.0,
-      "shares_out": 44.1,
-      "rank": 14,
-      "rs_score": 43.6,
-      "ret_3m": 3.86,
-      "bias_ma20": -5.3,
-      "trend_bullish": false,
-      "action_advice": "⏸️ 均線整理中，暫先觀望",
-      "right_status": "⏸️ 築底觀望",
-      "right_advice": "均線仍在整理打底(負乖離 -5.3%)，動能未表態，右側先觀望",
-      "right_badge_color": "#94A3B8",
-      "chip_badge": "⚠️ 資金流出",
-      "chip_status": "🔴 資金流出",
-      "chip_detail": "資金流向偏弱 (CMF: -0.23, 短線法人偏賣方)"
     },
     {
       "symbol": "1513.TW",
@@ -8521,6 +8554,8 @@
       "pe_forward_2027": 14.96,
       "fair_implied_pe": 19.6,
       "fair_implied_pe_ttm": 27.8,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
       "val_defensive_icon": "🟢",
       "val_defensive_tag": "安全邊際防守",
       "val_defensive_color": "emerald",
@@ -8590,7 +8625,7 @@
       "ttm_revenue": 240.0,
       "shares_out": 5.0,
       "rank": 15,
-      "rs_score": 39.2,
+      "rs_score": 37.3,
       "ret_3m": -5.1,
       "bias_ma20": 1.4,
       "trend_bullish": true,
@@ -8617,6 +8652,8 @@
       "pe_forward_2027": 36.4,
       "fair_implied_pe": 45.0,
       "fair_implied_pe_ttm": 56.7,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
       "val_defensive_icon": "🟢",
       "val_defensive_tag": "安全邊際防守",
       "val_defensive_color": "emerald",
@@ -8685,8 +8722,8 @@
       "divergence_note": "",
       "ttm_revenue": 28500.0,
       "shares_out": 259.3,
-      "rank": 9,
-      "rs_score": 56.4,
+      "rank": 10,
+      "rs_score": 54.4,
       "ret_3m": 1.23,
       "bias_ma20": 1.6,
       "trend_bullish": true,
@@ -8713,6 +8750,8 @@
       "pe_forward_2027": 29.22,
       "fair_implied_pe": 36.2,
       "fair_implied_pe_ttm": 47.8,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
       "val_defensive_icon": "🟢",
       "val_defensive_tag": "安全邊際防守",
       "val_defensive_color": "emerald",
@@ -8781,8 +8820,8 @@
       "divergence_note": "",
       "ttm_revenue": 1550.0,
       "shares_out": 23.5,
-      "rank": 1,
-      "rs_score": 89.2,
+      "rank": 2,
+      "rs_score": 85.8,
       "ret_3m": 28.08,
       "bias_ma20": -3.1,
       "trend_bullish": true,
@@ -8809,6 +8848,8 @@
       "pe_forward_2027": 26.99,
       "fair_implied_pe": 34.1,
       "fair_implied_pe_ttm": 47.0,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
       "val_defensive_icon": "🟢",
       "val_defensive_tag": "安全邊際防守",
       "val_defensive_color": "emerald",
@@ -8877,8 +8918,8 @@
       "divergence_note": "",
       "ttm_revenue": 650.0,
       "shares_out": 2.05,
-      "rank": 8,
-      "rs_score": 56.4,
+      "rank": 9,
+      "rs_score": 54.4,
       "ret_3m": -8.28,
       "bias_ma20": 1.6,
       "trend_bullish": true,
@@ -8905,6 +8946,8 @@
       "pe_forward_2027": 13.62,
       "fair_implied_pe": 16.4,
       "fair_implied_pe_ttm": 22.2,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
       "val_defensive_icon": "🟡",
       "val_defensive_tag": "偏高震盪位階",
       "val_defensive_color": "amber",
@@ -8973,8 +9016,8 @@
       "divergence_note": "",
       "ttm_revenue": 65000.0,
       "shares_out": 138.6,
-      "rank": 11,
-      "rs_score": 50.0,
+      "rank": 12,
+      "rs_score": 46.6,
       "ret_3m": 4.78,
       "bias_ma20": 0.3,
       "trend_bullish": true,
@@ -9001,6 +9044,8 @@
       "pe_forward_2027": 29.45,
       "fair_implied_pe": 34.2,
       "fair_implied_pe_ttm": 44.8,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
       "val_defensive_icon": "🟡",
       "val_defensive_tag": "偏高震盪位階",
       "val_defensive_color": "amber",
@@ -9069,8 +9114,8 @@
       "divergence_note": "",
       "ttm_revenue": 148.0,
       "shares_out": 4.9,
-      "rank": 3,
-      "rs_score": 78.4,
+      "rank": 4,
+      "rs_score": 75.0,
       "ret_3m": -2.23,
       "bias_ma20": 0.8,
       "trend_bullish": true,
@@ -9097,8 +9142,10 @@
       "pe_forward_2027": 77.37,
       "fair_implied_pe": 97.4,
       "fair_implied_pe_ttm": 144.1,
-      "val_defensive_icon": "🟡",
-      "val_defensive_tag": "偏高震盪位階",
+      "is_pe_extreme": true,
+      "pe_extreme_msg": "合理價隱含 PE 97x 超過上限 (60x)",
+      "val_defensive_icon": "⚠️",
+      "val_defensive_tag": "估值待驗證",
       "val_defensive_color": "amber",
       "dim_fundamental": "🟢 績優高成長",
       "dim_cycle": "🟢 Stage C 成長主升",
@@ -9127,7 +9174,7 @@
       "sun_status": "🟡 合理偏高區",
       "badge_color": "#FBBF24",
       "sun_action": "估值稍微偏貴，嚴禁追高，可續抱",
-      "sun_position": "30% (單檔上限，停止追高)",
+      "sun_position": "30% (單檔上限，觸發極端PE阻斷)",
       "rank_tier": 4,
       "val_mode": "PER",
       "val_mode_tag": "📈 PER 穩健獲利模式",
@@ -9165,8 +9212,8 @@
       "divergence_note": "",
       "ttm_revenue": 220.0,
       "shares_out": 2.7,
-      "rank": 6,
-      "rs_score": 66.2,
+      "rank": 7,
+      "rs_score": 62.7,
       "ret_3m": -17.88,
       "bias_ma20": 5.0,
       "trend_bullish": false,
@@ -9193,6 +9240,8 @@
       "pe_forward_2027": 13.74,
       "fair_implied_pe": 16.8,
       "fair_implied_pe_ttm": 24.4,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
       "val_defensive_icon": "🟡",
       "val_defensive_tag": "偏高震盪位階",
       "val_defensive_color": "amber",
@@ -9261,14 +9310,14 @@
       "divergence_note": "",
       "ttm_revenue": 9800.0,
       "shares_out": 28.9,
-      "rank": 7,
-      "rs_score": 62.2,
+      "rank": 8,
+      "rs_score": 57.4,
       "ret_3m": 16.67,
-      "bias_ma20": -0.0,
+      "bias_ma20": 0.0,
       "trend_bullish": true,
-      "action_advice": "⏸️ 跌破月線回測中(乖離 -0.0%)，等待站回月線確認",
+      "action_advice": "⏸️ 月線持平整理中，等待方向確認",
       "right_status": "⏸️ 回測整理",
-      "right_advice": "中多格局但短線跌破月線(負乖離 -0.0%)，暫緩追價，靜待止跌收復月線",
+      "right_advice": "中多格局短線月線持平整理 (0.0%)，等待方向確認",
       "right_badge_color": "#F59E0B",
       "chip_badge": "",
       "chip_status": "⚪ 平穩沉澱",
@@ -9289,8 +9338,10 @@
       "pe_forward_2027": 95.68,
       "fair_implied_pe": 116.9,
       "fair_implied_pe_ttm": 163.3,
-      "val_defensive_icon": "🟡",
-      "val_defensive_tag": "偏高震盪位階",
+      "is_pe_extreme": true,
+      "pe_extreme_msg": "合理價隱含 PE 117x 超過上限 (60x)",
+      "val_defensive_icon": "⚠️",
+      "val_defensive_tag": "估值待驗證",
       "val_defensive_color": "amber",
       "dim_fundamental": "🟢 績優高成長",
       "dim_cycle": "🟢 Stage C 成長主升",
@@ -9319,7 +9370,7 @@
       "sun_status": "🟡 合理偏高區",
       "badge_color": "#FBBF24",
       "sun_action": "估值稍微偏貴，嚴禁追高，可續抱",
-      "sun_position": "30% (單檔上限，停止追高)",
+      "sun_position": "30% (單檔上限，觸發極端PE阻斷)",
       "rank_tier": 4,
       "val_mode": "PER",
       "val_mode_tag": "📈 PER 穩健獲利模式",
@@ -9357,8 +9408,8 @@
       "divergence_note": "",
       "ttm_revenue": 105.0,
       "shares_out": 0.95,
-      "rank": 2,
-      "rs_score": 79.4,
+      "rank": 3,
+      "rs_score": 77.4,
       "ret_3m": 49.5,
       "bias_ma20": -6.5,
       "trend_bullish": true,
@@ -9385,9 +9436,11 @@
       "pe_forward_2027": 69.05,
       "fair_implied_pe": 108.9,
       "fair_implied_pe_ttm": 302.5,
-      "val_defensive_icon": "🔴",
-      "val_defensive_tag": "嚴重溢價警戒",
-      "val_defensive_color": "rose",
+      "is_pe_extreme": true,
+      "pe_extreme_msg": "合理價隱含 PE 109x 超過上限 (60x)",
+      "val_defensive_icon": "⚠️",
+      "val_defensive_tag": "估值待驗證",
+      "val_defensive_color": "amber",
       "dim_fundamental": "🟢 績優高成長",
       "dim_cycle": "🟢 Stage B 初升量產",
       "dim_valuation": "🟡 合理偏高區",
@@ -9415,7 +9468,7 @@
       "sun_status": "🟡 合理偏高區",
       "badge_color": "#FBBF24",
       "sun_action": "估值稍微偏貴，嚴禁追高，可續抱",
-      "sun_position": "30% (單檔上限，停止追高)",
+      "sun_position": "30% (單檔上限，觸發極端PE阻斷)",
       "rank_tier": 4,
       "val_mode": "PSR",
       "val_mode_tag": "📊 PSR 營收爆發模式",
@@ -9453,8 +9506,8 @@
       "divergence_note": "",
       "ttm_revenue": 25.0,
       "shares_out": 1.01,
-      "rank": 10,
-      "rs_score": 51.5,
+      "rank": 11,
+      "rs_score": 48.0,
       "ret_3m": 12.91,
       "bias_ma20": -6.1,
       "trend_bullish": true,
@@ -9465,6 +9518,104 @@
       "chip_badge": "",
       "chip_status": "⚪ 平穩沉澱",
       "chip_detail": "籌碼平穩沉澱 (CMF: -0.25)"
+    },
+    {
+      "symbol": "2454.TW",
+      "name": "聯發科",
+      "category": "IC設計與客製化晶片",
+      "sub_industry": "asic_design",
+      "industry_stage": "C 成長",
+      "radar_multiplier": 1.0,
+      "close": 4955.0,
+      "ma60": 4088.3,
+      "current_pe": 60.43,
+      "trailing_pe": 76.23,
+      "pe_forward_2026": 60.43,
+      "pe_forward_2027": 50.56,
+      "fair_implied_pe": 49.9,
+      "fair_implied_pe_ttm": 62.9,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
+      "val_defensive_icon": "🔴",
+      "val_defensive_tag": "嚴重溢價警戒",
+      "val_defensive_color": "rose",
+      "dim_fundamental": "🟢 穩健增長",
+      "dim_cycle": "🟢 Stage C 成長主升",
+      "dim_valuation": "🟠 昂貴高檔區",
+      "adjusted_pe": 49.86,
+      "peer_pe": 25.0,
+      "peg": 3.1,
+      "growth_g": 19.5,
+      "eps_ttm": 65.0,
+      "floor_value": 975.0,
+      "stop_loss_price": 4360.4,
+      "stop_loss_pct": -12.0,
+      "extreme_floor": 2021.23,
+      "eps_2026e": 82.0,
+      "eps_2027e": 98.0,
+      "eps_2028e": 115.0,
+      "p_bargain": 2526.54,
+      "p_cheap": 3270.61,
+      "p_fair": 4088.26,
+      "p_expensive": 4905.91,
+      "p_crazy": 5649.98,
+      "margin_of_safety_pct": -21.2,
+      "target_fair_2027": 4886.28,
+      "target_fair_2028": 5733.9,
+      "target_formula_note": "2027E 高成長情境 EPS $98.0 × 雷達修正本益比 49.86x = $4886.28 (折現PV約 $4337.5，現值空間 +-12.5%，年化約 +0.0%)",
+      "sun_status": "🟠 昂貴高檔區",
+      "badge_color": "#FB923C",
+      "sun_action": "市場給予高溢價，逢高分批減碼",
+      "sun_position": "15% (單檔上限，逢高調節)",
+      "rank_tier": 5,
+      "val_mode": "PER",
+      "val_mode_tag": "📈 PER 穩健獲利模式",
+      "val_reason": "獲利模式成熟穩定(近4季實績EPS $65，2026E前瞻PE 60.4x)，採用經典孫慶龍本益比折現估值",
+      "rev_yoy_3m": 19.0,
+      "sps": 343.75,
+      "current_psr": 14.41,
+      "base_psr_tiers": [
+        3.0,
+        4.0,
+        5.5,
+        7.5,
+        10.0
+      ],
+      "psr_tiers": [
+        3.0,
+        4.0,
+        5.5,
+        7.5,
+        10.0
+      ],
+      "implied_pe_fair_trailing": 62.9,
+      "implied_pe_fair_forward": 49.9,
+      "implied_pe_fair_forward_2027": 41.7,
+      "val_basis": "2026E 前瞻 EPS $82.0 (高成長情境)",
+      "eps_2026e_cons": 57.4,
+      "p_fair_conservative": 2862.0,
+      "pv_target_2027": 4337.5,
+      "pv_upside_total": -12.5,
+      "pv_upside_ann": 0.0,
+      "peg_consensus": NaN,
+      "peg_scenario": 3.1,
+      "is_divergent": false,
+      "divergence_alert": "",
+      "divergence_note": "",
+      "ttm_revenue": 5500.0,
+      "shares_out": 16.0,
+      "rank": 1,
+      "rs_score": 93.1,
+      "ret_3m": 18.82,
+      "bias_ma20": 6.5,
+      "trend_bullish": true,
+      "action_advice": "📈 均線突破但估值偏高(MoS -21.2%)，順勢操作",
+      "right_status": "📈 順勢突破",
+      "right_advice": "站穩月線突破(乖離 +6.5%)，但左側估值已高於合理價(MoS -21.2%)，僅適合右側趨勢交易，不屬價值型低接買點",
+      "right_badge_color": "#00F59B",
+      "chip_badge": "⚠️ 資金流出",
+      "chip_status": "🔴 資金流出",
+      "chip_detail": "資金流向偏弱 (CMF: -0.13, 短線法人偏賣方)"
     },
     {
       "symbol": "3211.TWO",
@@ -9481,6 +9632,8 @@
       "pe_forward_2027": 30.16,
       "fair_implied_pe": 33.6,
       "fair_implied_pe_ttm": 50.7,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
       "val_defensive_icon": "🔴",
       "val_defensive_tag": "嚴重溢價警戒",
       "val_defensive_color": "rose",
@@ -9549,8 +9702,8 @@
       "divergence_note": "",
       "ttm_revenue": 165.0,
       "shares_out": 1.5,
-      "rank": 12,
-      "rs_score": 48.0,
+      "rank": 13,
+      "rs_score": 46.1,
       "ret_3m": -3.74,
       "bias_ma20": 2.3,
       "trend_bullish": true,
@@ -9577,6 +9730,8 @@
       "pe_forward_2027": 15.19,
       "fair_implied_pe": 15.5,
       "fair_implied_pe_ttm": 21.9,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
       "val_defensive_icon": "🔴",
       "val_defensive_tag": "嚴重溢價警戒",
       "val_defensive_color": "rose",
@@ -9645,8 +9800,8 @@
       "divergence_note": "",
       "ttm_revenue": 145.0,
       "shares_out": 2.7,
-      "rank": 5,
-      "rs_score": 73.5,
+      "rank": 6,
+      "rs_score": 70.1,
       "ret_3m": 10.07,
       "bias_ma20": -1.8,
       "trend_bullish": true,
@@ -9673,9 +9828,11 @@
       "pe_forward_2027": 183.45,
       "fair_implied_pe": 122.7,
       "fair_implied_pe_ttm": 337.4,
-      "val_defensive_icon": "🔴",
-      "val_defensive_tag": "嚴重溢價警戒",
-      "val_defensive_color": "rose",
+      "is_pe_extreme": true,
+      "pe_extreme_msg": "合理價隱含 PE 123x 超過上限 (60x)",
+      "val_defensive_icon": "⚠️",
+      "val_defensive_tag": "估值待驗證",
+      "val_defensive_color": "amber",
       "dim_fundamental": "🟢 績優高成長",
       "dim_cycle": "🟢 Stage B 初升量產",
       "dim_valuation": "🔴 瘋狂過熱區",
@@ -9703,7 +9860,7 @@
       "sun_status": "🔴 瘋狂過熱區",
       "badge_color": "#FF5252",
       "sun_action": "極度狂熱泡沫，預支遠期獲利，全部賣光光",
-      "sun_position": "0% (出清冬藏現金)",
+      "sun_position": "30% (單檔上限，觸發極端PE阻斷)",
       "rank_tier": 6,
       "val_mode": "PSR",
       "val_mode_tag": "📊 PSR 營收爆發模式",
@@ -9741,8 +9898,8 @@
       "divergence_note": "",
       "ttm_revenue": 45.0,
       "shares_out": 0.917,
-      "rank": 4,
-      "rs_score": 74.5,
+      "rank": 5,
+      "rs_score": 71.1,
       "ret_3m": 39.33,
       "bias_ma20": -9.3,
       "trend_bullish": true,
@@ -9756,34 +9913,43 @@
     }
   ],
   "macro_risk": {
-    "regime_title": "🔴 高風險 (通膨與長端利率高企)",
+    "regime_title": "🔴 高風險 (通膨、利率與政策緊縮三重壓力)",
     "regime_badge_color": "rose",
-    "regime_summary": "⚠️ 滯脹與高利率防禦情境 (High Inflation & Rate Pressure)：美債殖利率突破 5% 且油價高懸，嚴禁使用 Goldilocks 文案。需密切提防高 PE 族群之折現率修正壓力，以低估值與高現金流為防禦盾牌。",
-    "red_count": 2,
+    "regime_summary": "⚠️ 滯脹與高利率防禦情境 (High Inflation & Tightening Pressure)：美債殖利率突破 5%、油價逼近百元，且 Fed 9/16 再度升息一碼至 3.75%–4.00%，三大緊縮紅燈齊發，嚴禁使用 Goldilocks 文案。需密切提防高 PE 族群之折現率修正壓力，以低估值與高現金流為防禦盾牌。",
+    "red_count": 3,
     "items": [
       {
         "name": "美債 10Y 殖利率",
         "value": "5.24%",
         "light": "red",
-        "date": "2026-09-28",
-        "source": "CBOE / Yahoo (^TNX)",
+        "date": "2026-09-28 17:00 EST 收盤",
+        "source": "CBOE / Yahoo (^TNX÷10)",
         "threshold": "≥5.0% 警戒",
-        "desc": "破5%長端高企"
+        "desc": "破5%長端高企 (盤中高 5.28%)"
       },
       {
         "name": "布蘭特原油 (Brent)",
         "value": "$99.4",
         "light": "red",
-        "date": "2026-09-28",
+        "date": "2026-09-28 19:30 EST 收盤",
         "source": "ICE / Yahoo (BZ=F)",
         "threshold": "≥$90 警戒",
-        "desc": "高懸逼近百元"
+        "desc": "高懸逼近百元 (WTI $94.2無混用)"
+      },
+      {
+        "name": "Fed 政策利率路徑",
+        "value": "3.75%–4.00% (9/16 升息一碼，點陣圖年底 4.1%)",
+        "light": "red",
+        "date": "2026-09-16 / 09-28",
+        "source": "FRB / CME FedWatch",
+        "threshold": "升息一碼緊縮",
+        "desc": "年底中位數 4.1% 鷹派"
       },
       {
         "name": "美元指數 (DXY)",
         "value": "101.2",
         "light": "green",
-        "date": "2026-09-28",
+        "date": "2026-09-28 收盤",
         "source": "ICE / Yahoo (DX-Y.NYB)",
         "threshold": "<103 溫和",
         "desc": "台幣資金充裕"
@@ -9801,19 +9967,10 @@
         "name": "VIX 恐慌指數",
         "value": "16.1",
         "light": "green",
-        "date": "2026-09-28",
+        "date": "2026-09-28 收盤",
         "source": "CBOE / Yahoo (^VIX)",
         "threshold": "<20 情緒穩定",
         "desc": "市場情緒穩定"
-      },
-      {
-        "name": "Fed 政策利率路徑",
-        "value": "5.25%~5.50% 抗通膨維持高檔",
-        "light": "yellow",
-        "date": "2026-09",
-        "source": "CME FedWatch / FOMC Dot Plot",
-        "threshold": "抗通膨中性偏緊",
-        "desc": "降息預期延後"
       }
     ]
   }
@@ -9867,38 +10024,74 @@
       const s4Pct = s4 / 20.0;
       const hasLaggingStage = (s1Pct < 0.4 || s2Pct < 0.4 || s3Pct < 0.4 || s4Pct < 0.4);
 
+      // A3: 首頁建議持股水位直接對應 4 階映射表 (<40: 0% | 40~59: 50% | 60~74: 75% | >=75: 100%)
       if (finalScore >= 75 && !hasLaggingStage) {
         document.getElementById("stateBadge").innerHTML = `
           <span class="w-3.5 h-3.5 rounded-full bg-emerald-400 animate-ping"></span>
           <span class="text-2xl font-black text-emerald-400">[主升擴張] BULL</span>
         `;
-        document.getElementById("stateDesc").textContent = "全球半導體與 AI 雲端資本支出全面爆發，進入多頭主升波段。";
-        document.getElementById("stockRatio").textContent = "80% ~ 100%";
+        document.getElementById("stateDesc").textContent = "全球半導體與 AI 雲端資本支出全面擴張，進入多頭主升波段。";
+        document.getElementById("stockRatio").textContent = "100%";
         document.getElementById("regimeBadge").textContent = "AI 結構擴張期";
       } else if (finalScore >= 60 || (finalScore >= 75 && hasLaggingStage)) {
+        // B4: 燈號統一為「景氣確認中」，消除語意衝突
         document.getElementById("stateBadge").innerHTML = `
           <span class="w-3.5 h-3.5 rounded-full bg-amber-400 animate-ping"></span>
-          <span class="text-2xl font-black text-amber-400">[景氣確認] CONFIRM</span>
+          <span class="text-2xl font-black text-amber-400">[景氣確認中] CONFIRMING</span>
         `;
         document.getElementById("stateDesc").textContent = hasLaggingStage
-          ? "AI基本面強，但宏觀景氣與市場傳導尚未完全確認，維持穩健持股布局。"
-          : "基本面穩健復甦，各項領先指標進入確立軌道。";
-        document.getElementById("stockRatio").textContent = "60% ~ 75%";
+          ? "AI基本面強，但宏觀景氣確認中，依映射表維持 75% 穩健持股布局。"
+          : "基本面穩健復甦，各項領先指標進入確立軌道，建議持股 75%。";
+        document.getElementById("stockRatio").textContent = "75%";
         document.getElementById("regimeBadge").textContent = "AI 結構擴張期 (確認中)";
-      } else {
+      } else if (finalScore >= 40) {
         document.getElementById("stateBadge").innerHTML = `
           <span class="w-3.5 h-3.5 rounded-full bg-blue-400 animate-ping"></span>
           <span class="text-2xl font-black text-blue-400">[築底警戒] WATCH</span>
         `;
-        document.getElementById("stateDesc").textContent = "領先信號初露曙光，等待右側動能確認。";
-        document.getElementById("stockRatio").textContent = "30% ~ 50%";
+        document.getElementById("stateDesc").textContent = "領先信號初露曙光，等待右側動能確認，建議持股 50%。";
+        document.getElementById("stockRatio").textContent = "50%";
         document.getElementById("regimeBadge").textContent = "景氣打底循環期";
+      } else {
+        document.getElementById("stateBadge").innerHTML = `
+          <span class="w-3.5 h-3.5 rounded-full bg-rose-500 animate-ping"></span>
+          <span class="text-2xl font-black text-rose-500">[熄燈冬藏] EXIT</span>
+        `;
+        document.getElementById("stateDesc").textContent = "領先指標綜合評分跌破 40 分防線，強制出清空倉冬藏。";
+        document.getElementById("stockRatio").textContent = "0%";
+        document.getElementById("regimeBadge").textContent = "熄燈冬藏期";
       }
 
       document.getElementById("s1Score").textContent = `${s1.toFixed(1)} / 35`;
       document.getElementById("s2Score").textContent = `${s2.toFixed(1)} / 20`;
       document.getElementById("s3Score").textContent = `${s3.toFixed(1)} / 25`;
       document.getElementById("s4Score").textContent = `${s4.toFixed(1)} / 20`;
+
+      // A4 規格：健康檢查③合理價隱含 PE 真實檢核 (PE_CAP = 60x)
+      const extremePeStocks = (data.core_watchlist_20 || []).filter(s => (s.fair_implied_pe || 0) > 60.0);
+      const peCheckEl = document.getElementById("healthCheckPe");
+      if (peCheckEl) {
+        if (extremePeStocks.length > 0) {
+          const names = extremePeStocks.slice(0, 3).map(s => `${s.name}(${Math.round(s.fair_implied_pe)}x)`).join("、");
+          peCheckEl.className = "p-2 rounded-lg bg-amber-950/40 border border-amber-500/50";
+          peCheckEl.innerHTML = `
+            <div class="text-[11px] text-amber-400 font-bold">③ 合理價隱含 PE 檢核</div>
+            <div class="font-bold text-amber-400 flex items-center gap-1 mt-0.5">
+              <span>⚠️ WARN</span>
+              <span class="text-[10px] text-amber-300">(${names}等>60x已阻斷防守)</span>
+            </div>
+          `;
+        } else {
+          peCheckEl.className = "p-2 rounded-lg bg-slate-900/80 border border-slate-800";
+          peCheckEl.innerHTML = `
+            <div class="text-[11px] text-slate-400">③ 合理價隱含 PE 檢核</div>
+            <div class="font-bold text-emerald-400 flex items-center gap-1 mt-0.5">
+              <span>🟢 PASS</span>
+              <span class="text-[10px] text-slate-400">(全數在安全上限 60x 內)</span>
+            </div>
+          `;
+        }
+      }
 
       setTimeout(() => {
         document.getElementById("s1Bar").style.width = `${Math.min(100, (s1 / 35) * 100)}%`;
@@ -10125,8 +10318,8 @@
           marketLow: "2022-10 (市場底 12,629)", 
           modelTurn: "2022-11 (54分初升)", 
           econLow: "2022-12~2023-04 (藍燈谷底)", 
-          days: "領先景氣底 30~150天 (落後市場底約30天)", 
-          badge: "⚠️ 非領先樣本 (落後市場底)", 
+          days: "落後市場底約30天 (不列入領先成功樣本) ｜ 領先景氣底 30~150天", 
+          badge: "⚠️ 非領先樣本 (落後市場底，不列入領先成功樣本)", 
           color: "amber" 
         },
         { 
@@ -10418,8 +10611,12 @@
               const epsStr = (r.eps_2026e && r.eps_2027e && r.eps_2028e) ? `$${formatPrice(r.eps_2026e)}/$${formatPrice(r.eps_2027e)}/$${formatPrice(r.eps_2028e)}` : '-';
               const targetStr = (r.target_fair_2027 && r.target_fair_2028) ? `$${formatPrice(r.target_fair_2027)} / $${formatPrice(r.target_fair_2028)}` : '-';
               const badgeColor = r.badge_color || '#F8FAFC';
-              const sunStatus = r.sun_status || '⚪ 合理偏低區';
-              const sunPos = r.sun_position || '50% (持有)';
+              let sunStatus = r.sun_status || '⚪ 合理偏低區';
+              let sunPos = r.sun_position || '50% (持有)';
+              if (r.is_pe_extreme || (r.fair_implied_pe && r.fair_implied_pe > 60.0)) {
+                sunStatus = `<span class="text-amber-400 font-bold" title="${r.pe_extreme_msg || '合理價隱含PE超過60x上限'}">⚠️ 估值待驗證</span>`;
+                sunPos = `30% (阻斷上限)`;
+              }
 
               // 估值模式與 SPS 顯示
               const valBadgeTable = isPSR
@@ -10434,11 +10631,12 @@
               const rightStatus = r.right_status || (r.trend_bullish ? '📈 多頭確立' : '⏸️ 築底觀望');
               const rightColor = r.right_badge_color || (r.trend_bullish ? '#38BDF8' : '#94A3B8');
               const biasVal = r.bias_ma20 !== undefined ? r.bias_ma20 : 0.0;
-              const biasStr = (biasVal > 0 ? '+' : '') + biasVal.toFixed(1) + '%';
+              const biasStr = Math.abs(biasVal) < 0.05 ? "0.0%" : ((biasVal > 0 ? '+' : '') + biasVal.toFixed(1) + '%');
               let biasColorClass = "text-slate-400";
               if (biasVal > 15.0) biasColorClass = "text-amber-400 font-bold";
-              else if (biasVal > 0.0) biasColorClass = "text-cyan-300";
-              else biasColorClass = "text-rose-400";
+              else if (biasVal >= 0.05) biasColorClass = "text-cyan-300";
+              else if (biasVal <= -0.05) biasColorClass = "text-rose-400";
+              else biasColorClass = "text-slate-400";
 
               const chipBadge = r.chip_badge || '';
               const chipBadgeTable = chipBadge ? `<span class="px-1.5 py-0.5 rounded text-[10px] font-bold ${chipBadge.includes('吃貨') ? 'text-amber-300 bg-amber-500/20 border border-amber-400/50' : 'text-rose-300 bg-rose-500/20 border border-rose-400/50'}">${chipBadge}</span>` : '';
@@ -10523,8 +10721,12 @@
               const targetStr = (r.target_fair_2027 && r.target_fair_2028) ? `$${formatPrice(r.target_fair_2027)} / $${formatPrice(r.target_fair_2028)}` : '-';
               const pegStr = r.peg !== undefined ? r.peg : '-';
               const badgeColor = r.badge_color || '#F8FAFC';
-              const sunStatus = r.sun_status || '⚪ 合理偏低區';
-              const sunPos = r.sun_position || '50% (持有)';
+              let sunStatus = r.sun_status || '⚪ 合理偏低區';
+              let sunPos = r.sun_position || '50% (持有)';
+              if (r.is_pe_extreme || (r.fair_implied_pe && r.fair_implied_pe > 60.0)) {
+                sunStatus = `<span class="text-amber-400 font-bold" title="${r.pe_extreme_msg || '合理價隱含PE超過60x上限'}">⚠️ 估值待驗證</span>`;
+                sunPos = `30% (阻斷上限)`;
+              }
               const sunAction = r.sun_action || '按照紀律分批布局';
               const cardId = `mobile-card-${idx}`;
 
@@ -10543,11 +10745,12 @@
               const rightColor = r.right_badge_color || (r.trend_bullish ? '#38BDF8' : '#94A3B8');
               const rightAdvice = r.right_advice || (r.trend_bullish ? '均線多頭排列，持股續抱' : '均線盤整，暫先觀望');
               const biasVal = r.bias_ma20 !== undefined ? r.bias_ma20 : 0.0;
-              const biasStr = (biasVal > 0 ? '+' : '') + biasVal.toFixed(1) + '%';
+              const biasStr = Math.abs(biasVal) < 0.05 ? "0.0%" : ((biasVal > 0 ? '+' : '') + biasVal.toFixed(1) + '%');
               let biasColorClass = "text-slate-400";
               if (biasVal > 15.0) biasColorClass = "text-amber-400 font-black";
-              else if (biasVal > 0.0) biasColorClass = "text-cyan-300 font-bold";
-              else biasColorClass = "text-rose-400";
+              else if (biasVal >= 0.05) biasColorClass = "text-cyan-300 font-bold";
+              else if (biasVal <= -0.05) biasColorClass = "text-rose-400";
+              else biasColorClass = "text-slate-400";
 
               const chipBadge = r.chip_badge || '';
               const chipBadgeMobile = chipBadge ? `
