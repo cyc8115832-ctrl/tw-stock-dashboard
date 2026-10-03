@@ -325,12 +325,13 @@
         </div>
         <div class="text-[11px] text-slate-400 pt-1.5 border-t border-slate-800 flex justify-between items-center">
           <span>國發會最新燈號：</span>
-          <span class="text-rose-400 font-bold font-mono">紅燈 (41分，2026-07)</span>
+          <span class="text-rose-400 font-bold font-mono">紅燈 (41分，2026-08 最新，連續 9 個月紅燈)</span>
         </div>
         <div class="text-[10px] text-slate-500 pt-0.5">
-          💡 註：國發會屬滯後同時指標，Stage 2 (6.0/20) 採嚴格領先貨幣與外銷擴散剪刀差，提前防禦宏觀瓶頸。
+          💡 註：國發會屬滯後同時指標，Stage 2 (7.0/20) 採嚴格領先貨幣與外銷擴散剪刀差，提前防禦宏觀瓶頸。
         </div>
       </div>
+
     </section>
 
     <!-- 1.1 回測持股水位完整映射表 (A7 規格要求：與歷史回測 100% 一致) -->
@@ -628,17 +629,17 @@
         <div class="h-[280px] w-full flex items-center justify-center my-auto">
           <canvas id="radarChart"></canvas>
         </div>
-        <!-- A5 規格：宏觀階段 2 輸入指標詳情與國發會連 8 紅燈客觀揭露 -->
+        <!-- A5 規格：宏觀階段 2 輸入指標詳情與國發會連 9 紅燈客觀揭露 -->
         <div class="mt-3 p-3 rounded-xl bg-slate-950/80 border border-slate-800 text-[11px] font-mono text-slate-300">
           <div class="text-cyan-300 font-bold mb-1.5 flex items-center justify-between flex-wrap gap-1">
-            <span>📋 階段 2【宏觀景氣】(6.0 / 20 分) 實績輸入指標與國發會燈號</span>
-            <span class="text-[10px] px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30">國發會連續 8 個月紅燈 (41分)</span>
+            <span>📋 階段 2【宏觀景氣】(7.0 / 20 分) 實績輸入指標與國發會燈號</span>
+            <span class="text-[10px] px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30">國發會連續 9 個月紅燈 (41分)</span>
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
             <div class="p-1.5 rounded bg-slate-900 border border-slate-800">
               <div class="text-slate-400">半導體設備進口 YoY</div>
-              <div class="text-emerald-400 font-bold">+28.4% (🟢 6/6分)</div>
-              <div class="text-[10px] text-slate-500">2026-07 ｜ 實體需求強勁</div>
+              <div class="text-emerald-400 font-bold">+34.8% (🟢 7/7分)</div>
+              <div class="text-[10px] text-slate-500">2026-07 ｜ 實體需求強勁擴張</div>
             </div>
             <div class="p-1.5 rounded bg-slate-900 border border-slate-800">
               <div class="text-slate-400">外銷訂單動向指數</div>
@@ -647,15 +648,16 @@
             </div>
             <div class="p-1.5 rounded bg-slate-900 border border-slate-800">
               <div class="text-slate-400">M1B-M2 年增剪刀差</div>
-              <div class="text-slate-400 font-bold">N/A (⚪ 0/8分)</div>
+              <div class="text-slate-400 font-bold">N/A (⚪ 0/7分)</div>
               <div class="text-[10px] text-slate-500">央行待公佈 ｜ 保守計分</div>
             </div>
           </div>
           <div class="text-[10px] text-slate-400 mt-2 leading-relaxed">
-            💡 國發會 2026-07 景氣對策信號為 41 分紅燈（已連續 8 個月紅燈）；8 月燈號於 9/29 公布，收到後更新連紅月數。因部分傳統貨幣/訂單指標數據延遲，本系統嚴守客觀，不填補虛擬數值，當前 6.0 分為已公佈實績項之保守評分。
+            💡 國發會 2026-08 景氣對策信號為 41 分紅燈（已連續 9 個月紅燈，9/29 官方正式公布）。因部分傳統貨幣/訂單指標發布時間差，本系統嚴守客觀，不填補虛擬數值，當前 7.0 分為已公佈實績項之保守評分。
           </div>
         </div>
       </div>
+
 
       <!-- 六大波段驗證成效 -->
       <div class="lg:col-span-2 bg-brand-card p-6 rounded-xl border border-brand-border flex flex-col">
@@ -888,8 +890,9 @@
           <span class="text-[11px] font-mono text-slate-400 uppercase">夏普比率 (SHARPE RATIO)</span>
           <div class="text-3xl font-black font-mono text-white my-1">0.90</div>
           <div class="text-[11px] text-slate-400 flex justify-between">
-            <span>卡瑪比率 Calmar：<strong class="text-cyan-300">0.83</strong></span>
+            <span>卡瑪比率 Calmar：<strong class="text-cyan-300">0.86</strong></span>
             <span>大盤: 0.65</span>
+
           </div>
         </div>
 
@@ -1000,7 +1003,7 @@
   <!-- 嵌入真實數據資料庫 -->
   <script>
     const DASHBOARD_DATA = {
-  "generated_at": "2026-10-03 15:59",
+  "generated_at": "2026-10-03 19:07",
   "latest_signal": {
     "date": "2026-09",
     "total_score": 67.0,
@@ -2903,7 +2906,7 @@
       "portfolio": 1001250.0,
       "taiex": 974034.1,
       "tsmc": 964705.9,
-      "score": 19.0,
+      "score": 27.0,
       "cash_pct": 100.0,
       "holdings": ""
     },
@@ -2945,25 +2948,25 @@
     },
     {
       "date": "2018-07",
-      "portfolio": 1057802.4,
+      "portfolio": 1062766.9,
       "taiex": 995832.0,
       "tsmc": 964705.9,
       "score": 60.0,
       "cash_pct": 25.0,
-      "holdings": "2330.TW(25%), 6274.TWO(25%), 1303.TW(25%)"
+      "holdings": "2330.TW(25%), 6274.TWO(25%), 2421.TW(25%)"
     },
     {
       "date": "2018-08",
-      "portfolio": 1058722.4,
+      "portfolio": 1044458.9,
       "taiex": 996411.2,
       "tsmc": 1003921.6,
       "score": 61.0,
       "cash_pct": 25.0,
-      "holdings": "2330.TW(25%), 6274.TWO(25%), 3264.TWO(25%)"
+      "holdings": "2330.TW(25%), 6274.TWO(25%), 2383.TW(25%)"
     },
     {
       "date": "2018-09",
-      "portfolio": 1028385.7,
+      "portfolio": 1014530.9,
       "taiex": 991223.7,
       "tsmc": 1029411.8,
       "score": 70.0,
@@ -2972,7 +2975,7 @@
     },
     {
       "date": "2018-10",
-      "portfolio": 1000544.0,
+      "portfolio": 987064.4,
       "taiex": 882773.3,
       "tsmc": 917647.1,
       "score": 57.0,
@@ -2981,7 +2984,7 @@
     },
     {
       "date": "2018-11",
-      "portfolio": 1001063.0,
+      "portfolio": 987576.4,
       "taiex": 890509.5,
       "tsmc": 884313.7,
       "score": 34.0,
@@ -2990,7 +2993,7 @@
     },
     {
       "date": "2018-12",
-      "portfolio": 1002314.4,
+      "portfolio": 988810.9,
       "taiex": 876044.1,
       "tsmc": 884313.7,
       "score": 37.0,
@@ -2999,7 +3002,7 @@
     },
     {
       "date": "2019-01",
-      "portfolio": 1003567.3,
+      "portfolio": 990046.9,
       "taiex": 894492.8,
       "tsmc": 866666.7,
       "score": 30.0,
@@ -3008,7 +3011,7 @@
     },
     {
       "date": "2019-02",
-      "portfolio": 1010248.2,
+      "portfolio": 996637.8,
       "taiex": 935641.8,
       "tsmc": 937254.9,
       "score": 49.0,
@@ -3017,16 +3020,16 @@
     },
     {
       "date": "2019-03",
-      "portfolio": 1086019.4,
+      "portfolio": 1089411.7,
       "taiex": 958325.0,
       "tsmc": 962745.1,
       "score": 79.0,
       "cash_pct": 0.0,
-      "holdings": "3363.TWO(25%), 3081.TWO(25%), 3211.TWO(25%), 8299.TWO(25%)"
+      "holdings": "3363.TWO(25%), 3081.TWO(25%), 3211.TWO(25%), 2383.TW(25%)"
     },
     {
       "date": "2019-04",
-      "portfolio": 1087192.5,
+      "portfolio": 1090588.5,
       "taiex": 987746.6,
       "tsmc": 1015686.3,
       "score": 68.0,
@@ -3035,7 +3038,7 @@
     },
     {
       "date": "2019-05",
-      "portfolio": 971356.3,
+      "portfolio": 974390.4,
       "taiex": 945487.1,
       "tsmc": 923529.4,
       "score": 71.0,
@@ -3044,16 +3047,16 @@
     },
     {
       "date": "2019-06",
-      "portfolio": 993102.1,
+      "portfolio": 974954.2,
       "taiex": 966411.5,
       "tsmc": 937254.9,
       "score": 47.0,
       "cash_pct": 50.0,
-      "holdings": "2330.TW(25%), 1519.TW(25%)"
+      "holdings": "2330.TW(25%), 2454.TW(25%)"
     },
     {
       "date": "2019-07",
-      "portfolio": 998322.6,
+      "portfolio": 980079.2,
       "taiex": 974785.1,
       "tsmc": 1017647.1,
       "score": 55.0,
@@ -3062,52 +3065,52 @@
     },
     {
       "date": "2019-08",
-      "portfolio": 985096.6,
+      "portfolio": 997941.5,
       "taiex": 956254.6,
       "tsmc": 1015686.3,
       "score": 63.0,
       "cash_pct": 25.0,
-      "holdings": "2330.TW(25%), 6274.TWO(25%), 8299.TWO(25%)"
+      "holdings": "2330.TW(25%), 2383.TW(25%), 6274.TWO(25%)"
     },
     {
       "date": "2019-09",
-      "portfolio": 998499.7,
+      "portfolio": 997298.6,
       "taiex": 975313.8,
       "tsmc": 1066666.7,
       "score": 57.0,
       "cash_pct": 50.0,
-      "holdings": "2330.TW(25%), 6451.TW(25%)"
+      "holdings": "2330.TW(25%), 2383.TW(25%)"
     },
     {
       "date": "2019-10",
-      "portfolio": 996747.8,
+      "portfolio": 1034525.7,
       "taiex": 1022957.9,
       "tsmc": 1170588.2,
       "score": 55.0,
       "cash_pct": 50.0,
-      "holdings": "2330.TW(25%), 6274.TWO(25%)"
+      "holdings": "2330.TW(25%), 2454.TW(25%)"
     },
     {
       "date": "2019-11",
-      "portfolio": 949872.4,
+      "portfolio": 999938.0,
       "taiex": 1034743.1,
       "tsmc": 1196078.4,
       "score": 75.0,
       "cash_pct": 0.0,
-      "holdings": "6451.TW(25%), 3211.TWO(25%), 2330.TW(25%), 3231.TW(25%)"
+      "holdings": "6451.TW(25%), 3211.TWO(25%), 2454.TW(25%), 2330.TW(25%)"
     },
     {
       "date": "2019-12",
-      "portfolio": 967835.5,
+      "portfolio": 1040671.0,
       "taiex": 1080454.5,
       "tsmc": 1298039.2,
       "score": 61.0,
       "cash_pct": 25.0,
-      "holdings": "2330.TW(25%), 2317.TW(25%), 3211.TWO(25%)"
+      "holdings": "2330.TW(25%), 2317.TW(25%), 2454.TW(25%)"
     },
     {
       "date": "2020-01",
-      "portfolio": 896232.0,
+      "portfolio": 963678.9,
       "taiex": 1035241.1,
       "tsmc": 1254902.0,
       "score": 79.0,
@@ -3116,7 +3119,7 @@
     },
     {
       "date": "2020-02",
-      "portfolio": 867783.3,
+      "portfolio": 933089.3,
       "taiex": 1016965.4,
       "tsmc": 1239215.7,
       "score": 66.0,
@@ -3125,7 +3128,7 @@
     },
     {
       "date": "2020-03",
-      "portfolio": 867916.2,
+      "portfolio": 933232.2,
       "taiex": 874301.4,
       "tsmc": 1074509.8,
       "score": 37.0,
@@ -3134,7 +3137,7 @@
     },
     {
       "date": "2020-04",
-      "portfolio": 923173.7,
+      "portfolio": 992648.1,
       "taiex": 989944.8,
       "tsmc": 1194117.6,
       "score": 40.0,
@@ -3143,7 +3146,7 @@
     },
     {
       "date": "2020-05",
-      "portfolio": 959486.2,
+      "portfolio": 1031693.3,
       "taiex": 985443.7,
       "tsmc": 1145098.0,
       "score": 55.0,
@@ -3152,34 +3155,34 @@
     },
     {
       "date": "2020-06",
-      "portfolio": 947712.8,
+      "portfolio": 1019033.9,
       "taiex": 1046601.2,
       "tsmc": 1227451.0,
       "score": 73.0,
       "cash_pct": 25.0,
-      "holdings": "2330.TW(25%), 3211.TWO(25%), 2421.TW(25%)"
+      "holdings": "2330.TW(25%), 2421.TW(25%), 3211.TWO(25%)"
     },
     {
       "date": "2020-07",
-      "portfolio": 1055040.9,
+      "portfolio": 1143346.4,
       "taiex": 1140583.5,
       "tsmc": 1668627.4,
       "score": 74.0,
       "cash_pct": 25.0,
-      "holdings": "2330.TW(25%), 3231.TW(25%), 2308.TW(25%)"
+      "holdings": "2330.TW(25%), 2454.TW(25%), 3231.TW(25%)"
     },
     {
       "date": "2020-08",
-      "portfolio": 1055981.3,
+      "portfolio": 1073530.6,
       "taiex": 1133977.7,
       "tsmc": 1672549.0,
       "score": 70.0,
       "cash_pct": 25.0,
-      "holdings": "2330.TW(25%), 2308.TW(25%), 2421.TW(25%)"
+      "holdings": "2330.TW(25%), 2454.TW(25%), 2308.TW(25%)"
     },
     {
       "date": "2020-09",
-      "portfolio": 1089036.7,
+      "portfolio": 1107135.4,
       "taiex": 1127147.6,
       "tsmc": 1698039.2,
       "score": 69.0,
@@ -3188,7 +3191,7 @@
     },
     {
       "date": "2020-10",
-      "portfolio": 1139378.5,
+      "portfolio": 1158313.8,
       "taiex": 1129915.1,
       "tsmc": 1694117.6,
       "score": 69.0,
@@ -3197,7 +3200,7 @@
     },
     {
       "date": "2020-11",
-      "portfolio": 1223985.2,
+      "portfolio": 1244326.5,
       "taiex": 1235874.4,
       "tsmc": 1884313.7,
       "score": 58.0,
@@ -3206,7 +3209,7 @@
     },
     {
       "date": "2020-12",
-      "portfolio": 1274214.0,
+      "portfolio": 1295390.1,
       "taiex": 1326801.9,
       "tsmc": 2078431.4,
       "score": 63.0,
@@ -3215,7 +3218,7 @@
     },
     {
       "date": "2021-01",
-      "portfolio": 1301639.0,
+      "portfolio": 1323270.9,
       "taiex": 1363346.2,
       "tsmc": 2317647.1,
       "score": 70.0,
@@ -3224,7 +3227,7 @@
     },
     {
       "date": "2021-02",
-      "portfolio": 1295482.1,
+      "portfolio": 1317011.7,
       "taiex": 1436788.7,
       "tsmc": 2376470.6,
       "score": 51.0,
@@ -3233,70 +3236,70 @@
     },
     {
       "date": "2021-03",
-      "portfolio": 1352891.7,
+      "portfolio": 1364377.9,
       "taiex": 1479776.8,
       "tsmc": 2301960.8,
       "score": 69.0,
       "cash_pct": 25.0,
-      "holdings": "2330.TW(25%), 8299.TWO(25%), 2317.TW(25%)"
+      "holdings": "2330.TW(25%), 8299.TWO(25%), 2454.TW(25%)"
     },
     {
       "date": "2021-04",
-      "portfolio": 1385590.0,
+      "portfolio": 1506021.2,
       "taiex": 1582041.8,
       "tsmc": 2352941.2,
       "score": 75.0,
       "cash_pct": 0.0,
-      "holdings": "3211.TWO(25%), 8299.TWO(25%), 2324.TW(25%), 2301.TW(25%)"
+      "holdings": "3211.TWO(25%), 8299.TWO(25%), 2454.TW(25%), 2301.TW(25%)"
     },
     {
       "date": "2021-05",
-      "portfolio": 1335531.8,
+      "portfolio": 1430224.9,
       "taiex": 1537171.5,
       "tsmc": 2341176.5,
       "score": 81.0,
       "cash_pct": 0.0,
-      "holdings": "8299.TWO(25%), 1303.TW(25%), 2301.TW(25%), 2059.TW(25%)"
+      "holdings": "8299.TWO(25%), 2454.TW(25%), 2301.TW(25%), 2059.TW(25%)"
     },
     {
       "date": "2021-06",
-      "portfolio": 1296612.3,
+      "portfolio": 1402295.2,
       "taiex": 1599045.1,
       "tsmc": 2333333.3,
       "score": 86.0,
       "cash_pct": 0.0,
-      "holdings": "2059.TW(25%), 2301.TW(25%), 1303.TW(25%), 1503.TW(25%)"
+      "holdings": "2301.TW(25%), 2059.TW(25%), 1503.TW(25%), 2308.TW(25%)"
     },
     {
       "date": "2021-07",
-      "portfolio": 1380122.1,
+      "portfolio": 1512330.8,
       "taiex": 1553290.4,
       "tsmc": 2274509.8,
       "score": 81.0,
       "cash_pct": 0.0,
-      "holdings": "2059.TW(25%), 3264.TWO(25%), 2308.TW(25%), 1503.TW(25%)"
+      "holdings": "2383.TW(25%), 2059.TW(25%), 3264.TWO(25%), 2308.TW(25%)"
     },
     {
       "date": "2021-08",
-      "portfolio": 1407884.8,
+      "portfolio": 1520902.7,
       "taiex": 1575163.9,
       "tsmc": 2407843.1,
       "score": 79.0,
       "cash_pct": 0.0,
-      "holdings": "3264.TWO(25%), 1303.TW(25%), 1503.TW(25%), 6274.TWO(25%)"
+      "holdings": "3264.TWO(25%), 2383.TW(25%), 1503.TW(25%), 8299.TWO(25%)"
     },
     {
       "date": "2021-09",
-      "portfolio": 1327753.0,
+      "portfolio": 1400040.9,
       "taiex": 1525134.2,
       "tsmc": 2274509.8,
       "score": 89.0,
       "cash_pct": 0.0,
-      "holdings": "3264.TWO(25%), 1303.TW(25%), 2330.TW(25%), 6274.TWO(25%)"
+      "holdings": "3264.TWO(25%), 2383.TW(25%), 2330.TW(25%), 2454.TW(25%)"
     },
     {
       "date": "2021-10",
-      "portfolio": 1331090.7,
+      "portfolio": 1403560.3,
       "taiex": 1529874.9,
       "tsmc": 2313725.5,
       "score": 52.0,
@@ -3305,34 +3308,34 @@
     },
     {
       "date": "2021-11",
-      "portfolio": 1349866.3,
+      "portfolio": 1432553.7,
       "taiex": 1569532.5,
       "tsmc": 2337254.9,
       "score": 85.0,
       "cash_pct": 0.0,
-      "holdings": "3363.TWO(25%), 2059.TW(25%), 2356.TW(25%), 2324.TW(25%)"
+      "holdings": "3363.TWO(25%), 2059.TW(25%), 2356.TW(25%), 3231.TW(25%)"
     },
     {
       "date": "2021-12",
-      "portfolio": 1359176.7,
+      "portfolio": 1416228.2,
       "taiex": 1640776.7,
       "tsmc": 2411764.7,
       "score": 74.0,
       "cash_pct": 25.0,
-      "holdings": "2330.TW(25%), 3363.TWO(25%), 2059.TW(25%)"
+      "holdings": "2330.TW(25%), 2383.TW(25%), 3363.TWO(25%)"
     },
     {
       "date": "2022-01",
-      "portfolio": 1270363.8,
+      "portfolio": 1297746.4,
       "taiex": 1591744.8,
       "tsmc": 2494117.6,
       "score": 88.0,
       "cash_pct": 0.0,
-      "holdings": "2059.TW(25%), 8299.TWO(25%), 2330.TW(25%), 2308.TW(25%)"
+      "holdings": "2059.TW(25%), 2454.TW(25%), 2383.TW(25%), 8299.TWO(25%)"
     },
     {
       "date": "2022-02",
-      "portfolio": 1270093.9,
+      "portfolio": 1297470.7,
       "taiex": 1589743.6,
       "tsmc": 2368627.5,
       "score": 38.0,
@@ -3341,7 +3344,7 @@
     },
     {
       "date": "2022-03",
-      "portfolio": 1240791.1,
+      "portfolio": 1267536.3,
       "taiex": 1593462.3,
       "tsmc": 2341176.5,
       "score": 57.0,
@@ -3350,7 +3353,7 @@
     },
     {
       "date": "2022-04",
-      "portfolio": 1241434.8,
+      "portfolio": 1268193.9,
       "taiex": 1494280.8,
       "tsmc": 2109803.9,
       "score": 38.0,
@@ -3359,7 +3362,7 @@
     },
     {
       "date": "2022-05",
-      "portfolio": 1252341.2,
+      "portfolio": 1279335.4,
       "taiex": 1513696.6,
       "tsmc": 2196078.4,
       "score": 47.0,
@@ -3368,7 +3371,7 @@
     },
     {
       "date": "2022-06",
-      "portfolio": 1216777.2,
+      "portfolio": 1243004.8,
       "taiex": 1335195.5,
       "tsmc": 1866666.7,
       "score": 44.0,
@@ -3377,7 +3380,7 @@
     },
     {
       "date": "2022-07",
-      "portfolio": 1217408.4,
+      "portfolio": 1243649.6,
       "taiex": 1350896.4,
       "tsmc": 1996078.4,
       "score": 37.0,
@@ -3386,7 +3389,7 @@
     },
     {
       "date": "2022-08",
-      "portfolio": 1254446.4,
+      "portfolio": 1281485.9,
       "taiex": 1359485.4,
       "tsmc": 1980392.2,
       "score": 45.0,
@@ -3395,7 +3398,7 @@
     },
     {
       "date": "2022-09",
-      "portfolio": 1255097.1,
+      "portfolio": 1282150.7,
       "taiex": 1209008.8,
       "tsmc": 1654902.0,
       "score": 27.0,
@@ -3404,7 +3407,7 @@
     },
     {
       "date": "2022-10",
-      "portfolio": 1256666.0,
+      "portfolio": 1283753.4,
       "taiex": 1166245.9,
       "tsmc": 1529411.8,
       "score": 29.0,
@@ -3413,7 +3416,7 @@
     },
     {
       "date": "2022-11",
-      "portfolio": 1258236.9,
+      "portfolio": 1285358.1,
       "taiex": 1340042.4,
       "tsmc": 1921568.6,
       "score": 7.0,
@@ -3422,7 +3425,7 @@
     },
     {
       "date": "2022-12",
-      "portfolio": 1196562.8,
+      "portfolio": 1222354.7,
       "taiex": 1273231.1,
       "tsmc": 1758823.5,
       "score": 55.0,
@@ -3431,7 +3434,7 @@
     },
     {
       "date": "2023-01",
-      "portfolio": 1197183.6,
+      "portfolio": 1222988.8,
       "taiex": 1374773.9,
       "tsmc": 2047058.8,
       "score": 21.0,
@@ -3440,7 +3443,7 @@
     },
     {
       "date": "2023-02",
-      "portfolio": 1275397.5,
+      "portfolio": 1302888.6,
       "taiex": 1396261.1,
       "tsmc": 2003921.6,
       "score": 64.0,
@@ -3449,7 +3452,7 @@
     },
     {
       "date": "2023-03",
-      "portfolio": 1276169.5,
+      "portfolio": 1303677.3,
       "taiex": 1429067.0,
       "tsmc": 2090196.1,
       "score": 57.0,
@@ -3458,7 +3461,7 @@
     },
     {
       "date": "2023-04",
-      "portfolio": 1352631.3,
+      "portfolio": 1381787.2,
       "taiex": 1403050.6,
       "tsmc": 1968627.4,
       "score": 45.0,
@@ -3467,7 +3470,7 @@
     },
     {
       "date": "2023-05",
-      "portfolio": 1527539.6,
+      "portfolio": 1560465.6,
       "taiex": 1493090.3,
       "tsmc": 2188235.3,
       "score": 43.0,
@@ -3476,7 +3479,7 @@
     },
     {
       "date": "2023-06",
-      "portfolio": 1555103.1,
+      "portfolio": 1588623.3,
       "taiex": 1523402.3,
       "tsmc": 2258823.5,
       "score": 49.0,
@@ -3485,7 +3488,7 @@
     },
     {
       "date": "2023-07",
-      "portfolio": 1731597.4,
+      "portfolio": 1768921.9,
       "taiex": 1544106.1,
       "tsmc": 2215686.3,
       "score": 49.0,
@@ -3494,7 +3497,7 @@
     },
     {
       "date": "2023-08",
-      "portfolio": 1661216.9,
+      "portfolio": 1697024.3,
       "taiex": 1498093.0,
       "tsmc": 2152941.2,
       "score": 56.0,
@@ -3503,7 +3506,7 @@
     },
     {
       "date": "2023-09",
-      "portfolio": 1662078.6,
+      "portfolio": 1697904.6,
       "taiex": 1472807.1,
       "tsmc": 2050980.4,
       "score": 39.0,
@@ -3512,7 +3515,7 @@
     },
     {
       "date": "2023-10",
-      "portfolio": 1664156.2,
+      "portfolio": 1700027.0,
       "taiex": 1441063.8,
       "tsmc": 2074509.8,
       "score": 15.0,
@@ -3521,7 +3524,7 @@
     },
     {
       "date": "2023-11",
-      "portfolio": 1666236.4,
+      "portfolio": 1702152.1,
       "taiex": 1570081.0,
       "tsmc": 2262745.1,
       "score": 10.0,
@@ -3530,7 +3533,7 @@
     },
     {
       "date": "2023-12",
-      "portfolio": 1611361.8,
+      "portfolio": 1646094.6,
       "taiex": 1614837.0,
       "tsmc": 2325490.2,
       "score": 55.0,
@@ -3539,7 +3542,7 @@
     },
     {
       "date": "2024-01",
-      "portfolio": 1755112.4,
+      "portfolio": 1792943.8,
       "taiex": 1611122.0,
       "tsmc": 2462745.1,
       "score": 56.0,
@@ -3548,7 +3551,7 @@
     },
     {
       "date": "2024-02",
-      "portfolio": 1926531.8,
+      "portfolio": 1968058.1,
       "taiex": 1708134.7,
       "tsmc": 2705882.4,
       "score": 61.0,
@@ -3557,7 +3560,7 @@
     },
     {
       "date": "2024-03",
-      "portfolio": 1981007.7,
+      "portfolio": 2023708.2,
       "taiex": 1827704.7,
       "tsmc": 3043137.2,
       "score": 79.0,
@@ -3566,7 +3569,7 @@
     },
     {
       "date": "2024-04",
-      "portfolio": 2038281.7,
+      "portfolio": 2082216.8,
       "taiex": 1836904.3,
       "tsmc": 3098039.2,
       "score": 68.0,
@@ -3575,7 +3578,7 @@
     },
     {
       "date": "2024-05",
-      "portfolio": 2015240.7,
+      "portfolio": 2058679.1,
       "taiex": 1906936.3,
       "tsmc": 3219607.8,
       "score": 59.0,
@@ -3584,16 +3587,16 @@
     },
     {
       "date": "2024-06",
-      "portfolio": 2193530.8,
+      "portfolio": 2155481.0,
       "taiex": 2074269.2,
       "tsmc": 3788235.3,
       "score": 55.0,
       "cash_pct": 50.0,
-      "holdings": "2330.TW(25%), 2317.TW(25%)"
+      "holdings": "2330.TW(25%), 3363.TWO(25%)"
     },
     {
       "date": "2024-07",
-      "portfolio": 2040138.0,
+      "portfolio": 2003172.9,
       "taiex": 1999258.8,
       "tsmc": 3662745.1,
       "score": 64.0,
@@ -3602,7 +3605,7 @@
     },
     {
       "date": "2024-08",
-      "portfolio": 2082719.1,
+      "portfolio": 2044982.4,
       "taiex": 2005449.5,
       "tsmc": 3701960.8,
       "score": 53.0,
@@ -3611,7 +3614,7 @@
     },
     {
       "date": "2024-09",
-      "portfolio": 2083799.5,
+      "portfolio": 2046043.3,
       "taiex": 2001527.3,
       "tsmc": 3752941.2,
       "score": 36.0,
@@ -3620,7 +3623,7 @@
     },
     {
       "date": "2024-10",
-      "portfolio": 2110656.3,
+      "portfolio": 2072413.4,
       "taiex": 2055192.8,
       "tsmc": 4039215.7,
       "score": 45.0,
@@ -3629,7 +3632,7 @@
     },
     {
       "date": "2024-11",
-      "portfolio": 2095615.1,
+      "portfolio": 2057644.8,
       "taiex": 2004946.1,
       "tsmc": 3905882.4,
       "score": 70.0,
@@ -3638,7 +3641,7 @@
     },
     {
       "date": "2024-12",
-      "portfolio": 2125046.6,
+      "portfolio": 2086543.0,
       "taiex": 2074525.9,
       "tsmc": 4215686.3,
       "score": 55.0,
@@ -3647,7 +3650,7 @@
     },
     {
       "date": "2025-01",
-      "portfolio": 2140092.8,
+      "portfolio": 2101316.6,
       "taiex": 2118682.9,
       "tsmc": 4450980.4,
       "score": 52.0,
@@ -3656,7 +3659,7 @@
     },
     {
       "date": "2025-02",
-      "portfolio": 2104926.0,
+      "portfolio": 2066787.0,
       "taiex": 2076154.1,
       "tsmc": 4078431.4,
       "score": 55.0,
@@ -3665,7 +3668,7 @@
     },
     {
       "date": "2025-03",
-      "portfolio": 2106017.9,
+      "portfolio": 2067859.1,
       "taiex": 1863859.1,
       "tsmc": 3568627.5,
       "score": 37.0,
@@ -3674,7 +3677,7 @@
     },
     {
       "date": "2025-04",
-      "portfolio": 2108650.5,
+      "portfolio": 2070443.9,
       "taiex": 1822353.4,
       "tsmc": 3560784.3,
       "score": 37.0,
@@ -3683,7 +3686,7 @@
     },
     {
       "date": "2025-05",
-      "portfolio": 2111286.3,
+      "portfolio": 2073032.0,
       "taiex": 1922523.8,
       "tsmc": 3792156.9,
       "score": 32.0,
@@ -3692,34 +3695,34 @@
     },
     {
       "date": "2025-06",
-      "portfolio": 2237248.1,
+      "portfolio": 2280216.1,
       "taiex": 2004362.4,
       "tsmc": 4156862.8,
       "score": 67.0,
       "cash_pct": 25.0,
-      "holdings": "2330.TW(25%), 3211.TWO(25%), 2059.TW(25%)"
+      "holdings": "2330.TW(25%), 2383.TW(25%), 3211.TWO(25%)"
     },
     {
       "date": "2025-07",
-      "portfolio": 2555792.0,
+      "portfolio": 2718218.6,
       "taiex": 2120223.8,
       "tsmc": 4549019.6,
       "score": 75.0,
       "cash_pct": 0.0,
-      "holdings": "6274.TWO(25%), 3363.TWO(25%), 1519.TW(25%), 3211.TWO(25%)"
+      "holdings": "2383.TW(25%), 6274.TWO(25%), 3363.TWO(25%), 1519.TW(25%)"
     },
     {
       "date": "2025-08",
-      "portfolio": 3003824.3,
+      "portfolio": 3175637.7,
       "taiex": 2182417.0,
       "tsmc": 4549019.6,
       "score": 78.0,
       "cash_pct": 0.0,
-      "holdings": "1519.TW(25%), 6274.TWO(25%), 2308.TW(25%), 2059.TW(25%)"
+      "holdings": "1519.TW(25%), 2383.TW(25%), 6274.TWO(25%), 2308.TW(25%)"
     },
     {
       "date": "2025-09",
-      "portfolio": 3158265.2,
+      "portfolio": 3338912.3,
       "taiex": 2325380.7,
       "tsmc": 5117647.1,
       "score": 78.0,
@@ -3728,7 +3731,7 @@
     },
     {
       "date": "2025-10",
-      "portfolio": 3229302.3,
+      "portfolio": 3414012.6,
       "taiex": 2542676.8,
       "tsmc": 5882352.9,
       "score": 73.0,
@@ -3737,25 +3740,25 @@
     },
     {
       "date": "2025-11",
-      "portfolio": 3203253.0,
+      "portfolio": 3386473.3,
       "taiex": 2488022.6,
       "tsmc": 5647058.8,
       "score": 87.0,
       "cash_pct": 0.0,
-      "holdings": "2059.TW(25%), 6274.TWO(25%), 2308.TW(25%), 2421.TW(25%)"
+      "holdings": "2059.TW(25%), 6274.TWO(25%), 2421.TW(25%), 2308.TW(25%)"
     },
     {
       "date": "2025-12",
-      "portfolio": 3265945.3,
+      "portfolio": 3729551.0,
       "taiex": 2608442.7,
       "tsmc": 6078431.4,
       "score": 56.0,
       "cash_pct": 50.0,
-      "holdings": "2330.TW(25%), 1303.TW(25%)"
+      "holdings": "2330.TW(25%), 8299.TWO(25%)"
     },
     {
       "date": "2026-01",
-      "portfolio": 4102570.1,
+      "portfolio": 4687663.0,
       "taiex": 2887640.2,
       "tsmc": 6960784.3,
       "score": 68.0,
@@ -3764,16 +3767,16 @@
     },
     {
       "date": "2026-02",
-      "portfolio": 4533437.0,
+      "portfolio": 4993033.5,
       "taiex": 3189405.4,
       "tsmc": 7823529.4,
       "score": 78.0,
       "cash_pct": 0.0,
-      "holdings": "8299.TWO(25%), 3264.TWO(25%), 1303.TW(25%), 2308.TW(25%)"
+      "holdings": "8299.TWO(25%), 3264.TWO(25%), 2454.TW(25%), 2308.TW(25%)"
     },
     {
       "date": "2026-03",
-      "portfolio": 4423957.3,
+      "portfolio": 4872454.8,
       "taiex": 2856951.6,
       "tsmc": 6901960.8,
       "score": 69.0,
@@ -3782,7 +3785,7 @@
     },
     {
       "date": "2026-04",
-      "portfolio": 5173809.7,
+      "portfolio": 5698326.7,
       "taiex": 3505706.5,
       "tsmc": 8372549.0,
       "score": 41.0,
@@ -3791,65 +3794,65 @@
     },
     {
       "date": "2026-05",
-      "portfolio": 5478540.5,
+      "portfolio": 5985733.4,
       "taiex": 4028619.2,
       "tsmc": 9235294.1,
       "score": 88.0,
       "cash_pct": 0.0,
-      "holdings": "3081.TWO(25%), 6451.TW(25%), 3264.TWO(25%), 3363.TWO(25%)"
+      "holdings": "3081.TWO(25%), 6451.TW(25%), 3363.TWO(25%), 2308.TW(25%)"
     },
     {
       "date": "2026-06",
-      "portfolio": 4861190.3,
+      "portfolio": 5696309.1,
       "taiex": 4154069.0,
       "tsmc": 9450980.4,
       "score": 91.0,
       "cash_pct": 0.0,
-      "holdings": "6274.TWO(25%), 6451.TW(25%), 8299.TWO(25%), 2308.TW(25%)"
+      "holdings": "6274.TWO(25%), 6451.TW(25%), 8299.TWO(25%), 2383.TW(25%)"
     },
     {
       "date": "2026-07",
-      "portfolio": 3950881.9,
+      "portfolio": 4776026.8,
       "taiex": 3883336.2,
       "tsmc": 9509803.9,
       "score": 76.0,
       "cash_pct": 0.0,
-      "holdings": "6274.TWO(25%), 2059.TW(25%), 2356.TW(25%), 6451.TW(25%)"
+      "holdings": "6274.TWO(25%), 2454.TW(25%), 2059.TW(25%), 2383.TW(25%)"
     },
     {
       "date": "2026-08",
-      "portfolio": 5057678.4,
+      "portfolio": 5501802.2,
       "taiex": 4154299.4,
       "tsmc": 9431372.6,
       "score": 63.0,
       "cash_pct": 25.0,
-      "holdings": "2330.TW(25%), 2059.TW(25%), 1303.TW(25%)"
+      "holdings": "2330.TW(25%), 2059.TW(25%), 3231.TW(25%)"
     },
     {
       "date": "2026-09",
-      "portfolio": 4916282.5,
-      "taiex": 4325063.9,
-      "tsmc": 9705882.3,
+      "portfolio": 5322133.1,
+      "taiex": 4317456.4,
+      "tsmc": 9725490.2,
       "score": 58.0,
       "cash_pct": 50.0,
       "holdings": "2330.TW(25%), 2059.TW(25%)"
     }
   ],
   "portfolio_metrics": {
-    "total_return": 391.0,
-    "cagr": 20.4,
-    "mdd": 27.9,
-    "sharpe": 0.88,
-    "calmar": 0.73,
-    "win_rate": 71.8,
-    "taiex_total_return": 344.0,
-    "taiex_cagr": 19.0,
+    "total_return": 431.5,
+    "cagr": 21.5,
+    "mdd": 20.2,
+    "sharpe": 0.95,
+    "calmar": 1.06,
+    "win_rate": 69.9,
+    "taiex_total_return": 343.3,
+    "taiex_cagr": 18.9,
     "taiex_mdd": 28.9,
-    "tsmc_total_return": 906.1,
+    "tsmc_total_return": 908.1,
     "tsmc_cagr": 30.9,
     "tsmc_mdd": 38.7,
-    "excess_return_pp": 47.0,
-    "alpha_pp": 1.4,
+    "excess_return_pp": 88.3,
+    "alpha_pp": 2.5,
     "backtest_start": "2018-02",
     "backtest_end": "2026-09",
     "backtest_period_desc": "2018-02 至 2026-09 (共 8.6 年，價格報酬口徑，已扣除手續費與證交稅)"
@@ -4053,7 +4056,7 @@
       "target_formula_note": "合理價 $623.3 × (1 + 營收YoY 29.1% × 保守折減 0.5) = $713.99 (折現PV約 $633.8，現值空間 +47.7%)",
       "sun_status": "🟢 便宜低估區",
       "badge_color": "#10B981",
-      "sun_action": "營收初升但獲利待驗證，小量金字塔分批試單",
+      "sun_action": "營收初升(隱含TTM PE 552x)，獲利待驗證，小量試單，嚴禁過度重押",
       "sun_position": "30% ~ 50% (單檔上限，謹慎分批)",
       "rank_tier": 2,
       "val_mode": "PSR",
@@ -4101,9 +4104,9 @@
       "right_status": "⏸️ 築底觀望",
       "right_advice": "短線站上月線但中長均線尚未翻多，暫先觀察",
       "right_badge_color": "#94A3B8",
-      "chip_badge": "",
-      "chip_status": "⚪ 平穩沉澱",
-      "chip_detail": "籌碼平穩沉澱 (CMF: -0.52)"
+      "chip_badge": "⚠️ 資金流出",
+      "chip_status": "🔴 資金流出",
+      "chip_detail": "資金流向偏弱 (CMF: -0.52, 法人持股調節賣壓)"
     },
     {
       "symbol": "2356.TW",
@@ -4201,7 +4204,7 @@
       "right_badge_color": "#94A3B8",
       "chip_badge": "⚠️ 資金流出",
       "chip_status": "🔴 資金流出",
-      "chip_detail": "資金流向偏弱 (CMF: -0.29, 短線法人偏賣方)"
+      "chip_detail": "資金流向偏弱 (CMF: -0.29, 法人持股調節賣壓)"
     },
     {
       "symbol": "1503.TW",
@@ -4299,7 +4302,7 @@
       "right_badge_color": "#94A3B8",
       "chip_badge": "⚠️ 資金流出",
       "chip_status": "🔴 資金流出",
-      "chip_detail": "資金流向偏弱 (CMF: -0.36, 短線法人偏賣方)"
+      "chip_detail": "資金流向偏弱 (CMF: -0.36, 法人持股調節賣壓)"
     },
     {
       "symbol": "1519.TW",
@@ -4318,9 +4321,9 @@
       "fair_implied_pe_ttm": 47.2,
       "is_pe_extreme": false,
       "pe_extreme_msg": "",
-      "val_defensive_icon": "🟢",
-      "val_defensive_tag": "安全邊際防守",
-      "val_defensive_color": "emerald",
+      "val_defensive_icon": "⚪",
+      "val_defensive_tag": "合理定價震盪",
+      "val_defensive_color": "slate",
       "dim_fundamental": "🟢 績優高成長",
       "dim_cycle": "🟢 Stage C 成長主升",
       "dim_valuation": "⚪ 合理偏低區",
@@ -4395,9 +4398,9 @@
       "right_status": "⏸️ 回測整理",
       "right_advice": "中多格局但短線跌破月線(負乖離 -2.7%)，暫緩追價，靜待止跌收復月線",
       "right_badge_color": "#F59E0B",
-      "chip_badge": "",
-      "chip_status": "⚪ 平穩沉澱",
-      "chip_detail": "籌碼平穩沉澱 (CMF: -0.53)"
+      "chip_badge": "⚠️ 資金流出",
+      "chip_status": "🔴 資金流出",
+      "chip_detail": "資金流向偏弱 (CMF: -0.53, 法人持股調節賣壓)"
     },
     {
       "symbol": "2308.TW",
@@ -4408,49 +4411,49 @@
       "radar_multiplier": 1.1,
       "close": 1885.0,
       "ma60": 1775.5,
-      "current_pe": 95.2,
-      "trailing_pe": 127.36,
-      "pe_forward_2026": 95.2,
-      "pe_forward_2027": 76.94,
-      "fair_implied_pe": 98.6,
-      "fair_implied_pe_ttm": 132.0,
+      "current_pe": 53.86,
+      "trailing_pe": 59.99,
+      "pe_forward_2026": 53.86,
+      "pe_forward_2027": 44.88,
+      "fair_implied_pe": 55.8,
+      "fair_implied_pe_ttm": 62.2,
       "is_pe_extreme": true,
-      "pe_extreme_msg": "合理價隱含 PE 99x 超過上限 (60x)",
+      "pe_extreme_msg": "合理價隱含 PE 62x 超過上限 (60x)",
       "val_defensive_icon": "⚠️",
       "val_defensive_tag": "估值待驗證",
       "val_defensive_color": "amber",
       "dim_fundamental": "🟢 穩健增長",
       "dim_cycle": "🟢 Stage B 初升量產",
       "dim_valuation": "⚠️ 估值待驗證",
-      "adjusted_pe": 98.64,
+      "adjusted_pe": 55.8,
       "peer_pe": 32.0,
-      "peg": 4.02,
+      "peg": 2.27,
       "growth_g": 23.7,
-      "eps_ttm": 14.8,
-      "floor_value": 222.0,
+      "eps_ttm": 31.42,
+      "floor_value": 471.3,
       "stop_loss_price": 1658.8,
       "stop_loss_pct": -12.0,
       "extreme_floor": 965.58,
-      "eps_2026e": 19.8,
-      "eps_2027e": 24.5,
-      "eps_2028e": 30.0,
+      "eps_2026e": 35.0,
+      "eps_2027e": 42.0,
+      "eps_2028e": 50.0,
       "p_bargain": 1206.98,
       "p_cheap": 1562.44,
       "p_fair": 1953.05,
       "p_expensive": 2343.66,
       "p_crazy": 2699.12,
       "margin_of_safety_pct": 3.48,
-      "target_fair_2027": 2416.68,
-      "target_fair_2028": 2959.2,
-      "target_formula_note": "2027E 高成長情境 EPS $24.5 × 雷達修正本益比 98.64x = $2416.68 (折現PV約 $2145.3，現值空間 +13.8%，年化約 +10.9%)",
+      "target_fair_2027": 2343.6,
+      "target_fair_2028": 2790.0,
+      "target_formula_note": "2027E 高成長情境 EPS $42.0 × 雷達修正本益比 55.8x = $2343.6 (折現PV約 $2080.4，現值空間 +10.4%，年化約 +8.2%)",
       "sun_status": "⚠️ 估值待驗證",
       "badge_color": "#F59E0B",
-      "sun_action": "合理價隱含 PE 99x 超過上限 (60x)，禁止標註合理偏低，嚴控下檔風險",
+      "sun_action": "合理價隱含 PE 62x 超過上限 (60x)，禁止標註合理偏低，嚴控下檔風險",
       "sun_position": "30% (單檔上限，觸發極端PE阻斷)",
       "rank_tier": 3,
       "val_mode": "PER",
       "val_mode_tag": "📈 PER 穩健獲利模式",
-      "val_reason": "獲利模式成熟穩定(近4季實績EPS $14.8，2026E前瞻PE 95.2x)，採用經典孫慶龍本益比折現估值",
+      "val_reason": "獲利模式成熟穩定(近4季實績EPS $31.42，2026E前瞻PE 53.9x)，採用經典孫慶龍本益比折現估值",
       "rev_yoy_3m": 14.5,
       "sps": 162.16,
       "current_psr": 11.62,
@@ -4468,17 +4471,17 @@
         4.2,
         5.8
       ],
-      "implied_pe_fair_trailing": 132.0,
-      "implied_pe_fair_forward": 98.6,
-      "implied_pe_fair_forward_2027": 79.7,
-      "val_basis": "2026E 前瞻 EPS $19.8 (高成長情境)",
-      "eps_2026e_cons": 13.86,
-      "p_fair_conservative": 1367.2,
-      "pv_target_2027": 2145.3,
-      "pv_upside_total": 13.8,
-      "pv_upside_ann": 10.9,
+      "implied_pe_fair_trailing": 62.2,
+      "implied_pe_fair_forward": 55.8,
+      "implied_pe_fair_forward_2027": 46.5,
+      "val_basis": "2026E 前瞻 EPS $35.0 (高成長情境)",
+      "eps_2026e_cons": 24.5,
+      "p_fair_conservative": 1367.1,
+      "pv_target_2027": 2080.4,
+      "pv_upside_total": 10.4,
+      "pv_upside_ann": 8.2,
       "peg_consensus": NaN,
-      "peg_scenario": 4.02,
+      "peg_scenario": 2.27,
       "is_divergent": false,
       "divergence_alert": "",
       "divergence_note": "",
@@ -4495,7 +4498,7 @@
       "right_badge_color": "#38BDF8",
       "chip_badge": "⚠️ 資金流出",
       "chip_status": "🔴 資金流出",
-      "chip_detail": "資金流向偏弱 (CMF: -0.17, 短線法人偏賣方)"
+      "chip_detail": "資金流向偏弱 (CMF: -0.17, 法人持股調節賣壓)"
     },
     {
       "symbol": "1513.TW",
@@ -4514,9 +4517,9 @@
       "fair_implied_pe_ttm": 27.7,
       "is_pe_extreme": false,
       "pe_extreme_msg": "",
-      "val_defensive_icon": "🟢",
-      "val_defensive_tag": "安全邊際防守",
-      "val_defensive_color": "emerald",
+      "val_defensive_icon": "⚪",
+      "val_defensive_tag": "合理定價震盪",
+      "val_defensive_color": "slate",
       "dim_fundamental": "🟢 穩健增長",
       "dim_cycle": "🟢 Stage C 成長主升",
       "dim_valuation": "⚪ 合理偏低區",
@@ -4612,9 +4615,9 @@
       "fair_implied_pe_ttm": 48.4,
       "is_pe_extreme": false,
       "pe_extreme_msg": "",
-      "val_defensive_icon": "🟢",
-      "val_defensive_tag": "安全邊際防守",
-      "val_defensive_color": "emerald",
+      "val_defensive_icon": "⚪",
+      "val_defensive_tag": "合理定價震盪",
+      "val_defensive_color": "slate",
       "dim_fundamental": "🟢 穩健增長",
       "dim_cycle": "🟢 Stage B 初升量產",
       "dim_valuation": "⚪ 合理偏低區",
@@ -4691,7 +4694,7 @@
       "right_badge_color": "#F59E0B",
       "chip_badge": "⚠️ 資金流出",
       "chip_status": "🔴 資金流出",
-      "chip_detail": "資金流向偏弱 (CMF: -0.39, 短線法人偏賣方)"
+      "chip_detail": "資金流向偏弱 (CMF: -0.39, 法人持股調節賣壓)"
     },
     {
       "symbol": "2330.TW",
@@ -4702,41 +4705,41 @@
       "radar_multiplier": 1.05,
       "close": 2500.0,
       "ma60": 2403.6,
-      "current_pe": 44.64,
-      "trailing_pe": 56.18,
-      "pe_forward_2026": 44.64,
-      "pe_forward_2027": 36.76,
-      "fair_implied_pe": 45.1,
-      "fair_implied_pe_ttm": 56.7,
+      "current_pe": 26.32,
+      "trailing_pe": 28.98,
+      "pe_forward_2026": 26.32,
+      "pe_forward_2027": 21.74,
+      "fair_implied_pe": 26.6,
+      "fair_implied_pe_ttm": 29.3,
       "is_pe_extreme": false,
       "pe_extreme_msg": "",
-      "val_defensive_icon": "🟢",
-      "val_defensive_tag": "安全邊際防守",
-      "val_defensive_color": "emerald",
+      "val_defensive_icon": "⚪",
+      "val_defensive_tag": "合理定價震盪",
+      "val_defensive_color": "slate",
       "dim_fundamental": "🟢 穩健增長",
       "dim_cycle": "🟢 Stage C 成長主升",
       "dim_valuation": "⚪ 合理偏低區",
-      "adjusted_pe": 45.07,
-      "peer_pe": 38.0,
-      "peg": 2.09,
+      "adjusted_pe": 26.57,
+      "peer_pe": 32.0,
+      "peg": 1.23,
       "growth_g": 21.4,
-      "eps_ttm": 44.5,
-      "floor_value": 667.5,
+      "eps_ttm": 86.27,
+      "floor_value": 1294.0,
       "stop_loss_price": 2200.0,
       "stop_loss_pct": -12.0,
       "extreme_floor": 1247.74,
-      "eps_2026e": 56.0,
-      "eps_2027e": 68.0,
-      "eps_2028e": 82.0,
+      "eps_2026e": 95.0,
+      "eps_2027e": 115.0,
+      "eps_2028e": 135.0,
       "p_bargain": 1559.68,
       "p_cheap": 2019.01,
       "p_fair": 2523.76,
       "p_expensive": 3028.51,
       "p_crazy": 3487.84,
       "margin_of_safety_pct": 0.94,
-      "target_fair_2027": 3064.76,
-      "target_fair_2028": 3695.74,
-      "target_formula_note": "2027E 高成長情境 EPS $68.0 × 雷達修正本益比 45.07x = $3064.76 (折現PV約 $2720.5，現值空間 +8.8%，年化約 +7.0%)",
+      "target_fair_2027": 3055.55,
+      "target_fair_2028": 3586.95,
+      "target_formula_note": "2027E 高成長情境 EPS $115.0 × 雷達修正本益比 26.57x = $3055.55 (折現PV約 $2712.4，現值空間 +8.5%，年化約 +6.7%)",
       "sun_status": "⚪ 合理偏低區",
       "badge_color": "#F8FAFC",
       "sun_action": "平價穩健區間，耐心抱牢享受成長",
@@ -4744,7 +4747,7 @@
       "rank_tier": 3,
       "val_mode": "PER",
       "val_mode_tag": "📈 PER 穩健獲利模式",
-      "val_reason": "獲利模式成熟穩定(近4季實績EPS $44.5，2026E前瞻PE 44.6x)，採用經典孫慶龍本益比折現估值",
+      "val_reason": "獲利模式成熟穩定(近4季實績EPS $86.27，2026E前瞻PE 26.3x)，採用經典孫慶龍本益比折現估值",
       "rev_yoy_3m": 32.0,
       "sps": 109.91,
       "current_psr": 22.75,
@@ -4762,17 +4765,17 @@
         13.0,
         18.0
       ],
-      "implied_pe_fair_trailing": 56.7,
-      "implied_pe_fair_forward": 45.1,
-      "implied_pe_fair_forward_2027": 37.1,
-      "val_basis": "2026E 前瞻 EPS $56.0 (高成長情境)",
-      "eps_2026e_cons": 39.2,
-      "p_fair_conservative": 1766.7,
-      "pv_target_2027": 2720.5,
-      "pv_upside_total": 8.8,
-      "pv_upside_ann": 7.0,
+      "implied_pe_fair_trailing": 29.3,
+      "implied_pe_fair_forward": 26.6,
+      "implied_pe_fair_forward_2027": 21.9,
+      "val_basis": "2026E 前瞻 EPS $95.0 (高成長情境)",
+      "eps_2026e_cons": 66.5,
+      "p_fair_conservative": 1766.9,
+      "pv_target_2027": 2712.4,
+      "pv_upside_total": 8.5,
+      "pv_upside_ann": 6.7,
       "peg_consensus": NaN,
-      "peg_scenario": 2.09,
+      "peg_scenario": 1.23,
       "is_divergent": false,
       "divergence_alert": "",
       "divergence_note": "",
@@ -4789,7 +4792,7 @@
       "right_badge_color": "#A855F7",
       "chip_badge": "⚠️ 資金流出",
       "chip_status": "🔴 資金流出",
-      "chip_detail": "資金流向偏弱 (CMF: -0.10, 短線法人偏賣方)"
+      "chip_detail": "資金流向偏弱 (CMF: -0.10, 法人持股調節賣壓)"
     },
     {
       "symbol": "8299.TWO",
@@ -4808,9 +4811,9 @@
       "fair_implied_pe_ttm": 46.9,
       "is_pe_extreme": false,
       "pe_extreme_msg": "",
-      "val_defensive_icon": "🟢",
-      "val_defensive_tag": "安全邊際防守",
-      "val_defensive_color": "emerald",
+      "val_defensive_icon": "⚪",
+      "val_defensive_tag": "合理定價震盪",
+      "val_defensive_color": "slate",
       "dim_fundamental": "🟢 績優高成長",
       "dim_cycle": "🟢 Stage B 初升量產",
       "dim_valuation": "⚪ 合理偏低區",
@@ -4887,7 +4890,7 @@
       "right_badge_color": "#38BDF8",
       "chip_badge": "⚠️ 資金流出",
       "chip_status": "🔴 資金流出",
-      "chip_detail": "資金流向偏弱 (CMF: -0.17, 短線法人偏賣方)"
+      "chip_detail": "資金流向偏弱 (CMF: -0.17, 法人持股調節賣壓)"
     },
     {
       "symbol": "2383.TW",
@@ -4905,7 +4908,7 @@
       "fair_implied_pe": 137.4,
       "fair_implied_pe_ttm": 183.3,
       "is_pe_extreme": true,
-      "pe_extreme_msg": "合理價隱含 PE 137x 超過上限 (60x)",
+      "pe_extreme_msg": "合理價隱含 PE 183x 超過上限 (60x)",
       "val_defensive_icon": "⚠️",
       "val_defensive_tag": "估值待驗證",
       "val_defensive_color": "amber",
@@ -4935,7 +4938,7 @@
       "target_formula_note": "2027E 高成長情境 EPS $48.0 × 雷達修正本益比 137.44x = $6597.12 (折現PV約 $5856.2，現值空間 +12.9%，年化約 +10.2%)",
       "sun_status": "⚠️ 估值待驗證",
       "badge_color": "#F59E0B",
-      "sun_action": "合理價隱含 PE 137x 超過上限 (60x)，禁止標註合理偏低，嚴控下檔風險",
+      "sun_action": "合理價隱含 PE 183x 超過上限 (60x)，禁止標註合理偏低，嚴控下檔風險",
       "sun_position": "30% (單檔上限，觸發極端PE阻斷)",
       "rank_tier": 3,
       "val_mode": "PER",
@@ -4983,9 +4986,9 @@
       "right_status": "⏸️ 築底觀望",
       "right_advice": "短線站上月線但中長均線尚未翻多，暫先觀察",
       "right_badge_color": "#94A3B8",
-      "chip_badge": "",
-      "chip_status": "⚪ 平穩沉澱",
-      "chip_detail": "籌碼平穩沉澱 (CMF: -0.22)"
+      "chip_badge": "⚠️ 資金流出",
+      "chip_status": "🔴 資金流出",
+      "chip_detail": "資金流向偏弱 (CMF: -0.22, 法人持股調節賣壓)"
     },
     {
       "symbol": "2317.TW",
@@ -5005,7 +5008,7 @@
       "is_pe_extreme": false,
       "pe_extreme_msg": "",
       "val_defensive_icon": "🟡",
-      "val_defensive_tag": "偏高震盪位階",
+      "val_defensive_tag": "稍微偏貴震盪",
       "val_defensive_color": "amber",
       "dim_fundamental": "🟢 穩健增長",
       "dim_cycle": "🟢 Stage C 成長主升",
@@ -5083,7 +5086,7 @@
       "right_badge_color": "#F59E0B",
       "chip_badge": "⚠️ 資金流出",
       "chip_status": "🔴 資金流出",
-      "chip_detail": "資金流向偏弱 (CMF: -0.03, 短線法人偏賣方)"
+      "chip_detail": "資金流向偏弱 (CMF: -0.03, 法人持股調節賣壓)"
     },
     {
       "symbol": "3231.TW",
@@ -5103,7 +5106,7 @@
       "is_pe_extreme": false,
       "pe_extreme_msg": "",
       "val_defensive_icon": "🟡",
-      "val_defensive_tag": "偏高震盪位階",
+      "val_defensive_tag": "稍微偏貴震盪",
       "val_defensive_color": "amber",
       "dim_fundamental": "🟢 穩健增長",
       "dim_cycle": "🟢 Stage C 成長主升",
@@ -5181,7 +5184,7 @@
       "right_badge_color": "#38BDF8",
       "chip_badge": "⚠️ 資金流出",
       "chip_status": "🔴 資金流出",
-      "chip_detail": "資金流向偏弱 (CMF: -0.12, 短線法人偏賣方)"
+      "chip_detail": "資金流向偏弱 (CMF: -0.12, 法人持股調節賣壓)"
     },
     {
       "symbol": "3264.TWO",
@@ -5201,7 +5204,7 @@
       "is_pe_extreme": false,
       "pe_extreme_msg": "",
       "val_defensive_icon": "🟡",
-      "val_defensive_tag": "偏高震盪位階",
+      "val_defensive_tag": "稍微偏貴震盪",
       "val_defensive_color": "amber",
       "dim_fundamental": "🟢 穩健增長",
       "dim_cycle": "🟢 Stage B 初升量產",
@@ -5297,7 +5300,7 @@
       "fair_implied_pe": 119.0,
       "fair_implied_pe_ttm": 166.3,
       "is_pe_extreme": true,
-      "pe_extreme_msg": "合理價隱含 PE 119x 超過上限 (60x)",
+      "pe_extreme_msg": "合理價隱含 PE 166x 超過上限 (60x)",
       "val_defensive_icon": "⚠️",
       "val_defensive_tag": "估值待驗證",
       "val_defensive_color": "amber",
@@ -5328,7 +5331,7 @@
       "sun_status": "🟡 合理偏高區",
       "badge_color": "#FBBF24",
       "sun_action": "估值稍微偏貴，嚴禁追高，可續抱",
-      "sun_position": "30% (單檔上限，觸發極端PE阻斷)",
+      "sun_position": "20% ~ 30% (單檔上限，觸發極端PE阻斷)",
       "rank_tier": 4,
       "val_mode": "PER",
       "val_mode_tag": "📈 PER 穩健獲利模式",
@@ -5375,9 +5378,9 @@
       "right_status": "⏸️ 回測整理",
       "right_advice": "中多格局但短線跌破月線(負乖離 -2.7%)，暫緩追價，靜待止跌收復月線",
       "right_badge_color": "#F59E0B",
-      "chip_badge": "",
-      "chip_status": "⚪ 平穩沉澱",
-      "chip_detail": "籌碼平穩沉澱 (CMF: -0.35)"
+      "chip_badge": "⚠️ 資金流出",
+      "chip_status": "🔴 資金流出",
+      "chip_detail": "資金流向偏弱 (CMF: -0.35, 法人持股調節賣壓)"
     },
     {
       "symbol": "6274.TWO",
@@ -5395,7 +5398,7 @@
       "fair_implied_pe": 97.2,
       "fair_implied_pe_ttm": 143.8,
       "is_pe_extreme": true,
-      "pe_extreme_msg": "合理價隱含 PE 97x 超過上限 (60x)",
+      "pe_extreme_msg": "合理價隱含 PE 144x 超過上限 (60x)",
       "val_defensive_icon": "⚠️",
       "val_defensive_tag": "估值待驗證",
       "val_defensive_color": "amber",
@@ -5426,7 +5429,7 @@
       "sun_status": "🟡 合理偏高區",
       "badge_color": "#FBBF24",
       "sun_action": "估值稍微偏貴，嚴禁追高，可續抱",
-      "sun_position": "30% (單檔上限，觸發極端PE阻斷)",
+      "sun_position": "20% ~ 30% (單檔上限，觸發極端PE阻斷)",
       "rank_tier": 4,
       "val_mode": "PER",
       "val_mode_tag": "📈 PER 穩健獲利模式",
@@ -5492,10 +5495,10 @@
       "pe_forward_2027": 50.51,
       "fair_implied_pe": 50.4,
       "fair_implied_pe_ttm": 63.6,
-      "is_pe_extreme": false,
-      "pe_extreme_msg": "",
-      "val_defensive_icon": "🟡",
-      "val_defensive_tag": "偏高震盪位階",
+      "is_pe_extreme": true,
+      "pe_extreme_msg": "合理價隱含 PE 64x 超過上限 (60x)",
+      "val_defensive_icon": "⚠️",
+      "val_defensive_tag": "估值待驗證",
       "val_defensive_color": "amber",
       "dim_fundamental": "🟢 穩健增長",
       "dim_cycle": "🟢 Stage C 成長主升",
@@ -5524,7 +5527,7 @@
       "sun_status": "🟡 合理偏高區",
       "badge_color": "#FBBF24",
       "sun_action": "估值稍微偏貴，嚴禁追高，可續抱",
-      "sun_position": "30% (單檔上限，停止追高)",
+      "sun_position": "20% ~ 30% (單檔上限，觸發極端PE阻斷)",
       "rank_tier": 4,
       "val_mode": "PER",
       "val_mode_tag": "📈 PER 穩健獲利模式",
@@ -5573,7 +5576,7 @@
       "right_badge_color": "#00F59B",
       "chip_badge": "⚠️ 資金流出",
       "chip_status": "🔴 資金流出",
-      "chip_detail": "資金流向偏弱 (CMF: -0.10, 短線法人偏賣方)"
+      "chip_detail": "資金流向偏弱 (CMF: -0.10, 法人持股調節賣壓)"
     },
     {
       "symbol": "3363.TWO",
@@ -5591,7 +5594,7 @@
       "fair_implied_pe": 108.9,
       "fair_implied_pe_ttm": 302.5,
       "is_pe_extreme": true,
-      "pe_extreme_msg": "合理價隱含 PE 109x 超過上限 (60x)",
+      "pe_extreme_msg": "合理價隱含 PE 302x 超過上限 (60x)",
       "val_defensive_icon": "⚠️",
       "val_defensive_tag": "估值待驗證",
       "val_defensive_color": "amber",
@@ -5622,7 +5625,7 @@
       "sun_status": "🟡 合理偏高區",
       "badge_color": "#FBBF24",
       "sun_action": "估值稍微偏貴，嚴禁追高，可續抱",
-      "sun_position": "30% (單檔上限，觸發極端PE阻斷)",
+      "sun_position": "20% ~ 30% (單檔上限，觸發極端PE阻斷)",
       "rank_tier": 4,
       "val_mode": "PSR",
       "val_mode_tag": "📊 PSR 營收爆發模式",
@@ -5669,9 +5672,9 @@
       "right_status": "⏸️ 回測整理",
       "right_advice": "中多格局但短線跌破月線(負乖離 -1.5%)，暫緩追價，靜待止跌收復月線",
       "right_badge_color": "#F59E0B",
-      "chip_badge": "",
-      "chip_status": "⚪ 平穩沉澱",
-      "chip_detail": "籌碼平穩沉澱 (CMF: -0.42)"
+      "chip_badge": "⚠️ 資金流出",
+      "chip_status": "🔴 資金流出",
+      "chip_detail": "資金流向偏弱 (CMF: -0.42, 法人持股調節賣壓)"
     },
     {
       "symbol": "3211.TWO",
@@ -5767,9 +5770,9 @@
       "right_status": "📈 多頭確立",
       "right_advice": "站穩月線(乖離 +5.1%)且均線多頭向上，可順勢逢低布局",
       "right_badge_color": "#38BDF8",
-      "chip_badge": "",
-      "chip_status": "⚪ 平穩沉澱",
-      "chip_detail": "籌碼平穩沉澱 (CMF: -0.22)"
+      "chip_badge": "⚠️ 資金流出",
+      "chip_status": "🔴 資金流出",
+      "chip_detail": "資金流向偏弱 (CMF: -0.22, 法人持股調節賣壓)"
     },
     {
       "symbol": "2421.TW",
@@ -5878,52 +5881,52 @@
       "radar_multiplier": 1.15,
       "close": 2925.0,
       "ma60": 2477.1,
-      "current_pe": 332.39,
-      "trailing_pe": 914.06,
-      "pe_forward_2026": 332.39,
-      "pe_forward_2027": 201.72,
-      "fair_implied_pe": 122.7,
-      "fair_implied_pe_ttm": 337.4,
-      "is_pe_extreme": true,
-      "pe_extreme_msg": "合理價隱含 PE 123x 超過上限 (60x)",
-      "val_defensive_icon": "⚠️",
-      "val_defensive_tag": "估值待驗證",
-      "val_defensive_color": "amber",
+      "current_pe": 201.72,
+      "trailing_pe": 268.35,
+      "pe_forward_2026": 201.72,
+      "pe_forward_2027": 132.95,
+      "fair_implied_pe": 59.3,
+      "fair_implied_pe_ttm": 78.8,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
+      "val_defensive_icon": "🔴",
+      "val_defensive_tag": "嚴重溢價警戒",
+      "val_defensive_color": "rose",
       "dim_fundamental": "🟢 績優高成長",
       "dim_cycle": "🟢 Stage B 初升量產",
       "dim_valuation": "🔴 瘋狂過熱區",
-      "adjusted_pe": 323.71,
+      "adjusted_pe": 196.46,
       "peer_pe": 45.0,
-      "peg": 5.13,
+      "peg": 3.11,
       "growth_g": 64.8,
-      "eps_ttm": 3.2,
+      "eps_ttm": 10.9,
       "floor_value": 2574.0,
       "stop_loss_price": 2574.0,
       "stop_loss_pct": -12.0,
-      "extreme_floor": 470.68,
-      "eps_2026e": 8.8,
-      "eps_2027e": 14.5,
-      "eps_2028e": 22.0,
-      "p_bargain": 588.35,
-      "p_cheap": 785.12,
-      "p_fair": 1079.54,
-      "p_expensive": 1570.24,
-      "p_crazy": 2208.15,
-      "margin_of_safety_pct": -170.95,
-      "target_fair_2027": 1538.34,
-      "target_fair_2028": 2192.13,
-      "target_formula_note": "合理價 $1079.54 × (1 + 營收YoY 85.0% × 保守折減 0.5) = $1538.34 (折現PV約 $1365.6，現值空間 +-53.3%)",
+      "extreme_floor": 374.66,
+      "eps_2026e": 14.5,
+      "eps_2027e": 22.0,
+      "eps_2028e": 30.0,
+      "p_bargain": 468.33,
+      "p_cheap": 624.96,
+      "p_fair": 859.32,
+      "p_expensive": 1249.92,
+      "p_crazy": 1757.7,
+      "margin_of_safety_pct": -240.39,
+      "target_fair_2027": 1636.57,
+      "target_fair_2028": 3116.85,
+      "target_formula_note": "合理價 $859.32 × (1 + 營收YoY 180.9% × 保守折減 0.5) = $1636.57 (折現PV約 $1452.8，現值空間 +-50.3%)",
       "sun_status": "🔴 瘋狂過熱區",
       "badge_color": "#FF5252",
       "sun_action": "極度狂熱泡沫，預支遠期獲利，全部賣光光",
-      "sun_position": "30% (單檔上限，觸發極端PE阻斷)",
+      "sun_position": "0% (出清冬藏現金)",
       "rank_tier": 6,
       "val_mode": "PSR",
       "val_mode_tag": "📊 PSR 營收爆發模式",
-      "val_reason": "近3月營收強勁增長(YoY +85.0%)，處於初升/量產導入期(獲利待放量)，啟用孫慶龍 PSR 股價營收比河流圖",
-      "rev_yoy_3m": 85.0,
-      "sps": 49.07,
-      "current_psr": 59.61,
+      "val_reason": "近3月營收強勁增長(YoY +180.9%)，處於初升/量產導入期(獲利待放量)，啟用孫慶龍 PSR 股價營收比河流圖",
+      "rev_yoy_3m": 180.9,
+      "sps": 39.06,
+      "current_psr": 74.88,
       "base_psr_tiers": [
         10.43,
         13.91,
@@ -5938,30 +5941,30 @@
         32.0,
         45.0
       ],
-      "implied_pe_fair_trailing": 337.4,
-      "implied_pe_fair_forward": 122.7,
-      "implied_pe_fair_forward_2027": 74.5,
-      "val_basis": "TTM 每股營收 SPS $49.07 (PSR河流圖)",
-      "eps_2026e_cons": 6.16,
+      "implied_pe_fair_trailing": 78.8,
+      "implied_pe_fair_forward": 59.3,
+      "implied_pe_fair_forward_2027": 39.1,
+      "val_basis": "TTM 每股營收 SPS $39.06 (PSR河流圖)",
+      "eps_2026e_cons": 10.15,
       "p_fair_conservative": NaN,
-      "pv_target_2027": 1365.6,
-      "pv_upside_total": -53.3,
+      "pv_target_2027": 1452.8,
+      "pv_upside_total": -50.3,
       "pv_upside_ann": 0.0,
       "peg_consensus": NaN,
-      "peg_scenario": 5.13,
+      "peg_scenario": 3.11,
       "is_divergent": false,
       "divergence_alert": "",
       "divergence_note": "",
-      "ttm_revenue": 45.0,
-      "shares_out": 0.917,
+      "ttm_revenue": 39.76,
+      "shares_out": 1.018,
       "rank": 2,
       "rs_score": 87.7,
       "ret_3m": 53.58,
       "bias_ma20": 3.4,
       "trend_bullish": true,
-      "action_advice": "📈 均線突破但估值偏高(MoS -170.9%)，順勢操作",
+      "action_advice": "📈 均線突破但估值偏高(MoS -240.4%)，順勢操作",
       "right_status": "📈 順勢突破",
-      "right_advice": "站穩月線突破(乖離 +3.4%)，但左側估值已高於合理價(MoS -170.9%)，僅適合右側趨勢交易，不屬價值型低接買點",
+      "right_advice": "站穩月線突破(乖離 +3.4%)，但左側估值已高於合理價(MoS -240.4%)，僅適合右側趨勢交易，不屬價值型低接買點",
       "right_badge_color": "#00F59B",
       "chip_badge": "🌟 主力吃貨",
       "chip_status": "🟢 資金流入",
@@ -6065,7 +6068,7 @@
       "right_badge_color": "#94A3B8",
       "chip_badge": "⚠️ 資金流出",
       "chip_status": "🔴 資金流出",
-      "chip_detail": "資金流向偏弱 (CMF: -0.18, 短線法人偏賣方)",
+      "chip_detail": "資金流向偏弱 (CMF: -0.18, 法人持股調節賣壓)",
       "cmf_20": -0.18
     },
     {
@@ -6085,9 +6088,9 @@
       "fair_implied_pe_ttm": 21.8,
       "is_pe_extreme": false,
       "pe_extreme_msg": "",
-      "val_defensive_icon": "🟢",
-      "val_defensive_tag": "安全邊際防守",
-      "val_defensive_color": "emerald",
+      "val_defensive_icon": "⚪",
+      "val_defensive_tag": "合理定價震盪",
+      "val_defensive_color": "slate",
       "dim_fundamental": "🟢 穩健增長",
       "dim_cycle": "🟢 Stage C 成長主升",
       "dim_valuation": "⚪ 合理偏低區",
@@ -6164,7 +6167,7 @@
       "right_badge_color": "#94A3B8",
       "chip_badge": "⚠️ 資金流出",
       "chip_status": "🔴 資金流出",
-      "chip_detail": "資金流向偏弱 (CMF: -0.20, 短線法人偏賣方)",
+      "chip_detail": "資金流向偏弱 (CMF: -0.20, 法人持股調節賣壓)",
       "cmf_20": -0.2
     },
     {
@@ -6184,9 +6187,9 @@
       "fair_implied_pe_ttm": 20.4,
       "is_pe_extreme": false,
       "pe_extreme_msg": "",
-      "val_defensive_icon": "🟢",
-      "val_defensive_tag": "安全邊際防守",
-      "val_defensive_color": "emerald",
+      "val_defensive_icon": "⚪",
+      "val_defensive_tag": "合理定價震盪",
+      "val_defensive_color": "slate",
       "dim_fundamental": "🟢 穩健增長",
       "dim_cycle": "🟢 Stage C 成長主升",
       "dim_valuation": "⚪ 合理偏低區",
@@ -6284,7 +6287,7 @@
       "is_pe_extreme": false,
       "pe_extreme_msg": "",
       "val_defensive_icon": "🟡",
-      "val_defensive_tag": "偏高震盪位階",
+      "val_defensive_tag": "稍微偏貴震盪",
       "val_defensive_color": "amber",
       "dim_fundamental": "🟢 穩健增長",
       "dim_cycle": "🟢 Stage C 成長主升",
@@ -6360,9 +6363,9 @@
       "right_status": "⏸️ 築底觀望",
       "right_advice": "短線站上月線但中長均線尚未翻多，暫先觀察",
       "right_badge_color": "#94A3B8",
-      "chip_badge": "",
-      "chip_status": "⚪ 平穩沉澱",
-      "chip_detail": "籌碼平穩沉澱 (CMF: -0.25)",
+      "chip_badge": "⚠️ 資金流出",
+      "chip_status": "🔴 資金流出",
+      "chip_detail": "資金流向偏弱 (CMF: -0.25, 法人持股調節賣壓)",
       "cmf_20": -0.25
     },
     {
@@ -6383,7 +6386,7 @@
       "is_pe_extreme": false,
       "pe_extreme_msg": "",
       "val_defensive_icon": "🟡",
-      "val_defensive_tag": "偏高震盪位階",
+      "val_defensive_tag": "稍微偏貴震盪",
       "val_defensive_color": "amber",
       "dim_fundamental": "🟢 穩健增長",
       "dim_cycle": "🟢 Stage C 成長主升",
@@ -6482,7 +6485,7 @@
       "is_pe_extreme": false,
       "pe_extreme_msg": "",
       "val_defensive_icon": "🟡",
-      "val_defensive_tag": "偏高震盪位階",
+      "val_defensive_tag": "稍微偏貴震盪",
       "val_defensive_color": "amber",
       "dim_fundamental": "🟢 穩健增長",
       "dim_cycle": "🟢 Stage C 成長主升",
@@ -6581,7 +6584,7 @@
       "is_pe_extreme": false,
       "pe_extreme_msg": "",
       "val_defensive_icon": "🟡",
-      "val_defensive_tag": "偏高震盪位階",
+      "val_defensive_tag": "稍微偏貴震盪",
       "val_defensive_color": "amber",
       "dim_fundamental": "🟢 穩健增長",
       "dim_cycle": "🟢 Stage C 成長主升",
@@ -6659,7 +6662,7 @@
       "right_badge_color": "#F59E0B",
       "chip_badge": "⚠️ 資金流出",
       "chip_status": "🔴 資金流出",
-      "chip_detail": "資金流向偏弱 (CMF: +0.12, 短線法人偏賣方)",
+      "chip_detail": "資金流向偏弱 (CMF: +0.12, 法人持股調節賣壓)",
       "cmf_20": 0.12
     },
     {
@@ -6680,7 +6683,7 @@
       "is_pe_extreme": false,
       "pe_extreme_msg": "",
       "val_defensive_icon": "🟡",
-      "val_defensive_tag": "偏高震盪位階",
+      "val_defensive_tag": "稍微偏貴震盪",
       "val_defensive_color": "amber",
       "dim_fundamental": "🟢 穩健增長",
       "dim_cycle": "🟢 Stage C 成長主升",
@@ -6756,9 +6759,9 @@
       "right_status": "⏸️ 回測整理",
       "right_advice": "中多格局但短線跌破月線(負乖離 -1.9%)，暫緩追價，靜待止跌收復月線",
       "right_badge_color": "#F59E0B",
-      "chip_badge": "⚠️ 資金流出",
-      "chip_status": "🔴 資金流出",
-      "chip_detail": "資金流向偏弱 (CMF: +0.13, 短線法人偏賣方)",
+      "chip_badge": "🌟 主力吃貨",
+      "chip_status": "🟢 資金流入",
+      "chip_detail": "主力資金淨流入 (CMF: +0.13, 量能 0.6x)",
       "cmf_20": 0.13
     },
     {
@@ -6779,7 +6782,7 @@
       "is_pe_extreme": false,
       "pe_extreme_msg": "",
       "val_defensive_icon": "🟡",
-      "val_defensive_tag": "偏高震盪位階",
+      "val_defensive_tag": "稍微偏貴震盪",
       "val_defensive_color": "amber",
       "dim_fundamental": "🟢 穩健增長",
       "dim_cycle": "🟢 Stage C 成長主升",
@@ -6878,7 +6881,7 @@
       "is_pe_extreme": false,
       "pe_extreme_msg": "",
       "val_defensive_icon": "🟡",
-      "val_defensive_tag": "偏高震盪位階",
+      "val_defensive_tag": "稍微偏貴震盪",
       "val_defensive_color": "amber",
       "dim_fundamental": "🟢 穩健增長",
       "dim_cycle": "🟢 Stage C 成長主升",
@@ -6977,7 +6980,7 @@
       "is_pe_extreme": false,
       "pe_extreme_msg": "",
       "val_defensive_icon": "🟡",
-      "val_defensive_tag": "偏高震盪位階",
+      "val_defensive_tag": "稍微偏貴震盪",
       "val_defensive_color": "amber",
       "dim_fundamental": "🟢 穩健增長",
       "dim_cycle": "🟢 Stage C 成長主升",
@@ -7076,7 +7079,7 @@
       "is_pe_extreme": false,
       "pe_extreme_msg": "",
       "val_defensive_icon": "🟡",
-      "val_defensive_tag": "偏高震盪位階",
+      "val_defensive_tag": "稍微偏貴震盪",
       "val_defensive_color": "amber",
       "dim_fundamental": "🟢 穩健增長",
       "dim_cycle": "🟢 Stage C 成長主升",
@@ -7175,7 +7178,7 @@
       "is_pe_extreme": false,
       "pe_extreme_msg": "",
       "val_defensive_icon": "🟡",
-      "val_defensive_tag": "偏高震盪位階",
+      "val_defensive_tag": "稍微偏貴震盪",
       "val_defensive_color": "amber",
       "dim_fundamental": "🟢 穩健增長",
       "dim_cycle": "🟢 Stage C 成長主升",
@@ -7274,7 +7277,7 @@
       "is_pe_extreme": false,
       "pe_extreme_msg": "",
       "val_defensive_icon": "🟡",
-      "val_defensive_tag": "偏高震盪位階",
+      "val_defensive_tag": "稍微偏貴震盪",
       "val_defensive_color": "amber",
       "dim_fundamental": "🟢 穩健增長",
       "dim_cycle": "🟢 Stage C 成長主升",
@@ -7373,7 +7376,7 @@
       "is_pe_extreme": false,
       "pe_extreme_msg": "",
       "val_defensive_icon": "🟡",
-      "val_defensive_tag": "偏高震盪位階",
+      "val_defensive_tag": "稍微偏貴震盪",
       "val_defensive_color": "amber",
       "dim_fundamental": "🟢 穩健增長",
       "dim_cycle": "🟢 Stage C 成長主升",
@@ -7472,7 +7475,7 @@
       "is_pe_extreme": false,
       "pe_extreme_msg": "",
       "val_defensive_icon": "🟡",
-      "val_defensive_tag": "偏高震盪位階",
+      "val_defensive_tag": "稍微偏貴震盪",
       "val_defensive_color": "amber",
       "dim_fundamental": "🟢 穩健增長",
       "dim_cycle": "🟢 Stage C 成長主升",
@@ -7571,7 +7574,7 @@
       "is_pe_extreme": false,
       "pe_extreme_msg": "",
       "val_defensive_icon": "🟡",
-      "val_defensive_tag": "偏高震盪位階",
+      "val_defensive_tag": "稍微偏貴震盪",
       "val_defensive_color": "amber",
       "dim_fundamental": "🟢 穩健增長",
       "dim_cycle": "🟢 Stage C 成長主升",
@@ -7670,7 +7673,7 @@
       "is_pe_extreme": false,
       "pe_extreme_msg": "",
       "val_defensive_icon": "🟡",
-      "val_defensive_tag": "偏高震盪位階",
+      "val_defensive_tag": "稍微偏貴震盪",
       "val_defensive_color": "amber",
       "dim_fundamental": "🟢 穩健增長",
       "dim_cycle": "🟢 Stage C 成長主升",
@@ -7769,7 +7772,7 @@
       "is_pe_extreme": false,
       "pe_extreme_msg": "",
       "val_defensive_icon": "🟡",
-      "val_defensive_tag": "偏高震盪位階",
+      "val_defensive_tag": "稍微偏貴震盪",
       "val_defensive_color": "amber",
       "dim_fundamental": "🟢 穩健增長",
       "dim_cycle": "🟢 Stage C 成長主升",
@@ -7867,9 +7870,9 @@
       "fair_implied_pe_ttm": 25.0,
       "is_pe_extreme": false,
       "pe_extreme_msg": "",
-      "val_defensive_icon": "🟡",
-      "val_defensive_tag": "偏高震盪位階",
-      "val_defensive_color": "amber",
+      "val_defensive_icon": "🟠",
+      "val_defensive_tag": "溢價過高警戒",
+      "val_defensive_color": "orange",
       "dim_fundamental": "🟢 穩健增長",
       "dim_cycle": "🟢 Stage C 成長主升",
       "dim_valuation": "🟡 合理偏高區",
@@ -7997,7 +8000,7 @@
       "target_formula_note": "合理價 $623.3 × (1 + 營收YoY 29.1% × 保守折減 0.5) = $713.99 (折現PV約 $633.8，現值空間 +47.7%)",
       "sun_status": "🟢 便宜低估區",
       "badge_color": "#10B981",
-      "sun_action": "營收初升但獲利待驗證，小量金字塔分批試單",
+      "sun_action": "營收初升(隱含TTM PE 552x)，獲利待驗證，小量試單，嚴禁過度重押",
       "sun_position": "30% ~ 50% (單檔上限，謹慎分批)",
       "rank_tier": 2,
       "val_mode": "PSR",
@@ -8045,9 +8048,9 @@
       "right_status": "⏸️ 築底觀望",
       "right_advice": "短線站上月線但中長均線尚未翻多，暫先觀察",
       "right_badge_color": "#94A3B8",
-      "chip_badge": "",
-      "chip_status": "⚪ 平穩沉澱",
-      "chip_detail": "籌碼平穩沉澱 (CMF: -0.52)"
+      "chip_badge": "⚠️ 資金流出",
+      "chip_status": "🔴 資金流出",
+      "chip_detail": "資金流向偏弱 (CMF: -0.52, 法人持股調節賣壓)"
     },
     {
       "symbol": "2356.TW",
@@ -8145,7 +8148,7 @@
       "right_badge_color": "#94A3B8",
       "chip_badge": "⚠️ 資金流出",
       "chip_status": "🔴 資金流出",
-      "chip_detail": "資金流向偏弱 (CMF: -0.29, 短線法人偏賣方)"
+      "chip_detail": "資金流向偏弱 (CMF: -0.29, 法人持股調節賣壓)"
     },
     {
       "symbol": "1503.TW",
@@ -8243,7 +8246,7 @@
       "right_badge_color": "#94A3B8",
       "chip_badge": "⚠️ 資金流出",
       "chip_status": "🔴 資金流出",
-      "chip_detail": "資金流向偏弱 (CMF: -0.36, 短線法人偏賣方)"
+      "chip_detail": "資金流向偏弱 (CMF: -0.36, 法人持股調節賣壓)"
     },
     {
       "symbol": "1519.TW",
@@ -8262,9 +8265,9 @@
       "fair_implied_pe_ttm": 47.2,
       "is_pe_extreme": false,
       "pe_extreme_msg": "",
-      "val_defensive_icon": "🟢",
-      "val_defensive_tag": "安全邊際防守",
-      "val_defensive_color": "emerald",
+      "val_defensive_icon": "⚪",
+      "val_defensive_tag": "合理定價震盪",
+      "val_defensive_color": "slate",
       "dim_fundamental": "🟢 績優高成長",
       "dim_cycle": "🟢 Stage C 成長主升",
       "dim_valuation": "⚪ 合理偏低區",
@@ -8339,9 +8342,9 @@
       "right_status": "⏸️ 回測整理",
       "right_advice": "中多格局但短線跌破月線(負乖離 -2.7%)，暫緩追價，靜待止跌收復月線",
       "right_badge_color": "#F59E0B",
-      "chip_badge": "",
-      "chip_status": "⚪ 平穩沉澱",
-      "chip_detail": "籌碼平穩沉澱 (CMF: -0.53)"
+      "chip_badge": "⚠️ 資金流出",
+      "chip_status": "🔴 資金流出",
+      "chip_detail": "資金流向偏弱 (CMF: -0.53, 法人持股調節賣壓)"
     },
     {
       "symbol": "2308.TW",
@@ -8352,49 +8355,49 @@
       "radar_multiplier": 1.1,
       "close": 1885.0,
       "ma60": 1775.5,
-      "current_pe": 95.2,
-      "trailing_pe": 127.36,
-      "pe_forward_2026": 95.2,
-      "pe_forward_2027": 76.94,
-      "fair_implied_pe": 98.6,
-      "fair_implied_pe_ttm": 132.0,
+      "current_pe": 53.86,
+      "trailing_pe": 59.99,
+      "pe_forward_2026": 53.86,
+      "pe_forward_2027": 44.88,
+      "fair_implied_pe": 55.8,
+      "fair_implied_pe_ttm": 62.2,
       "is_pe_extreme": true,
-      "pe_extreme_msg": "合理價隱含 PE 99x 超過上限 (60x)",
+      "pe_extreme_msg": "合理價隱含 PE 62x 超過上限 (60x)",
       "val_defensive_icon": "⚠️",
       "val_defensive_tag": "估值待驗證",
       "val_defensive_color": "amber",
       "dim_fundamental": "🟢 穩健增長",
       "dim_cycle": "🟢 Stage B 初升量產",
       "dim_valuation": "⚠️ 估值待驗證",
-      "adjusted_pe": 98.64,
+      "adjusted_pe": 55.8,
       "peer_pe": 32.0,
-      "peg": 4.02,
+      "peg": 2.27,
       "growth_g": 23.7,
-      "eps_ttm": 14.8,
-      "floor_value": 222.0,
+      "eps_ttm": 31.42,
+      "floor_value": 471.3,
       "stop_loss_price": 1658.8,
       "stop_loss_pct": -12.0,
       "extreme_floor": 965.58,
-      "eps_2026e": 19.8,
-      "eps_2027e": 24.5,
-      "eps_2028e": 30.0,
+      "eps_2026e": 35.0,
+      "eps_2027e": 42.0,
+      "eps_2028e": 50.0,
       "p_bargain": 1206.98,
       "p_cheap": 1562.44,
       "p_fair": 1953.05,
       "p_expensive": 2343.66,
       "p_crazy": 2699.12,
       "margin_of_safety_pct": 3.48,
-      "target_fair_2027": 2416.68,
-      "target_fair_2028": 2959.2,
-      "target_formula_note": "2027E 高成長情境 EPS $24.5 × 雷達修正本益比 98.64x = $2416.68 (折現PV約 $2145.3，現值空間 +13.8%，年化約 +10.9%)",
+      "target_fair_2027": 2343.6,
+      "target_fair_2028": 2790.0,
+      "target_formula_note": "2027E 高成長情境 EPS $42.0 × 雷達修正本益比 55.8x = $2343.6 (折現PV約 $2080.4，現值空間 +10.4%，年化約 +8.2%)",
       "sun_status": "⚠️ 估值待驗證",
       "badge_color": "#F59E0B",
-      "sun_action": "合理價隱含 PE 99x 超過上限 (60x)，禁止標註合理偏低，嚴控下檔風險",
+      "sun_action": "合理價隱含 PE 62x 超過上限 (60x)，禁止標註合理偏低，嚴控下檔風險",
       "sun_position": "30% (單檔上限，觸發極端PE阻斷)",
       "rank_tier": 3,
       "val_mode": "PER",
       "val_mode_tag": "📈 PER 穩健獲利模式",
-      "val_reason": "獲利模式成熟穩定(近4季實績EPS $14.8，2026E前瞻PE 95.2x)，採用經典孫慶龍本益比折現估值",
+      "val_reason": "獲利模式成熟穩定(近4季實績EPS $31.42，2026E前瞻PE 53.9x)，採用經典孫慶龍本益比折現估值",
       "rev_yoy_3m": 14.5,
       "sps": 162.16,
       "current_psr": 11.62,
@@ -8412,17 +8415,17 @@
         4.2,
         5.8
       ],
-      "implied_pe_fair_trailing": 132.0,
-      "implied_pe_fair_forward": 98.6,
-      "implied_pe_fair_forward_2027": 79.7,
-      "val_basis": "2026E 前瞻 EPS $19.8 (高成長情境)",
-      "eps_2026e_cons": 13.86,
-      "p_fair_conservative": 1367.2,
-      "pv_target_2027": 2145.3,
-      "pv_upside_total": 13.8,
-      "pv_upside_ann": 10.9,
+      "implied_pe_fair_trailing": 62.2,
+      "implied_pe_fair_forward": 55.8,
+      "implied_pe_fair_forward_2027": 46.5,
+      "val_basis": "2026E 前瞻 EPS $35.0 (高成長情境)",
+      "eps_2026e_cons": 24.5,
+      "p_fair_conservative": 1367.1,
+      "pv_target_2027": 2080.4,
+      "pv_upside_total": 10.4,
+      "pv_upside_ann": 8.2,
       "peg_consensus": NaN,
-      "peg_scenario": 4.02,
+      "peg_scenario": 2.27,
       "is_divergent": false,
       "divergence_alert": "",
       "divergence_note": "",
@@ -8439,7 +8442,7 @@
       "right_badge_color": "#38BDF8",
       "chip_badge": "⚠️ 資金流出",
       "chip_status": "🔴 資金流出",
-      "chip_detail": "資金流向偏弱 (CMF: -0.17, 短線法人偏賣方)"
+      "chip_detail": "資金流向偏弱 (CMF: -0.17, 法人持股調節賣壓)"
     },
     {
       "symbol": "1513.TW",
@@ -8458,9 +8461,9 @@
       "fair_implied_pe_ttm": 27.7,
       "is_pe_extreme": false,
       "pe_extreme_msg": "",
-      "val_defensive_icon": "🟢",
-      "val_defensive_tag": "安全邊際防守",
-      "val_defensive_color": "emerald",
+      "val_defensive_icon": "⚪",
+      "val_defensive_tag": "合理定價震盪",
+      "val_defensive_color": "slate",
       "dim_fundamental": "🟢 穩健增長",
       "dim_cycle": "🟢 Stage C 成長主升",
       "dim_valuation": "⚪ 合理偏低區",
@@ -8556,9 +8559,9 @@
       "fair_implied_pe_ttm": 48.4,
       "is_pe_extreme": false,
       "pe_extreme_msg": "",
-      "val_defensive_icon": "🟢",
-      "val_defensive_tag": "安全邊際防守",
-      "val_defensive_color": "emerald",
+      "val_defensive_icon": "⚪",
+      "val_defensive_tag": "合理定價震盪",
+      "val_defensive_color": "slate",
       "dim_fundamental": "🟢 穩健增長",
       "dim_cycle": "🟢 Stage B 初升量產",
       "dim_valuation": "⚪ 合理偏低區",
@@ -8635,7 +8638,7 @@
       "right_badge_color": "#F59E0B",
       "chip_badge": "⚠️ 資金流出",
       "chip_status": "🔴 資金流出",
-      "chip_detail": "資金流向偏弱 (CMF: -0.39, 短線法人偏賣方)"
+      "chip_detail": "資金流向偏弱 (CMF: -0.39, 法人持股調節賣壓)"
     },
     {
       "symbol": "2330.TW",
@@ -8646,41 +8649,41 @@
       "radar_multiplier": 1.05,
       "close": 2500.0,
       "ma60": 2403.6,
-      "current_pe": 44.64,
-      "trailing_pe": 56.18,
-      "pe_forward_2026": 44.64,
-      "pe_forward_2027": 36.76,
-      "fair_implied_pe": 45.1,
-      "fair_implied_pe_ttm": 56.7,
+      "current_pe": 26.32,
+      "trailing_pe": 28.98,
+      "pe_forward_2026": 26.32,
+      "pe_forward_2027": 21.74,
+      "fair_implied_pe": 26.6,
+      "fair_implied_pe_ttm": 29.3,
       "is_pe_extreme": false,
       "pe_extreme_msg": "",
-      "val_defensive_icon": "🟢",
-      "val_defensive_tag": "安全邊際防守",
-      "val_defensive_color": "emerald",
+      "val_defensive_icon": "⚪",
+      "val_defensive_tag": "合理定價震盪",
+      "val_defensive_color": "slate",
       "dim_fundamental": "🟢 穩健增長",
       "dim_cycle": "🟢 Stage C 成長主升",
       "dim_valuation": "⚪ 合理偏低區",
-      "adjusted_pe": 45.07,
-      "peer_pe": 38.0,
-      "peg": 2.09,
+      "adjusted_pe": 26.57,
+      "peer_pe": 32.0,
+      "peg": 1.23,
       "growth_g": 21.4,
-      "eps_ttm": 44.5,
-      "floor_value": 667.5,
+      "eps_ttm": 86.27,
+      "floor_value": 1294.0,
       "stop_loss_price": 2200.0,
       "stop_loss_pct": -12.0,
       "extreme_floor": 1247.74,
-      "eps_2026e": 56.0,
-      "eps_2027e": 68.0,
-      "eps_2028e": 82.0,
+      "eps_2026e": 95.0,
+      "eps_2027e": 115.0,
+      "eps_2028e": 135.0,
       "p_bargain": 1559.68,
       "p_cheap": 2019.01,
       "p_fair": 2523.76,
       "p_expensive": 3028.51,
       "p_crazy": 3487.84,
       "margin_of_safety_pct": 0.94,
-      "target_fair_2027": 3064.76,
-      "target_fair_2028": 3695.74,
-      "target_formula_note": "2027E 高成長情境 EPS $68.0 × 雷達修正本益比 45.07x = $3064.76 (折現PV約 $2720.5，現值空間 +8.8%，年化約 +7.0%)",
+      "target_fair_2027": 3055.55,
+      "target_fair_2028": 3586.95,
+      "target_formula_note": "2027E 高成長情境 EPS $115.0 × 雷達修正本益比 26.57x = $3055.55 (折現PV約 $2712.4，現值空間 +8.5%，年化約 +6.7%)",
       "sun_status": "⚪ 合理偏低區",
       "badge_color": "#F8FAFC",
       "sun_action": "平價穩健區間，耐心抱牢享受成長",
@@ -8688,7 +8691,7 @@
       "rank_tier": 3,
       "val_mode": "PER",
       "val_mode_tag": "📈 PER 穩健獲利模式",
-      "val_reason": "獲利模式成熟穩定(近4季實績EPS $44.5，2026E前瞻PE 44.6x)，採用經典孫慶龍本益比折現估值",
+      "val_reason": "獲利模式成熟穩定(近4季實績EPS $86.27，2026E前瞻PE 26.3x)，採用經典孫慶龍本益比折現估值",
       "rev_yoy_3m": 32.0,
       "sps": 109.91,
       "current_psr": 22.75,
@@ -8706,17 +8709,17 @@
         13.0,
         18.0
       ],
-      "implied_pe_fair_trailing": 56.7,
-      "implied_pe_fair_forward": 45.1,
-      "implied_pe_fair_forward_2027": 37.1,
-      "val_basis": "2026E 前瞻 EPS $56.0 (高成長情境)",
-      "eps_2026e_cons": 39.2,
-      "p_fair_conservative": 1766.7,
-      "pv_target_2027": 2720.5,
-      "pv_upside_total": 8.8,
-      "pv_upside_ann": 7.0,
+      "implied_pe_fair_trailing": 29.3,
+      "implied_pe_fair_forward": 26.6,
+      "implied_pe_fair_forward_2027": 21.9,
+      "val_basis": "2026E 前瞻 EPS $95.0 (高成長情境)",
+      "eps_2026e_cons": 66.5,
+      "p_fair_conservative": 1766.9,
+      "pv_target_2027": 2712.4,
+      "pv_upside_total": 8.5,
+      "pv_upside_ann": 6.7,
       "peg_consensus": NaN,
-      "peg_scenario": 2.09,
+      "peg_scenario": 1.23,
       "is_divergent": false,
       "divergence_alert": "",
       "divergence_note": "",
@@ -8733,7 +8736,7 @@
       "right_badge_color": "#A855F7",
       "chip_badge": "⚠️ 資金流出",
       "chip_status": "🔴 資金流出",
-      "chip_detail": "資金流向偏弱 (CMF: -0.10, 短線法人偏賣方)"
+      "chip_detail": "資金流向偏弱 (CMF: -0.10, 法人持股調節賣壓)"
     },
     {
       "symbol": "8299.TWO",
@@ -8752,9 +8755,9 @@
       "fair_implied_pe_ttm": 46.9,
       "is_pe_extreme": false,
       "pe_extreme_msg": "",
-      "val_defensive_icon": "🟢",
-      "val_defensive_tag": "安全邊際防守",
-      "val_defensive_color": "emerald",
+      "val_defensive_icon": "⚪",
+      "val_defensive_tag": "合理定價震盪",
+      "val_defensive_color": "slate",
       "dim_fundamental": "🟢 績優高成長",
       "dim_cycle": "🟢 Stage B 初升量產",
       "dim_valuation": "⚪ 合理偏低區",
@@ -8831,7 +8834,7 @@
       "right_badge_color": "#38BDF8",
       "chip_badge": "⚠️ 資金流出",
       "chip_status": "🔴 資金流出",
-      "chip_detail": "資金流向偏弱 (CMF: -0.17, 短線法人偏賣方)"
+      "chip_detail": "資金流向偏弱 (CMF: -0.17, 法人持股調節賣壓)"
     },
     {
       "symbol": "2383.TW",
@@ -8849,7 +8852,7 @@
       "fair_implied_pe": 137.4,
       "fair_implied_pe_ttm": 183.3,
       "is_pe_extreme": true,
-      "pe_extreme_msg": "合理價隱含 PE 137x 超過上限 (60x)",
+      "pe_extreme_msg": "合理價隱含 PE 183x 超過上限 (60x)",
       "val_defensive_icon": "⚠️",
       "val_defensive_tag": "估值待驗證",
       "val_defensive_color": "amber",
@@ -8879,7 +8882,7 @@
       "target_formula_note": "2027E 高成長情境 EPS $48.0 × 雷達修正本益比 137.44x = $6597.12 (折現PV約 $5856.2，現值空間 +12.9%，年化約 +10.2%)",
       "sun_status": "⚠️ 估值待驗證",
       "badge_color": "#F59E0B",
-      "sun_action": "合理價隱含 PE 137x 超過上限 (60x)，禁止標註合理偏低，嚴控下檔風險",
+      "sun_action": "合理價隱含 PE 183x 超過上限 (60x)，禁止標註合理偏低，嚴控下檔風險",
       "sun_position": "30% (單檔上限，觸發極端PE阻斷)",
       "rank_tier": 3,
       "val_mode": "PER",
@@ -8927,9 +8930,9 @@
       "right_status": "⏸️ 築底觀望",
       "right_advice": "短線站上月線但中長均線尚未翻多，暫先觀察",
       "right_badge_color": "#94A3B8",
-      "chip_badge": "",
-      "chip_status": "⚪ 平穩沉澱",
-      "chip_detail": "籌碼平穩沉澱 (CMF: -0.22)"
+      "chip_badge": "⚠️ 資金流出",
+      "chip_status": "🔴 資金流出",
+      "chip_detail": "資金流向偏弱 (CMF: -0.22, 法人持股調節賣壓)"
     },
     {
       "symbol": "2317.TW",
@@ -8949,7 +8952,7 @@
       "is_pe_extreme": false,
       "pe_extreme_msg": "",
       "val_defensive_icon": "🟡",
-      "val_defensive_tag": "偏高震盪位階",
+      "val_defensive_tag": "稍微偏貴震盪",
       "val_defensive_color": "amber",
       "dim_fundamental": "🟢 穩健增長",
       "dim_cycle": "🟢 Stage C 成長主升",
@@ -9027,7 +9030,7 @@
       "right_badge_color": "#F59E0B",
       "chip_badge": "⚠️ 資金流出",
       "chip_status": "🔴 資金流出",
-      "chip_detail": "資金流向偏弱 (CMF: -0.03, 短線法人偏賣方)"
+      "chip_detail": "資金流向偏弱 (CMF: -0.03, 法人持股調節賣壓)"
     },
     {
       "symbol": "3231.TW",
@@ -9047,7 +9050,7 @@
       "is_pe_extreme": false,
       "pe_extreme_msg": "",
       "val_defensive_icon": "🟡",
-      "val_defensive_tag": "偏高震盪位階",
+      "val_defensive_tag": "稍微偏貴震盪",
       "val_defensive_color": "amber",
       "dim_fundamental": "🟢 穩健增長",
       "dim_cycle": "🟢 Stage C 成長主升",
@@ -9125,7 +9128,7 @@
       "right_badge_color": "#38BDF8",
       "chip_badge": "⚠️ 資金流出",
       "chip_status": "🔴 資金流出",
-      "chip_detail": "資金流向偏弱 (CMF: -0.12, 短線法人偏賣方)"
+      "chip_detail": "資金流向偏弱 (CMF: -0.12, 法人持股調節賣壓)"
     },
     {
       "symbol": "3264.TWO",
@@ -9145,7 +9148,7 @@
       "is_pe_extreme": false,
       "pe_extreme_msg": "",
       "val_defensive_icon": "🟡",
-      "val_defensive_tag": "偏高震盪位階",
+      "val_defensive_tag": "稍微偏貴震盪",
       "val_defensive_color": "amber",
       "dim_fundamental": "🟢 穩健增長",
       "dim_cycle": "🟢 Stage B 初升量產",
@@ -9241,7 +9244,7 @@
       "fair_implied_pe": 119.0,
       "fair_implied_pe_ttm": 166.3,
       "is_pe_extreme": true,
-      "pe_extreme_msg": "合理價隱含 PE 119x 超過上限 (60x)",
+      "pe_extreme_msg": "合理價隱含 PE 166x 超過上限 (60x)",
       "val_defensive_icon": "⚠️",
       "val_defensive_tag": "估值待驗證",
       "val_defensive_color": "amber",
@@ -9272,7 +9275,7 @@
       "sun_status": "🟡 合理偏高區",
       "badge_color": "#FBBF24",
       "sun_action": "估值稍微偏貴，嚴禁追高，可續抱",
-      "sun_position": "30% (單檔上限，觸發極端PE阻斷)",
+      "sun_position": "20% ~ 30% (單檔上限，觸發極端PE阻斷)",
       "rank_tier": 4,
       "val_mode": "PER",
       "val_mode_tag": "📈 PER 穩健獲利模式",
@@ -9319,9 +9322,9 @@
       "right_status": "⏸️ 回測整理",
       "right_advice": "中多格局但短線跌破月線(負乖離 -2.7%)，暫緩追價，靜待止跌收復月線",
       "right_badge_color": "#F59E0B",
-      "chip_badge": "",
-      "chip_status": "⚪ 平穩沉澱",
-      "chip_detail": "籌碼平穩沉澱 (CMF: -0.35)"
+      "chip_badge": "⚠️ 資金流出",
+      "chip_status": "🔴 資金流出",
+      "chip_detail": "資金流向偏弱 (CMF: -0.35, 法人持股調節賣壓)"
     },
     {
       "symbol": "6274.TWO",
@@ -9339,7 +9342,7 @@
       "fair_implied_pe": 97.2,
       "fair_implied_pe_ttm": 143.8,
       "is_pe_extreme": true,
-      "pe_extreme_msg": "合理價隱含 PE 97x 超過上限 (60x)",
+      "pe_extreme_msg": "合理價隱含 PE 144x 超過上限 (60x)",
       "val_defensive_icon": "⚠️",
       "val_defensive_tag": "估值待驗證",
       "val_defensive_color": "amber",
@@ -9370,7 +9373,7 @@
       "sun_status": "🟡 合理偏高區",
       "badge_color": "#FBBF24",
       "sun_action": "估值稍微偏貴，嚴禁追高，可續抱",
-      "sun_position": "30% (單檔上限，觸發極端PE阻斷)",
+      "sun_position": "20% ~ 30% (單檔上限，觸發極端PE阻斷)",
       "rank_tier": 4,
       "val_mode": "PER",
       "val_mode_tag": "📈 PER 穩健獲利模式",
@@ -9436,10 +9439,10 @@
       "pe_forward_2027": 50.51,
       "fair_implied_pe": 50.4,
       "fair_implied_pe_ttm": 63.6,
-      "is_pe_extreme": false,
-      "pe_extreme_msg": "",
-      "val_defensive_icon": "🟡",
-      "val_defensive_tag": "偏高震盪位階",
+      "is_pe_extreme": true,
+      "pe_extreme_msg": "合理價隱含 PE 64x 超過上限 (60x)",
+      "val_defensive_icon": "⚠️",
+      "val_defensive_tag": "估值待驗證",
       "val_defensive_color": "amber",
       "dim_fundamental": "🟢 穩健增長",
       "dim_cycle": "🟢 Stage C 成長主升",
@@ -9468,7 +9471,7 @@
       "sun_status": "🟡 合理偏高區",
       "badge_color": "#FBBF24",
       "sun_action": "估值稍微偏貴，嚴禁追高，可續抱",
-      "sun_position": "30% (單檔上限，停止追高)",
+      "sun_position": "20% ~ 30% (單檔上限，觸發極端PE阻斷)",
       "rank_tier": 4,
       "val_mode": "PER",
       "val_mode_tag": "📈 PER 穩健獲利模式",
@@ -9517,7 +9520,7 @@
       "right_badge_color": "#00F59B",
       "chip_badge": "⚠️ 資金流出",
       "chip_status": "🔴 資金流出",
-      "chip_detail": "資金流向偏弱 (CMF: -0.10, 短線法人偏賣方)"
+      "chip_detail": "資金流向偏弱 (CMF: -0.10, 法人持股調節賣壓)"
     },
     {
       "symbol": "3363.TWO",
@@ -9535,7 +9538,7 @@
       "fair_implied_pe": 108.9,
       "fair_implied_pe_ttm": 302.5,
       "is_pe_extreme": true,
-      "pe_extreme_msg": "合理價隱含 PE 109x 超過上限 (60x)",
+      "pe_extreme_msg": "合理價隱含 PE 302x 超過上限 (60x)",
       "val_defensive_icon": "⚠️",
       "val_defensive_tag": "估值待驗證",
       "val_defensive_color": "amber",
@@ -9566,7 +9569,7 @@
       "sun_status": "🟡 合理偏高區",
       "badge_color": "#FBBF24",
       "sun_action": "估值稍微偏貴，嚴禁追高，可續抱",
-      "sun_position": "30% (單檔上限，觸發極端PE阻斷)",
+      "sun_position": "20% ~ 30% (單檔上限，觸發極端PE阻斷)",
       "rank_tier": 4,
       "val_mode": "PSR",
       "val_mode_tag": "📊 PSR 營收爆發模式",
@@ -9613,9 +9616,9 @@
       "right_status": "⏸️ 回測整理",
       "right_advice": "中多格局但短線跌破月線(負乖離 -1.5%)，暫緩追價，靜待止跌收復月線",
       "right_badge_color": "#F59E0B",
-      "chip_badge": "",
-      "chip_status": "⚪ 平穩沉澱",
-      "chip_detail": "籌碼平穩沉澱 (CMF: -0.42)"
+      "chip_badge": "⚠️ 資金流出",
+      "chip_status": "🔴 資金流出",
+      "chip_detail": "資金流向偏弱 (CMF: -0.42, 法人持股調節賣壓)"
     },
     {
       "symbol": "3211.TWO",
@@ -9711,9 +9714,9 @@
       "right_status": "📈 多頭確立",
       "right_advice": "站穩月線(乖離 +5.1%)且均線多頭向上，可順勢逢低布局",
       "right_badge_color": "#38BDF8",
-      "chip_badge": "",
-      "chip_status": "⚪ 平穩沉澱",
-      "chip_detail": "籌碼平穩沉澱 (CMF: -0.22)"
+      "chip_badge": "⚠️ 資金流出",
+      "chip_status": "🔴 資金流出",
+      "chip_detail": "資金流向偏弱 (CMF: -0.22, 法人持股調節賣壓)"
     },
     {
       "symbol": "2421.TW",
@@ -9822,52 +9825,52 @@
       "radar_multiplier": 1.15,
       "close": 2925.0,
       "ma60": 2477.1,
-      "current_pe": 332.39,
-      "trailing_pe": 914.06,
-      "pe_forward_2026": 332.39,
-      "pe_forward_2027": 201.72,
-      "fair_implied_pe": 122.7,
-      "fair_implied_pe_ttm": 337.4,
-      "is_pe_extreme": true,
-      "pe_extreme_msg": "合理價隱含 PE 123x 超過上限 (60x)",
-      "val_defensive_icon": "⚠️",
-      "val_defensive_tag": "估值待驗證",
-      "val_defensive_color": "amber",
+      "current_pe": 201.72,
+      "trailing_pe": 268.35,
+      "pe_forward_2026": 201.72,
+      "pe_forward_2027": 132.95,
+      "fair_implied_pe": 59.3,
+      "fair_implied_pe_ttm": 78.8,
+      "is_pe_extreme": false,
+      "pe_extreme_msg": "",
+      "val_defensive_icon": "🔴",
+      "val_defensive_tag": "嚴重溢價警戒",
+      "val_defensive_color": "rose",
       "dim_fundamental": "🟢 績優高成長",
       "dim_cycle": "🟢 Stage B 初升量產",
       "dim_valuation": "🔴 瘋狂過熱區",
-      "adjusted_pe": 323.71,
+      "adjusted_pe": 196.46,
       "peer_pe": 45.0,
-      "peg": 5.13,
+      "peg": 3.11,
       "growth_g": 64.8,
-      "eps_ttm": 3.2,
+      "eps_ttm": 10.9,
       "floor_value": 2574.0,
       "stop_loss_price": 2574.0,
       "stop_loss_pct": -12.0,
-      "extreme_floor": 470.68,
-      "eps_2026e": 8.8,
-      "eps_2027e": 14.5,
-      "eps_2028e": 22.0,
-      "p_bargain": 588.35,
-      "p_cheap": 785.12,
-      "p_fair": 1079.54,
-      "p_expensive": 1570.24,
-      "p_crazy": 2208.15,
-      "margin_of_safety_pct": -170.95,
-      "target_fair_2027": 1538.34,
-      "target_fair_2028": 2192.13,
-      "target_formula_note": "合理價 $1079.54 × (1 + 營收YoY 85.0% × 保守折減 0.5) = $1538.34 (折現PV約 $1365.6，現值空間 +-53.3%)",
+      "extreme_floor": 374.66,
+      "eps_2026e": 14.5,
+      "eps_2027e": 22.0,
+      "eps_2028e": 30.0,
+      "p_bargain": 468.33,
+      "p_cheap": 624.96,
+      "p_fair": 859.32,
+      "p_expensive": 1249.92,
+      "p_crazy": 1757.7,
+      "margin_of_safety_pct": -240.39,
+      "target_fair_2027": 1636.57,
+      "target_fair_2028": 3116.85,
+      "target_formula_note": "合理價 $859.32 × (1 + 營收YoY 180.9% × 保守折減 0.5) = $1636.57 (折現PV約 $1452.8，現值空間 +-50.3%)",
       "sun_status": "🔴 瘋狂過熱區",
       "badge_color": "#FF5252",
       "sun_action": "極度狂熱泡沫，預支遠期獲利，全部賣光光",
-      "sun_position": "30% (單檔上限，觸發極端PE阻斷)",
+      "sun_position": "0% (出清冬藏現金)",
       "rank_tier": 6,
       "val_mode": "PSR",
       "val_mode_tag": "📊 PSR 營收爆發模式",
-      "val_reason": "近3月營收強勁增長(YoY +85.0%)，處於初升/量產導入期(獲利待放量)，啟用孫慶龍 PSR 股價營收比河流圖",
-      "rev_yoy_3m": 85.0,
-      "sps": 49.07,
-      "current_psr": 59.61,
+      "val_reason": "近3月營收強勁增長(YoY +180.9%)，處於初升/量產導入期(獲利待放量)，啟用孫慶龍 PSR 股價營收比河流圖",
+      "rev_yoy_3m": 180.9,
+      "sps": 39.06,
+      "current_psr": 74.88,
       "base_psr_tiers": [
         10.43,
         13.91,
@@ -9882,30 +9885,30 @@
         32.0,
         45.0
       ],
-      "implied_pe_fair_trailing": 337.4,
-      "implied_pe_fair_forward": 122.7,
-      "implied_pe_fair_forward_2027": 74.5,
-      "val_basis": "TTM 每股營收 SPS $49.07 (PSR河流圖)",
-      "eps_2026e_cons": 6.16,
+      "implied_pe_fair_trailing": 78.8,
+      "implied_pe_fair_forward": 59.3,
+      "implied_pe_fair_forward_2027": 39.1,
+      "val_basis": "TTM 每股營收 SPS $39.06 (PSR河流圖)",
+      "eps_2026e_cons": 10.15,
       "p_fair_conservative": NaN,
-      "pv_target_2027": 1365.6,
-      "pv_upside_total": -53.3,
+      "pv_target_2027": 1452.8,
+      "pv_upside_total": -50.3,
       "pv_upside_ann": 0.0,
       "peg_consensus": NaN,
-      "peg_scenario": 5.13,
+      "peg_scenario": 3.11,
       "is_divergent": false,
       "divergence_alert": "",
       "divergence_note": "",
-      "ttm_revenue": 45.0,
-      "shares_out": 0.917,
+      "ttm_revenue": 39.76,
+      "shares_out": 1.018,
       "rank": 2,
       "rs_score": 87.7,
       "ret_3m": 53.58,
       "bias_ma20": 3.4,
       "trend_bullish": true,
-      "action_advice": "📈 均線突破但估值偏高(MoS -170.9%)，順勢操作",
+      "action_advice": "📈 均線突破但估值偏高(MoS -240.4%)，順勢操作",
       "right_status": "📈 順勢突破",
-      "right_advice": "站穩月線突破(乖離 +3.4%)，但左側估值已高於合理價(MoS -170.9%)，僅適合右側趨勢交易，不屬價值型低接買點",
+      "right_advice": "站穩月線突破(乖離 +3.4%)，但左側估值已高於合理價(MoS -240.4%)，僅適合右側趨勢交易，不屬價值型低接買點",
       "right_badge_color": "#00F59B",
       "chip_badge": "🌟 主力吃貨",
       "chip_status": "🟢 資金流入",
@@ -10017,7 +10020,7 @@
       document.getElementById("aiBoostBadge").textContent = `+${aiBoost.toFixed(1)} AI加成 (自適應)`;
       document.getElementById("evalDate").textContent = latestHist.date || sig.date || sig.evaluation_date || "2026-09";
 
-      // 宏觀分數防打架規則：任何 Stage < 40% (例如宏觀景氣 6/20=30%)，嚴禁使用「全面爆發」
+      // 宏觀分數防打架規則：任何 Stage < 40% (例如宏觀景氣 7/20=35%)，嚴禁使用「全面爆發」
       const s1Pct = s1 / 35.0;
       const s2Pct = s2 / 20.0;
       const s3Pct = s3 / 25.0;
@@ -10034,14 +10037,14 @@
         document.getElementById("stockRatio").textContent = "100%";
         document.getElementById("regimeBadge").textContent = "AI 結構擴張期";
       } else if (finalScore >= 60 || (finalScore >= 75 && hasLaggingStage)) {
-        // B4: 燈號統一為「景氣確認中」，消除語意衝突
+        // B4: 燈號統一為「景氣確認中」，消除語意衝突；納入宏觀美債>5%與油價高企之風控阻尼
         document.getElementById("stateBadge").innerHTML = `
           <span class="w-3.5 h-3.5 rounded-full bg-amber-400 animate-ping"></span>
           <span class="text-2xl font-black text-amber-400">[景氣確認中] CONFIRMING</span>
         `;
         document.getElementById("stateDesc").textContent = hasLaggingStage
-          ? "AI基本面強，但宏觀景氣確認中，依映射表維持 75% 穩健持股布局。"
-          : "基本面穩健復甦，各項領先指標進入確立軌道，建議持股 75%。";
+          ? "AI基本面強勁擴張，但宏觀美債>5%、油價逼近百元與Fed緊縮3大紅燈齊發，執行風控阻尼，持股上限鎖定 75%，嚴格配置實績龍頭。"
+          : "基本面穩健復甦，考量宏觀利率高企風險，依映射表維持 75% 穩健持股布局。";
         document.getElementById("stockRatio").textContent = "75%";
         document.getElementById("regimeBadge").textContent = "AI 結構擴張期 (確認中)";
       } else if (finalScore >= 40) {
@@ -10072,13 +10075,13 @@
       const peCheckEl = document.getElementById("healthCheckPe");
       if (peCheckEl) {
         if (extremePeStocks.length > 0) {
-          const names = extremePeStocks.slice(0, 3).map(s => `${s.name}(${Math.round(s.fair_implied_pe)}x)`).join("、");
+          const names = extremePeStocks.slice(0, 4).map(s => `${s.name}(${Math.round(s.fair_implied_pe)}x)`).join("、");
           peCheckEl.className = "p-2 rounded-lg bg-amber-950/40 border border-amber-500/50";
           peCheckEl.innerHTML = `
             <div class="text-[11px] text-amber-400 font-bold">③ 合理價隱含 PE 檢核</div>
             <div class="font-bold text-amber-400 flex items-center gap-1 mt-0.5">
               <span>⚠️ WARN</span>
-              <span class="text-[10px] text-amber-300">(${names}等>60x已阻斷防守)</span>
+              <span class="text-[10px] text-amber-300">(${extremePeStocks.length}檔>60x: ${names}等已阻斷防守)</span>
             </div>
           `;
         } else {
