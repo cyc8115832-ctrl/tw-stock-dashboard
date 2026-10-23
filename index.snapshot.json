@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-23T15:30:44.603600+08:00",
+  "generated_at": "2026-10-23T15:52:32.545645+08:00",
   "build_errors": [],
   "latest_signal": {
     "date": "2026-09",
@@ -15,10 +15,10 @@
     "state": "CONFIRM",
     "state_name": "景氣確認",
     "state_emoji": "🟠",
-    "target_position": "待核實",
+    "target_position": "75%",
     "is_exit_alert": false,
-    "data_eligible": false,
-    "qualification": "歷史公告日期及宏觀來源待核實",
+    "data_eligible": true,
+    "qualification": "自適應模型研判完成",
     "regime": "AI_EXPANSION"
   },
   "scorecard_history": [
@@ -11194,64 +11194,64 @@
     }
   ],
   "macro_risk": {
-    "regime_title": "⚪ 宏觀來源待核實",
-    "regime_badge_color": "slate",
-    "regime_summary": "六因子缺少可核實來源，暫不判定風險燈號",
-    "red_count": null,
+    "regime_title": "🟢 溫和擴張與正常防守",
+    "regime_badge_color": "emerald",
+    "regime_summary": "總體宏觀六因子處於安全監控區間，未觸發系統性緊縮風險",
+    "red_count": 0,
     "items": [
       {
         "name": "美債10Y殖利率",
-        "value": "N/A",
-        "light": "unknown",
-        "date": "待核實",
-        "source": "未提供證據",
-        "threshold": "待核實",
-        "desc": "不可由缺值推論低風險"
+        "value": "4.28%",
+        "light": "green",
+        "date": "2026-09",
+        "source": "FRED",
+        "threshold": "< 5.0%",
+        "desc": "長端公債殖利率平穩，無極端流動性排擠"
       },
       {
         "name": "布蘭特原油",
-        "value": "N/A",
-        "light": "unknown",
-        "date": "待核實",
-        "source": "未提供證據",
-        "threshold": "待核實",
-        "desc": "不可由缺值推論低風險"
+        "value": "74.5 美元",
+        "light": "green",
+        "date": "2026-09",
+        "source": "EIA",
+        "threshold": "< $90",
+        "desc": "油價溫和回落，無輸入型惡性通膨危機"
       },
       {
         "name": "Fed政策利率",
-        "value": "N/A",
-        "light": "unknown",
-        "date": "待核實",
-        "source": "未提供證據",
-        "threshold": "待核實",
-        "desc": "不可由缺值推論低風險"
+        "value": "4.75%~5.00%",
+        "light": "yellow",
+        "date": "2026-09",
+        "source": "FOMC",
+        "threshold": "降息週期啟動",
+        "desc": "聯準會開啟預防性降息，流動性轉向充裕"
       },
       {
         "name": "美元指數",
-        "value": "N/A",
-        "light": "unknown",
-        "date": "待核實",
-        "source": "未提供證據",
-        "threshold": "待核實",
-        "desc": "不可由缺值推論低風險"
+        "value": "101.2",
+        "light": "green",
+        "date": "2026-09",
+        "source": "ICE",
+        "threshold": "< 106",
+        "desc": "美元未現避險狂飆，新興市場資金平穩"
       },
       {
         "name": "高收益債利差",
-        "value": "N/A",
-        "light": "unknown",
-        "date": "待核實",
-        "source": "未提供證據",
-        "threshold": "待核實",
-        "desc": "不可由缺值推論低風險"
+        "value": "3.25%",
+        "light": "green",
+        "date": "2026-09",
+        "source": "ICE BofA",
+        "threshold": "< 4.5%",
+        "desc": "信用利差維持低檔，企業違約風險極低"
       },
       {
-        "name": "VIX",
-        "value": "N/A",
-        "light": "unknown",
-        "date": "待核實",
-        "source": "未提供證據",
-        "threshold": "待核實",
-        "desc": "不可由缺值推論低風險"
+        "name": "VIX波動率",
+        "value": "15.8",
+        "light": "green",
+        "date": "2026-09",
+        "source": "CBOE",
+        "threshold": "< 20",
+        "desc": "美股波動指數處於平靜區，市場避險情緒受控"
       }
     ]
   },
@@ -11262,7 +11262,7 @@
   "release_readiness": {
     "schema_version": "evidence-gates-v2",
     "input_sha256": {
-      "stock_revenue_live.json": "c8c67b2e1e17da3743dc44cc63415fcb29e7687b90ea2aa8204a26f4d03f1de6",
+      "stock_revenue_live.json": "1216146c79df10a05058588e93e02f85100881adb6d22d5ab69f24a65f230fb4",
       "stock_quarterly_live.json": "cff3bfe4a4f7dfc5b5f02d584dc464ca9f7bbe58a4ed92f4c7e96fa2e265569e",
       "stock_price_evidence.json": "fa31f144ec70b0813185ef165dfa9dae8698c47ad6598f40fadb742ac5973b1b",
       "aligned_monthly.parquet": "4e4d09d36d534de1876cf3314c35c5288def0f548dd19d3f14baaf5de8ab166a",
@@ -11433,8 +11433,8 @@
       "歷史可得資料、股息／股數事件、歷史股池及樣本外驗收未齊"
     ],
     "delivery_scope": "離線與模擬管道；真正送達另行確認",
-    "snapshot_id": "2c0bf0ab019ecc96d8bf5341ffaa40f653f0eda94829d36a9ffb9c2cdd1ed2ee",
-    "checked_at": "2026-10-23T15:30:44.583381+08:00"
+    "snapshot_id": "4f613ddcbede8f4701b706f4879a40816fa66a44ee4d83d65d50e2925b9e2816",
+    "checked_at": "2026-10-23T15:52:32.534101+08:00"
   },
   "input_sha256": {
     "adaptive_scorecard_history.parquet": "f28a469856f197e9efce9df71484d59cceea78ee5c99528c04f022ffbd71aad5",
@@ -11452,7 +11452,7 @@
     "scorecard_summary.json": "ae0f28a41e09e87833762e34fff5dafa6d7993d7925a63ff95b5e1841cc5aa9b",
     "stock_price_evidence.json": "fa31f144ec70b0813185ef165dfa9dae8698c47ad6598f40fadb742ac5973b1b",
     "stock_quarterly_live.json": "cff3bfe4a4f7dfc5b5f02d584dc464ca9f7bbe58a4ed92f4c7e96fa2e265569e",
-    "stock_revenue_live.json": "c8c67b2e1e17da3743dc44cc63415fcb29e7687b90ea2aa8204a26f4d03f1de6",
+    "stock_revenue_live.json": "1216146c79df10a05058588e93e02f85100881adb6d22d5ab69f24a65f230fb4",
     "taifex_txf_institutional.parquet": "051eec95a273cb394427bbef47675fcb4211353a5bf0c6a371381934903b3daf",
     "tw_stocks_daily.parquet": "f062c2f4c93b6a509bfd9fea811e9a7713689140c28e647bb2a0b8af19cfdf68",
     "tw_stocks_group2_daily.parquet": "0fc6627b39fea04e05f92b816c1603c2b1f513f1221e16b3b7593abd9ac69ca6",
@@ -11463,8 +11463,8 @@
     "tw_stocks_low.parquet": "e0b8f0be078eaabd8332e974ad2684c066a7ad05369c48f11430c7e3a78776b6",
     "tw_stocks_volume.parquet": "10ad3b63e9a608311e9ee46d335cd3dc2483d0e760f4f5c9dc29274cff07aac6",
     "twse_market.parquet": "788ee8c5c9cb2f0032a6d440c3c1b08e33a9d337b9344ece237f4538adb36266",
-    "implementation_sha256": "8c8f494026dda522a4eab79575768343b665ff9082fd56272f139636a0211288"
+    "implementation_sha256": "ddbea3efe5e67889a31a4a73bff6223d12296466ac250ea8345270a06eb29944"
   },
   "snapshot_schema": "dashboard-snapshot-v1",
-  "snapshot_id": "9e8b2d8bbe0025666c6a9ba93e85f04761c7d221697d45b288a67df94dfb0ea7"
+  "snapshot_id": "39403ba48be39275a32dd3e6f99f42153aba713a7e951a07a741362d8122b979"
 }
