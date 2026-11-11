@@ -1035,6 +1035,10 @@
 <canvas id="trendChart"></canvas>
 </div>
 </div>
+<!-- 近三個月走勢判斷、分析與說明（依 scorecard_history 動態演算） -->
+<div class="mt-3 p-3 sm:p-4 rounded-xl bg-slate-950/90 border border-cyan-500/40 space-y-3 min-w-0" id="trendChart3mAnalysis">
+  <div class="text-xs text-slate-300 font-mono">正在載入近三個月台股與領先指標走勢對照解析...</div>
+</div>
 </section>
 
   <!-- 四階段雷達與 20 項領先指標 -->
@@ -1575,7 +1579,7 @@
 
 <script>
     const DASHBOARD_DATA = {
-  "generated_at": "2026-11-11T16:33:59.106886+08:00",
+  "generated_at": "2026-11-11T16:45:50.694415+08:00",
   "build_errors": [],
   "latest_signal": {
     "date": "2026-09",
@@ -15634,7 +15638,7 @@
       "signal_eligible": false
     }
   ],
-  "guide_markdown": "# 台股領先指標與投資2.0：白話操作全書 (v3.0 機構級操作指南)\n\n版本：v3.0 全面改寫版。整合美股 AI 55% 核心領先體系、雙軸無矛盾實戰心法、週滾動 AI 動能排行與實戰持倉到價提醒管理。\n\n---\n\n## 🎨 第一章：全系統雙軌高對比色彩與燈號速查表\n\n在純黑背景（`#0B0F19`）環境下，本系統依用途區分為 **兩套並列色彩系統**，請先認清「動能變化球」與「安全風控紅綠燈」的差別，即可 100% 零誤解：\n\n### 1.1 動能變化球與買賣位階（📈 採台股習慣：紅強藍弱）\n\n| 狀態變化 | 顯示圖示與標籤 | 色碼 (Hex) | 白話操盤意義（一眼秒懂） |\n| :--- | :--- | :--- | :--- |\n| **由壞變好 / 動能轉強** | **🔴▲ 轉強 (火紅)** / **🔴🔥💥** | `#FF5252` | **火紅上漲・動能爆發**：指標轉佳、股價上漲、持倉獲利、月營收爆發。 |\n| **維持現狀 / 無變化** | **⚪━ 持平 (穩定)** | `#CBD5E1` | **數日平穩・無須頻繁操作**：大盤與個股位階無重大轉折，看完即可安心關閉。 |\n| **由好變壞 / 動能趨弱** | **🔵▼ 轉弱 (冷卻)** | `#00E5FF` | **冰晶藍冷卻・動能趨弱**：指標下修、股價回檔、持倉虧損、個股留校察看。 |\n| **黃金買點 / 安全邊際** | **🟡💎 好球帶** | `#FBBF24` | **黃金擊球區**：股價跌入孫慶龍便宜價 (`0.8x`) 或特價 (`0.618x`)，具備高安全邊際！ |\n| **昂貴過熱 / 逢高調節** | **🟣⚠️ 昂貴過熱** | `#C084FC` | **紫羅蘭警戒**：股價漲破昂貴價 (`1.2x`) 或 PE 過熱，嚴禁追高，已持倉者分批停利！ |\n\n### 1.2 安全體檢、籌碼流向與宏觀風控（🚦 採國際交通號誌：綠安黃警紅險）\n\n在 **「系統健康度自檢」**、**「總體宏觀風險監控」**、**「個股五維體檢／籌碼流向」** 與 **「個股左側安全位階」** 中，色球改採 **交通號誌安全邏輯**（與上方的台股漲跌色不同）：\n\n| 風控／體檢燈號 | 顯示圖示 | 適用區塊與實戰意義 | ⚠️ 常見防呆提醒 |\n| :--- | :--- | :--- | :--- |\n| **安全／通過／流入低估** | **🟢** | 系統 `PASS`、宏觀因子低風險（如 `🟢 溫和擴張與正常防守`、VIX \u003c 20）、主力資金流入、個股進入 `🟢 特價/便宜好球帶`。 | 這裡的「綠」是**健康與安全**，不是台股的下跌！ |\n| **偏高警戒注意** | **🟡** | 總經風險逼近紅燈門檻（例如美債 10Y 殖利率 `🟡 4.99%` 逼近 `5.0%` 警戒線）。 | **⚠️ 總經區 `🟡` 代表接近警戒注意，絕非「🟡💎 便宜好球帶」！** |\n| **風險警報／流出／泡沫** | **🔴**（無▲▼） | 宏觀觸發緊縮紅燈（故 `0項紅燈` ＝環境安全）、籌碼 `🔴 資金流出`、個股 `🔴 瘋狂過熱區`。 | 唯有帶 `▲▼` 或 `🔥💥`（`🔴▲`、`🔴🔥`）才代表股價與營收轉強；另「國發會紅燈 41 分」係台灣景氣熱絡指標。 |\n\n> 👀 **一秒區分口訣**：看圖先看符號——帶 **`▲▼` / `🔥💥` / `💎⚠️`** 是「股價與買賣動作球」（紅強藍弱）；沒帶上下箭頭的「體檢、宏觀風控、籌碼進出與左側估值」是「安全交通燈」（綠安、黃警、紅險）。\n\n---\n\n## 🧭 第二章：為什麼「美股 AI 佔 55%」才是真正的領先指標？\n\n台灣科技產業本質上是全球 AI 伺服器與半導體的下游代工重鎮。\n- **美國科技巨頭（NVIDIA、微軟、Google、Meta、AWS）是「因」**：他們下達 AI 晶片與伺服器資本支出訂單。\n- **台灣海關出口與工業生產是「果」**：台灣廠商接單、備料、生產到報關出貨，通常存在 **2 到 3 個月的時間落後**。\n\n因此，v3.0 系統將 **美股 AI 核心算力（35%）＋ 美國總經流動性（20%）合占 55% 絕對主導權**，以每日即時行情打破傳統政府月報滯後性：\n1. **Stage 1 (35分 · 🇺🇸 美國 AI 核心源頭)**：NVIDIA 60日動能、北美 4 大 CSP 雲端巨頭均線站上比例、費城半導體 SOX 均線突破。\n2. **Stage 2 (25分 · 🇺🇸 美國總經 ＋ 🇹🇼 台灣上游擴產)**：NASDAQ趨勢、美債10Y-2Y利差、VIX、台灣半導體設備進口 YoY、外銷訂單動向。\n3. **Stage 3 (25分 · 🇹🇼 實體出貨與營收改善)**：海關出口 YoY、工業生產、銅價 (Dr. Copper)。\n4. **Stage 4 (15~20分 · 🇹🇼 台股量價與籌碼確認)**：台股大盤量能、相對全球強弱。\n\n---\n\n## 🎯 第三章：破除矛盾！「景氣趨勢 × 個股好球帶」雙軸實戰操盤法\n\n為什麼以前「景氣分數 70 分，持股建議 75%」，買進卻常常買在高點？為什麼分數掉到低點時，反而是股價最便宜的時刻？\n\nv3.0 系統徹底分開指導 **「空手新資金」** 與 **「手上已有部位者」**：\n\n| 市場象限 | 景氣分數 vs 股價位階 | 👤 給空手／新資金的指引 | 💼 給已持倉者的指引 |\n| :--- | :--- | :--- | :--- |\n| **🔴 象限二：多頭主升高檔期** | 景氣 60~75+ 分，多數個股漲多 | **❌ 嚴禁追高！買黑不買紅**\u003cbr/>僅鎖定尚在「🟡好球帶/合理中樞」個股；若無便宜貨則握牢現金等拉回。 | **續抱上限 75%**\u003cbr/>讓利潤奔跑！股價觸及「🟣昂貴過熱價」才分批停利。 |\n| **💎 象限四：多頭急跌黃金坑** | 短期恐慌大跌，大量個股跌入🟡好球帶 | **🎯 啟動左側逢低買進！**\u003cbr/>只要美股 AI 基本面未壞，動用 30%~50% 資金大膽分批布局🟡好球帶。 | **絕不砍在最低點！**\u003cbr/>基本面健康時切勿恐慌殺低，嚴守成本 -10% 防守線即可。 |\n| **🌱 象限一：股價未行・指標先行** | 大盤仍在底部盤整，但美股 AI 指標率先勾頭 (底背離) | **🌟 最佳甜蜜進場點！**\u003cbr/>領先大盤 1~2 季起跑，積極建倉。 | **持股續抱，耐心等待主升段發動。** |\n| **🛡️ 象限三：真・基本面衰退** | 實體訂單連續衰退 ＋ 美股 AI 巨頭跌破年線 | **持幣觀望，保留 80%~100% 現金。** | **果斷執行停損與減碼，不心存僥倖。** |\n\n---\n\n## 🔥 第四章：孫慶龍五價位與「月營收爆發雙雷達」\n\n本系統全面移除容易失真的季報前瞻猜測，回歸 100% 官方驗證的真實月營收動能：\n- **孫慶龍黃金分割五價位**：\n  - **特價 (0.618x)** ➔ **便宜價 (0.800x)** ➔ **合理價 (1.000x)** ➔ **昂貴價 (1.200x)** ➔ **瘋狂價 (1.382x)**\n- **月營收爆發雙勳章**：\n  - **`🔴🔥 營收連3月成長`**：近 3 個月營收連續月增或年增率持續上升，代表訂單產能滿載。\n  - **`🔴💥 連2月營收>30%爆發`**：近 2 個月營收 YoY 均突破 30% 大關，強烈吸引法人買盤！\n- **關鍵時程提醒**：每月 1～10 號（營收開獎）與季報法說會期間，系統自動標註提醒，注意估值重錨。\n\n---\n\n## 💼 第五章：我的持倉管理與「轉弱未脫手」處置指南\n\n升級後的分頁提供專屬個人持倉互動管理（資料安全儲存於瀏覽器 本機 `localStorage`，不外洩）：\n1. **輸入與增減**：輸入持有股數與成本均價，支援 **`➕加碼買進`**（自動精算加權成本）、**`➖部分減碼`** 與 **`🗑️賣出即刪`**。\n2. **到價提醒**：預設以 **「孫慶龍昂貴價 (1.2x)」** 作為停利目標，**「成本 -10%」** 作為紀律防守價。現價達標即跳出醒目通知。\n3. **已轉弱 (`🔵▼`) 但尚未脫手處理劇本**：\n   - **若目前帳面仍獲利**：系統亮出 **`🟡獲利保衛提醒`**，建議逢高分批獲利入袋，切勿抱到由賺轉賠！\n   - **若目前帳面虧損**：系統亮出 **`🔵反彈減碼提醒`**，嚴禁攤平加碼！反彈至均線優先減碼換股，若跌破防守價務必果斷停損。\n\n---\n\n## 📡 第六章：AI 產業週滾動動能與新興產業擴充\n\n- **週滾動動能評分 (0~100)**：結合週價量資金流 (40%) ＋ 月營收真實爆發力 (40%) ＋ 產業週期安全閥 (20%)，每週自動重排 Top 5 強勢產業。\n- **4 大新興 AI 潛力產業**：\n  1. **先進封裝設備耗材與探針卡 (FOPLP/玻璃基板)**（代表：旺矽、穎崴、家登、中砂）\n  2. **人形機器人與實體 AI (Physical AI & Robotics)**（代表：上銀、亞光、台灣精銳、所羅門）\n  3. **邊緣 AI 終端與工業 AI (Edge AI / AI PC)**（代表：研華、華碩、瑞昱）\n  4. **AI 軟體代理與主權雲資安**（代表：零壹、精誠、安碁資訊）\n- **股池汰弱留強看板**：系統自動比對核心池中趨弱標的（建議減碼換股）與新興預備隊中的潛力新星（建議納入觀察）。\n",
+  "guide_markdown": "# 台股領先指標與投資2.0：白話操作全書 (v3.0 機構級操作指南)\n\n版本：v3.0 全面改寫版。整合美股 AI 55% 核心領先體系、雙軸無矛盾實戰心法、週滾動 AI 動能排行與實戰持倉到價提醒管理。\n\n---\n\n## 🎨 第一章：全系統雙軌高對比色彩與燈號速查表\n\n在純黑背景（`#0B0F19`）環境下，本系統依用途區分為 **兩套並列色彩系統**，請先認清「動能變化球」與「安全風控紅綠燈」的差別，即可 100% 零誤解：\n\n### 1.1 動能變化球與買賣位階（📈 採台股習慣：紅強藍弱）\n\n| 狀態變化 | 顯示圖示與標籤 | 色碼 (Hex) | 白話操盤意義（一眼秒懂） |\n| :--- | :--- | :--- | :--- |\n| **由壞變好 / 動能轉強** | **🔴▲ 轉強 (火紅)** / **🔴🔥💥** | `#FF5252` | **火紅上漲・動能爆發**：指標轉佳、股價上漲、持倉獲利、月營收爆發。 |\n| **維持現狀 / 無變化** | **⚪━ 持平 (穩定)** | `#CBD5E1` | **數日平穩・無須頻繁操作**：大盤與個股位階無重大轉折，看完即可安心關閉。 |\n| **由好變壞 / 動能趨弱** | **🔵▼ 轉弱 (冷卻)** | `#00E5FF` | **冰晶藍冷卻・動能趨弱**：指標下修、股價回檔、持倉虧損、個股留校察看。 |\n| **黃金買點 / 安全邊際** | **🟡💎 好球帶** | `#FBBF24` | **黃金擊球區**：股價跌入孫慶龍便宜價 (`0.8x`) 或特價 (`0.618x`)，具備高安全邊際！ |\n| **昂貴過熱 / 逢高調節** | **🟣⚠️ 昂貴過熱** | `#C084FC` | **紫羅蘭警戒**：股價漲破昂貴價 (`1.2x`) 或 PE 過熱，嚴禁追高，已持倉者分批停利！ |\n\n### 1.2 安全體檢、籌碼流向與宏觀風控（🚦 採國際交通號誌：綠安黃警紅險）\n\n在 **「系統健康度自檢」**、**「總體宏觀風險監控」**、**「個股五維體檢／籌碼流向」** 與 **「個股左側安全位階」** 中，色球改採 **交通號誌安全邏輯**（與上方的台股漲跌色不同）：\n\n| 風控／體檢燈號 | 顯示圖示 | 適用區塊與實戰意義 | ⚠️ 常見防呆提醒 |\n| :--- | :--- | :--- | :--- |\n| **安全／通過／流入低估** | **🟢** | 系統 `PASS`、宏觀因子低風險（如 `🟢 溫和擴張與正常防守`、VIX \u003c 20）、主力資金流入、個股進入 `🟢 特價/便宜好球帶`。 | 這裡的「綠」是**健康與安全**，不是台股的下跌！ |\n| **偏高警戒注意** | **🟡** | 總經風險逼近紅燈門檻（例如美債 10Y 殖利率 `🟡 4.99%` 逼近 `5.0%` 警戒線）。 | **⚠️ 總經區 `🟡` 代表接近警戒注意，絕非「🟡💎 便宜好球帶」！** |\n| **風險警報／流出／泡沫** | **🔴**（無▲▼） | 宏觀觸發緊縮紅燈（故 `0項紅燈` ＝環境安全）、籌碼 `🔴 資金流出`、個股 `🔴 瘋狂過熱區`。 | 唯有帶 `▲▼` 或 `🔥💥`（`🔴▲`、`🔴🔥`）才代表股價與營收轉強；另「國發會紅燈 41 分」係台灣景氣熱絡指標。 |\n\n> 👀 **一秒區分口訣**：看圖先看符號——帶 **`▲▼` / `🔥💥` / `💎⚠️`** 是「股價與買賣動作球」（紅強藍弱）；沒帶上下箭頭的「體檢、宏觀風控、籌碼進出與左側估值」是「安全交通燈」（綠安、黃警、紅險）。\n\n---\n\n## 🧭 第二章：為什麼「美股 AI 佔 55%」才是真正的領先指標？\n\n台灣科技產業本質上是全球 AI 伺服器與半導體的下游代工重鎮。\n- **美國科技巨頭（NVIDIA、微軟、Google、Meta、AWS）是「因」**：他們下達 AI 晶片與伺服器資本支出訂單。\n- **台灣海關出口與工業生產是「果」**：台灣廠商接單、備料、生產到報關出貨，通常存在 **2 到 3 個月的時間落後**。\n\n因此，v3.0 系統將 **美股 AI 核心算力（35%）＋ 美國總經流動性（20%）合占 55% 絕對主導權**，以每日即時行情打破傳統政府月報滯後性：\n1. **Stage 1 (35分 · 🇺🇸 美國 AI 核心源頭)**：NVIDIA 60日動能、北美 4 大 CSP 雲端巨頭均線站上比例、費城半導體 SOX 均線突破。\n2. **Stage 2 (25分 · 🇺🇸 美國總經 ＋ 🇹🇼 台灣上游擴產)**：NASDAQ趨勢、美債10Y-2Y利差、VIX、台灣半導體設備進口 YoY、外銷訂單動向。\n3. **Stage 3 (25分 · 🇹🇼 實體出貨與營收改善)**：海關出口 YoY、工業生產、銅價 (Dr. Copper)。\n4. **Stage 4 (15~20分 · 🇹🇼 台股量價與籌碼確認)**：台股大盤量能、相對全球強弱。\n\n---\n\n## 🎯 第三章：破除矛盾！「景氣趨勢 × 個股好球帶」雙軸實戰操盤法\n\n為什麼以前「景氣分數 70 分，持股建議 75%」，買進卻常常買在高點？為什麼分數掉到低點時，反而是股價最便宜的時刻？\n\nv3.0 系統徹底分開指導 **「空手新資金」** 與 **「手上已有部位者」**：\n\n| 市場象限 | 景氣分數 vs 股價位階 | 👤 給空手／新資金的指引 | 💼 給已持倉者的指引 |\n| :--- | :--- | :--- | :--- |\n| **🔴 象限二：多頭主升高檔期** | 景氣 60~75+ 分，多數個股漲多 | **❌ 嚴禁追高！買黑不買紅**\u003cbr/>僅鎖定尚在「🟡好球帶/合理中樞」個股；若無便宜貨則握牢現金等拉回。 | **續抱上限 75%**\u003cbr/>讓利潤奔跑！股價觸及「🟣昂貴過熱價」才分批停利。 |\n| **💎 象限四：多頭急跌黃金坑** | 短期恐慌大跌，大量個股跌入🟡好球帶 | **🎯 啟動左側逢低買進！**\u003cbr/>只要美股 AI 基本面未壞，動用 30%~50% 資金大膽分批布局🟡好球帶。 | **絕不砍在最低點！**\u003cbr/>基本面健康時切勿恐慌殺低，嚴守成本 -10% 防守線即可。 |\n| **🌱 象限一：股價未行・指標先行** | 大盤仍在底部盤整，但美股 AI 指標率先勾頭 (底背離) | **🌟 最佳甜蜜進場點！**\u003cbr/>領先大盤 1~2 季起跑，積極建倉。 | **持股續抱，耐心等待主升段發動。** |\n| **🛡️ 象限三：真・基本面衰退** | 實體訂單連續衰退 ＋ 美股 AI 巨頭跌破年線 | **持幣觀望，保留 80%~100% 現金。** | **果斷執行停損與減碼，不心存僥倖。** |\n\n---\n\n## 🔥 第四章：孫慶龍五價位與「月營收爆發雙雷達」\n\n本系統全面移除容易失真的季報前瞻猜測，回歸 100% 官方驗證的真實月營收動能：\n- **孫慶龍黃金分割五價位**：\n  - **特價 (0.618x)** ➔ **便宜價 (0.800x)** ➔ **合理價 (1.000x)** ➔ **昂貴價 (1.200x)** ➔ **瘋狂價 (1.382x)**\n- **月營收爆發雙勳章**：\n  - **`🔴🔥 營收連3月成長`**：近 3 個月營收連續月增或年增率持續上升，代表訂單產能滿載。\n  - **`🔴💥 連2月營收>30%爆發`**：近 2 個月營收 YoY 均突破 30% 大關，強烈吸引法人買盤！\n- **關鍵時程提醒**：每月 1～10 號（營收開獎）與季報法說會期間，系統自動標註提醒，注意估值重錨。\n\n---\n\n## 💼 第五章：我的持倉管理與「轉弱未脫手」處置指南\n\n升級後的分頁提供專屬個人持倉互動管理（資料安全儲存於瀏覽器 本機 `localStorage`，不外洩）：\n1. **輸入與增減**：輸入持有股數與成本均價，支援 **`➕加碼買進`**（自動精算加權成本）、**`➖部分減碼`** 與 **`🗑️賣出即刪`**。\n2. **到價提醒**：預設以 **「孫慶龍昂貴價 (1.2x)」** 作為停利目標，**「成本 -10%」** 作為紀律防守價。現價達標即跳出醒目通知。\n3. **已轉弱 (`🔵▼`) 但尚未脫手處理劇本**：\n   - **若目前帳面仍獲利**：系統亮出 **`🟡獲利保衛提醒`**，建議逢高分批獲利入袋，切勿抱到由賺轉賠！\n   - **若目前帳面虧損**：系統亮出 **`🔵反彈減碼提醒`**，嚴禁攤平加碼！反彈至均線優先減碼換股，若跌破防守價務必果斷停損。\n\n---\n\n## 📡 第六章：AI 產業週滾動動能與新興產業擴充\n\n- **週滾動動能評分 (0~100)**：結合週價量資金流 (40%) ＋ 月營收真實爆發力 (40%) ＋ 產業週期安全閥 (20%)，每週自動重排 Top 5 強勢產業。\n- **4 大新興 AI 潛力產業**：\n  1. **先進封裝設備耗材與探針卡 (FOPLP/玻璃基板)**（代表：旺矽、穎崴、家登、中砂）\n  2. **人形機器人與實體 AI (Physical AI & Robotics)**（代表：上銀、亞光、台灣精銳、所羅門）\n  3. **邊緣 AI 終端與工業 AI (Edge AI / AI PC)**（代表：研華、華碩、瑞昱）\n  4. **AI 軟體代理與主權雲資安**（代表：零壹、精誠、安碁資訊）\n- **股池汰弱留強看板**：系統自動比對核心池中趨弱標的（建議減碼換股）與新興預備隊中的潛力新星（建議納入觀察）。\n\n---\n\n## 📈 第七章：走勢對照圖讀法與「近三個月動向」判讀指南\n\n在「📊 大盤趨勢與先行指標」分頁中，走勢對照圖採用 **雙 Y 軸設計**，並於圖表正下方自動演算「近三個月走勢判斷、分析與說明」：\n\n1. **雙軸刻度防誤判**：\n   - **青線（自適應記分卡總分）**：對應圖表 **右側刻度（0～100 分）**。\n   - **深藍線（台股加權指數月 K）**：對應圖表 **左側刻度（指數點數）**；圖面捲動至最右側最新月份時，左側軸位於左方捲軸外，因此藍線貼近畫面上方只代表指數位於近年相對高檔，**不是 90～100 分**。\n2. **先蹲後跳 vs 高檔背離的判讀重點**：\n   - 當藍線維持高檔或上漲，而青線一度急降回測 `40～59` 警戒區後再 V 型勾起回到 `60+`（例如 `2026-07 ➔ 08 ➔ 09` 由 `74.0 ➔ 57.0 ➔ 67.0`），代表短期宏觀／費半雜音曾引發「指數彈、指標跌」警戒，但美股 AI 動能隨後重新確認接棒。\n   - 後續追蹤分水嶺：青線站上 **75 分** 且傳統宏觀轉正 ＝ 多頭擴散；若跌破 **60 分（或 50 分熄燈線）** ＝ 警覺背離、依研究規則收縮水位（註：歷史觀察圖與規則尚未通過歷史可得資料及樣本外核驗，不構成投資建議）。\n",
   "wave_events": [
     {
       "name": "2018 中美貿易戰底",
@@ -15867,7 +15871,7 @@
     ],
     "delivery_scope": "離線與模擬管道；真正送達另行確認",
     "snapshot_id": "45778582ba48a7b97d3f1c48eef07390e3601092d84912c52b76ab7f7cbcb89d",
-    "checked_at": "2026-11-11T16:33:59.006451+08:00"
+    "checked_at": "2026-11-11T16:45:50.589389+08:00"
   },
   "input_sha256": {
     "adaptive_scorecard_history.csv": "bd16999273e25fe38a7ceb08f8556f3f90be2557efb2a8a0e49ca9bae75fb5a1",
@@ -15906,10 +15910,10 @@
     "tw_stocks_volume.parquet": "5518c393825812e34b886afabf9e29ff9089cee5cf8d67087773bc583fc98d2b",
     "twse_market.csv": "2f0b183a62852174cf4e098d0889df45097c6bd3ac2eda821e8c7111ebcecf0a",
     "twse_market.parquet": "788ee8c5c9cb2f0032a6d440c3c1b08e33a9d337b9344ece237f4538adb36266",
-    "implementation_sha256": "e5f2cb64e5e11ffd2f82873da48a88132a7df42f56a869149551d0e1775e8805"
+    "implementation_sha256": "74dae38e56773eff91919e6d772aa7b83b5eda3e40e8304a641f8edaa10df46f"
   },
   "snapshot_schema": "dashboard-snapshot-v1",
-  "snapshot_id": "7deeb89986cd2cd3f675b86029e308989bc5ee8ebc0ea4ed4fba7213bcdbd4c9"
+  "snapshot_id": "f8d6a9fd95b3601eaed7cc55dab81f6e2cd29eab2349d2b98dadf4aef4643ee2"
 };
   </script>
 <!-- 互動圖表與數據渲染腳本 -->
@@ -16372,6 +16376,346 @@
       } catch (err) {
         console.warn('[TrendChart Init]', err);
       }
+
+      // 2.1 近三個月走勢判斷、分析與白話說明（放在走勢對照圖正下方，依 scorecard_history 動態計算）
+      function renderTrendChart3mAnalysis() {
+        const box = document.getElementById("trendChart3mAnalysis");
+        if (!box) return;
+        try {
+          if (!Array.isArray(history) || history.length < 3) {
+            box.innerHTML = '<div class="text-xs text-slate-300 font-mono">歷史月資料少於 3 個月，暫無法產生近三個月走勢對照判斷與說明。</div>';
+            return;
+          }
+
+          const recent3 = history.slice(-3);
+          const anchorPrev = history.length >= 4 ? history[history.length - 4] : null;
+          const m0 = recent3[0];
+          const m1 = recent3[1];
+          const m2 = recent3[2];
+
+          const getScore = (m) => {
+            const v = Number(m && (m.adaptive_score ?? m.total_score));
+            return Number.isFinite(v) ? v : null;
+          };
+          const getTwii = (m) => {
+            const v = m && m.twii_close != null ? Number(m.twii_close) : NaN;
+            return Number.isFinite(v) ? v : null;
+          };
+
+          const sAnchor = getScore(anchorPrev);
+          const s0 = getScore(m0);
+          const s1 = getScore(m1);
+          const s2 = getScore(m2);
+
+          const tAnchor = getTwii(anchorPrev);
+          const t0 = getTwii(m0);
+          const t1 = getTwii(m1);
+          const t2 = getTwii(m2);
+
+          if (s0 === null || s1 === null || s2 === null) {
+            box.innerHTML = '<div class="text-xs text-slate-300 font-mono">近三個月記分卡數據含缺值，無法完成趨勢判定。</div>';
+            return;
+          }
+
+          const dAnchor0 = sAnchor !== null ? (s0 - sAnchor) : null;
+          const d01 = s1 - s0;
+          const d12 = s2 - s1;
+          const dWindow = s2 - s0;
+          const d3mVsAnchor = sAnchor !== null ? (s2 - sAnchor) : null;
+
+          const pctChange = (cur, prev) => (cur !== null && prev !== null && prev !== 0) ? ((cur - prev) / prev) * 100 : null;
+          const tPctAnchor0 = pctChange(t0, tAnchor);
+          const tPct01 = pctChange(t1, t0);
+          const tPct12 = pctChange(t2, t1);
+          const tPctWindow = pctChange(t2, t0);
+          const tPctVsAnchor = pctChange(t2, tAnchor);
+
+          const fmtScoreDeltaBall = (d) => {
+            if (d === null || !Number.isFinite(d)) return '<span class="text-slate-300">-</span>';
+            if (Math.abs(d) < 0.05) return '<span class="text-[#CBD5E1] font-bold whitespace-nowrap">⚪━ 0.0 分</span>';
+            if (d > 0) return `<span class="text-[#FF5252] font-bold whitespace-nowrap">🔴▲ +${d.toFixed(1)} 分</span>`;
+            return `<span class="text-[#00E5FF] font-bold whitespace-nowrap">🔵▼ ${d.toFixed(1)} 分</span>`;
+          };
+
+          const fmtPctBall = (p) => {
+            if (p === null || !Number.isFinite(p)) return '<span class="text-slate-300">-</span>';
+            if (Math.abs(p) < 0.05) return '<span class="text-[#CBD5E1] font-bold whitespace-nowrap">⚪━ 0.0%</span>';
+            if (p > 0) return `<span class="text-[#FF5252] font-bold whitespace-nowrap">🔴▲ +${p.toFixed(1)}%</span>`;
+            return `<span class="text-[#00E5FF] font-bold whitespace-nowrap">🔵▼ ${p.toFixed(1)}%</span>`;
+          };
+
+          const fmtTwiiNum = (v) => (v !== null && Number.isFinite(v)) ? `${Math.round(v).toLocaleString('en-US')} 點` : 'N/A';
+
+          const stateMetaMap = {
+            BULL: { label: '🟢 主升作多', cls: 'bg-emerald-500/15 text-emerald-300 border-emerald-500/40' },
+            CONFIRM: { label: '🟠 景氣確認', cls: 'bg-amber-500/15 text-amber-300 border-amber-500/40' },
+            WATCH: { label: '🟡 轉折警戒', cls: 'bg-[#FBBF24]/15 text-[#FBBF24] border-[#FBBF24]/40' },
+            FROZEN: { label: '🌑 觀望冰凍', cls: 'bg-[#CBD5E1]/15 text-[#CBD5E1] border-[#CBD5E1]/40' },
+            EXIT_ALERT: { label: '🔴 熄燈退場', cls: 'bg-[#FF5252]/15 text-[#FF5252] border-[#FF5252]/40' },
+          };
+          const getStateMeta = (m) => stateMetaMap[String(m && m.market_state || '')] || {
+            label: escapeText(m && m.market_state ? m.market_state : '待確認'),
+            cls: 'bg-slate-900 text-slate-200 border-slate-700/80'
+          };
+          const getRegimeName = (m) => (m && m.regime === 'AI_EXPANSION') ? '⚡ AI 結構擴張期' : '🏭 傳統景氣循環期';
+
+          // 動態計算走向型態與整體結論
+          let patternTitle = '⚪━ 區間整理・等待方向表態';
+          let patternDesc = '近三個月記分卡分數在區間內小幅震盪，尚未出現單邊大幅轉折。';
+          let verdictPillCls = 'bg-cyan-500/15 text-cyan-300 border border-cyan-500/40';
+          const latestStateMeta = getStateMeta(m2);
+          const latestStateNameOnly = String(m2.market_state || '') === 'CONFIRM' ? '景氣確認'
+            : (String(m2.market_state || '') === 'BULL' ? '主升作多'
+            : (String(m2.market_state || '') === 'WATCH' ? '轉折警戒'
+            : (String(m2.market_state || '') === 'EXIT_ALERT' ? '熄燈退場' : '觀望冰凍')));
+
+          if (d01 < -3 && d12 > 3) {
+            if (s2 >= 60) {
+              patternTitle = `🔴▲ 先蹲後跳・重返${latestStateNameOnly}`;
+              patternDesc = '領先指標經中間月急降回測警戒區後，最新月份出現 V 型止跌勾起回升，重新確認多頭基本面支撐。';
+              verdictPillCls = 'bg-[#FF5252]/15 text-[#FF5252] border border-[#FF5252]/40';
+            } else {
+              patternTitle = `🟡 先蹲後微彈・仍在${latestStateNameOnly}`;
+              patternDesc = '記分卡分數於低檔出現止跌反彈勾頭，但尚未站回 60 分確認線，需續觀察回升延續性。';
+              verdictPillCls = 'bg-[#FBBF24]/15 text-[#FBBF24] border border-[#FBBF24]/40';
+            }
+          } else if (d01 >= 0 && d12 > 0) {
+            patternTitle = `🔴▲ 連續走升・${latestStateNameOnly}延續`;
+            patternDesc = '領先指標記分卡連續兩期推進墊高，科技與實體動能呈現正向擴張格局。';
+            verdictPillCls = 'bg-[#FF5252]/15 text-[#FF5252] border border-[#FF5252]/40';
+          } else if (d01 > 3 && d12 < -3) {
+            patternTitle = `🔵▼ 衝高轉折降溫・進入${latestStateNameOnly}`;
+            patternDesc = '前段衝高後最新月份轉向回落，若指數仍在高檔需特別提防高檔背離風險。';
+            verdictPillCls = 'bg-[#00E5FF]/15 text-[#00E5FF] border border-[#00E5FF]/40';
+          } else if (d01 <= 0 && d12 < 0) {
+            patternTitle = `🔵▼ 連續降溫・轉入${latestStateNameOnly}防禦`;
+            patternDesc = '領先指標連續兩個月走低，應降低槓桿並嚴守持倉移動防守線。';
+            verdictPillCls = 'bg-[#00E5FF]/15 text-[#00E5FF] border border-[#00E5FF]/40';
+          } else if (s2 >= 60 && (tPctWindow === null || tPctWindow >= 0)) {
+            patternTitle = `🟠 高檔震盪整理・維持${latestStateNameOnly}`;
+            patternDesc = '記分卡與指數維持中高水位整理，等待基本面或總經資金進一步共振表態。';
+            verdictPillCls = 'bg-amber-500/15 text-amber-300 border border-amber-500/40';
+          }
+
+          // 動態拆解 4 個維度變化 (m0 -> m1 與 m1 -> m2)
+          const stageDefs = [
+            { key: 'stage1_score', maxKey: 'stage1_max', defMax: 35, short: 'S1全球科技', name: 'Stage 1 全球科技' },
+            { key: 'stage2_score', maxKey: 'stage2_max', defMax: 20, short: 'S2傳統宏觀', name: 'Stage 2 傳統宏觀' },
+            { key: 'stage3_score', maxKey: null, defMax: 25, short: 'S3實體獲利', name: 'Stage 3 實體獲利' },
+            { key: 'stage4_score', maxKey: null, defMax: 20, short: 'S4台股籌碼', name: 'Stage 4 台股籌碼' },
+          ];
+          const stageDeltas01 = stageDefs.map(sd => ({
+            ...sd,
+            vPrev: Number(m0[sd.key] || 0),
+            vCurr: Number(m1[sd.key] || 0),
+            currMax: sd.maxKey ? Number(m1[sd.maxKey] || sd.defMax) : sd.defMax,
+            delta: Number(m1[sd.key] || 0) - Number(m0[sd.key] || 0),
+          }));
+          const stageDeltas12 = stageDefs.map(sd => ({
+            ...sd,
+            vPrev: Number(m1[sd.key] || 0),
+            vCurr: Number(m2[sd.key] || 0),
+            currMax: sd.maxKey ? Number(m2[sd.maxKey] || sd.defMax) : sd.defMax,
+            delta: Number(m2[sd.key] || 0) - Number(m1[sd.key] || 0),
+          }));
+
+          const drops01 = [...stageDeltas01].filter(x => x.delta < -0.5).sort((a, b) => a.delta - b.delta);
+          const gains01 = [...stageDeltas01].filter(x => x.delta > 0.5).sort((a, b) => b.delta - a.delta);
+          const gains12 = [...stageDeltas12].filter(x => x.delta > 0.5).sort((a, b) => b.delta - a.delta);
+          const drops12 = [...stageDeltas12].filter(x => x.delta < -0.5).sort((a, b) => a.delta - b.delta);
+
+          const midDivergenceText = (d01 < -3 && tPct01 !== null && tPct01 > 0)
+            ? `同期間加權指數卻反彈 <span class="text-[#FF5252] font-bold">+${tPct01.toFixed(1)}%</span>，形成「指數先彈、領先指標先蹲」的短期背離警戒。`
+            : (tPct01 !== null ? `同期加權指數變動 ${tPct01 >= 0 ? '+' : ''}${tPct01.toFixed(1)}%。` : '');
+
+          const drop01Summary = drops01.length > 0
+            ? drops01.map(x => `${escapeText(x.name)}（${x.vPrev.toFixed(0)} ➔ ${x.vCurr.toFixed(0)}，${x.delta.toFixed(1)} 分）`).join(' 與 ')
+            : '各項細分動能小幅修正';
+          const gain01Summary = gains01.length > 0
+            ? gains01.map(x => `${escapeText(x.name)}增加 +${x.delta.toFixed(1)} 分（${x.vPrev.toFixed(0)} ➔ ${x.vCurr.toFixed(0)}）`).join('、')
+            : '各階段溫和走升';
+
+          const gain12Summary = gains12.length > 0
+            ? gains12.map(x => `${escapeText(x.name)}強彈 ${x.delta >= 0 ? '+' : ''}${x.delta.toFixed(1)} 分（${x.vPrev.toFixed(0)} ➔ ${x.vCurr.toFixed(0)}/${x.currMax}）`).join('、')
+            : '分數溫和調整';
+          const drop12Summary = drops12.length > 0
+            ? drops12.map(x => `${escapeText(x.name)}轉弱 ${x.delta.toFixed(1)} 分（${x.vPrev.toFixed(0)} ➔ ${x.vCurr.toFixed(0)}/${x.currMax}）`).join('、')
+            : '總分小幅修正';
+
+          const regimeSwitchNote = (m1.regime !== m2.regime)
+            ? `並由 ${escapeText(getRegimeName(m1))} 切換為 <strong class="text-cyan-300">${escapeText(getRegimeName(m2))}</strong>（調整美股 AI/半導體領先權重上限至 ${Number(m2.stage1_max || 35)} 分），`
+            : '';
+
+          const seg1Verb = d01 < -0.5 ? '前段下探降溫' : (d01 > 0.5 ? '前段推進擴張' : '前段平穩整理');
+          const seg1Drivers = d01 < -0.5
+            ? `主要由 ${drop01Summary} 所拉回`
+            : (d01 > 0.5 ? `主要由 ${gain01Summary} 帶動` : '各階段分數大致維持平穩');
+
+          const seg2Verb = d12 > 0.5 ? '最新轉折回升' : (d12 < -0.5 ? '最新轉弱回落' : '最新橫盤延續');
+          const seg2Drivers = d12 > 0.5
+            ? `${regimeSwitchNote}${gain12Summary}，帶動圖形末端止跌向上勾頭`
+            : (d12 < -0.5
+              ? `${regimeSwitchNote}${drop12Summary}，使圖形末端出現降溫轉折`
+              : `${regimeSwitchNote}各維度得分大致持平`);
+
+          const s3HoldAllHigh = [m0, m1, m2].every(m => Number(m.stage3_score || 0) >= 20);
+          const s2LowNow = Number(m2.stage2_score || 0) <= Number(m2.stage2_max || 20) * 0.4;
+          const s3s2Clause = [
+            s3HoldAllHigh ? `<strong>Stage 3 實體獲利與出口</strong>連 3 月穩守 <strong>${Number(m2.stage3_score || 0).toFixed(0)}/25 分</strong>高檔，撐住基本面下檔` : '',
+            s2LowNow ? `<strong>Stage 2 傳統宏觀</strong>僅 <strong>${Number(m2.stage2_score || 0).toFixed(0)}/${Number(m2.stage2_max || 20)} 分</strong>偏保守（資金剪刀差與傳統外銷尚未全面齊揚）${s2 < 75 ? `，正是總分暫停留於 ${s2.toFixed(1)} 分、尚未突破 75 分「主升作多」的關鍵原因` : ''}` : ''
+          ].filter(Boolean).join('；');
+
+          // 單月卡片文字生成
+          const months = [
+            { m: m0, idx: 0, s: s0, sd: dAnchor0, t: t0, td: tPctAnchor0, prevLabel: anchorPrev ? anchorPrev.date : null },
+            { m: m1, idx: 1, s: s1, sd: d01,      t: t1, td: tPct01,      prevLabel: m0.date },
+            { m: m2, idx: 2, s: s2, sd: d12,      t: t2, td: tPct12,      prevLabel: m1.date },
+          ];
+
+          const cardsHtml = months.map(({ m, idx, s, sd, t, td, prevLabel }) => {
+            const st = getStateMeta(m);
+            const isLatest = idx === 2;
+            const s1v = Number(m.stage1_score || 0).toFixed(0), s1m = Number(m.stage1_max || 30).toFixed(0);
+            const s2v = Number(m.stage2_score || 0).toFixed(0), s2m = Number(m.stage2_max || 25).toFixed(0);
+            const s3v = Number(m.stage3_score || 0).toFixed(0);
+            const s4v = Number(m.stage4_score || 0).toFixed(0);
+            const aiv = Number(m.ai_boost || 0).toFixed(0);
+
+            let monthNote = '';
+            if (idx === 0) {
+              monthNote = (td !== null && td < 0)
+                ? `指數回測 ${td.toFixed(1)}%，記分卡守住 ${s.toFixed(1)} 分確認門檻。`
+                : `區間起點，記分卡維持 ${s.toFixed(1)} 分。`;
+            } else if (idx === 1) {
+              monthNote = (d01 < -3 && tPct01 !== null && tPct01 > 0)
+                ? `記分卡急降 ${Math.abs(d01).toFixed(1)} 分落入警戒，但指數先彈 +${tPct01.toFixed(1)}%，出現短期背離。`
+                : `記分卡較前月 ${d01 >= 0 ? '+' : ''}${d01.toFixed(1)} 分，進入階段調整。`;
+            } else {
+              monthNote = (d12 > 3)
+                ? `${m1.regime !== m2.regime ? '重啟 AI 擴張模式，' : ''}總分勾起 +${d12.toFixed(1)} 分重返確認，指數同步墊高。`
+                : `最新期總分 ${s.toFixed(1)} 分，維持追蹤觀察。`;
+            }
+
+            return `
+              <div class="p-3 rounded-xl ${isLatest ? 'bg-slate-900 border border-cyan-500/40' : 'bg-slate-900/90 border border-slate-800'} space-y-2 min-w-0">
+                <div class="flex items-center justify-between gap-2 flex-wrap">
+                  <span class="text-sm font-black ${isLatest ? 'text-cyan-300' : 'text-white'} font-mono">${escapeText(m.date)}${isLatest ? ' (最新)' : ''}</span>
+                  <span class="px-2 py-0.5 rounded-full text-xs font-bold border ${st.cls}">${st.label}</span>
+                </div>
+                <div class="text-xs font-mono text-slate-300">${escapeText(getRegimeName(m))}</div>
+                <div class="grid grid-cols-2 gap-2 pt-2 border-t border-slate-800">
+                  <div class="min-w-0">
+                    <div class="text-xs text-slate-300">青線｜記分卡</div>
+                    <div class="text-base font-black text-cyan-300 font-mono">${s.toFixed(1)} <span class="text-xs text-slate-300">/100</span></div>
+                    <div class="text-xs font-mono">${prevLabel ? fmtScoreDeltaBall(sd) : '<span class="text-slate-300">-</span>'}</div>
+                  </div>
+                  <div class="min-w-0">
+                    <div class="text-xs text-slate-300">藍線｜加權指數</div>
+                    <div class="text-sm font-black text-blue-400 font-mono break-words">${fmtTwiiNum(t)}</div>
+                    <div class="text-xs font-mono">${prevLabel ? fmtPctBall(td) : '<span class="text-slate-300">-</span>'}</div>
+                  </div>
+                </div>
+                <div class="text-xs font-mono text-slate-200 bg-slate-950/80 px-2 py-1 rounded border border-slate-800 flex flex-wrap gap-2">
+                  <span>S1:${s1v}/${s1m}</span>
+                  <span>S2:${s2v}/${s2m}</span>
+                  <span>S3:${s3v}/25</span>
+                  <span>S4:${s4v}/20</span>
+                  <span class="text-cyan-300">+AI:${aiv}</span>
+                </div>
+                <div class="text-xs text-slate-200 leading-relaxed">${escapeText(monthNote)}</div>
+              </div>
+            `;
+          }).join('');
+
+          const dualAxisExplain = (t2 !== null && t2 > 1000)
+            ? `圖表<strong>右側刻度（0～100）只代表青線「領先指標記分卡總分」</strong>；<strong>左側刻度（指數點位）才代表深藍線「台股加權指數」</strong>（因圖幅寬闊，捲動到最右側最新月份時左側軸會在畫面左方捲軸外）。因此最新處藍線貼近上方高度代表指數停留在 <strong>${fmtTwiiNum(t2)}</strong> 高檔位置，<strong>並不是 95 分</strong>；對照青線站在 <strong>${s2.toFixed(1)} 分</strong>，代表「指數高檔續強、領先指標修正後重新確認跟上」。`
+            : `右側刻度（0～100）代表青線「記分卡總分」，左側刻度代表深藍線「台股加權指數」，判讀時請分開對應兩條座標軸。`;
+
+          const nvdaNote = capex && capex.nvda_ret_60d ? `NVDA 60日報酬 ${escapeText(capex.nvda_ret_60d)}` : '';
+          const cspNote = capex && capex.csp_above_ma60 ? `四大 CSP 站上季線 ${escapeText(capex.csp_above_ma60)}` : '';
+          const semiNote = capex && capex.semi_import_yoy ? `半導體設備進口 ${escapeText(capex.semi_import_yoy)}` : '';
+          const driverBits = [nvdaNote, cspNote, semiNote].filter(Boolean).join(' ｜ ');
+
+          const targetPosText = qualified && sig.target_position ? escapeText(sig.target_position) : '依規則核對';
+
+          box.innerHTML = `
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-slate-800">
+              <div class="min-w-0">
+                <h3 class="text-base font-black text-white">
+                  🧭 近三個月走勢判斷與圖形意義解析
+                </h3>
+                <div class="text-xs text-slate-300 font-mono mt-1">
+                  觀察窗口：${escapeText(m0.date)} ～ ${escapeText(m2.date)}${anchorPrev ? '（單月漲跌含前基準月 ' + escapeText(anchorPrev.date) + ' 對照）' : ''}
+                </div>
+              </div>
+              <span class="px-2.5 py-1 rounded-full text-xs font-black w-fit flex-shrink-0 ${verdictPillCls}">${patternTitle}</span>
+            </div>
+
+            <div class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-100 leading-relaxed">
+              <strong class="text-cyan-300">整體定調：</strong>${escapeText(patternDesc)}
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              <div class="p-3 rounded-xl bg-slate-900/90 border border-cyan-500/30 space-y-1 min-w-0">
+                <div class="flex items-center gap-1.5 text-xs font-bold text-cyan-300">
+                  <span class="w-3 h-0.5 bg-cyan-400 inline-block flex-shrink-0"></span>
+                  <span>青線｜記分卡 (右軸 0~100)</span>
+                </div>
+                <div class="text-sm font-black text-white font-mono">${s0.toFixed(1)} ➔ ${s1.toFixed(1)} ➔ ${s2.toFixed(1)} 分</div>
+                <div class="text-xs font-mono text-slate-200 flex flex-wrap gap-2">
+                  <span>最新單月：${fmtScoreDeltaBall(d12)}</span>
+                  ${d3mVsAnchor !== null ? `<span>較 ${escapeText(anchorPrev.date)}：${fmtScoreDeltaBall(d3mVsAnchor)}</span>` : `<span>3月起訖：${fmtScoreDeltaBall(dWindow)}</span>`}
+                </div>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-900/90 border border-slate-700/80 space-y-1 min-w-0">
+                <div class="flex items-center gap-1.5 text-xs font-bold text-blue-400">
+                  <span class="w-3 h-0.5 bg-blue-500 inline-block flex-shrink-0"></span>
+                  <span>藍線｜加權指數月K (左軸 點數)</span>
+                </div>
+                <div class="text-sm font-black text-white font-mono break-words">${fmtTwiiNum(t0)} ➔ ${fmtTwiiNum(t1)} ➔ ${fmtTwiiNum(t2)}</div>
+                <div class="text-xs font-mono text-slate-200 flex flex-wrap gap-2">
+                  <span>近3月(${escapeText(m0.date)}➔${escapeText(m2.date)})：${fmtPctBall(tPctWindow)}</span>
+                  ${tPctVsAnchor !== null ? `<span>較 ${escapeText(anchorPrev.date)}：${fmtPctBall(tPctVsAnchor)}</span>` : ''}
+                </div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-2.5">
+              ${cardsHtml}
+            </div>
+
+            <div class="space-y-2 pt-2 border-t border-slate-800 text-xs text-slate-200 leading-relaxed">
+              <div class="p-2.5 rounded-lg bg-slate-900/90 border border-slate-800 space-y-1.5">
+                <div class="font-bold text-cyan-300">① 走勢成因拆解｜為什麼近三個月曲線呈現「${escapeText(patternTitle.replace(/^[🔴🔵⚪🟡🟢🟠🌑▲▼━\s]+/, ''))}」？</div>
+                <div>
+                  <strong>${seg1Verb}（${escapeText(m0.date)} ➔ ${escapeText(m1.date)}，${d01 >= 0 ? '+' : ''}${d01.toFixed(1)} 分）：</strong>${seg1Drivers}；${midDivergenceText}
+                </div>
+                <div>
+                  <strong>${seg2Verb}（${escapeText(m1.date)} ➔ ${escapeText(m2.date)}，${d12 >= 0 ? '+' : ''}${d12.toFixed(1)} 分）：</strong>${seg2Drivers}。${s3s2Clause ? '其中 ' + s3s2Clause + '。' : ''}
+                </div>
+              </div>
+
+              <div class="p-2.5 rounded-lg bg-slate-900/90 border border-slate-800">
+                <div class="font-bold text-amber-300 mb-1">② 雙軸座標防誤判｜為什麼藍線看似貼近上方 90～100、青線卻在 ${s2.toFixed(1)} 分？</div>
+                <div>${dualAxisExplain}</div>
+              </div>
+
+              <div class="p-2.5 rounded-lg bg-slate-900/90 border border-slate-800">
+                <div class="font-bold text-emerald-300 mb-1">③ 研究規則判讀與後續追蹤焦點</div>
+                <div>
+                  目前模型狀態為 <strong>${latestStateMeta.label}（${s2.toFixed(1)} 分，規則參考水位 ${targetPosText}）</strong>${driverBits ? '；最新同步追蹤源頭指標：' + driverBits : ''}。
+                  後續判讀關鍵：若青線後續能突破 <strong class="text-emerald-300">75 分</strong> 且 Stage 2 傳統宏觀接棒轉正，代表多頭全面擴散；若青線再度掉頭跌破 <strong class="text-amber-300">60 分（或 50 分熄燈線）</strong>，則須提防高檔背離擴大並收縮部位。
+                  <span class="text-slate-300">（註：此為依研究規則之結構與歷史圖形觀察說明，不構成投資建議，領先關係仍待完整歷史可得資料及樣本外核驗。）</span>
+                </div>
+              </div>
+            </div>
+          `;
+        } catch (err) {
+          console.warn('[TrendChart3mAnalysis Render]', err);
+          box.innerHTML = '<div class="text-xs text-rose-300 font-mono">近三個月走勢解析渲染異常，請重新整理或檢查資料快照。</div>';
+        }
+      }
+      renderTrendChart3mAnalysis();
 
       // 3. 渲染四階段傳導雷達圖 (radarChart)
       try {
