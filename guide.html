@@ -2613,11 +2613,15 @@
   <style>
     html {
       scroll-behavior: smooth;
+      overflow-x: clip;
+      max-width: 100%;
     }
     body {
       background-color: #0a0f1d;
       color: #e2e8f0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      overflow-x: clip;
+      max-width: 100%;
     }
 
     /* ===== 👵👴 65歲長者友善特大字體規範 (Senior 2X Mode - 全域直豎與橫幅皆生效) ===== */
@@ -2857,7 +2861,8 @@
     container.innerHTML = marked.parse(RAW_MARKDOWN);
     // 65歲長者 2X 大字體開關控制 (同步 index.html 的 localStorage 設定)
     function applyFontPreference() {
-      const isNormal = localStorage.getItem("user-font-pref") === "normal";
+      let isNormal = false;
+      try { isNormal = localStorage.getItem("user-font-pref") === "normal"; } catch (e) {}
       const btnText = document.getElementById("seniorToggleText");
       const btn = document.getElementById("seniorToggleBtn");
 
@@ -2876,11 +2881,9 @@
 
     window.toggleSeniorMode = function() {
       const isNormal = document.documentElement.classList.contains("normal-font-mode");
-      if (isNormal) {
-        localStorage.setItem("user-font-pref", "senior");
-      } else {
-        localStorage.setItem("user-font-pref", "normal");
-      }
+      try {
+        localStorage.setItem("user-font-pref", isNormal ? "senior" : "normal");
+      } catch (e) {}
       applyFontPreference();
     };
 
