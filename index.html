@@ -207,24 +207,24 @@
 </div>
 </header>
 
-<!-- ==================== v3.0 四大主題分頁導航列 (Tab Navigation) ==================== -->
-<nav class="sticky top-2 z-40 bg-[#0B0F19]/95 backdrop-blur-md border-2 border-slate-800 rounded-2xl p-2 shadow-2xl flex items-center justify-between gap-2 overflow-x-auto custom-scrollbar" id="mainTabNav">
-  <div class="flex items-center gap-2 flex-shrink-0">
-    <button onclick="switchTab('home')" id="tab-btn-home" class="tab-nav-btn px-4 py-2.5 rounded-xl font-black text-sm md:text-base flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg border border-cyan-400/50 transition-all">
+<!-- ==================== v3.0 四大主題分頁導航列 (Tab Navigation：手機 2x2 全景網格 + 電腦橫排) ==================== -->
+<nav class="lg:sticky lg:top-2 z-40 bg-[#0B0F19] border-2 border-slate-800 rounded-2xl p-2.5 shadow-xl flex items-center justify-between gap-2" id="mainTabNav">
+  <div class="grid grid-cols-2 sm:flex items-center gap-2 w-full sm:w-auto">
+    <button type="button" onclick="window.switchTab('home')" id="tab-btn-home" class="tab-nav-btn justify-center px-3 py-2.5 rounded-xl font-black text-xs sm:text-sm md:text-base flex items-center gap-1.5 bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg border border-cyan-400/50 active:scale-95 transition-transform">
       <span>⚡</span><span>主頁總結</span>
     </button>
-    <button onclick="switchTab('portfolio')" id="tab-btn-portfolio" class="tab-nav-btn px-4 py-2.5 rounded-xl font-bold text-sm md:text-base flex items-center gap-2 bg-slate-900/90 text-slate-300 hover:text-white border border-slate-700/80 transition-all">
+    <button type="button" onclick="window.switchTab('portfolio')" id="tab-btn-portfolio" class="tab-nav-btn justify-center px-3 py-2.5 rounded-xl font-bold text-xs sm:text-sm md:text-base flex items-center gap-1.5 bg-slate-900/90 text-slate-300 hover:text-white border border-slate-700/80 active:scale-95 transition-transform">
       <span>💼</span><span>我的持倉管理</span>
       <span id="navPortfolioBadge" class="hidden px-2 py-0.5 rounded-full text-[11px] font-mono bg-rose-500/20 text-rose-300 border border-rose-500/40">0</span>
     </button>
-    <button onclick="switchTab('analysis')" id="tab-btn-analysis" class="tab-nav-btn px-4 py-2.5 rounded-xl font-bold text-sm md:text-base flex items-center gap-2 bg-slate-900/90 text-slate-300 hover:text-white border border-slate-700/80 transition-all">
-      <span>📈</span><span>大盤趨勢與先行指標</span>
+    <button type="button" onclick="window.switchTab('analysis')" id="tab-btn-analysis" class="tab-nav-btn justify-center px-3 py-2.5 rounded-xl font-bold text-xs sm:text-sm md:text-base flex items-center gap-1.5 bg-slate-900/90 text-slate-300 hover:text-white border border-slate-700/80 active:scale-95 transition-transform">
+      <span>📈</span><span>先行指標趨勢</span>
     </button>
-    <button onclick="switchTab('ai-radar')" id="tab-btn-ai-radar" class="tab-nav-btn px-4 py-2.5 rounded-xl font-bold text-sm md:text-base flex items-center gap-2 bg-slate-900/90 text-slate-300 hover:text-white border border-slate-700/80 transition-all">
-      <span>📡</span><span>AI 產業動能雷達</span>
+    <button type="button" onclick="window.switchTab('ai-radar')" id="tab-btn-ai-radar" class="tab-nav-btn justify-center px-3 py-2.5 rounded-xl font-bold text-xs sm:text-sm md:text-base flex items-center gap-1.5 bg-slate-900/90 text-slate-300 hover:text-white border border-slate-700/80 active:scale-95 transition-transform">
+      <span>📡</span><span>AI 產業動能</span>
     </button>
   </div>
-  <div class="hidden md:flex items-center gap-2 flex-shrink-0 pr-2">
+  <div class="hidden xl:flex items-center gap-2 flex-shrink-0 pr-2">
     <span class="text-xs text-slate-400 font-mono">💡 點選各分頁查看詳細，隨時可一鍵切換回主頁</span>
   </div>
 </nav>
@@ -459,17 +459,17 @@
 <span>🤖</span> 第一組：AI 核心成長池 (20檔精選)
 </div>
 </div>
-<!-- 快速分類篩選按鈕 (手機/電腦共用，長者大字體與易觸控) -->
-<div class="flex items-center gap-2 overflow-x-auto custom-scrollbar pb-2 text-sm font-mono" id="stockFilterGroup">
-<button class="stock-filter-btn px-4 py-2.5 rounded-full border-2 border-rose-500/60 bg-rose-500/20 text-rose-300 font-black whitespace-nowrap active:scale-95 transition-all flex items-center gap-1.5" data-type="rev_boom" onclick="window.filterStocks('rev_boom')">
+<!-- 快速分類篩選按鈕 (手機自動換行免左右滑動、長者大字體與易觸控) -->
+<div class="flex flex-wrap items-center gap-2 pb-2 text-sm font-mono" id="stockFilterGroup">
+<button type="button" class="stock-filter-btn px-4 py-2.5 rounded-full border-2 border-rose-500/60 bg-rose-500/20 text-rose-300 font-black whitespace-nowrap active:scale-95 transition-transform flex items-center gap-1.5" data-type="rev_boom" onclick="window.filterStocks('rev_boom')">
   <span>🔴🔥</span> 營收爆發關注 (<span id="countRevBoom">0</span>)
 </button>
-<button class="stock-filter-btn px-4 py-2.5 rounded-full border-2 border-cyan-500/50 bg-cyan-500/20 text-cyan-300 font-black whitespace-nowrap active-filter" data-type="all" onclick="window.filterStocks('all')">全部 (20)</button>
-<button class="stock-filter-btn px-4 py-2.5 rounded-full border-2 border-emerald-500/40 bg-slate-900/90 text-emerald-400 font-black whitespace-nowrap hover:bg-emerald-500/10" data-type="cheap" onclick="window.filterStocks('cheap')">🟢 好球帶 (0)</button>
-<button class="stock-filter-btn px-4 py-2.5 rounded-full border-2 border-slate-700 bg-slate-900/90 text-slate-300 font-black whitespace-nowrap hover:bg-slate-800" data-type="fair" onclick="window.filterStocks('fair')">⚪ 合理中樞 (13)</button>
-<button class="stock-filter-btn px-4 py-2.5 rounded-full border-2 border-amber-500/40 bg-slate-900/90 text-amber-400 font-black whitespace-nowrap hover:bg-amber-500/10" data-type="watch" onclick="window.filterStocks('watch')">🟡 偏高防守 (3)</button>
-<button class="stock-filter-btn px-4 py-2.5 rounded-full border-2 border-rose-500/40 bg-slate-900/90 text-rose-400 font-black whitespace-nowrap hover:bg-rose-500/10" data-type="overheat" onclick="window.filterStocks('overheat')">🟠 逢高調節 (2)</button>
-<button class="stock-filter-btn px-4 py-2.5 rounded-full border-2 border-slate-600 bg-slate-900/90 text-slate-400 font-black whitespace-nowrap hover:bg-slate-800" data-type="unconfirmed" onclick="window.filterStocks('unconfirmed')">⚪ 估值待確認 (2)</button>
+<button type="button" class="stock-filter-btn px-4 py-2.5 rounded-full border-2 border-cyan-500/50 bg-cyan-500/20 text-cyan-300 font-black whitespace-nowrap active-filter" data-type="all" onclick="window.filterStocks('all')">全部 (20)</button>
+<button type="button" class="stock-filter-btn px-4 py-2.5 rounded-full border-2 border-emerald-500/40 bg-slate-900/90 text-emerald-400 font-black whitespace-nowrap hover:bg-emerald-500/10" data-type="cheap" onclick="window.filterStocks('cheap')">🟢 好球帶 (0)</button>
+<button type="button" class="stock-filter-btn px-4 py-2.5 rounded-full border-2 border-slate-700 bg-slate-900/90 text-slate-300 font-black whitespace-nowrap hover:bg-slate-800" data-type="fair" onclick="window.filterStocks('fair')">⚪ 合理中樞 (13)</button>
+<button type="button" class="stock-filter-btn px-4 py-2.5 rounded-full border-2 border-amber-500/40 bg-slate-900/90 text-amber-400 font-black whitespace-nowrap hover:bg-amber-500/10" data-type="watch" onclick="window.filterStocks('watch')">🟡 偏高防守 (3)</button>
+<button type="button" class="stock-filter-btn px-4 py-2.5 rounded-full border-2 border-rose-500/40 bg-slate-900/90 text-rose-400 font-black whitespace-nowrap hover:bg-rose-500/10" data-type="overheat" onclick="window.filterStocks('overheat')">🟠 逢高調節 (2)</button>
+<button type="button" class="stock-filter-btn px-4 py-2.5 rounded-full border-2 border-slate-600 bg-slate-900/90 text-slate-400 font-black whitespace-nowrap hover:bg-slate-800" data-type="unconfirmed" onclick="window.filterStocks('unconfirmed')">⚪ 估值待確認 (2)</button>
 </div>
 </div>
 <!-- 顯示模式切換按鈕 (卡片模式 / 寬表格模式，手機直拿或橫放皆可一鍵切換) -->
@@ -521,6 +521,12 @@
 
 <!-- ==================== TAB 2: 我的持倉管理 ＆ 到價提醒 (互動式本機專區) ==================== -->
 <div id="tab-portfolio" class="tab-pane hidden space-y-6">
+  <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-900/95 border border-cyan-500/40 shadow-md">
+    <span class="text-sm font-black text-cyan-300 flex items-center gap-2"><span>📍</span><span>目前分頁：💼 我的持倉管理專區</span></span>
+    <button onclick="window.switchTab('home')" class="px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-black text-xs md:text-sm flex items-center gap-1.5 shadow active:scale-95 transition-all">
+      <span>⬅️</span><span>返回主頁總結</span>
+    </button>
+  </div>
 
   <!-- 持倉管理 Header 與統計總覽 -->
   <div class="p-6 md:p-8 rounded-3xl bg-gradient-to-br from-slate-900 via-[#0B1528] to-slate-950 border-2 border-emerald-500/50 shadow-2xl space-y-6">
@@ -669,6 +675,12 @@
 
 <!-- ==================== TAB 3: 大盤趨勢與先行指標 (深度研判專區) ==================== -->
 <div id="tab-analysis" class="tab-pane hidden space-y-6">
+  <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-900/95 border border-cyan-500/40 shadow-md">
+    <span class="text-sm font-black text-cyan-300 flex items-center gap-2"><span>📍</span><span>目前分頁：📈 大盤趨勢與 20 項先行指標深度分析</span></span>
+    <button onclick="window.switchTab('home')" class="px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-black text-xs md:text-sm flex items-center gap-1.5 shadow active:scale-95 transition-all">
+      <span>⬅️</span><span>返回主頁總結</span>
+    </button>
+  </div>
 
   <!-- 宏觀六因子監控面板 -->
   <section class="grid grid-cols-1 lg:grid-cols-2 gap-4">
@@ -1104,6 +1116,12 @@
 
 <!-- ==================== TAB 4: AI 產業動能雷達 (完整 10+4 族群 ＆ 股池升降級) ==================== -->
 <div id="tab-ai-radar" class="tab-pane hidden space-y-6">
+  <div class="flex items-center justify-between p-3 rounded-2xl bg-slate-900/95 border border-cyan-500/40 shadow-md">
+    <span class="text-sm font-black text-cyan-300 flex items-center gap-2"><span>📍</span><span>目前分頁：📡 AI 產業動能雷達與股池升降級專區</span></span>
+    <button onclick="window.switchTab('home')" class="px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-black text-xs md:text-sm flex items-center gap-1.5 shadow active:scale-95 transition-all">
+      <span>⬅️</span><span>返回主頁總結</span>
+    </button>
+  </div>
 
   <!-- 頂部引言 -->
   <div class="p-6 md:p-8 rounded-3xl bg-gradient-to-br from-slate-900 via-[#130E26] to-slate-950 border-2 border-purple-500/50 shadow-2xl space-y-3">
@@ -1165,20 +1183,20 @@
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <!-- 留校察看區 -->
-      <div class="p-4 rounded-xl bg-slate-900/90 border border-rose-500/40 space-y-2">
-        <h4 class="text-sm font-black text-rose-300 flex items-center gap-1.5">
-          <span>⚠️</span>【核心池留校察看標的】(動能轉弱/賣壓沉重)
+      <!-- 留校察看區 (冰晶青藍：動能轉弱) -->
+      <div class="p-4 rounded-xl bg-slate-900/90 border border-[#00E5FF]/50 space-y-2">
+        <h4 class="text-sm font-black text-[#00E5FF] flex items-center gap-1.5">
+          <span>❄️</span>【核心池留校察看標的】(動能轉弱/賣壓沉重)
         </h4>
         <div id="stockWatchlistWeakList" class="space-y-1.5 text-xs text-slate-300 font-mono">
           <!-- JS 動態渲染 -->
         </div>
       </div>
 
-      <!-- 新星晉升候選區 -->
-      <div class="p-4 rounded-xl bg-slate-900/90 border border-emerald-500/40 space-y-2">
-        <h4 class="text-sm font-black text-emerald-300 flex items-center gap-1.5">
-          <span>⭐</span>【新興潛力晉升候選標的】(營收爆發/資金卡位)
+      <!-- 新星晉升候選區 (火紅：營收爆發/資金卡位) -->
+      <div class="p-4 rounded-xl bg-slate-900/90 border border-[#FF5252]/50 space-y-2">
+        <h4 class="text-sm font-black text-[#FF5252] flex items-center gap-1.5">
+          <span>🔥</span>【新興潛力晉升候選標的】(營收爆發/資金卡位)
         </h4>
         <div id="stockPromotionCandidateList" class="space-y-1.5 text-xs text-slate-300 font-mono">
           <!-- JS 動態渲染 -->
@@ -1201,24 +1219,24 @@
 
 
 <!-- 手機單手大拇指底部導航列 (Sticky Bottom Bar, 65歲長者大按鈕, 4 大 Tab 一鍵切換) -->
-<nav class="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-[#0B0F19]/95 backdrop-blur-md border-t-2 border-slate-800 px-3 py-2 flex items-center justify-around shadow-2xl" style="padding-bottom: max(0.5rem, env(safe-area-inset-bottom));">
-  <button onclick="switchTab('home')" class="flex flex-col items-center gap-1 text-cyan-400 py-1 px-2.5 active:scale-95 transition-all">
+<nav id="mobileBottomNav" class="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-[#0B0F19]/95 backdrop-blur-md border-t-2 border-slate-800 px-2 py-2 flex items-center justify-around shadow-2xl" style="padding-bottom: max(0.6rem, env(safe-area-inset-bottom));">
+  <button id="mob-btn-home" onclick="window.switchTab('home')" class="flex flex-col items-center gap-1 text-cyan-400 bg-cyan-500/15 border border-cyan-500/40 rounded-xl py-1.5 px-3 active:scale-95 transition-all">
     <span class="text-2xl">⚡</span>
-    <span class="text-xs font-bold font-mono">主頁總結</span>
+    <span class="text-xs font-black font-mono">主頁總結</span>
   </button>
-  <button onclick="switchTab('portfolio')" class="flex flex-col items-center gap-1 text-slate-400 hover:text-emerald-300 py-1 px-2.5 active:scale-95 transition-all">
+  <button id="mob-btn-portfolio" onclick="window.switchTab('portfolio')" class="flex flex-col items-center gap-1 text-slate-300 rounded-xl py-1.5 px-3 active:scale-95 transition-all">
     <span class="text-2xl">💼</span>
     <span class="text-xs font-bold font-mono">我的持倉</span>
   </button>
-  <button onclick="switchTab('analysis')" class="flex flex-col items-center gap-1 text-slate-400 hover:text-cyan-300 py-1 px-2.5 active:scale-95 transition-all">
+  <button id="mob-btn-analysis" onclick="window.switchTab('analysis')" class="flex flex-col items-center gap-1 text-slate-300 rounded-xl py-1.5 px-3 active:scale-95 transition-all">
     <span class="text-2xl">📈</span>
     <span class="text-xs font-bold font-mono">先行指標</span>
   </button>
-  <button onclick="switchTab('ai-radar')" class="flex flex-col items-center gap-1 text-slate-400 hover:text-purple-300 py-1 px-2.5 active:scale-95 transition-all">
+  <button id="mob-btn-ai-radar" onclick="window.switchTab('ai-radar')" class="flex flex-col items-center gap-1 text-slate-300 rounded-xl py-1.5 px-3 active:scale-95 transition-all">
     <span class="text-2xl">📡</span>
     <span class="text-xs font-bold font-mono">產業動能</span>
   </button>
-  <a class="flex flex-col items-center gap-1 text-amber-400 hover:text-amber-300 py-1 px-2.5 active:scale-95 transition-all" href="guide.html">
+  <a class="flex flex-col items-center gap-1 text-amber-400 rounded-xl py-1.5 px-2.5 active:scale-95 transition-all" href="guide.html">
     <span class="text-2xl">📖</span>
     <span class="text-xs font-bold font-mono">白話全書</span>
   </a>
@@ -1227,7 +1245,7 @@
 
 <script>
     const DASHBOARD_DATA = {
-  "generated_at": "2026-11-11T12:36:11.789840+08:00",
+  "generated_at": "2026-11-11T13:44:49.246472+08:00",
   "build_errors": [],
   "latest_signal": {
     "date": "2026-09",
@@ -15519,7 +15537,7 @@
     ],
     "delivery_scope": "離線與模擬管道；真正送達另行確認",
     "snapshot_id": "45778582ba48a7b97d3f1c48eef07390e3601092d84912c52b76ab7f7cbcb89d",
-    "checked_at": "2026-11-11T12:36:11.698043+08:00"
+    "checked_at": "2026-11-11T13:44:49.153226+08:00"
   },
   "input_sha256": {
     "adaptive_scorecard_history.csv": "bd16999273e25fe38a7ceb08f8556f3f90be2557efb2a8a0e49ca9bae75fb5a1",
@@ -15558,10 +15576,10 @@
     "tw_stocks_volume.parquet": "5518c393825812e34b886afabf9e29ff9089cee5cf8d67087773bc583fc98d2b",
     "twse_market.csv": "2f0b183a62852174cf4e098d0889df45097c6bd3ac2eda821e8c7111ebcecf0a",
     "twse_market.parquet": "788ee8c5c9cb2f0032a6d440c3c1b08e33a9d337b9344ece237f4538adb36266",
-    "implementation_sha256": "546b004cf0585ac5c11f683a3748226797dd086575f29c08c2f8951592b70e86"
+    "implementation_sha256": "143f90332bdf766ca5bf68f423ce47a0530a4cabed5a0cd57496aca61c7c795b"
   },
   "snapshot_schema": "dashboard-snapshot-v1",
-  "snapshot_id": "04c47e2e118b32477c5a3991d834fc81db0ef323257c1beb71da55b8cfcd456c"
+  "snapshot_id": "80d0b0f3e44931b6239ca9b84d1852e6cd74a8bb8d7a57a6563a4e6e1b35b9ff"
 };
   </script>
 <!-- 互動圖表與數據渲染腳本 -->
@@ -15711,7 +15729,7 @@
       };
 
       const ctxTrend = document.getElementById("trendChart").getContext("2d");
-      new Chart(ctxTrend, {
+      window._trendChartInstance = new Chart(ctxTrend, {
         type: "line",
         data: {
           labels: labels,
@@ -15801,7 +15819,7 @@
 
       // 3. 渲染四階段傳導雷達圖 (radarChart)
       const ctxRadar = document.getElementById("radarChart").getContext("2d");
-      new Chart(ctxRadar, {
+      window._radarChartInstance = new Chart(ctxRadar, {
         type: "radar",
         data: {
           labels: [
@@ -15948,7 +15966,7 @@
         };
 
         const ctxPort = document.getElementById("portfolioChart").getContext("2d");
-        new Chart(ctxPort, {
+        window._portChartInstance = new Chart(ctxPort, {
           type: "line",
           data: {
             labels: pLabels,
@@ -16647,16 +16665,7 @@
 
       // v3.0 65歲長者大字體常駐生效
 
-      // 初始化字體偏好設定
-      if (localStorage.getItem("user-font-pref") === "normal") {
-        document.documentElement.classList.add("normal-font-mode");
-        const btnText = document.getElementById("seniorToggleText");
-        const btn = document.getElementById("seniorToggleBtn");
-        if (btnText) btnText.textContent = "標準字體 (1X)：已切換";
-        if (btn) btn.className = "px-3.5 py-2 rounded-xl bg-slate-800 text-slate-300 border border-slate-600 font-bold text-sm flex items-center gap-2 active:scale-95 transition-all";
-      }
-
-      // 顯示模式切換（卡片 / 寬表格）
+            // 顯示模式切換（卡片 / 寬表格）
       window.switchWatchlistView = function(mode) {
         const tableWrapper = document.getElementById("coreWatchlistTableWrapper");
         const cardsContainer = document.getElementById("coreWatchlistMobileCards");
@@ -16678,21 +16687,16 @@
         }
       };
 
-      // 初始化顯示模式：手機直豎預設卡片，寬螢幕/橫幅預設表格 (或依使用者選擇)
-      const savedView = localStorage.getItem("user-watchlist-view");
-      if (savedView) {
-        window.switchWatchlistView(savedView);
+      // 手機預設永遠優先顯示大卡片模式（直覺好滑），電腦寬螢幕才用表格
+      if (window.innerWidth < 900) {
+        window.switchWatchlistView("cards");
       } else {
-        if (window.innerWidth < 768 && window.innerHeight > window.innerWidth) {
-          window.switchWatchlistView("cards");
-        } else {
-          window.switchWatchlistView("table");
-        }
+        const savedView = localStorage.getItem("user-watchlist-view");
+        window.switchWatchlistView(savedView || "table");
       }
 
-      // 分類篩選功能 (按鈕樣式保持大字體)
+      // 分類篩選功能 (完整閉合無語法錯誤)
       window.filterStocks = function(type) {
-        // 更新按鈕樣式
         const buttons = document.querySelectorAll("#stockFilterGroup .stock-filter-btn");
         buttons.forEach(btn => {
           if (btn.getAttribute("data-type") === type) {
@@ -16700,38 +16704,114 @@
           } else {
             btn.className = "stock-filter-btn px-4 py-2.5 rounded-full border-2 border-slate-700 bg-slate-900/90 text-slate-300 hover:bg-slate-800 whitespace-nowrap text-sm font-bold";
           }
-        
+        });
+
+        const activeList = getActiveList();
+        let filtered = activeList;
+        if (type === "unconfirmed") {
+          filtered = activeList.filter(r => r.display_category === "unconfirmed" || r.valuation_confirmable === false);
+        } else if (type === "cheap") {
+          filtered = activeList.filter(r => r.display_category === "cheap" && r.valuation_confirmable !== false);
+        } else if (type === "fair") {
+          filtered = activeList.filter(r => r.display_category === "fair" && r.valuation_confirmable !== false);
+        } else if (type === "watch") {
+          filtered = activeList.filter(r => r.display_category === "watch" && r.valuation_confirmable !== false);
+        } else if (type === "overheat") {
+          filtered = activeList.filter(r => r.display_category === "overheat" && r.valuation_confirmable !== false);
+        } else if (type === "rev_boom") {
+          filtered = activeList.filter(r => r.rev_growth_3m_streak || r.rev_boom_2m_30pct || (r.rev_highlight_badge && r.rev_highlight_badge !== ''));
+        }
+
+        renderWatchlist(filtered);
+      };
+
+      // 計算各類數量並更新篩選按鈕文字
+      function updateFilterCounts() {
+        const activeList = getActiveList();
+        const unconfirmedCount = activeList.filter(r => r.display_category === "unconfirmed" || r.valuation_confirmable === false).length;
+        const cheapCount = activeList.filter(r => r.display_category === "cheap" && r.valuation_confirmable !== false).length;
+        const fairCount = activeList.filter(r => r.display_category === "fair" && r.valuation_confirmable !== false).length;
+        const watchCount = activeList.filter(r => r.display_category === "watch" && r.valuation_confirmable !== false).length;
+        const overheatCount = activeList.filter(r => r.display_category === "overheat" && r.valuation_confirmable !== false).length;
+        const revBoomCount = activeList.filter(r => r.rev_growth_3m_streak || r.rev_boom_2m_30pct || (r.rev_highlight_badge && r.rev_highlight_badge !== '')).length;
+
+        const btnAll = document.querySelector(`button[data-type="all"]`);
+        const btnUnconfirmed = document.querySelector(`button[data-type="unconfirmed"]`);
+        const btnCheap = document.querySelector(`button[data-type="cheap"]`);
+        const btnFair = document.querySelector(`button[data-type="fair"]`);
+        const btnWatch = document.querySelector(`button[data-type="watch"]`);
+        const btnOverheat = document.querySelector(`button[data-type="overheat"]`);
+        const btnRevBoom = document.querySelector(`button[data-type="rev_boom"]`);
+
+        if (btnAll) btnAll.textContent = `全部 (${activeList.length})`;
+        if (btnUnconfirmed) btnUnconfirmed.textContent = `⚪ 估值待確認 (${unconfirmedCount})`;
+        if (btnCheap) btnCheap.textContent = `🟡 好球帶 (${cheapCount})`;
+        if (btnFair) btnFair.textContent = `⚪ 合理中樞 (${fairCount})`;
+        if (btnWatch) btnWatch.textContent = `🔵 偏高防守 (${watchCount})`;
+        if (btnOverheat) btnOverheat.textContent = `🟣 逢高調節 (${overheatCount})`;
+        if (btnRevBoom) btnRevBoom.innerHTML = `<span>🔴🔥</span> 營收爆發關注 (<span id="countRevBoom">${revBoomCount}</span>)`;
+      }
+
+      // 初次載入立即渲染 20 檔核心股清單
+      updateFilterCounts();
+      window.filterStocks("all");
 
       // ==========================================
-      // v3.0 主題分頁切換系統 (Tab Switching)
+      // v3.0 主題分頁切換系統 (支援頂部 + 底部導航同步 & Chart.js 自動重繪)
       // ==========================================
       window.switchTab = function(tabName) {
         const tabs = ['home', 'portfolio', 'analysis', 'ai-radar'];
         tabs.forEach(t => {
           const pane = document.getElementById(`tab-${t}`);
-          const btn = document.getElementById(`tab-btn-${t}`);
+          const topBtn = document.getElementById(`tab-btn-${t}`);
+          const mobBtn = document.getElementById(`mob-btn-${t}`);
+          const isActive = (t === tabName);
+
           if (pane) {
-            if (t === tabName) {
-              pane.classList.remove('hidden');
-            } else {
-              pane.classList.add('hidden');
-            }
+            if (isActive) pane.classList.remove('hidden');
+            else pane.classList.add('hidden');
           }
-          if (btn) {
-            if (t === tabName) {
-              btn.className = "tab-nav-btn px-4 py-2.5 rounded-xl font-black text-sm md:text-base flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg border border-cyan-400/50 transition-all";
-            } else {
-              btn.className = "tab-nav-btn px-4 py-2.5 rounded-xl font-bold text-sm md:text-base flex items-center gap-2 bg-slate-900/90 text-slate-300 hover:text-white border border-slate-700/80 transition-all";
-            }
+          if (topBtn) {
+            topBtn.className = isActive
+              ? "tab-nav-btn justify-center px-3 py-2.5 rounded-xl font-black text-xs sm:text-sm md:text-base flex items-center gap-1.5 bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg border border-cyan-400/50 active:scale-95 transition-transform"
+              : "tab-nav-btn justify-center px-3 py-2.5 rounded-xl font-bold text-xs sm:text-sm md:text-base flex items-center gap-1.5 bg-slate-900/90 text-slate-300 hover:text-white border border-slate-700/80 active:scale-95 transition-transform";
+          }
+          if (mobBtn) {
+            mobBtn.className = isActive
+              ? "flex flex-col items-center gap-1 text-cyan-300 bg-cyan-500/20 border border-cyan-400/60 rounded-xl py-1.5 px-3 active:scale-95 transition-transform shadow-md"
+              : "flex flex-col items-center gap-1 text-slate-400 rounded-xl py-1.5 px-3 active:scale-95 transition-transform";
           }
         });
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        // 當切換至「大盤趨勢與先行指標」分頁時，重新計算寬度並觸發 Chart.js resize，解決隱藏容器寬度 0 空白問題
+        if (tabName === 'analysis') {
+          setTimeout(() => {
+            if (trendContainer && trendWrapper && labels.length > 0) {
+              const desiredW = Math.max(trendContainer.clientWidth, labels.length * 36);
+              trendWrapper.style.width = `${desiredW}px`;
+            }
+            if (window._trendChartInstance) window._trendChartInstance.resize();
+            if (window._radarChartInstance) window._radarChartInstance.resize();
+
+            const portContainer = document.getElementById("portfolioChartScrollContainer");
+            const portWrapper = document.getElementById("portfolioChartWrapper");
+            if (portContainer && portWrapper && pSeries.length > 0) {
+              const desiredPW = Math.max(portContainer.clientWidth, pSeries.length * 36);
+              portWrapper.style.width = `${desiredPW}px`;
+            }
+            if (window._portChartInstance) window._portChartInstance.resize();
+
+            if (trendContainer) trendContainer.scrollLeft = trendContainer.scrollWidth;
+            if (portContainer) portContainer.scrollLeft = portContainer.scrollWidth;
+          }, 60);
+        }
+
+        window.scrollTo(0, 0);
       };
 
       // ==========================================
-      // v3.0 Tab 1: Hero Banner 與重點卡數據綁定
+      // v3.0 Tab 1: Hero Banner 與重點卡數據綁定 (使用既有 sig 變數，不重複宣告)
       // ==========================================
-      const sig = data.latest_signal || {};
       if (document.getElementById('heroChangeBall')) document.getElementById('heroChangeBall').textContent = sig.change_ball || '🔴▲';
       if (document.getElementById('heroQuadrantTitle')) document.getElementById('heroQuadrantTitle').textContent = sig.quadrant_title || 'Stage 2 景氣確認 · 震盪蓄勢';
       if (document.getElementById('heroDateAsOf')) document.getElementById('heroDateAsOf').textContent = sig.date || '2026-11-10';
@@ -16757,7 +16837,7 @@
           const ret5d = s.weekly_ret_pct !== undefined ? s.weekly_ret_pct : (s.avg_5d_ret || 0);
           const repStocks = s.core_stocks || s.representative_stocks || s.leaders || '-';
           return `
-            <div class="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800 hover:border-cyan-500/50 transition-all space-y-2">
+            <div onclick="window.switchTab('ai-radar')" class="cursor-pointer p-3.5 rounded-xl bg-slate-900/90 border border-slate-800 hover:border-cyan-500/50 active:scale-[0.99] transition-all space-y-2">
               <div class="flex items-center justify-between gap-1">
                 <span class="px-2 py-0.5 rounded text-xs font-mono font-bold bg-cyan-500/20 text-cyan-300 truncate">#${s.weekly_rank || (idx+1)} ${sName}</span>
                 <span class="font-mono text-xs font-black flex-shrink-0 ${ballClass}">${ball}</span>
@@ -16815,7 +16895,7 @@
         }).join('');
       }
 
-      // 渲染 Tab 4: 4 大新興 AI 產業 (對齊 name, stage, momentum_ball, description, candidates)
+      // 渲染 Tab 4: 4 大新興 AI 產業
       const emergingGrid = document.getElementById('emergingAiSectorsGrid');
       const emergingList = data.emerging_ai_sectors || [];
       if (emergingGrid && emergingList.length > 0) {
@@ -16827,7 +16907,7 @@
             `<div class="p-2 rounded bg-slate-950/80 border border-slate-800/90 text-[11px]">
               <div class="flex items-center justify-between">
                 <strong class="text-cyan-300 font-mono">${c.symbol} ${c.name}</strong>
-                <button onclick="window.openAddHoldingModal('${c.symbol}')" class="px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[10px] border border-emerald-500/40 hover:bg-emerald-500/30">💼加倉</button>
+                <button onclick="window.openAddHoldingModal('${c.symbol}')" class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[11px] font-bold border border-emerald-500/40 active:scale-95">💼加倉</button>
               </div>
               <div class="text-slate-400 mt-0.5">${c.highlight || ''}</div>
             </div>`
@@ -16854,7 +16934,7 @@
         }).join('');
       }
 
-      // 渲染 Tab 4: 股池動態升降級 (對齊 weakening_core_stocks 與 emerging_candidates)
+      // 渲染 Tab 4: 股池動態升降級
       const rotationWatch = data.stock_rotation_watch || {};
       const weakStocks = rotationWatch.weakening_core_stocks || rotationWatch.watchlist_weak || [];
       const promoStocks = rotationWatch.emerging_candidates || rotationWatch.promotion_candidates || [];
@@ -16933,9 +17013,9 @@
             document.getElementById('modalSymbolInput').value = defaultSymbol;
             const sData = findStockData(defaultSymbol);
             if (sData && sData.close) {
-              document.getElementById('modalCostInput').placeholder = formatCleanNum(sData.close);
-              if (sData.p_expensive) document.getElementById('modalTargetPriceInput').placeholder = formatCleanNum(sData.p_expensive);
-              if (sData.stop_loss_price) document.getElementById('modalStopPriceInput').placeholder = formatCleanNum(sData.stop_loss_price);
+              document.getElementById('modalCostInput').value = sData.close;
+              if (sData.p_expensive) document.getElementById('modalTargetPriceInput').value = Math.round(sData.p_expensive);
+              if (sData.stop_loss_price) document.getElementById('modalStopPriceInput').value = Math.round(sData.stop_loss_price);
             }
           }
         }
@@ -17112,9 +17192,9 @@
               </div>
               <div class="text-xs font-mono text-amber-300 bg-slate-950/60 p-2 rounded border border-slate-800">${alertMsg}</div>
               <div class="flex items-center justify-end gap-2 pt-1">
-                <button onclick="openAddHoldingModal('${h.symbol}')" class="px-3 py-1.5 rounded-lg bg-emerald-500/20 text-emerald-300 text-xs font-bold border border-emerald-500/40">➕加碼攤平</button>
-                <button onclick="reduceHolding('${h.symbol}')" class="px-3 py-1.5 rounded-lg bg-slate-800 text-amber-300 text-xs font-bold border border-slate-700">➖減碼</button>
-                <button onclick="deleteHolding('${h.symbol}')" class="px-3 py-1.5 rounded-lg bg-rose-500/20 text-rose-300 text-xs font-bold border border-rose-500/40">🗑️賣出刪除</button>
+                <button onclick="window.openAddHoldingModal('${h.symbol}')" class="px-3 py-1.5 rounded-lg bg-emerald-500/20 text-emerald-300 text-xs font-bold border border-emerald-500/40">➕加碼攤平</button>
+                <button onclick="window.reduceHolding('${h.symbol}')" class="px-3 py-1.5 rounded-lg bg-slate-800 text-amber-300 text-xs font-bold border border-slate-700">➖減碼</button>
+                <button onclick="window.deleteHolding('${h.symbol}')" class="px-3 py-1.5 rounded-lg bg-rose-500/20 text-rose-300 text-xs font-bold border border-rose-500/40">🗑️賣出刪除</button>
               </div>
             </div>
           `);
@@ -17134,9 +17214,9 @@
               <td class="py-3 px-3 text-xs text-slate-300">${sunStatus}</td>
               <td class="py-3 px-3 text-xs font-bold text-amber-300">${alertMsg}</td>
               <td class="py-3 px-3 text-right space-x-1.5 whitespace-nowrap">
-                <button onclick="openAddHoldingModal('${h.symbol}')" class="px-2.5 py-1 rounded bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 text-xs border border-emerald-500/40">➕加碼</button>
-                <button onclick="reduceHolding('${h.symbol}')" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-amber-300 text-xs border border-slate-700">➖減碼</button>
-                <button onclick="deleteHolding('${h.symbol}')" class="px-2.5 py-1 rounded bg-rose-500/20 hover:bg-rose-500/30 text-rose-300 text-xs border border-rose-500/40">🗑️賣出刪除</button>
+                <button onclick="window.openAddHoldingModal('${h.symbol}')" class="px-2.5 py-1 rounded bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 text-xs border border-emerald-500/40">➕加碼</button>
+                <button onclick="window.reduceHolding('${h.symbol}')" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-amber-300 text-xs border border-slate-700">➖減碼</button>
+                <button onclick="window.deleteHolding('${h.symbol}')" class="px-2.5 py-1 rounded bg-rose-500/20 hover:bg-rose-500/30 text-rose-300 text-xs border border-rose-500/40">🗑️賣出刪除</button>
               </td>
             </tr>
           `;
@@ -17193,80 +17273,7 @@
 
       // 初始化持倉渲染
       renderUserPortfolio();
-
-});
-
-        const activeList = getActiveList();
-        let filtered = activeList;
-        if (type === "unconfirmed") {
-          filtered = activeList.filter(r => r.display_category === "unconfirmed" || r.valuation_confirmable === false);
-        } else if (type === "cheap") {
-          filtered = activeList.filter(r => r.display_category === "cheap" && r.valuation_confirmable !== false);
-        } else if (type === "fair") {
-          filtered = activeList.filter(r => r.display_category === "fair" && r.valuation_confirmable !== false);
-        } else if (type === "watch") {
-          filtered = activeList.filter(r => r.display_category === "watch" && r.valuation_confirmable !== false);
-        } else if (type === "overheat") {
-          filtered = activeList.filter(r => r.display_category === "overheat" && r.valuation_confirmable !== false);
-        } else if (type === "rev_boom") {
-          filtered = activeList.filter(r => r.rev_growth_3m_streak || r.rev_boom_2m_30pct || (r.rev_highlight_badge && r.rev_highlight_badge !== ''));
-        }
-
-        renderWatchlist(filtered);
-      };
-
-      // 計算各類數量並更新按鈕文字
-      function updateFilterCounts() {
-        const activeList = getActiveList();
-        const unconfirmedCount = activeList.filter(r => r.display_category === "unconfirmed" || r.valuation_confirmable === false).length;
-        const cheapCount = activeList.filter(r => r.display_category === "cheap" && r.valuation_confirmable !== false).length;
-        const fairCount = activeList.filter(r => r.display_category === "fair" && r.valuation_confirmable !== false).length;
-        const watchCount = activeList.filter(r => r.display_category === "watch" && r.valuation_confirmable !== false).length;
-        const overheatCount = activeList.filter(r => r.display_category === "overheat" && r.valuation_confirmable !== false).length;
-        const revBoomCount = activeList.filter(r => r.rev_growth_3m_streak || r.rev_boom_2m_30pct || (r.rev_highlight_badge && r.rev_highlight_badge !== '')).length;
-        const elRevBoom = document.getElementById("countRevBoom");
-        if (elRevBoom) elRevBoom.textContent = revBoomCount;
-
-        const btnAll = document.querySelector(`button[data-type="all"]`);
-        const btnUnconfirmed = document.querySelector(`button[data-type="unconfirmed"]`);
-        const btnCheap = document.querySelector(`button[data-type="cheap"]`);
-        const btnFair = document.querySelector(`button[data-type="fair"]`);
-        const btnWatch = document.querySelector(`button[data-type="watch"]`);
-        const btnOverheat = document.querySelector(`button[data-type="overheat"]`);
-
-        if (btnAll) btnAll.textContent = `全部 (${activeList.length})`;
-        if (btnUnconfirmed) btnUnconfirmed.textContent = `⚪ 估值待確認 (${unconfirmedCount})`;
-        if (btnCheap) btnCheap.textContent = `🟢 好球帶 (${cheapCount})`;
-        if (btnFair) btnFair.textContent = `⚪ 合理中樞 (${fairCount})`;
-        if (btnWatch) btnWatch.textContent = `🟡 偏高防守 (${watchCount})`;
-        if (btnOverheat) btnOverheat.textContent = `🟠 逢高調節 (${overheatCount})`;
-      }
-
-      // 組別切換功能 (Group 1 AI 核心 vs Group 2 ETF 價值池)
-      window.switchStockGroup = function(groupId) {
-        currentStockGroup = groupId;
-        const tab1 = document.getElementById("groupTab1");
-        const tab2 = document.getElementById("groupTab2");
-        if (tab1 && tab2) {
-          if (groupId === "group1") {
-            tab1.className = "px-4 py-2.5 rounded-xl font-black text-xs md:text-sm flex items-center gap-2 transition-all shadow-md bg-cyan-500/20 text-cyan-200 border-2 border-cyan-400";
-            tab2.className = "px-4 py-2.5 rounded-xl font-black text-xs md:text-sm flex items-center gap-2 transition-all text-slate-400 hover:text-slate-200 border-2 border-transparent";
-          } else {
-            tab2.className = "px-4 py-2.5 rounded-xl font-black text-xs md:text-sm flex items-center gap-2 transition-all shadow-md bg-cyan-500/20 text-cyan-200 border-2 border-cyan-400";
-            tab1.className = "px-4 py-2.5 rounded-xl font-black text-xs md:text-sm flex items-center gap-2 transition-all text-slate-400 hover:text-slate-200 border-2 border-transparent";
-          }
-        }
-        updateFilterCounts();
-        window.filterStocks('all');
-      };
-
-      // 檢查 URL Hash 是否為 #group2
-      if (window.location.hash === "#group2") {
-        window.switchStockGroup("group2");
-      } else {
-        updateFilterCounts();
-        window.filterStocks("all");
-      }
-
-      // 6. 渲染季報前瞻偷跑雷達 (Upgrade B)
-      
+    });
+  </script>
+</body>
+</html>

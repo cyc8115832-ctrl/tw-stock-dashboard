@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-11T12:36:11.789840+08:00",
+  "generated_at": "2026-11-11T13:44:49.246472+08:00",
   "build_errors": [],
   "latest_signal": {
     "date": "2026-09",
@@ -14291,7 +14291,7 @@
     ],
     "delivery_scope": "離線與模擬管道；真正送達另行確認",
     "snapshot_id": "45778582ba48a7b97d3f1c48eef07390e3601092d84912c52b76ab7f7cbcb89d",
-    "checked_at": "2026-11-11T12:36:11.698043+08:00"
+    "checked_at": "2026-11-11T13:44:49.153226+08:00"
   },
   "input_sha256": {
     "adaptive_scorecard_history.csv": "bd16999273e25fe38a7ceb08f8556f3f90be2557efb2a8a0e49ca9bae75fb5a1",
@@ -14330,8 +14330,8 @@
     "tw_stocks_volume.parquet": "5518c393825812e34b886afabf9e29ff9089cee5cf8d67087773bc583fc98d2b",
     "twse_market.csv": "2f0b183a62852174cf4e098d0889df45097c6bd3ac2eda821e8c7111ebcecf0a",
     "twse_market.parquet": "788ee8c5c9cb2f0032a6d440c3c1b08e33a9d337b9344ece237f4538adb36266",
-    "implementation_sha256": "546b004cf0585ac5c11f683a3748226797dd086575f29c08c2f8951592b70e86"
+    "implementation_sha256": "143f90332bdf766ca5bf68f423ce47a0530a4cabed5a0cd57496aca61c7c795b"
   },
   "snapshot_schema": "dashboard-snapshot-v1",
-  "snapshot_id": "04c47e2e118b32477c5a3991d834fc81db0ef323257c1beb71da55b8cfcd456c"
+  "snapshot_id": "80d0b0f3e44931b6239ca9b84d1852e6cd74a8bb8d7a57a6563a4e6e1b35b9ff"
 }
