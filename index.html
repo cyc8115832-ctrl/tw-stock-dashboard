@@ -477,27 +477,50 @@
   </button>
 </div>
 
-<!-- 5 色圖例速查條 (方案 2 黑底高對比規範，手機自動換行免左右拖曳) -->
-<div class="p-3 rounded-xl bg-slate-950/90 border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs font-mono min-w-0 max-w-full">
-  <div class="flex items-center gap-1.5 text-slate-400 font-bold flex-shrink-0">
-    <span>🎨</span><span>燈號圖例速查：</span>
+<!-- 雙軌色燈圖例速查條 (方案 2 區別加註：台股動能變化球 vs 風控安全交通燈，黑底高對比規範，手機自動換行免左右拖曳) -->
+<div class="p-3 rounded-xl bg-slate-950/90 border border-slate-800 space-y-2 text-xs font-mono min-w-0 max-w-full" id="colorLegendBox">
+  <!-- 第一軌：台股動能與買賣價位變化球 -->
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 min-w-0">
+    <div class="flex items-center gap-1.5 text-white font-bold flex-shrink-0">
+      <span>📈</span><span>動能／買賣球（台股習慣·紅強藍弱）：</span>
+    </div>
+    <div class="flex items-center flex-wrap gap-2 min-w-0">
+      <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-[#FF5252]/15 text-[#FF5252] border border-[#FF5252]/40 font-black">
+        🔴▲ 轉強火紅 (上漲/爆發)
+      </span>
+      <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-[#CBD5E1]/15 text-[#CBD5E1] border border-[#CBD5E1]/40 font-bold">
+        ⚪━ 持平銀白 (觀望沉澱)
+      </span>
+      <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-[#00E5FF]/15 text-[#00E5FF] border border-[#00E5FF]/40 font-black">
+        🔵▼ 轉弱冰晶藍 (動能冷卻)
+      </span>
+      <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-[#FBBF24]/15 text-[#FBBF24] border border-[#FBBF24]/40 font-black">
+        🟡💎 便宜好球帶 (價值進場)
+      </span>
+      <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-[#C084FC]/15 text-[#C084FC] border border-[#C084FC]/40 font-bold">
+        🟣⚠️ 昂貴過熱 (分批減碼)
+      </span>
+    </div>
   </div>
-  <div class="flex items-center flex-wrap gap-2 min-w-0">
-    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-[#FF5252]/15 text-[#FF5252] border border-[#FF5252]/40 font-black">
-      🔴▲ 轉強火紅 (動能爆發)
-    </span>
-    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-[#CBD5E1]/15 text-[#CBD5E1] border border-[#CBD5E1]/40 font-bold">
-      ⚪━ 持平銀白 (觀望沉澱)
-    </span>
-    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-[#00E5FF]/15 text-[#00E5FF] border border-[#00E5FF]/40 font-black">
-      🔵▼ 轉弱冰晶藍 (動能冷卻)
-    </span>
-    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-[#FBBF24]/15 text-[#FBBF24] border border-[#FBBF24]/40 font-black">
-      🟡💎 便宜好球帶 (價值防守)
-    </span>
-    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-[#C084FC]/15 text-[#C084FC] border border-[#C084FC]/40 font-bold">
-      🟣⚠️ 昂貴過熱 (分批減碼)
-    </span>
+  <!-- 第二軌：風控體檢與估值安全燈號（交通號誌邏輯） -->
+  <div class="pt-2 border-t border-slate-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2 min-w-0">
+    <div class="flex items-center gap-1.5 text-cyan-300 font-bold flex-shrink-0">
+      <span>🚦</span><span>風控／體檢／估值燈（紅綠燈邏輯·綠安紅險）：</span>
+    </div>
+    <div class="flex items-center flex-wrap gap-2 min-w-0">
+      <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-emerald-500/15 text-emerald-300 border border-emerald-500/40 font-black">
+        🟢 安全通過 / 低風險 / 低估流入
+      </span>
+      <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-amber-500/15 text-amber-300 border border-amber-500/40 font-bold">
+        🟡 偏高警戒注意 (總經注意・非便宜好球帶)
+      </span>
+      <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-[#FF5252]/15 text-[#FF5252] border border-[#FF5252]/40 font-black">
+        🔴 風險警報 / 緊縮過熱 / 籌碼流出
+      </span>
+    </div>
+  </div>
+  <div class="text-[11px] text-slate-300 pt-0.5 leading-snug">
+    💡 <strong class="text-white">一秒區辨：</strong>有「▲▼」或「💎⚠️🔥💥」者看<strong class="text-[#FF5252]">動能與買賣球（🔴代表轉強上漲）</strong>；系統自檢、宏觀風控與左側估值安全看<strong class="text-emerald-300">安全交通燈（🟢安全、🟡警戒、🔴風險過熱）</strong>。
   </div>
 </div>
 
@@ -690,6 +713,12 @@
 <p class="text-xs text-slate-400 mt-0.5">
               依孫慶龍五價位黃金分割演算法（便宜價 0.800x / 合理價 1.000x / 昂貴價 1.200x），以安全邊際 MoS% 降序排列
             </p>
+<div class="mt-2 px-3 py-2 rounded-xl bg-slate-950/90 border border-slate-800 text-xs font-mono text-slate-300 leading-relaxed">
+  <span class="text-white font-bold">🎨 本區雙軌色燈區別：</span>
+  <span class="text-[#FF5252] font-bold">🔴▲ / 🔴🔥💥</span>＝<span class="text-slate-200">短線股價與營收轉強動能</span>（<span class="text-[#00E5FF] font-bold">🔵▼</span>＝轉弱）；
+  <span class="text-emerald-300 font-bold">🟢</span>＝<span class="text-slate-200">基本面體檢、資金流入或便宜低估位階</span>（對應下方篩選鈕 <span class="text-[#FBBF24] font-bold">🟡💎 好球帶</span>），
+  <span class="text-amber-300 font-bold">🟠</span>/<span class="text-[#FF5252] font-bold">🔴瘋狂</span>/<span class="text-[#C084FC] font-bold">🟣⚠️</span>＝<span class="text-slate-200">估值過貴或籌碼流出</span>。
+</div>
 </div>
 <!-- 股票池展示標籤 (依指示僅聚焦第一組 AI 核心成長池 20 檔，第二組不處理不計算) -->
 <div class="flex items-center gap-2.5 p-1.5 bg-slate-900/90 rounded-2xl border-2 border-slate-700/80 w-fit flex-wrap">
@@ -873,7 +902,7 @@
   <section class="grid grid-cols-1 lg:grid-cols-2 gap-4" id="macro-risk-section">
 <!-- 系統一致性與資料驗證卡 (A2 升級：拆分雙分數＋4大交叉檢查) -->
 <div class="bg-brand-card p-4 sm:p-5 rounded-xl border border-emerald-500/40 glow-accent flex flex-col justify-between min-w-0">
-<div class="flex justify-between items-start gap-2 flex-wrap pb-2 border-b border-slate-800">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-slate-800">
 <div class="flex items-center gap-2 min-w-0">
 <span class="text-xl flex-shrink-0">🔍</span>
 <div class="min-w-0">
@@ -882,10 +911,10 @@
                 <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 font-bold">Logic: 自洽閉環</span>
 <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 font-bold">Data: 交叉核實</span>
 </h3>
-<p class="text-[11px] text-slate-400">交叉核驗「資料新鮮度 ➔ 公式閉環 ➔ 訊號一致 ➔ 風控防護」鏈路</p>
+<p class="text-[11px] text-slate-400">交叉核驗「資料新鮮度 ➔ 公式閉環 ➔ 訊號一致 ➔ 風控防護」鏈路（🚦 🟢 PASS ＝ 安全體檢通過綠燈）</p>
 </div>
 </div>
-<span class="text-xs px-2 py-0.5 rounded font-mono bg-slate-800 text-cyan-300 border border-slate-700 flex-shrink-0">雙重自檢</span>
+<span class="text-xs px-2 py-0.5 rounded font-mono bg-slate-800 text-cyan-300 border border-slate-700 flex-shrink-0 w-fit">雙重自檢</span>
 </div>
 <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 my-3 text-xs font-mono">
 <div class="p-2 rounded-lg bg-slate-900/80 border border-slate-800">
@@ -937,8 +966,8 @@
 </div>
 </div>
 <!-- 總體宏觀風險多因子監控卡片 (A1 升級：動態規則判定＋日期來源＋閾值) -->
-<div class="bg-brand-card p-4 sm:p-5 rounded-xl border border-rose-500/50 glow-accent flex flex-col justify-between min-w-0">
-<div class="flex justify-between items-start gap-2 flex-wrap pb-2 border-b border-slate-800">
+<div class="bg-brand-card p-4 sm:p-5 rounded-xl border border-slate-700 glow-accent flex flex-col justify-between min-w-0" id="macroRiskCard">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-slate-800">
 <div class="flex items-center gap-2 min-w-0">
 <span class="text-xl flex-shrink-0">🌐</span>
 <div class="min-w-0">
@@ -949,12 +978,19 @@
 <p class="text-[11px] text-slate-400">顯示同一快照中的來源資格；未知不判定為低風險。</p>
 </div>
 </div>
-<span class="text-xs px-2 py-0.5 rounded font-mono bg-slate-800 text-rose-300 border border-rose-500/40 flex-shrink-0" id="macroRedCount">N/A</span>
+<span class="text-xs px-2 py-0.5 rounded font-mono bg-slate-800 text-rose-300 border border-rose-500/40 flex-shrink-0 w-fit" id="macroRedCount">N/A</span>
 </div>
-<div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 my-3 text-xs font-mono" id="macroRiskGrid">宏觀來源待核實，無風險燈號判定。</div>
+<div class="mt-2 px-2.5 py-1.5 rounded-lg bg-slate-950/90 border border-amber-500/40 text-[11px] font-mono text-slate-200 leading-snug" id="macroColorLegendNote">
+  <span class="text-amber-300 font-black">🚦 本區採【安全風控燈號】（與台股 🔴▲漲／🔵▼跌 變化球相反）：</span>
+  <span class="text-emerald-300 font-bold">🟢低風險安全</span> ｜
+  <span class="text-amber-300 font-bold">🟡偏高警戒注意(非便宜好球帶)</span> ｜
+  <span class="text-[#FF5252] font-bold">🔴觸發緊縮警報</span>
+  <span class="text-slate-300">（「0項紅燈」＝目前無緊縮紅燈、風險可控安全）</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 my-3 text-xs font-mono" id="macroRiskGrid">宏觀來源待核實，無風險燈號判定。</div>
 <div class="text-[11px] text-slate-400 pt-2 border-t border-slate-800 flex justify-between items-center flex-wrap gap-1">
 <span>宏觀情境總結：<strong class="text-rose-300" id="macroSummaryText">六因子來源待核實</strong></span>
-<span class="text-slate-400 font-mono text-[10px]">閾值規則寫入配置</span>
+<span class="text-slate-400 font-mono text-[10px]">閾值規則寫入配置（🚦紅綠燈制）</span>
 </div>
 </div>
 </section>
@@ -1016,7 +1052,7 @@
 <div class="mt-3 p-3 rounded-xl bg-slate-950/80 border border-slate-800 text-[11px] font-mono text-slate-300">
 <div class="text-cyan-300 font-bold mb-1.5 flex items-center justify-between flex-wrap gap-1">
 <span>總體經濟 Stage 2 實體需求與資金動能監控</span>
-<span class="text-[10px] px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30">國發會 41分 紅燈</span>
+<span class="text-[10px] px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30">國發會 41分 紅燈(景氣熱絡)</span>
 </div>
 <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
 <div class="p-1.5 rounded bg-slate-900 border border-slate-800">
@@ -1539,7 +1575,7 @@
 
 <script>
     const DASHBOARD_DATA = {
-  "generated_at": "2026-11-11T15:34:49.987915+08:00",
+  "generated_at": "2026-11-11T16:33:59.106886+08:00",
   "build_errors": [],
   "latest_signal": {
     "date": "2026-09",
@@ -15598,7 +15634,7 @@
       "signal_eligible": false
     }
   ],
-  "guide_markdown": "# 台股領先指標與投資2.0：白話操作全書 (v3.0 機構級操作指南)\n\n版本：v3.0 全面改寫版。整合美股 AI 55% 核心領先體系、雙軸無矛盾實戰心法、週滾動 AI 動能排行與實戰持倉到價提醒管理。\n\n---\n\n## 🎨 第一章：全系統 5 大高對比色彩與訊號球速查表\n\n在純黑背景（`#0B0F19`）環境下，本系統嚴格遵循台股投資人習慣，採用高對比、零誤解的色彩語意：\n\n| 狀態變化 | 顯示圖示與標籤 | 色碼 (Hex) | 白話操盤意義（一眼秒懂） |\n| :--- | :--- | :--- | :--- |\n| **由壞變好 / 動能轉強** | **🔴▲ 轉強 (火紅)** | `#FF5252` | **火紅上漲・動能爆發**：指標轉佳、股價上漲、持倉獲利、月營收爆發。 |\n| **維持現狀 / 無變化** | **⚪━ 持平 (穩定)** | `#CBD5E1` | **數日平穩・無須頻繁操作**：大盤與個股位階無重大轉折，看完即可安心關閉。 |\n| **由好變壞 / 動能趨弱** | **🔵▼ 轉弱 (冷卻)** | `#00E5FF` | **冰晶藍冷卻・動能趨弱**：指標下修、股價回檔、持倉虧損、個股留校察看。 |\n| **黃金買點 / 安全邊際** | **🟡💎 好球帶** | `#FBBF24` | **黃金擊球區**：股價跌入孫慶龍便宜價 (`0.8x`) 或特價 (`0.618x`)，具備高安全邊際！ |\n| **昂貴過熱 / 逢高調節** | **🟣⚠️ 昂貴過熱** | `#C084FC` | **紫羅蘭警戒**：股價漲破昂貴價 (`1.2x`) 或 PE 過熱，嚴禁追高，已持倉者分批停利！ |\n\n---\n\n## 🧭 第二章：為什麼「美股 AI 佔 55%」才是真正的領先指標？\n\n台灣科技產業本質上是全球 AI 伺服器與半導體的下游代工重鎮。\n- **美國科技巨頭（NVIDIA、微軟、Google、Meta、AWS）是「因」**：他們下達 AI 晶片與伺服器資本支出訂單。\n- **台灣海關出口與工業生產是「果」**：台灣廠商接單、備料、生產到報關出貨，通常存在 **2 到 3 個月的時間落後**。\n\n因此，v3.0 系統將 **美股 AI 核心算力（35%）＋ 美國總經流動性（20%）合占 55% 絕對主導權**，以每日即時行情打破傳統政府月報滯後性：\n1. **Stage 1 (35分 · 🇺🇸 美國 AI 核心源頭)**：NVIDIA 60日動能、北美 4 大 CSP 雲端巨頭均線站上比例、費城半導體 SOX 均線突破。\n2. **Stage 2 (25分 · 🇺🇸 美國總經 ＋ 🇹🇼 台灣上游擴產)**：NASDAQ趨勢、美債10Y-2Y利差、VIX、台灣半導體設備進口 YoY、外銷訂單動向。\n3. **Stage 3 (25分 · 🇹🇼 實體出貨與營收改善)**：海關出口 YoY、工業生產、銅價 (Dr. Copper)。\n4. **Stage 4 (15~20分 · 🇹🇼 台股量價與籌碼確認)**：台股大盤量能、相對全球強弱。\n\n---\n\n## 🎯 第三章：破除矛盾！「景氣趨勢 × 個股好球帶」雙軸實戰操盤法\n\n為什麼以前「景氣分數 70 分，持股建議 75%」，買進卻常常買在高點？為什麼分數掉到低點時，反而是股價最便宜的時刻？\n\nv3.0 系統徹底分開指導 **「空手新資金」** 與 **「手上已有部位者」**：\n\n| 市場象限 | 景氣分數 vs 股價位階 | 👤 給空手／新資金的指引 | 💼 給已持倉者的指引 |\n| :--- | :--- | :--- | :--- |\n| **🔴 象限二：多頭主升高檔期** | 景氣 60~75+ 分，多數個股漲多 | **❌ 嚴禁追高！買黑不買紅**\u003cbr/>僅鎖定尚在「🟡好球帶/合理中樞」個股；若無便宜貨則握牢現金等拉回。 | **續抱上限 75%**\u003cbr/>讓利潤奔跑！股價觸及「🟣昂貴過熱價」才分批停利。 |\n| **💎 象限四：多頭急跌黃金坑** | 短期恐慌大跌，大量個股跌入🟡好球帶 | **🎯 啟動左側逢低買進！**\u003cbr/>只要美股 AI 基本面未壞，動用 30%~50% 資金大膽分批布局🟡好球帶。 | **絕不砍在最低點！**\u003cbr/>基本面健康時切勿恐慌殺低，嚴守成本 -10% 防守線即可。 |\n| **🌱 象限一：股價未行・指標先行** | 大盤仍在底部盤整，但美股 AI 指標率先勾頭 (底背離) | **🌟 最佳甜蜜進場點！**\u003cbr/>領先大盤 1~2 季起跑，積極建倉。 | **持股續抱，耐心等待主升段發動。** |\n| **🛡️ 象限三：真・基本面衰退** | 實體訂單連續衰退 ＋ 美股 AI 巨頭跌破年線 | **持幣觀望，保留 80%~100% 現金。** | **果斷執行停損與減碼，不心存僥倖。** |\n\n---\n\n## 🔥 第四章：孫慶龍五價位與「月營收爆發雙雷達」\n\n本系統全面移除容易失真的季報前瞻猜測，回歸 100% 官方驗證的真實月營收動能：\n- **孫慶龍黃金分割五價位**：\n  - **特價 (0.618x)** ➔ **便宜價 (0.800x)** ➔ **合理價 (1.000x)** ➔ **昂貴價 (1.200x)** ➔ **瘋狂價 (1.382x)**\n- **月營收爆發雙勳章**：\n  - **`🔴🔥 營收連3月成長`**：近 3 個月營收連續月增或年增率持續上升，代表訂單產能滿載。\n  - **`🔴💥 連2月營收>30%爆發`**：近 2 個月營收 YoY 均突破 30% 大關，強烈吸引法人買盤！\n- **關鍵時程提醒**：每月 1～10 號（營收開獎）與季報法說會期間，系統自動標註提醒，注意估值重錨。\n\n---\n\n## 💼 第五章：我的持倉管理與「轉弱未脫手」處置指南\n\n升級後的分頁提供專屬個人持倉互動管理（資料安全儲存於瀏覽器 本機 `localStorage`，不外洩）：\n1. **輸入與增減**：輸入持有股數與成本均價，支援 **`➕加碼買進`**（自動精算加權成本）、**`➖部分減碼`** 與 **`🗑️賣出即刪`**。\n2. **到價提醒**：預設以 **「孫慶龍昂貴價 (1.2x)」** 作為停利目標，**「成本 -10%」** 作為紀律防守價。現價達標即跳出醒目通知。\n3. **已轉弱 (`🔵▼`) 但尚未脫手處理劇本**：\n   - **若目前帳面仍獲利**：系統亮出 **`🟡獲利保衛提醒`**，建議逢高分批獲利入袋，切勿抱到由賺轉賠！\n   - **若目前帳面虧損**：系統亮出 **`🔵反彈減碼提醒`**，嚴禁攤平加碼！反彈至均線優先減碼換股，若跌破防守價務必果斷停損。\n\n---\n\n## 📡 第六章：AI 產業週滾動動能與新興產業擴充\n\n- **週滾動動能評分 (0~100)**：結合週價量資金流 (40%) ＋ 月營收真實爆發力 (40%) ＋ 產業週期安全閥 (20%)，每週自動重排 Top 5 強勢產業。\n- **4 大新興 AI 潛力產業**：\n  1. **先進封裝設備耗材與探針卡 (FOPLP/玻璃基板)**（代表：旺矽、穎崴、家登、中砂）\n  2. **人形機器人與實體 AI (Physical AI & Robotics)**（代表：上銀、亞光、台灣精銳、所羅門）\n  3. **邊緣 AI 終端與工業 AI (Edge AI / AI PC)**（代表：研華、華碩、瑞昱）\n  4. **AI 軟體代理與主權雲資安**（代表：零壹、精誠、安碁資訊）\n- **股池汰弱留強看板**：系統自動比對核心池中趨弱標的（建議減碼換股）與新興預備隊中的潛力新星（建議納入觀察）。\n",
+  "guide_markdown": "# 台股領先指標與投資2.0：白話操作全書 (v3.0 機構級操作指南)\n\n版本：v3.0 全面改寫版。整合美股 AI 55% 核心領先體系、雙軸無矛盾實戰心法、週滾動 AI 動能排行與實戰持倉到價提醒管理。\n\n---\n\n## 🎨 第一章：全系統雙軌高對比色彩與燈號速查表\n\n在純黑背景（`#0B0F19`）環境下，本系統依用途區分為 **兩套並列色彩系統**，請先認清「動能變化球」與「安全風控紅綠燈」的差別，即可 100% 零誤解：\n\n### 1.1 動能變化球與買賣位階（📈 採台股習慣：紅強藍弱）\n\n| 狀態變化 | 顯示圖示與標籤 | 色碼 (Hex) | 白話操盤意義（一眼秒懂） |\n| :--- | :--- | :--- | :--- |\n| **由壞變好 / 動能轉強** | **🔴▲ 轉強 (火紅)** / **🔴🔥💥** | `#FF5252` | **火紅上漲・動能爆發**：指標轉佳、股價上漲、持倉獲利、月營收爆發。 |\n| **維持現狀 / 無變化** | **⚪━ 持平 (穩定)** | `#CBD5E1` | **數日平穩・無須頻繁操作**：大盤與個股位階無重大轉折，看完即可安心關閉。 |\n| **由好變壞 / 動能趨弱** | **🔵▼ 轉弱 (冷卻)** | `#00E5FF` | **冰晶藍冷卻・動能趨弱**：指標下修、股價回檔、持倉虧損、個股留校察看。 |\n| **黃金買點 / 安全邊際** | **🟡💎 好球帶** | `#FBBF24` | **黃金擊球區**：股價跌入孫慶龍便宜價 (`0.8x`) 或特價 (`0.618x`)，具備高安全邊際！ |\n| **昂貴過熱 / 逢高調節** | **🟣⚠️ 昂貴過熱** | `#C084FC` | **紫羅蘭警戒**：股價漲破昂貴價 (`1.2x`) 或 PE 過熱，嚴禁追高，已持倉者分批停利！ |\n\n### 1.2 安全體檢、籌碼流向與宏觀風控（🚦 採國際交通號誌：綠安黃警紅險）\n\n在 **「系統健康度自檢」**、**「總體宏觀風險監控」**、**「個股五維體檢／籌碼流向」** 與 **「個股左側安全位階」** 中，色球改採 **交通號誌安全邏輯**（與上方的台股漲跌色不同）：\n\n| 風控／體檢燈號 | 顯示圖示 | 適用區塊與實戰意義 | ⚠️ 常見防呆提醒 |\n| :--- | :--- | :--- | :--- |\n| **安全／通過／流入低估** | **🟢** | 系統 `PASS`、宏觀因子低風險（如 `🟢 溫和擴張與正常防守`、VIX \u003c 20）、主力資金流入、個股進入 `🟢 特價/便宜好球帶`。 | 這裡的「綠」是**健康與安全**，不是台股的下跌！ |\n| **偏高警戒注意** | **🟡** | 總經風險逼近紅燈門檻（例如美債 10Y 殖利率 `🟡 4.99%` 逼近 `5.0%` 警戒線）。 | **⚠️ 總經區 `🟡` 代表接近警戒注意，絕非「🟡💎 便宜好球帶」！** |\n| **風險警報／流出／泡沫** | **🔴**（無▲▼） | 宏觀觸發緊縮紅燈（故 `0項紅燈` ＝環境安全）、籌碼 `🔴 資金流出`、個股 `🔴 瘋狂過熱區`。 | 唯有帶 `▲▼` 或 `🔥💥`（`🔴▲`、`🔴🔥`）才代表股價與營收轉強；另「國發會紅燈 41 分」係台灣景氣熱絡指標。 |\n\n> 👀 **一秒區分口訣**：看圖先看符號——帶 **`▲▼` / `🔥💥` / `💎⚠️`** 是「股價與買賣動作球」（紅強藍弱）；沒帶上下箭頭的「體檢、宏觀風控、籌碼進出與左側估值」是「安全交通燈」（綠安、黃警、紅險）。\n\n---\n\n## 🧭 第二章：為什麼「美股 AI 佔 55%」才是真正的領先指標？\n\n台灣科技產業本質上是全球 AI 伺服器與半導體的下游代工重鎮。\n- **美國科技巨頭（NVIDIA、微軟、Google、Meta、AWS）是「因」**：他們下達 AI 晶片與伺服器資本支出訂單。\n- **台灣海關出口與工業生產是「果」**：台灣廠商接單、備料、生產到報關出貨，通常存在 **2 到 3 個月的時間落後**。\n\n因此，v3.0 系統將 **美股 AI 核心算力（35%）＋ 美國總經流動性（20%）合占 55% 絕對主導權**，以每日即時行情打破傳統政府月報滯後性：\n1. **Stage 1 (35分 · 🇺🇸 美國 AI 核心源頭)**：NVIDIA 60日動能、北美 4 大 CSP 雲端巨頭均線站上比例、費城半導體 SOX 均線突破。\n2. **Stage 2 (25分 · 🇺🇸 美國總經 ＋ 🇹🇼 台灣上游擴產)**：NASDAQ趨勢、美債10Y-2Y利差、VIX、台灣半導體設備進口 YoY、外銷訂單動向。\n3. **Stage 3 (25分 · 🇹🇼 實體出貨與營收改善)**：海關出口 YoY、工業生產、銅價 (Dr. Copper)。\n4. **Stage 4 (15~20分 · 🇹🇼 台股量價與籌碼確認)**：台股大盤量能、相對全球強弱。\n\n---\n\n## 🎯 第三章：破除矛盾！「景氣趨勢 × 個股好球帶」雙軸實戰操盤法\n\n為什麼以前「景氣分數 70 分，持股建議 75%」，買進卻常常買在高點？為什麼分數掉到低點時，反而是股價最便宜的時刻？\n\nv3.0 系統徹底分開指導 **「空手新資金」** 與 **「手上已有部位者」**：\n\n| 市場象限 | 景氣分數 vs 股價位階 | 👤 給空手／新資金的指引 | 💼 給已持倉者的指引 |\n| :--- | :--- | :--- | :--- |\n| **🔴 象限二：多頭主升高檔期** | 景氣 60~75+ 分，多數個股漲多 | **❌ 嚴禁追高！買黑不買紅**\u003cbr/>僅鎖定尚在「🟡好球帶/合理中樞」個股；若無便宜貨則握牢現金等拉回。 | **續抱上限 75%**\u003cbr/>讓利潤奔跑！股價觸及「🟣昂貴過熱價」才分批停利。 |\n| **💎 象限四：多頭急跌黃金坑** | 短期恐慌大跌，大量個股跌入🟡好球帶 | **🎯 啟動左側逢低買進！**\u003cbr/>只要美股 AI 基本面未壞，動用 30%~50% 資金大膽分批布局🟡好球帶。 | **絕不砍在最低點！**\u003cbr/>基本面健康時切勿恐慌殺低，嚴守成本 -10% 防守線即可。 |\n| **🌱 象限一：股價未行・指標先行** | 大盤仍在底部盤整，但美股 AI 指標率先勾頭 (底背離) | **🌟 最佳甜蜜進場點！**\u003cbr/>領先大盤 1~2 季起跑，積極建倉。 | **持股續抱，耐心等待主升段發動。** |\n| **🛡️ 象限三：真・基本面衰退** | 實體訂單連續衰退 ＋ 美股 AI 巨頭跌破年線 | **持幣觀望，保留 80%~100% 現金。** | **果斷執行停損與減碼，不心存僥倖。** |\n\n---\n\n## 🔥 第四章：孫慶龍五價位與「月營收爆發雙雷達」\n\n本系統全面移除容易失真的季報前瞻猜測，回歸 100% 官方驗證的真實月營收動能：\n- **孫慶龍黃金分割五價位**：\n  - **特價 (0.618x)** ➔ **便宜價 (0.800x)** ➔ **合理價 (1.000x)** ➔ **昂貴價 (1.200x)** ➔ **瘋狂價 (1.382x)**\n- **月營收爆發雙勳章**：\n  - **`🔴🔥 營收連3月成長`**：近 3 個月營收連續月增或年增率持續上升，代表訂單產能滿載。\n  - **`🔴💥 連2月營收>30%爆發`**：近 2 個月營收 YoY 均突破 30% 大關，強烈吸引法人買盤！\n- **關鍵時程提醒**：每月 1～10 號（營收開獎）與季報法說會期間，系統自動標註提醒，注意估值重錨。\n\n---\n\n## 💼 第五章：我的持倉管理與「轉弱未脫手」處置指南\n\n升級後的分頁提供專屬個人持倉互動管理（資料安全儲存於瀏覽器 本機 `localStorage`，不外洩）：\n1. **輸入與增減**：輸入持有股數與成本均價，支援 **`➕加碼買進`**（自動精算加權成本）、**`➖部分減碼`** 與 **`🗑️賣出即刪`**。\n2. **到價提醒**：預設以 **「孫慶龍昂貴價 (1.2x)」** 作為停利目標，**「成本 -10%」** 作為紀律防守價。現價達標即跳出醒目通知。\n3. **已轉弱 (`🔵▼`) 但尚未脫手處理劇本**：\n   - **若目前帳面仍獲利**：系統亮出 **`🟡獲利保衛提醒`**，建議逢高分批獲利入袋，切勿抱到由賺轉賠！\n   - **若目前帳面虧損**：系統亮出 **`🔵反彈減碼提醒`**，嚴禁攤平加碼！反彈至均線優先減碼換股，若跌破防守價務必果斷停損。\n\n---\n\n## 📡 第六章：AI 產業週滾動動能與新興產業擴充\n\n- **週滾動動能評分 (0~100)**：結合週價量資金流 (40%) ＋ 月營收真實爆發力 (40%) ＋ 產業週期安全閥 (20%)，每週自動重排 Top 5 強勢產業。\n- **4 大新興 AI 潛力產業**：\n  1. **先進封裝設備耗材與探針卡 (FOPLP/玻璃基板)**（代表：旺矽、穎崴、家登、中砂）\n  2. **人形機器人與實體 AI (Physical AI & Robotics)**（代表：上銀、亞光、台灣精銳、所羅門）\n  3. **邊緣 AI 終端與工業 AI (Edge AI / AI PC)**（代表：研華、華碩、瑞昱）\n  4. **AI 軟體代理與主權雲資安**（代表：零壹、精誠、安碁資訊）\n- **股池汰弱留強看板**：系統自動比對核心池中趨弱標的（建議減碼換股）與新興預備隊中的潛力新星（建議納入觀察）。\n",
   "wave_events": [
     {
       "name": "2018 中美貿易戰底",
@@ -15831,7 +15867,7 @@
     ],
     "delivery_scope": "離線與模擬管道；真正送達另行確認",
     "snapshot_id": "45778582ba48a7b97d3f1c48eef07390e3601092d84912c52b76ab7f7cbcb89d",
-    "checked_at": "2026-11-11T15:34:49.880737+08:00"
+    "checked_at": "2026-11-11T16:33:59.006451+08:00"
   },
   "input_sha256": {
     "adaptive_scorecard_history.csv": "bd16999273e25fe38a7ceb08f8556f3f90be2557efb2a8a0e49ca9bae75fb5a1",
@@ -15870,10 +15906,10 @@
     "tw_stocks_volume.parquet": "5518c393825812e34b886afabf9e29ff9089cee5cf8d67087773bc583fc98d2b",
     "twse_market.csv": "2f0b183a62852174cf4e098d0889df45097c6bd3ac2eda821e8c7111ebcecf0a",
     "twse_market.parquet": "788ee8c5c9cb2f0032a6d440c3c1b08e33a9d337b9344ece237f4538adb36266",
-    "implementation_sha256": "297e2f0438ad25c481c14256b54f99b9acef49e6a0ac63a9bb665b6df2dc893d"
+    "implementation_sha256": "e5f2cb64e5e11ffd2f82873da48a88132a7df42f56a869149551d0e1775e8805"
   },
   "snapshot_schema": "dashboard-snapshot-v1",
-  "snapshot_id": "958feb84f2d625b573aaf1a70f96307c3df7f5f049dd1c4377fd09809d9d17b6"
+  "snapshot_id": "7deeb89986cd2cd3f675b86029e308989bc5ee8ebc0ea4ed4fba7213bcdbd4c9"
 };
   </script>
 <!-- 互動圖表與數據渲染腳本 -->
@@ -16114,7 +16150,24 @@
           const ndcBall = redN >= 2 ? '🔵▼' : '🔴▲';
           const ndcCls = redN >= 2 ? 'text-[#00E5FF]' : 'text-[#FF5252]';
           ndcValEl.innerHTML = `<span class="${ndcCls}">${ndcBall}</span><span>Stage 2: ${qualified ? num(s2) + '/' + s2Max : 'N/A'}</span>`;
-          set('cardNdcStatus', `${redN} 項紅燈風險`);
+          const ndcStatusEl = document.getElementById('cardNdcStatus');
+          if (ndcStatusEl) {
+            if (macro.red_count == null) {
+              ndcStatusEl.textContent = '風險來源待核實';
+              ndcStatusEl.className = 'text-xs text-rose-300 font-bold font-mono';
+            } else if (redN === 0) {
+              ndcStatusEl.textContent = '🟢 0 項紅燈風險(安全)';
+              ndcStatusEl.className = 'text-xs text-emerald-300 font-bold font-mono';
+            } else if (redN === 1) {
+              ndcStatusEl.textContent = '🟡 1 項紅燈風險(警戒)';
+              ndcStatusEl.className = 'text-xs text-amber-300 font-bold font-mono';
+            } else {
+              ndcStatusEl.textContent = `🔴 ${redN} 項緊縮紅燈風險`;
+              ndcStatusEl.className = 'text-xs text-[#FF5252] font-bold font-mono';
+            }
+          } else {
+            set('cardNdcStatus', `${redN} 項紅燈風險`);
+          }
         }
         if (capex.semi_import_yoy || macro.regime_summary) {
           set('cardNdcDesc', `半導體設備進口 ${capex.semi_import_yoy || '-'} ｜ ${macro.regime_summary || ''}`);
@@ -16124,9 +16177,36 @@
       }
 
       try {
+        const hasRedCnt = macro.red_count !== null && macro.red_count !== undefined;
+        const redCntNum = hasRedCnt ? Number(macro.red_count) : null;
+        const badgeColorMode = macro.regime_badge_color || (redCntNum === null ? 'rose' : (redCntNum >= 2 ? 'rose' : (redCntNum === 1 ? 'amber' : 'emerald')));
+
+        const macroCardEl = document.getElementById('macroRiskCard');
+        const macroBadgeEl = document.getElementById('macroRegimeBadge');
+        const macroRedEl = document.getElementById('macroRedCount');
+        const macroSummaryEl = document.getElementById('macroSummaryText');
+
         set('macroRegimeBadge', macro.regime_title || '來源待核實');
-        set('macroRedCount', macro.red_count === null || macro.red_count === undefined ? 'N/A' : macro.red_count + '項紅燈');
+        set('macroRedCount', hasRedCnt ? (redCntNum === 0 ? '🟢 0項紅燈(安全)' : `${redCntNum}項紅燈警報`) : 'N/A');
         set('macroSummaryText', macro.regime_summary || '來源待核實');
+
+        if (badgeColorMode === 'emerald') {
+          if (macroCardEl) macroCardEl.className = 'bg-brand-card p-4 sm:p-5 rounded-xl border border-emerald-500/40 glow-accent flex flex-col justify-between min-w-0';
+          if (macroBadgeEl) macroBadgeEl.className = 'px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-500/15 text-emerald-300 border border-emerald-500/40 font-black';
+          if (macroRedEl) macroRedEl.className = 'text-xs px-2 py-0.5 rounded font-mono bg-emerald-500/15 text-emerald-300 border border-emerald-500/40 font-bold flex-shrink-0 w-fit';
+          if (macroSummaryEl) macroSummaryEl.className = 'text-emerald-300';
+        } else if (badgeColorMode === 'amber') {
+          if (macroCardEl) macroCardEl.className = 'bg-brand-card p-4 sm:p-5 rounded-xl border border-amber-500/40 glow-accent flex flex-col justify-between min-w-0';
+          if (macroBadgeEl) macroBadgeEl.className = 'px-2 py-0.5 rounded text-[10px] font-mono bg-amber-500/15 text-amber-300 border border-amber-500/40 font-black';
+          if (macroRedEl) macroRedEl.className = 'text-xs px-2 py-0.5 rounded font-mono bg-amber-500/15 text-amber-300 border border-amber-500/40 font-bold flex-shrink-0 w-fit';
+          if (macroSummaryEl) macroSummaryEl.className = 'text-amber-300';
+        } else {
+          if (macroCardEl) macroCardEl.className = 'bg-brand-card p-4 sm:p-5 rounded-xl border border-rose-500/50 glow-accent flex flex-col justify-between min-w-0';
+          if (macroBadgeEl) macroBadgeEl.className = 'px-2 py-0.5 rounded text-[10px] font-mono bg-rose-500/20 text-rose-300 border border-rose-500/40 font-black';
+          if (macroRedEl) macroRedEl.className = 'text-xs px-2 py-0.5 rounded font-mono bg-slate-800 text-rose-300 border border-rose-500/40 font-bold flex-shrink-0 w-fit';
+          if (macroSummaryEl) macroSummaryEl.className = 'text-rose-300';
+        }
+
         const macroGrid = document.getElementById('macroRiskGrid');
         if (macroGrid) {
           macroGrid.replaceChildren();
@@ -16134,8 +16214,12 @@
             const box = document.createElement('div');
             const l = item.light;
             const dot = l === 'red' ? '🔴' : (l === 'yellow' ? '🟡' : (l === 'green' ? '🟢' : '⚪'));
-            box.className = 'p-2.5 rounded-lg bg-slate-900 border border-slate-800 space-y-0.5 min-w-0';
-            box.innerHTML = `<div class="flex justify-between items-center gap-1"><span class="text-slate-300 font-bold truncate">${escapeText(item.name)}</span><span class="text-white font-black flex-shrink-0">${dot} ${escapeText(item.value)}</span></div><div class="text-[10px] text-slate-400 flex justify-between gap-1"><span>${escapeText(item.date)}</span><span class="truncate">${escapeText(item.source)}</span></div>`;
+            const dotLabel = l === 'red' ? '觸發警報' : (l === 'yellow' ? '偏高警戒(非買點)' : (l === 'green' ? '低風險安全' : '來源待核實'));
+            const dotTextCls = l === 'red' ? 'text-[#FF5252]' : (l === 'yellow' ? 'text-amber-300' : (l === 'green' ? 'text-emerald-300' : 'text-slate-300'));
+            const valCls = l === 'red' ? 'text-[#FF5252]' : (l === 'yellow' ? 'text-amber-300' : (l === 'green' ? 'text-emerald-300' : 'text-white'));
+            box.className = 'p-2.5 rounded-lg bg-slate-900 border border-slate-800 space-y-1 min-w-0';
+            if (item.desc) box.title = item.desc;
+            box.innerHTML = `<div class="flex justify-between items-center gap-2"><span class="text-slate-200 font-bold">${escapeText(item.name)}</span><span class="${valCls} font-black flex-shrink-0 whitespace-nowrap">${dot} ${escapeText(item.value)}</span></div><div class="text-[10px] text-slate-400 flex justify-between gap-2"><span class="flex-shrink-0 whitespace-nowrap">${escapeText(item.date)}</span><span class="truncate">${escapeText(item.source)}</span></div><div class="text-[10px] flex justify-between items-center flex-wrap gap-1 pt-1 border-t border-slate-800/80"><span class="${dotTextCls} font-bold">${dotLabel}</span><span class="text-slate-300">標準:${escapeText(item.threshold || '-')}</span></div>`;
             macroGrid.appendChild(box);
           }
         }
