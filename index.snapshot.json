@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-12T15:37:42.966043+08:00",
+  "generated_at": "2026-11-12T15:54:57.319590+08:00",
   "build_errors": [],
   "latest_signal": {
     "date": "2026-09",
@@ -173,7 +173,9 @@
           "quarter_label": "2026Q3",
           "rev_yoy_3m": 81.43,
           "rev_highlight_badge": "🔴💥 連2月營收>30%爆發",
-          "stop_loss_price": 4096.4
+          "stop_loss_price": 4096.4,
+          "three_q_passed": false,
+          "three_q_badge": "⛔ 未過(1/3)"
         },
         {
           "symbol": "6515.TW",
@@ -193,7 +195,9 @@
           "quarter_label": "2026Q2",
           "rev_yoy_3m": 118.63,
           "rev_highlight_badge": "🔴💥 連2月營收>30%爆發",
-          "stop_loss_price": 3498.0
+          "stop_loss_price": 3498.0,
+          "three_q_passed": false,
+          "three_q_badge": "⛔ 未過(1/3)"
         },
         {
           "symbol": "3680.TWO",
@@ -213,7 +217,9 @@
           "quarter_label": "2026Q2",
           "rev_yoy_3m": 46.35,
           "rev_highlight_badge": "",
-          "stop_loss_price": 348.0
+          "stop_loss_price": 348.0,
+          "three_q_passed": false,
+          "three_q_badge": "⛔ 未過(1/3)"
         },
         {
           "symbol": "1560.TW",
@@ -233,7 +239,9 @@
           "quarter_label": "2026Q3",
           "rev_yoy_3m": 30.46,
           "rev_highlight_badge": "🔴💥 連2月>30%爆發 ＋ 🔥連3月成長",
-          "stop_loss_price": 616.9
+          "stop_loss_price": 616.9,
+          "three_q_passed": false,
+          "three_q_badge": "⛔ 未過(0/3)"
         }
       ],
       "weekly_ret_pct": 7.58
@@ -270,7 +278,9 @@
           "quarter_label": "2026Q3",
           "rev_yoy_3m": 35.84,
           "rev_highlight_badge": "🔴💥 連2月>30%爆發 ＋ 🔥連3月成長",
-          "stop_loss_price": 277.2
+          "stop_loss_price": 277.2,
+          "three_q_passed": false,
+          "three_q_badge": "⛔ 未過(1/3)"
         },
         {
           "symbol": "3019.TW",
@@ -290,7 +300,9 @@
           "quarter_label": "2026Q3",
           "rev_yoy_3m": 5.97,
           "rev_highlight_badge": "",
-          "stop_loss_price": 116.6
+          "stop_loss_price": 116.6,
+          "three_q_passed": false,
+          "three_q_badge": "⛔ 未過(1/3)"
         },
         {
           "symbol": "4583.TW",
@@ -310,7 +322,9 @@
           "quarter_label": "2026Q3",
           "rev_yoy_3m": 23.86,
           "rev_highlight_badge": "🔴🔥 營收連3月成長",
-          "stop_loss_price": 299.2
+          "stop_loss_price": 299.2,
+          "three_q_passed": false,
+          "three_q_badge": "⛔ 未過(2/3)"
         },
         {
           "symbol": "2359.TW",
@@ -330,7 +344,9 @@
           "quarter_label": "2026Q2",
           "rev_yoy_3m": -4.63,
           "rev_highlight_badge": "🔴🔥 營收連3月成長",
-          "stop_loss_price": 85.4
+          "stop_loss_price": 85.4,
+          "three_q_passed": false,
+          "three_q_badge": "⛔ 未過(1/3)"
         }
       ],
       "weekly_ret_pct": 3.08
@@ -367,7 +383,9 @@
           "quarter_label": "2026Q3",
           "rev_yoy_3m": 82.8,
           "rev_highlight_badge": "🔴💥 連2月>30%爆發 ＋ 🔥連3月成長",
-          "stop_loss_price": 530.6
+          "stop_loss_price": 530.6,
+          "three_q_passed": false,
+          "three_q_badge": "⛔ 未過(1/3)"
         },
         {
           "symbol": "2357.TW",
@@ -387,7 +405,9 @@
           "quarter_label": "2026Q2",
           "rev_yoy_3m": 41.6,
           "rev_highlight_badge": "🔴💥 連2月>30%爆發 ＋ 🔥連3月成長",
-          "stop_loss_price": 783.2
+          "stop_loss_price": 783.2,
+          "three_q_passed": false,
+          "three_q_badge": "⛔ 未過(1/3)"
         },
         {
           "symbol": "2379.TW",
@@ -407,7 +427,9 @@
           "quarter_label": "2026Q2",
           "rev_yoy_3m": 27.7,
           "rev_highlight_badge": "",
-          "stop_loss_price": 650.3
+          "stop_loss_price": 650.3,
+          "three_q_passed": false,
+          "three_q_badge": "⛔ 未過(0/3)"
         }
       ],
       "weekly_ret_pct": 2.15
@@ -444,7 +466,9 @@
           "quarter_label": "2026Q3",
           "rev_yoy_3m": 57.46,
           "rev_highlight_badge": "🔴💥 連2月營收>30%爆發",
-          "stop_loss_price": 115.3
+          "stop_loss_price": 115.3,
+          "three_q_passed": true,
+          "three_q_badge": "✅ 三問全過"
         },
         {
           "symbol": "6214.TW",
@@ -464,7 +488,9 @@
           "quarter_label": "2026Q2",
           "rev_yoy_3m": 46.03,
           "rev_highlight_badge": "",
-          "stop_loss_price": 166.8
+          "stop_loss_price": 166.8,
+          "three_q_passed": false,
+          "three_q_badge": "⛔ 未過(2/3)"
         },
         {
           "symbol": "6690.TWO",
@@ -484,7 +510,9 @@
           "quarter_label": "2026Q3",
           "rev_yoy_3m": 8.44,
           "rev_highlight_badge": "",
-          "stop_loss_price": 169.8
+          "stop_loss_price": 169.8,
+          "three_q_passed": true,
+          "three_q_badge": "✅ 三問全過"
         }
       ],
       "weekly_ret_pct": 9.78
@@ -4217,7 +4245,17 @@
       "is_weakening_watch": true,
       "weakening_reason": "短線動能冷卻(5日 -4.9%、月線乖離 -25.5%)，跌破月線防守，嚴禁盲目攤平，請設定防守價",
       "ret_5d": -4.88,
-      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止"
+      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止",
+      "three_q_passed": false,
+      "three_q_q1": true,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 1,
+      "three_q_fail_reasons": [
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(1/3)"
     },
     {
       "symbol": "2383.TW",
@@ -4461,7 +4499,17 @@
       "is_weakening_watch": false,
       "weakening_reason": "",
       "ret_5d": 0.12,
-      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止"
+      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止",
+      "three_q_passed": false,
+      "three_q_q1": true,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 1,
+      "three_q_fail_reasons": [
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(1/3)"
     },
     {
       "symbol": "2308.TW",
@@ -4712,7 +4760,17 @@
       "is_weakening_watch": false,
       "weakening_reason": "",
       "ret_5d": 9.73,
-      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止"
+      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止",
+      "three_q_passed": false,
+      "three_q_q1": true,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 1,
+      "three_q_fail_reasons": [
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(1/3)"
     },
     {
       "symbol": "3211.TWO",
@@ -4956,7 +5014,17 @@
       "is_weakening_watch": false,
       "weakening_reason": "",
       "ret_5d": -0.4,
-      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止"
+      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止",
+      "three_q_passed": false,
+      "three_q_q1": true,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 1,
+      "three_q_fail_reasons": [
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(1/3)"
     },
     {
       "symbol": "2059.TW",
@@ -5200,7 +5268,17 @@
       "is_weakening_watch": false,
       "weakening_reason": "",
       "ret_5d": 2.13,
-      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止"
+      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止",
+      "three_q_passed": false,
+      "three_q_q1": true,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 1,
+      "three_q_fail_reasons": [
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(1/3)"
     },
     {
       "symbol": "2356.TW",
@@ -5444,7 +5522,17 @@
       "is_weakening_watch": true,
       "weakening_reason": "短線動能冷卻(5日 -15.3%、月線乖離 -19.1%)，跌破月線防守，嚴禁盲目攤平，請設定防守價",
       "ret_5d": -15.27,
-      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止"
+      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止",
+      "three_q_passed": false,
+      "three_q_q1": true,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 1,
+      "three_q_fail_reasons": [
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(1/3)"
     },
     {
       "symbol": "2421.TW",
@@ -5688,7 +5776,17 @@
       "is_weakening_watch": false,
       "weakening_reason": "",
       "ret_5d": 0.0,
-      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止"
+      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止",
+      "three_q_passed": false,
+      "three_q_q1": true,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 1,
+      "three_q_fail_reasons": [
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(1/3)"
     },
     {
       "symbol": "1519.TW",
@@ -5932,7 +6030,17 @@
       "is_weakening_watch": true,
       "weakening_reason": "短線動能冷卻(5日 -2.9%、月線乖離 -15.3%)，跌破月線防守，嚴禁盲目攤平，請設定防守價",
       "ret_5d": -2.94,
-      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止"
+      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止",
+      "three_q_passed": false,
+      "three_q_q1": true,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 1,
+      "three_q_fail_reasons": [
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(1/3)"
     },
     {
       "symbol": "3363.TWO",
@@ -6163,7 +6271,17 @@
       "is_weakening_watch": true,
       "weakening_reason": "短線動能冷卻(5日 -4.4%、月線乖離 -18.1%)，跌破月線防守，嚴禁盲目攤平，請設定防守價",
       "ret_5d": -4.37,
-      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止"
+      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止",
+      "three_q_passed": false,
+      "three_q_q1": true,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 1,
+      "three_q_fail_reasons": [
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(1/3)"
     },
     {
       "symbol": "3231.TW",
@@ -6407,7 +6525,17 @@
       "is_weakening_watch": false,
       "weakening_reason": "",
       "ret_5d": 0.89,
-      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止"
+      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止",
+      "three_q_passed": false,
+      "three_q_q1": true,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 1,
+      "three_q_fail_reasons": [
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(1/3)"
     },
     {
       "symbol": "2301.TW",
@@ -6651,7 +6779,17 @@
       "is_weakening_watch": false,
       "weakening_reason": "",
       "ret_5d": 7.8,
-      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止"
+      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止",
+      "three_q_passed": false,
+      "three_q_q1": true,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 1,
+      "three_q_fail_reasons": [
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(1/3)"
     },
     {
       "symbol": "3264.TWO",
@@ -6895,7 +7033,17 @@
       "is_weakening_watch": false,
       "weakening_reason": "",
       "ret_5d": 3.62,
-      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止"
+      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止",
+      "three_q_passed": false,
+      "three_q_q1": true,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 1,
+      "three_q_fail_reasons": [
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(1/3)"
     },
     {
       "symbol": "1503.TW",
@@ -7139,7 +7287,17 @@
       "is_weakening_watch": false,
       "weakening_reason": "",
       "ret_5d": -0.3,
-      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止"
+      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止",
+      "three_q_passed": false,
+      "three_q_q1": true,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 1,
+      "three_q_fail_reasons": [
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(1/3)"
     },
     {
       "symbol": "1513.TW",
@@ -7383,7 +7541,17 @@
       "is_weakening_watch": false,
       "weakening_reason": "",
       "ret_5d": 1.39,
-      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止"
+      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止",
+      "three_q_passed": false,
+      "three_q_q1": true,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 1,
+      "three_q_fail_reasons": [
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(1/3)"
     },
     {
       "symbol": "2330.TW",
@@ -7643,7 +7811,17 @@
       "is_weakening_watch": false,
       "weakening_reason": "",
       "ret_5d": 4.46,
-      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止"
+      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止",
+      "three_q_passed": false,
+      "three_q_q1": true,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 1,
+      "three_q_fail_reasons": [
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(1/3)"
     },
     {
       "symbol": "2317.TW",
@@ -7903,7 +8081,17 @@
       "is_weakening_watch": false,
       "weakening_reason": "",
       "ret_5d": 2.13,
-      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止"
+      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止",
+      "three_q_passed": false,
+      "three_q_q1": true,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 1,
+      "three_q_fail_reasons": [
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(1/3)"
     },
     {
       "symbol": "2454.TW",
@@ -8154,7 +8342,17 @@
       "is_weakening_watch": false,
       "weakening_reason": "",
       "ret_5d": 11.27,
-      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止"
+      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止",
+      "three_q_passed": false,
+      "three_q_q1": true,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 1,
+      "three_q_fail_reasons": [
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(1/3)"
     },
     {
       "symbol": "8299.TWO",
@@ -8398,7 +8596,18 @@
       "is_weakening_watch": false,
       "weakening_reason": "",
       "ret_5d": 1.17,
-      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止"
+      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止",
+      "three_q_passed": false,
+      "three_q_q1": false,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 0,
+      "three_q_fail_reasons": [
+        "未達便宜區/待確認",
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(0/3)"
     },
     {
       "symbol": "6451.TW",
@@ -8663,7 +8872,18 @@
       "is_weakening_watch": false,
       "weakening_reason": "",
       "ret_5d": 2.6,
-      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止"
+      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止",
+      "three_q_passed": false,
+      "three_q_q1": false,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 0,
+      "three_q_fail_reasons": [
+        "未達便宜區/待確認",
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(0/3)"
     },
     {
       "symbol": "3081.TWO",
@@ -8914,7 +9134,18 @@
       "is_weakening_watch": true,
       "weakening_reason": "估值進入過熱區，建議逢高分批獲利調節，不宜再追高",
       "ret_5d": 11.11,
-      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止"
+      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止",
+      "three_q_passed": false,
+      "three_q_q1": false,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 0,
+      "three_q_fail_reasons": [
+        "未達便宜區/待確認",
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(0/3)"
     }
   ],
   "emerging_stock_pool": [
@@ -9205,7 +9436,17 @@
       "is_weakening_watch": true,
       "weakening_reason": "短線動能冷卻(5日 -3.2%、月線乖離 -16.8%)，跌破月線防守，嚴禁盲目攤平，請設定防守價",
       "ret_5d": -3.18,
-      "event_reminder": "📅 2026-10營收已定錨 ｜ 26Q2財報與人工情境估值追蹤"
+      "event_reminder": "📅 2026-10營收已定錨 ｜ 26Q2財報與人工情境估值追蹤",
+      "three_q_passed": false,
+      "three_q_q1": true,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 1,
+      "three_q_fail_reasons": [
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(1/3)"
     },
     {
       "symbol": "3019.TW",
@@ -9494,7 +9735,17 @@
       "is_weakening_watch": false,
       "weakening_reason": "",
       "ret_5d": 3.11,
-      "event_reminder": "📅 2026-10營收已定錨 ｜ 26Q3財報與人工情境估值追蹤"
+      "event_reminder": "📅 2026-10營收已定錨 ｜ 26Q3財報與人工情境估值追蹤",
+      "three_q_passed": false,
+      "three_q_q1": true,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 1,
+      "three_q_fail_reasons": [
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(1/3)"
     },
     {
       "symbol": "6515.TW",
@@ -9790,7 +10041,17 @@
       "is_weakening_watch": false,
       "weakening_reason": "",
       "ret_5d": 9.81,
-      "event_reminder": "📅 2026-10營收已定錨 ｜ 26Q2財報與人工情境估值追蹤"
+      "event_reminder": "📅 2026-10營收已定錨 ｜ 26Q2財報與人工情境估值追蹤",
+      "three_q_passed": false,
+      "three_q_q1": true,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 1,
+      "three_q_fail_reasons": [
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(1/3)"
     },
     {
       "symbol": "4583.TW",
@@ -10079,7 +10340,16 @@
       "is_weakening_watch": false,
       "weakening_reason": "",
       "ret_5d": 0.89,
-      "event_reminder": "📅 2026-10營收已定錨 ｜ 26Q3財報與人工情境估值追蹤"
+      "event_reminder": "📅 2026-10營收已定錨 ｜ 26Q3財報與人工情境估值追蹤",
+      "three_q_passed": false,
+      "three_q_q1": true,
+      "three_q_q2": false,
+      "three_q_q3": true,
+      "three_q_score": 2,
+      "three_q_fail_reasons": [
+        "未站穩月線突破"
+      ],
+      "three_q_badge": "⛔ 未過(2/3)"
     },
     {
       "symbol": "2049.TW",
@@ -10368,7 +10638,17 @@
       "is_weakening_watch": false,
       "weakening_reason": "",
       "ret_5d": 10.72,
-      "event_reminder": "📅 2026-10營收已定錨 ｜ 26Q3財報與人工情境估值追蹤"
+      "event_reminder": "📅 2026-10營收已定錨 ｜ 26Q3財報與人工情境估值追蹤",
+      "three_q_passed": false,
+      "three_q_q1": true,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 1,
+      "three_q_fail_reasons": [
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(1/3)"
     },
     {
       "symbol": "2395.TW",
@@ -10657,7 +10937,17 @@
       "is_weakening_watch": false,
       "weakening_reason": "",
       "ret_5d": 1.17,
-      "event_reminder": "📅 2026-10營收已定錨 ｜ 26Q3財報與人工情境估值追蹤"
+      "event_reminder": "📅 2026-10營收已定錨 ｜ 26Q3財報與人工情境估值追蹤",
+      "three_q_passed": false,
+      "three_q_q1": true,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 1,
+      "three_q_fail_reasons": [
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(1/3)"
     },
     {
       "symbol": "2359.TW",
@@ -10946,7 +11236,17 @@
       "is_weakening_watch": true,
       "weakening_reason": "短線動能冷卻(5日 -2.4%、月線乖離 -13.0%)，跌破月線防守，嚴禁盲目攤平，請設定防守價",
       "ret_5d": -2.41,
-      "event_reminder": "📅 2026-10營收已定錨 ｜ 26Q2財報與人工情境估值追蹤"
+      "event_reminder": "📅 2026-10營收已定錨 ｜ 26Q2財報與人工情境估值追蹤",
+      "three_q_passed": false,
+      "three_q_q1": true,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 1,
+      "three_q_fail_reasons": [
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(1/3)"
     },
     {
       "symbol": "6223.TWO",
@@ -11242,7 +11542,17 @@
       "is_weakening_watch": false,
       "weakening_reason": "",
       "ret_5d": 24.97,
-      "event_reminder": "📅 2026-10營收已定錨 ｜ 26Q3財報與人工情境估值追蹤"
+      "event_reminder": "📅 2026-10營收已定錨 ｜ 26Q3財報與人工情境估值追蹤",
+      "three_q_passed": false,
+      "three_q_q1": true,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 1,
+      "three_q_fail_reasons": [
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(1/3)"
     },
     {
       "symbol": "3029.TW",
@@ -11530,7 +11840,14 @@
       "is_weakening_watch": false,
       "weakening_reason": "",
       "ret_5d": 15.93,
-      "event_reminder": "📅 2026-10營收已定錨 ｜ 26Q3財報與人工情境估值追蹤"
+      "event_reminder": "📅 2026-10營收已定錨 ｜ 26Q3財報與人工情境估值追蹤",
+      "three_q_passed": true,
+      "three_q_q1": true,
+      "three_q_q2": true,
+      "three_q_q3": true,
+      "three_q_score": 3,
+      "three_q_fail_reasons": [],
+      "three_q_badge": "✅ 三問全過"
     },
     {
       "symbol": "6690.TWO",
@@ -11819,7 +12136,14 @@
       "is_weakening_watch": false,
       "weakening_reason": "",
       "ret_5d": 6.04,
-      "event_reminder": "📅 2026-10營收已定錨 ｜ 26Q3財報與人工情境估值追蹤"
+      "event_reminder": "📅 2026-10營收已定錨 ｜ 26Q3財報與人工情境估值追蹤",
+      "three_q_passed": true,
+      "three_q_q1": true,
+      "three_q_q2": true,
+      "three_q_q3": true,
+      "three_q_score": 3,
+      "three_q_fail_reasons": [],
+      "three_q_badge": "✅ 三問全過"
     },
     {
       "symbol": "2357.TW",
@@ -12108,7 +12432,17 @@
       "is_weakening_watch": false,
       "weakening_reason": "",
       "ret_5d": 2.65,
-      "event_reminder": "📅 2026-10營收已定錨 ｜ 26Q2財報與人工情境估值追蹤"
+      "event_reminder": "📅 2026-10營收已定錨 ｜ 26Q2財報與人工情境估值追蹤",
+      "three_q_passed": false,
+      "three_q_q1": true,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 1,
+      "three_q_fail_reasons": [
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(1/3)"
     },
     {
       "symbol": "6214.TW",
@@ -12397,7 +12731,16 @@
       "is_weakening_watch": false,
       "weakening_reason": "",
       "ret_5d": 7.37,
-      "event_reminder": "📅 2026-10營收已定錨 ｜ 26Q2財報與人工情境估值追蹤"
+      "event_reminder": "📅 2026-10營收已定錨 ｜ 26Q2財報與人工情境估值追蹤",
+      "three_q_passed": false,
+      "three_q_q1": true,
+      "three_q_q2": false,
+      "three_q_q3": true,
+      "three_q_score": 2,
+      "three_q_fail_reasons": [
+        "未站穩月線突破"
+      ],
+      "three_q_badge": "⛔ 未過(2/3)"
     },
     {
       "symbol": "1560.TW",
@@ -12686,7 +13029,18 @@
       "is_weakening_watch": false,
       "weakening_reason": "短線股價偏弱(5日 -1.3%、月線乖離 -14.6%)，營收雖強但出現價量背離／籌碼未挺，嚴禁往下攤平",
       "ret_5d": -1.27,
-      "event_reminder": "📅 2026-10營收已定錨 ｜ 26Q3財報與人工情境估值追蹤"
+      "event_reminder": "📅 2026-10營收已定錨 ｜ 26Q3財報與人工情境估值追蹤",
+      "three_q_passed": false,
+      "three_q_q1": false,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 0,
+      "three_q_fail_reasons": [
+        "未達便宜區/待確認",
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(0/3)"
     },
     {
       "symbol": "2379.TW",
@@ -12975,7 +13329,18 @@
       "is_weakening_watch": false,
       "weakening_reason": "",
       "ret_5d": 2.64,
-      "event_reminder": "📅 2026-10營收已定錨 ｜ 26Q2財報與人工情境估值追蹤"
+      "event_reminder": "📅 2026-10營收已定錨 ｜ 26Q2財報與人工情境估值追蹤",
+      "three_q_passed": false,
+      "three_q_q1": false,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 0,
+      "three_q_fail_reasons": [
+        "未達便宜區/待確認",
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(0/3)"
     }
   ],
   "value_watchlist_20": [],
@@ -13237,7 +13602,17 @@
       "is_weakening_watch": true,
       "weakening_reason": "短線動能冷卻(5日 -4.9%、月線乖離 -25.5%)，跌破月線防守，嚴禁盲目攤平，請設定防守價",
       "ret_5d": -4.88,
-      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止"
+      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止",
+      "three_q_passed": false,
+      "three_q_q1": true,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 1,
+      "three_q_fail_reasons": [
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(1/3)"
     },
     {
       "symbol": "2383.TW",
@@ -13481,7 +13856,17 @@
       "is_weakening_watch": false,
       "weakening_reason": "",
       "ret_5d": 0.12,
-      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止"
+      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止",
+      "three_q_passed": false,
+      "three_q_q1": true,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 1,
+      "three_q_fail_reasons": [
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(1/3)"
     },
     {
       "symbol": "2308.TW",
@@ -13732,7 +14117,17 @@
       "is_weakening_watch": false,
       "weakening_reason": "",
       "ret_5d": 9.73,
-      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止"
+      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止",
+      "three_q_passed": false,
+      "three_q_q1": true,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 1,
+      "three_q_fail_reasons": [
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(1/3)"
     },
     {
       "symbol": "3211.TWO",
@@ -13976,7 +14371,17 @@
       "is_weakening_watch": false,
       "weakening_reason": "",
       "ret_5d": -0.4,
-      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止"
+      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止",
+      "three_q_passed": false,
+      "three_q_q1": true,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 1,
+      "three_q_fail_reasons": [
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(1/3)"
     },
     {
       "symbol": "2059.TW",
@@ -14220,7 +14625,17 @@
       "is_weakening_watch": false,
       "weakening_reason": "",
       "ret_5d": 2.13,
-      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止"
+      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止",
+      "three_q_passed": false,
+      "three_q_q1": true,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 1,
+      "three_q_fail_reasons": [
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(1/3)"
     },
     {
       "symbol": "2356.TW",
@@ -14464,7 +14879,17 @@
       "is_weakening_watch": true,
       "weakening_reason": "短線動能冷卻(5日 -15.3%、月線乖離 -19.1%)，跌破月線防守，嚴禁盲目攤平，請設定防守價",
       "ret_5d": -15.27,
-      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止"
+      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止",
+      "three_q_passed": false,
+      "three_q_q1": true,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 1,
+      "three_q_fail_reasons": [
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(1/3)"
     },
     {
       "symbol": "2421.TW",
@@ -14708,7 +15133,17 @@
       "is_weakening_watch": false,
       "weakening_reason": "",
       "ret_5d": 0.0,
-      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止"
+      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止",
+      "three_q_passed": false,
+      "three_q_q1": true,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 1,
+      "three_q_fail_reasons": [
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(1/3)"
     },
     {
       "symbol": "1519.TW",
@@ -14952,7 +15387,17 @@
       "is_weakening_watch": true,
       "weakening_reason": "短線動能冷卻(5日 -2.9%、月線乖離 -15.3%)，跌破月線防守，嚴禁盲目攤平，請設定防守價",
       "ret_5d": -2.94,
-      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止"
+      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止",
+      "three_q_passed": false,
+      "three_q_q1": true,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 1,
+      "three_q_fail_reasons": [
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(1/3)"
     },
     {
       "symbol": "3363.TWO",
@@ -15183,7 +15628,17 @@
       "is_weakening_watch": true,
       "weakening_reason": "短線動能冷卻(5日 -4.4%、月線乖離 -18.1%)，跌破月線防守，嚴禁盲目攤平，請設定防守價",
       "ret_5d": -4.37,
-      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止"
+      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止",
+      "three_q_passed": false,
+      "three_q_q1": true,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 1,
+      "three_q_fail_reasons": [
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(1/3)"
     },
     {
       "symbol": "3231.TW",
@@ -15427,7 +15882,17 @@
       "is_weakening_watch": false,
       "weakening_reason": "",
       "ret_5d": 0.89,
-      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止"
+      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止",
+      "three_q_passed": false,
+      "three_q_q1": true,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 1,
+      "three_q_fail_reasons": [
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(1/3)"
     },
     {
       "symbol": "2301.TW",
@@ -15671,7 +16136,17 @@
       "is_weakening_watch": false,
       "weakening_reason": "",
       "ret_5d": 7.8,
-      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止"
+      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止",
+      "three_q_passed": false,
+      "three_q_q1": true,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 1,
+      "three_q_fail_reasons": [
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(1/3)"
     },
     {
       "symbol": "3264.TWO",
@@ -15915,7 +16390,17 @@
       "is_weakening_watch": false,
       "weakening_reason": "",
       "ret_5d": 3.62,
-      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止"
+      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止",
+      "three_q_passed": false,
+      "three_q_q1": true,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 1,
+      "three_q_fail_reasons": [
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(1/3)"
     },
     {
       "symbol": "1503.TW",
@@ -16159,7 +16644,17 @@
       "is_weakening_watch": false,
       "weakening_reason": "",
       "ret_5d": -0.3,
-      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止"
+      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止",
+      "three_q_passed": false,
+      "three_q_q1": true,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 1,
+      "three_q_fail_reasons": [
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(1/3)"
     },
     {
       "symbol": "1513.TW",
@@ -16403,7 +16898,17 @@
       "is_weakening_watch": false,
       "weakening_reason": "",
       "ret_5d": 1.39,
-      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止"
+      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止",
+      "three_q_passed": false,
+      "three_q_q1": true,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 1,
+      "three_q_fail_reasons": [
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(1/3)"
     },
     {
       "symbol": "2330.TW",
@@ -16663,7 +17168,17 @@
       "is_weakening_watch": false,
       "weakening_reason": "",
       "ret_5d": 4.46,
-      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止"
+      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止",
+      "three_q_passed": false,
+      "three_q_q1": true,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 1,
+      "three_q_fail_reasons": [
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(1/3)"
     },
     {
       "symbol": "2317.TW",
@@ -16923,7 +17438,17 @@
       "is_weakening_watch": false,
       "weakening_reason": "",
       "ret_5d": 2.13,
-      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止"
+      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止",
+      "three_q_passed": false,
+      "three_q_q1": true,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 1,
+      "three_q_fail_reasons": [
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(1/3)"
     },
     {
       "symbol": "2454.TW",
@@ -17174,7 +17699,17 @@
       "is_weakening_watch": false,
       "weakening_reason": "",
       "ret_5d": 11.27,
-      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止"
+      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止",
+      "three_q_passed": false,
+      "three_q_q1": true,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 1,
+      "three_q_fail_reasons": [
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(1/3)"
     },
     {
       "symbol": "8299.TWO",
@@ -17418,7 +17953,18 @@
       "is_weakening_watch": false,
       "weakening_reason": "",
       "ret_5d": 1.17,
-      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止"
+      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止",
+      "three_q_passed": false,
+      "three_q_q1": false,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 0,
+      "three_q_fail_reasons": [
+        "未達便宜區/待確認",
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(0/3)"
     },
     {
       "symbol": "6451.TW",
@@ -17683,7 +18229,18 @@
       "is_weakening_watch": false,
       "weakening_reason": "",
       "ret_5d": 2.6,
-      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止"
+      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止",
+      "three_q_passed": false,
+      "three_q_q1": false,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 0,
+      "three_q_fail_reasons": [
+        "未達便宜區/待確認",
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(0/3)"
     },
     {
       "symbol": "3081.TWO",
@@ -17934,7 +18491,18 @@
       "is_weakening_watch": true,
       "weakening_reason": "估值進入過熱區，建議逢高分批獲利調節，不宜再追高",
       "ret_5d": 11.11,
-      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止"
+      "event_reminder": "📅 10月營收已定錨 ｜ 留意11/14前Q3季報截止",
+      "three_q_passed": false,
+      "three_q_q1": false,
+      "three_q_q2": false,
+      "three_q_q3": false,
+      "three_q_score": 0,
+      "three_q_fail_reasons": [
+        "未達便宜區/待確認",
+        "未站穩月線突破",
+        "背離或資金流出"
+      ],
+      "three_q_badge": "⛔ 未過(0/3)"
     }
   ],
   "macro_risk": {
@@ -18469,7 +19037,7 @@
       "signal_eligible": false
     }
   ],
-  "guide_markdown": "# 台股領先指標與投資2.0：白話操作全書 (v3.0 機構級操作指南)\n\n版本：v3.0 全面改寫版。整合美股 AI 55% 核心領先體系、大白話「三問買進・三問賣出」鐵律、雙軸無矛盾實戰心法、週滾動 AI 動能排行與實戰持倉到價提醒管理。\n\n---\n\n## 🧭 第零章：買賣前先停 5 秒！「三問才買、三問才賣」大白話鐵律\n\n> **⚠️ 重要的事說三次：**\n> 1. **不要不三問就買進，不要不三問就賣出！**\n> 2. **不要不三問就買進，不要不三問就賣出！**\n> 3. **不要不三問就買進，不要不三問就賣出！**\n\n很多投資朋友會被套牢，常常是因為只看到「`🟢 好便宜`」或「`🔴💥 營收爆發`」就急著按買進，沒注意股價其實還在破線往下掉；或者是好不容易買到強勢股，遇到一兩天小震盪就嚇到亂砍賣飛。請先花 10 秒看懂畫面上的大白話符號，再照下面 **「買進三問」** 與 **「賣出三問」** 打勾後才動作！\n\n---\n\n### 0.1 先用大白話看懂卡片上的「箭頭」與「色燈」\n\n1. **先看股價現在走勢（看有沒有箭頭 `▲ ↗ ▼`）**：\n   - **`🔴▲ 轉強`**：過去 5 天股價有漲（`>= +1%`），而且價格已經**站在月線（過去 20 天大家平均成交價）上面，或只差一點點**，買氣真的回來了。\n   - **`🟡↗ 破線反彈`**：這幾天雖然小反彈上漲，但股價其實**還在月線下面**（或還掛著背離警告）。就像跌倒後稍微站起來半步，還沒站穩起跑線，**隨時可能再跌下去，看就好、別追**。\n   - **`🔵▼ 轉弱` ／ `🔵▼ 價弱(營強)`**：股價正在往下跌或跌破月線。特別是 **`價弱(營強)`**＝「**公司營收看起來很強，但股價卻一直在跌**」，這是最容易騙人去「越跌越買／攤平」的陷阱——看到藍球向下 **嚴禁接刀、嚴禁攤平**！\n   - **`⚪━ 持平`**：價格平平橫盤整理中，先觀察就好。\n\n2. **再看價格貴不貴與資金健康（看圓燈與黃紅警告牌）**：\n   - **`🟢`（便宜位階／資金流入）**：出現在左邊價格標籤（如 `🟢 特價好球帶`）代表「股價打折變便宜」；出現在五維評分格「④ 均線動能／⑤ 主力籌碼」代表「股價站穩月線／大戶資金有買進」。\n   - **`🟠 偏高` ／ `🟣⚠️ 昂貴過熱`**：股價已經漲太貴了，不要再去追高；手上已經有的，可以分批獲利了結。\n   - **`⚠️ 價量營收背離`（黃牌） ／ `⚠️ 資金流出`（紅牌）**：營收明明很好，可是股價卻跌破均線、或資金一直在往外撤——白話意思就是「**有人趁好消息在偷偷賣股票**」！\n\n---\n\n### 0.2 🛒 買進前必問「三問」（3 問全部回答「是」才分批買；只要有 1 問是「否」就忍住！）\n\n按下買進之前，請把手機卡片從上往下對一遍：\n\n1. **【第一問】價格夠便宜了嗎？**\n   - 看卡片左邊的位階標籤：是不是 **`🟢 特價好球帶`、`🟢 便宜好球帶`** 或 **`⚪ 合理偏低區`**？\n   - （如果是 `🟠 偏高`、`🟣⚠️ 昂貴過熱` 或 `⚪ 估值待確認`，回答「否」，跳過不追高。）\n2. **【第二問】股價真的止跌、站穩月線了嗎？**\n   - 看卡片右上角跟右側標籤：有沒有亮 **`🔴▲ 轉強`**＋**`🎯 突破進場 / 📈 多頭確立`**（且五維格第 ④ 格是 **`🟢 站穩月線`**）？\n   - 只要還在 **`🔵▼ 轉弱 / 價弱(營強)`**、**`🟡↗ 破線反彈`** 或 **`⏸️ 築底觀望`／`⏸️ 跌破月線`**，代表股價還沒止跌站穩，回答「否」，**嚴禁接下跌的刀子！**\n3. **【第三問】籌碼乾乾淨淨、沒有大戶在偷跑嗎？**\n   - 卡片上方**完全沒有** **`⚠️ 價量營收背離`**，也沒有 **`⚠️ 資金流出`**（而且總資金／大盤水位還有餘裕）？\n   - 只要掛著任一塊黃牌或紅牌警告，代表主力還在賣，**先等警告牌消失再買！**\n\n> 💡 **實戰示範（為什麼「便宜＋營收爆發」還是不能買？看 `6274.TWO 台燿`）**：\n> - 第一問（價格打折了嗎）：左邊亮 `🟢 特價好球帶` ＋ `🔴💥 營收爆發` ➔ ✅ **是**\n> - 第二問（站穩月線止跌了嗎）：右上角亮 **`🔵▼ 價弱(營強)`** ＋ `⏸️ 築底觀望`（5日下跌且離月線很遠） ➔ ❌ **否！**\n> - 第三問（沒人在偷賣嗎）：上方掛着 **`⚠️ 價量營收背離`** ＋ **`⚠️ 資金流出`** ➔ ❌ **否！**\n> - **結果：三問只過一問 ➔ 先不動、嚴禁抄底買進，已買進虧損中也嚴禁攤平！**\n\n---\n\n### 0.3 💰 賣出／減碼前必問「三問」（有賺懂得落袋、破線敢防守、好股不亂賣飛！）\n\n手上有持股想賣出、或猶豫該不該砍時，一樣先問完這 3 問再按賣出：\n\n1. **【第一問】是不是已經漲太貴／太過熱了？（決定要不要分批「獲利了結」）**\n   - 股價有沒有漲破 **`🟠 偏高／昂貴價 (1.2x)`** 或亮出 **`🟣⚠️ 昂貴・瘋狂過熱 (1.382x)`**？\n   - 若回答 **「是」** ➔ **逢高分批賣出 1/3～1/2 把獲利放進口袋**，不跟最後一棒賭運氣。\n2. **【第二問】是不是已經跌破月線轉弱、或撞到停損防線？（決定要不要「防守減碼／停損」）**\n   - 先分清楚手上這檔現在是「賺錢」還是「賠錢」：\n     - **還在賺錢，但亮 `🔵▼ 轉弱` 或跌破月線**：啟動**「獲利保衛」**，反彈站不回月線先賣一點保住戰果，絕不抱到由賺變賠！\n     - **已經賠錢，且亮 `🔵▼ 轉弱` 或逼近 `-10% 紀律停損價`**：**嚴禁再加碼攤平！** 反彈無力站回月線時先減碼收回現金；一旦跌破 `-10%` 紀律防守線，果斷停損換股。\n3. **【第三問】會不會只是好股票剛起步的「正常洗盤震盪」？（避免「嚇到賣飛好股」）**\n   - 準備按賣出前先確認：這家公司 **`① 基本面` 健康、`② AI循環` 正常**，股價也**還在月線之上 (`🟢 站穩月線`，沒亮 `🔵▼`)**，卡片**沒有 `⚠️ 價量營收背離 / ⚠️ 資金流出`**，也沒有觸及昂貴價或停損線嗎？\n   - 如果以上都健康、沒破線也沒過貴，只是盤中正常上下晃動 ➔ **回答「是正常震盪」＝ 抱緊不亂賣，讓獲利繼續跑！**\n\n> 📌 **第零章一句話總結（再提醒一次）**：**不要不三問就買進，不要不三問就賣出！** 三問全過才分批買，漲貴或破線／破停損才分批賣，健康不破線就安心續抱。\n\n---\n\n## 🎨 第一章：全系統雙軌高對比色彩與燈號速查表\n\n在純黑背景（`#0B0F19`）環境下，本系統依用途區分為 **兩套並列色彩系統**，請先認清「動能變化球」與「安全風控紅綠燈」的差別，即可 100% 零誤解：\n\n### 1.1 動能變化球與買賣位階（📈 採台股習慣：價格均線優先，紅強藍弱）\n\n| 狀態變化 | 顯示圖示與標籤 | 色碼 (Hex) | 白話操盤意義（一眼秒懂） |\n| :--- | :--- | :--- | :--- |\n| **真・動能轉強** | **🔴▲ 轉強 (火紅)** | `#FF5252` | **價漲＋站穩或貼近 20 日月線**：5 日漲 `>= +1%` 且在月線之上（或下方 2% 內）、無價量背離；與營收爆發徽章 (`🔴🔥💥`) 分開判定，絕不讓好營收掩蓋下跌。 |\n| **破線小反彈** | **🟡↗ 破線反彈** | `#FBBF24` | **還在月線下方的短彈**：5 日雖小漲但仍在月線之下 (`< -2%`) 或帶有 `⚠️ 價量營收背離`，容易彈完再跌，先看別追。 |\n| **維持現狀 / 橫盤** | **⚪━ 持平 (銀白)** | `#CBD5E1` | **橫盤整理中**：價格漲跌未達標；即使營收強勁爆發 (`🔴💥`)，股價未站穩轉強也不顯示紅球。 |\n| **股價轉弱／價弱(營強)** | **🔵▼ 轉弱 / 價弱(營強)** | `#00E5FF` | **股價在跌但可能營收看起來很強**：5 日下跌或跌破月線轉弱；就算基本面營收爆發也會明確標註 `🔵▼ 價弱(營強)`，**嚴禁接刀、嚴禁攤平**！ |\n| **黃金買點 / 安全邊際** | **🟡💎 好球帶** | `#FBBF24` | **股票打折區**：股價跌入孫慶龍便宜價 (`0.8x`) 或特價 (`0.618x`)（需先對完 **第零章「買進三問」** 全過關才出手）！ |\n| **昂貴過熱 / 逢高調節** | **🟣⚠️ 昂貴過熱** | `#C084FC` | **太貴警戒區**：股價漲破昂貴價 (`1.2x`) 或 PE 過熱，嚴禁追高，對完 **第零章「賣出三問」** 分批停利！ |\n\n### 1.3 個股買賣快速檢查（詳見第零章完整圖解）\n\n> 📌 請務必先對完 **第零章「買進三問」與「賣出三問」**（**重要的說三次：不要不三問就買進，不要不三問就賣出！**）。\n> - **買進前**：左邊便宜 (`🟢` 或 `合理偏低`) ＋ 右上真轉強 (`🔴▲`，沒有 `🔵▼`/`🟡↗`) ＋ 沒掛黃紅警告 (`⚠️ 背離`/`⚠️ 流出`)，三問都「是」才買。\n> - **賣出前**：漲太貴 (`🟠 昂貴`/`🟣⚠️ 過熱`) 分批落袋、虧損亮 `🔵▼` 反彈不回月線或破 `-10%` 停損減碼（嚴禁攤平）、健康未破月線則續抱不亂賣飛。\n\n### 1.2 安全體檢、籌碼流向與宏觀風控（🚦 採國際交通號誌：綠安黃警紅險）\n\n在 **「系統健康度自檢」**、**「總體宏觀風險監控」**、**「個股五維體檢／籌碼流向」** 與 **「個股左側安全位階」** 中，色球改採 **交通號誌安全邏輯**（與上方的台股漲跌色不同）：\n\n| 風控／體檢燈號 | 顯示圖示 | 適用區塊與實戰意義 | ⚠️ 常見防呆提醒 |\n| :--- | :--- | :--- | :--- |\n| **安全／通過／流入低估** | **🟢** | 系統 `PASS`、宏觀因子低風險（如 `🟢 溫和擴張與正常防守`、VIX < 20）、主力資金流入、個股進入 `🟢 特價/便宜好球帶`。 | 這裡的「綠」是**健康與安全**，不是台股的下跌！ |\n| **偏高警戒注意** | **🟡** | 總經風險逼近紅燈門檻（例如美債 10Y 殖利率 `🟡 4.99%` 逼近 `5.0%` 警戒線）。 | **⚠️ 總經區 `🟡` 代表接近警戒注意，絕非「🟡💎 便宜好球帶」！** |\n| **風險警報／流出／泡沫** | **🔴**（無▲▼） | 宏觀觸發緊縮紅燈（故 `0項紅燈` ＝環境安全）、籌碼 `🔴 資金流出`、個股 `🔴 瘋狂過熱區`。 | 唯有帶 `▲▼` 或 `🔥💥`（`🔴▲`、`🔴🔥`）才代表股價與營收轉強；另「國發會紅燈 41 分」係台灣景氣熱絡指標。 |\n\n> 👀 **一秒區分口訣**：看圖先看符號——帶 **`▲▼` / `🔥💥` / `💎⚠️`** 是「股價與買賣動作球」（紅強藍弱）；沒帶上下箭頭的「體檢、宏觀風控、籌碼進出與左側估值」是「安全交通燈」（綠安、黃警、紅險）。\n\n---\n\n## 🧭 第二章：為什麼「美股 AI 佔 55%」才是真正的領先指標？\n\n台灣科技產業本質上是全球 AI 伺服器與半導體的下游代工重鎮。\n- **美國科技巨頭（NVIDIA、微軟、Google、Meta、AWS）是「因」**：他們下達 AI 晶片與伺服器資本支出訂單。\n- **台灣海關出口與工業生產是「果」**：台灣廠商接單、備料、生產到報關出貨，通常存在 **2 到 3 個月的時間落後**。\n\n因此，v3.0 系統將 **美股 AI 核心算力（35%）＋ 美國總經流動性（20%）合占 55% 絕對主導權**，以每日即時行情打破傳統政府月報滯後性：\n1. **Stage 1 (35分 · 🇺🇸 美國 AI 核心源頭)**：NVIDIA 60日動能、北美 4 大 CSP 雲端巨頭均線站上比例、費城半導體 SOX 均線突破。\n2. **Stage 2 (25分 · 🇺🇸 美國總經 ＋ 🇹🇼 台灣上游擴產)**：NASDAQ趨勢、美債10Y-2Y利差、VIX、台灣半導體設備進口 YoY、外銷訂單動向。\n3. **Stage 3 (25分 · 🇹🇼 實體出貨與營收改善)**：海關出口 YoY、工業生產、銅價 (Dr. Copper)。\n4. **Stage 4 (15~20分 · 🇹🇼 台股量價與籌碼確認)**：台股大盤量能、相對全球強弱。\n\n---\n\n## 🎯 第三章：破除矛盾！「景氣趨勢 × 個股好球帶」雙軸實戰操盤法\n\n為什麼以前「景氣分數 70 分，持股建議 75%」，買進卻常常買在高點？為什麼分數掉到低點時，反而是股價最便宜的時刻？\n\nv3.0 系統徹底分開指導 **「空手新資金」** 與 **「手上已有部位者」**：\n\n| 市場象限 | 景氣分數 vs 股價位階 | 👤 給空手／新資金的指引 | 💼 給已持倉者的指引 |\n| :--- | :--- | :--- | :--- |\n| **🔴 象限二：多頭主升高檔期** | 景氣 60~75+ 分，多數個股漲多 | **❌ 嚴禁追高！買黑不買紅**<br/>僅鎖定尚在「🟡好球帶/合理中樞」個股；若無便宜貨則握牢現金等拉回。 | **續抱上限 75%**<br/>讓利潤奔跑！股價觸及「🟣昂貴過熱價」才分批停利。 |\n| **💎 象限四：多頭急跌黃金坑** | 短期恐慌大跌，大量個股跌入🟡好球帶 | **🎯 啟動左側逢低買進！**<br/>只要美股 AI 基本面未壞，動用 30%~50% 資金大膽分批布局🟡好球帶。 | **絕不砍在最低點！**<br/>基本面健康時切勿恐慌殺低，嚴守成本 -10% 防守線即可。 |\n| **🌱 象限一：股價未行・指標先行** | 大盤仍在底部盤整，但美股 AI 指標率先勾頭 (底背離) | **🌟 最佳甜蜜進場點！**<br/>領先大盤 1~2 季起跑，積極建倉。 | **持股續抱，耐心等待主升段發動。** |\n| **🛡️ 象限三：真・基本面衰退** | 實體訂單連續衰退 ＋ 美股 AI 巨頭跌破年線 | **持幣觀望，保留 80%~100% 現金。** | **果斷執行停損與減碼，不心存僥倖。** |\n\n---\n\n## 🔥 第四章：孫慶龍五價位與「月營收爆發雙雷達」\n\n本系統全面移除容易失真的季報前瞻猜測，回歸 100% 官方驗證的真實月營收動能：\n- **孫慶龍黃金分割五價位**：\n  - **特價 (0.618x)** ➔ **便宜價 (0.800x)** ➔ **合理價 (1.000x)** ➔ **昂貴價 (1.200x)** ➔ **瘋狂價 (1.382x)**\n- **月營收爆發雙勳章**：\n  - **`🔴🔥 營收連3月成長`**：近 3 個月營收連續月增或年增率持續上升，代表訂單產能滿載。\n  - **`🔴💥 連2月營收>30%爆發`**：近 2 個月營收 YoY 均突破 30% 大關，強烈吸引法人買盤！\n- **關鍵時程提醒**：每月 1～10 號（營收開獎）與季報法說會期間，系統自動標註提醒，注意估值重錨。\n\n---\n\n## 💼 第五章：我的持倉管理與「轉弱未脫手」處置指南\n\n升級後的分頁提供專屬個人持倉互動管理（資料安全儲存於瀏覽器 本機 `localStorage`，不外洩）：\n1. **輸入與增減**：輸入持有股數與成本均價，支援 **`➕加碼買進`**（自動精算加權成本）、**`➖部分減碼`** 與 **`🗑️賣出即刪`**。\n2. **到價提醒**：預設以 **「孫慶龍昂貴價 (1.2x)」** 作為停利目標，**「成本 -10%」** 作為紀律防守價。現價達標即跳出醒目通知。\n3. **已轉弱 (`🔵▼`) 但尚未脫手處理劇本**：\n   - **若目前帳面仍獲利**：系統亮出 **`🟡獲利保衛提醒`**，建議逢高分批獲利入袋，切勿抱到由賺轉賠！\n   - **若目前帳面虧損**：系統亮出 **`🔵反彈減碼提醒`**，嚴禁攤平加碼！反彈至均線優先減碼換股，若跌破防守價務必果斷停損。\n\n---\n\n## 📡 第六章：AI 產業週滾動動能與新興產業擴充\n\n- **週滾動動能評分 (0~100)**：結合週價量資金流 (40%) ＋ 月營收真實爆發力 (40%) ＋ 產業週期安全閥 (20%)，每週自動重排 Top 5 強勢產業。\n- **4 大新興 AI 潛力產業**：\n  1. **先進封裝設備耗材與探針卡 (FOPLP/玻璃基板)**（代表：旺矽、穎崴、家登、中砂）\n  2. **人形機器人與實體 AI (Physical AI & Robotics)**（代表：上銀、亞光、台灣精銳、所羅門）\n  3. **邊緣 AI 終端與工業 AI (Edge AI / AI PC)**（代表：研華、華碩、瑞昱）\n  4. **AI 軟體代理與主權雲資安**（代表：零壹、精誠、安碁資訊）\n- **股池汰弱留強看板**：系統自動比對核心池中趨弱標的（建議減碼換股）與新興預備隊中的潛力新星（建議納入觀察）。\n\n---\n\n## 📈 第七章：走勢對照圖讀法與「近三個月動向」判讀指南\n\n在「📊 大盤趨勢與先行指標」分頁中，走勢對照圖採用 **雙 Y 軸設計**，並於圖表正下方自動演算「近三個月走勢判斷、分析與說明」：\n\n1. **雙軸刻度防誤判**：\n   - **青線（自適應記分卡總分）**：對應圖表 **右側刻度（0～100 分）**。\n   - **深藍線（台股加權指數月 K）**：對應圖表 **左側刻度（指數點數）**；圖面捲動至最右側最新月份時，左側軸位於左方捲軸外，因此藍線貼近畫面上方只代表指數位於近年相對高檔，**不是 90～100 分**。\n2. **先蹲後跳 vs 高檔背離的判讀重點**：\n   - 當藍線維持高檔或上漲，而青線一度急降回測 `40～59` 警戒區後再 V 型勾起回到 `60+`（例如 `2026-07 ➔ 08 ➔ 09` 由 `74.0 ➔ 57.0 ➔ 67.0`），代表短期宏觀／費半雜音曾引發「指數彈、指標跌」警戒，但美股 AI 動能隨後重新確認接棒。\n   - 後續追蹤分水嶺：青線站上 **75 分** 且傳統宏觀轉正 ＝ 多頭擴散；若跌破 **60 分（或 50 分熄燈線）** ＝ 警覺背離、依研究規則收縮水位（註：歷史觀察圖與規則尚未通過歷史可得資料及樣本外核驗，不構成投資建議）。\n",
+  "guide_markdown": "# 台股領先指標與投資2.0：白話操作全書 (v3.0 機構級操作指南)\n\n版本：v3.0 全面改寫版。整合美股 AI 55% 核心領先體系、大白話「三問買進・三問賣出」鐵律、雙軸無矛盾實戰心法、週滾動 AI 動能排行與實戰持倉到價提醒管理。\n\n---\n\n## 🧭 第零章：買賣前先停 5 秒！「三問才買、三問才賣」大白話鐵律\n\n> **⚠️ 重要的事說三次：**\n> 1. **不要不三問就買進，不要不三問就賣出！**\n> 2. **不要不三問就買進，不要不三問就賣出！**\n> 3. **不要不三問就買進，不要不三問就賣出！**\n\n很多投資朋友會被套牢，常常是因為只看到「`🟢 好便宜`」或「`🔴💥 營收爆發`」就急著按買進，沒注意股價其實還在破線往下掉；或者是好不容易買到強勢股，遇到一兩天小震盪就嚇到亂砍賣飛。請先花 10 秒看懂畫面上的大白話符號，再照下面 **「買進三問」** 與 **「賣出三問」** 打勾後才動作！\n\n---\n\n### 0.1 先用大白話看懂卡片上的「箭頭」與「色燈」\n\n1. **先看股價現在走勢（看有沒有箭頭 `▲ ↗ ▼`）**：\n   - **`🔴▲ 轉強`**：過去 5 天股價有漲（`>= +1%`），而且價格已經**站在月線（過去 20 天大家平均成交價）上面，或只差一點點**，買氣真的回來了。\n   - **`🟡↗ 破線反彈`**：這幾天雖然小反彈上漲，但股價其實**還在月線下面**（或還掛著背離警告）。就像跌倒後稍微站起來半步，還沒站穩起跑線，**隨時可能再跌下去，看就好、別追**。\n   - **`🔵▼ 轉弱` ／ `🔵▼ 價弱(營強)`**：股價正在往下跌或跌破月線。特別是 **`價弱(營強)`**＝「**公司營收看起來很強，但股價卻一直在跌**」，這是最容易騙人去「越跌越買／攤平」的陷阱——看到藍球向下 **嚴禁接刀、嚴禁攤平**！\n   - **`⚪━ 持平`**：價格平平橫盤整理中，先觀察就好。\n\n2. **再看價格貴不貴與資金健康（看圓燈與黃紅警告牌）**：\n   - **`🟢`（便宜位階／資金流入）**：出現在左邊價格標籤（如 `🟢 特價好球帶`）代表「股價打折變便宜」；出現在五維評分格「④ 均線動能／⑤ 主力籌碼」代表「股價站穩月線／大戶資金有買進」。\n   - **`🟠 偏高` ／ `🟣⚠️ 昂貴過熱`**：股價已經漲太貴了，不要再去追高；手上已經有的，可以分批獲利了結。\n   - **`⚠️ 價量營收背離`（黃牌） ／ `⚠️ 資金流出`（紅牌）**：營收明明很好，可是股價卻跌破均線、或資金一直在往外撤——白話意思就是「**有人趁好消息在偷偷賣股票**」！\n\n---\n\n### 0.2 🛒 買進前必問「三問」（3 問全部回答「是」才分批買；只要有 1 問是「否」就忍住！）\n\n按下買進之前，請把手機卡片從上往下對一遍：\n\n1. **【第一問】價格夠便宜了嗎？**\n   - 看卡片左邊的位階標籤：是不是 **`🟢 特價好球帶`、`🟢 便宜好球帶`** 或 **`⚪ 合理偏低區`**？\n   - （如果是 `🟠 偏高`、`🟣⚠️ 昂貴過熱` 或 `⚪ 估值待確認`，回答「否」，跳過不追高。）\n2. **【第二問】股價真的止跌、站穩月線了嗎？**\n   - 看卡片右上角跟右側標籤：有沒有亮 **`🔴▲ 轉強`**＋**`🎯 突破進場 / 📈 多頭確立`**（且五維格第 ④ 格是 **`🟢 站穩月線`**）？\n   - 只要還在 **`🔵▼ 轉弱 / 價弱(營強)`**、**`🟡↗ 破線反彈`** 或 **`⏸️ 築底觀望`／`⏸️ 跌破月線`**，代表股價還沒止跌站穩，回答「否」，**嚴禁接下跌的刀子！**\n3. **【第三問】籌碼乾乾淨淨、沒有大戶在偷跑嗎？**\n   - 卡片上方**完全沒有** **`⚠️ 價量營收背離`**，也沒有 **`⚠️ 資金流出`**（而且總資金／大盤水位還有餘裕）？\n   - 只要掛著任一塊黃牌或紅牌警告，代表主力還在賣，**先等警告牌消失再買！**\n\n> 💡 **懶得一張張肉眼對？系統直接幫你擋！**：在主頁監控池的「🟡💎 好球帶」按鈕正下方，系統已內建 **`✅ 三問通過`** 一鍵篩選鈕——點下去，系統會自動篩出「價格夠便宜 ＋ 站穩月線突破 🔴▲ ＋ 無背離與資金流出」的標的；若顯示 `0 檔`，代表全部股票都還有未過關風險，按兵不動最安全！\n>\n> 💡 **實戰示範（為什麼「便宜＋營收爆發」還是不能買？看 `6274.TWO 台燿`）**：\n> - 第一問（價格打折了嗎）：左邊亮 `🟢 特價好球帶` ＋ `🔴💥 營收爆發` ➔ ✅ **是**\n> - 第二問（站穩月線止跌了嗎）：右上角亮 **`🔵▼ 價弱(營強)`** ＋ `⏸️ 築底觀望`（5日下跌且離月線很遠） ➔ ❌ **否！**\n> - 第三問（沒人在偷賣嗎）：上方掛着 **`⚠️ 價量營收背離`** ＋ **`⚠️ 資金流出`** ➔ ❌ **否！**\n> - **結果：三問只過一問 ➔ 先不動、嚴禁抄底買進，已買進虧損中也嚴禁攤平！**\n\n---\n\n### 0.3 💰 賣出／減碼前必問「三問」（有賺懂得落袋、破線敢防守、好股不亂賣飛！）\n\n手上有持股想賣出、或猶豫該不該砍時，一樣先問完這 3 問再按賣出：\n\n1. **【第一問】是不是已經漲太貴／太過熱了？（決定要不要分批「獲利了結」）**\n   - 股價有沒有漲破 **`🟠 偏高／昂貴價 (1.2x)`** 或亮出 **`🟣⚠️ 昂貴・瘋狂過熱 (1.382x)`**？\n   - 若回答 **「是」** ➔ **逢高分批賣出 1/3～1/2 把獲利放進口袋**，不跟最後一棒賭運氣。\n2. **【第二問】是不是已經跌破月線轉弱、或撞到停損防線？（決定要不要「防守減碼／停損」）**\n   - 先分清楚手上這檔現在是「賺錢」還是「賠錢」：\n     - **還在賺錢，但亮 `🔵▼ 轉弱` 或跌破月線**：啟動**「獲利保衛」**，反彈站不回月線先賣一點保住戰果，絕不抱到由賺變賠！\n     - **已經賠錢，且亮 `🔵▼ 轉弱` 或逼近 `-10% 紀律停損價`**：**嚴禁再加碼攤平！** 反彈無力站回月線時先減碼收回現金；一旦跌破 `-10%` 紀律防守線，果斷停損換股。\n3. **【第三問】會不會只是好股票剛起步的「正常洗盤震盪」？（避免「嚇到賣飛好股」）**\n   - 準備按賣出前先確認：這家公司 **`① 基本面` 健康、`② AI循環` 正常**，股價也**還在月線之上 (`🟢 站穩月線`，沒亮 `🔵▼`)**，卡片**沒有 `⚠️ 價量營收背離 / ⚠️ 資金流出`**，也沒有觸及昂貴價或停損線嗎？\n   - 如果以上都健康、沒破線也沒過貴，只是盤中正常上下晃動 ➔ **回答「是正常震盪」＝ 抱緊不亂賣，讓獲利繼續跑！**\n\n> 📌 **第零章一句話總結（再提醒一次）**：**不要不三問就買進，不要不三問就賣出！** 三問全過才分批買，漲貴或破線／破停損才分批賣，健康不破線就安心續抱。\n\n---\n\n## 🎨 第一章：全系統雙軌高對比色彩與燈號速查表\n\n在純黑背景（`#0B0F19`）環境下，本系統依用途區分為 **兩套並列色彩系統**，請先認清「動能變化球」與「安全風控紅綠燈」的差別，即可 100% 零誤解：\n\n### 1.1 動能變化球與買賣位階（📈 採台股習慣：價格均線優先，紅強藍弱）\n\n| 狀態變化 | 顯示圖示與標籤 | 色碼 (Hex) | 白話操盤意義（一眼秒懂） |\n| :--- | :--- | :--- | :--- |\n| **真・動能轉強** | **🔴▲ 轉強 (火紅)** | `#FF5252` | **價漲＋站穩或貼近 20 日月線**：5 日漲 `>= +1%` 且在月線之上（或下方 2% 內）、無價量背離；與營收爆發徽章 (`🔴🔥💥`) 分開判定，絕不讓好營收掩蓋下跌。 |\n| **破線小反彈** | **🟡↗ 破線反彈** | `#FBBF24` | **還在月線下方的短彈**：5 日雖小漲但仍在月線之下 (`< -2%`) 或帶有 `⚠️ 價量營收背離`，容易彈完再跌，先看別追。 |\n| **維持現狀 / 橫盤** | **⚪━ 持平 (銀白)** | `#CBD5E1` | **橫盤整理中**：價格漲跌未達標；即使營收強勁爆發 (`🔴💥`)，股價未站穩轉強也不顯示紅球。 |\n| **股價轉弱／價弱(營強)** | **🔵▼ 轉弱 / 價弱(營強)** | `#00E5FF` | **股價在跌但可能營收看起來很強**：5 日下跌或跌破月線轉弱；就算基本面營收爆發也會明確標註 `🔵▼ 價弱(營強)`，**嚴禁接刀、嚴禁攤平**！ |\n| **黃金買點 / 安全邊際** | **🟡💎 好球帶** | `#FBBF24` | **股票打折區**：股價跌入孫慶龍便宜價 (`0.8x`) 或特價 (`0.618x`)（需先對完 **第零章「買進三問」** 全過關才出手）！ |\n| **昂貴過熱 / 逢高調節** | **🟣⚠️ 昂貴過熱** | `#C084FC` | **太貴警戒區**：股價漲破昂貴價 (`1.2x`) 或 PE 過熱，嚴禁追高，對完 **第零章「賣出三問」** 分批停利！ |\n\n### 1.3 個股買賣快速檢查（詳見第零章完整圖解）\n\n> 📌 請務必先對完 **第零章「買進三問」與「賣出三問」**（**重要的說三次：不要不三問就買進，不要不三問就賣出！**）。\n> - **買進前**：左邊便宜 (`🟢` 或 `合理偏低`) ＋ 右上真轉強 (`🔴▲`，沒有 `🔵▼`/`🟡↗`) ＋ 沒掛黃紅警告 (`⚠️ 背離`/`⚠️ 流出`)，三問都「是」才買。\n> - **賣出前**：漲太貴 (`🟠 昂貴`/`🟣⚠️ 過熱`) 分批落袋、虧損亮 `🔵▼` 反彈不回月線或破 `-10%` 停損減碼（嚴禁攤平）、健康未破月線則續抱不亂賣飛。\n\n### 1.2 安全體檢、籌碼流向與宏觀風控（🚦 採國際交通號誌：綠安黃警紅險）\n\n在 **「系統健康度自檢」**、**「總體宏觀風險監控」**、**「個股五維體檢／籌碼流向」** 與 **「個股左側安全位階」** 中，色球改採 **交通號誌安全邏輯**（與上方的台股漲跌色不同）：\n\n| 風控／體檢燈號 | 顯示圖示 | 適用區塊與實戰意義 | ⚠️ 常見防呆提醒 |\n| :--- | :--- | :--- | :--- |\n| **安全／通過／流入低估** | **🟢** | 系統 `PASS`、宏觀因子低風險（如 `🟢 溫和擴張與正常防守`、VIX < 20）、主力資金流入、個股進入 `🟢 特價/便宜好球帶`。 | 這裡的「綠」是**健康與安全**，不是台股的下跌！ |\n| **偏高警戒注意** | **🟡** | 總經風險逼近紅燈門檻（例如美債 10Y 殖利率 `🟡 4.99%` 逼近 `5.0%` 警戒線）。 | **⚠️ 總經區 `🟡` 代表接近警戒注意，絕非「🟡💎 便宜好球帶」！** |\n| **風險警報／流出／泡沫** | **🔴**（無▲▼） | 宏觀觸發緊縮紅燈（故 `0項紅燈` ＝環境安全）、籌碼 `🔴 資金流出`、個股 `🔴 瘋狂過熱區`。 | 唯有帶 `▲▼` 或 `🔥💥`（`🔴▲`、`🔴🔥`）才代表股價與營收轉強；另「國發會紅燈 41 分」係台灣景氣熱絡指標。 |\n\n> 👀 **一秒區分口訣**：看圖先看符號——帶 **`▲▼` / `🔥💥` / `💎⚠️`** 是「股價與買賣動作球」（紅強藍弱）；沒帶上下箭頭的「體檢、宏觀風控、籌碼進出與左側估值」是「安全交通燈」（綠安、黃警、紅險）。\n\n---\n\n## 🧭 第二章：為什麼「美股 AI 佔 55%」才是真正的領先指標？\n\n台灣科技產業本質上是全球 AI 伺服器與半導體的下游代工重鎮。\n- **美國科技巨頭（NVIDIA、微軟、Google、Meta、AWS）是「因」**：他們下達 AI 晶片與伺服器資本支出訂單。\n- **台灣海關出口與工業生產是「果」**：台灣廠商接單、備料、生產到報關出貨，通常存在 **2 到 3 個月的時間落後**。\n\n因此，v3.0 系統將 **美股 AI 核心算力（35%）＋ 美國總經流動性（20%）合占 55% 絕對主導權**，以每日即時行情打破傳統政府月報滯後性：\n1. **Stage 1 (35分 · 🇺🇸 美國 AI 核心源頭)**：NVIDIA 60日動能、北美 4 大 CSP 雲端巨頭均線站上比例、費城半導體 SOX 均線突破。\n2. **Stage 2 (25分 · 🇺🇸 美國總經 ＋ 🇹🇼 台灣上游擴產)**：NASDAQ趨勢、美債10Y-2Y利差、VIX、台灣半導體設備進口 YoY、外銷訂單動向。\n3. **Stage 3 (25分 · 🇹🇼 實體出貨與營收改善)**：海關出口 YoY、工業生產、銅價 (Dr. Copper)。\n4. **Stage 4 (15~20分 · 🇹🇼 台股量價與籌碼確認)**：台股大盤量能、相對全球強弱。\n\n---\n\n## 🎯 第三章：破除矛盾！「景氣趨勢 × 個股好球帶」雙軸實戰操盤法\n\n為什麼以前「景氣分數 70 分，持股建議 75%」，買進卻常常買在高點？為什麼分數掉到低點時，反而是股價最便宜的時刻？\n\nv3.0 系統徹底分開指導 **「空手新資金」** 與 **「手上已有部位者」**：\n\n| 市場象限 | 景氣分數 vs 股價位階 | 👤 給空手／新資金的指引 | 💼 給已持倉者的指引 |\n| :--- | :--- | :--- | :--- |\n| **🔴 象限二：多頭主升高檔期** | 景氣 60~75+ 分，多數個股漲多 | **❌ 嚴禁追高！買黑不買紅**<br/>僅鎖定尚在「🟡好球帶/合理中樞」個股；若無便宜貨則握牢現金等拉回。 | **續抱上限 75%**<br/>讓利潤奔跑！股價觸及「🟣昂貴過熱價」才分批停利。 |\n| **💎 象限四：多頭急跌黃金坑** | 短期恐慌大跌，大量個股跌入🟡好球帶 | **🎯 啟動左側逢低買進！**<br/>只要美股 AI 基本面未壞，動用 30%~50% 資金大膽分批布局🟡好球帶。 | **絕不砍在最低點！**<br/>基本面健康時切勿恐慌殺低，嚴守成本 -10% 防守線即可。 |\n| **🌱 象限一：股價未行・指標先行** | 大盤仍在底部盤整，但美股 AI 指標率先勾頭 (底背離) | **🌟 最佳甜蜜進場點！**<br/>領先大盤 1~2 季起跑，積極建倉。 | **持股續抱，耐心等待主升段發動。** |\n| **🛡️ 象限三：真・基本面衰退** | 實體訂單連續衰退 ＋ 美股 AI 巨頭跌破年線 | **持幣觀望，保留 80%~100% 現金。** | **果斷執行停損與減碼，不心存僥倖。** |\n\n---\n\n## 🔥 第四章：孫慶龍五價位與「月營收爆發雙雷達」\n\n本系統全面移除容易失真的季報前瞻猜測，回歸 100% 官方驗證的真實月營收動能：\n- **孫慶龍黃金分割五價位**：\n  - **特價 (0.618x)** ➔ **便宜價 (0.800x)** ➔ **合理價 (1.000x)** ➔ **昂貴價 (1.200x)** ➔ **瘋狂價 (1.382x)**\n- **月營收爆發雙勳章**：\n  - **`🔴🔥 營收連3月成長`**：近 3 個月營收連續月增或年增率持續上升，代表訂單產能滿載。\n  - **`🔴💥 連2月營收>30%爆發`**：近 2 個月營收 YoY 均突破 30% 大關，強烈吸引法人買盤！\n- **關鍵時程提醒**：每月 1～10 號（營收開獎）與季報法說會期間，系統自動標註提醒，注意估值重錨。\n\n---\n\n## 💼 第五章：我的持倉管理與「轉弱未脫手」處置指南\n\n升級後的分頁提供專屬個人持倉互動管理（資料安全儲存於瀏覽器 本機 `localStorage`，不外洩）：\n1. **輸入與增減**：輸入持有股數與成本均價，支援 **`➕加碼買進`**（自動精算加權成本）、**`➖部分減碼`** 與 **`🗑️賣出即刪`**。\n2. **到價提醒**：預設以 **「孫慶龍昂貴價 (1.2x)」** 作為停利目標，**「成本 -10%」** 作為紀律防守價。現價達標即跳出醒目通知。\n3. **已轉弱 (`🔵▼`) 但尚未脫手處理劇本**：\n   - **若目前帳面仍獲利**：系統亮出 **`🟡獲利保衛提醒`**，建議逢高分批獲利入袋，切勿抱到由賺轉賠！\n   - **若目前帳面虧損**：系統亮出 **`🔵反彈減碼提醒`**，嚴禁攤平加碼！反彈至均線優先減碼換股，若跌破防守價務必果斷停損。\n\n---\n\n## 📡 第六章：AI 產業週滾動動能與新興產業擴充\n\n- **週滾動動能評分 (0~100)**：結合週價量資金流 (40%) ＋ 月營收真實爆發力 (40%) ＋ 產業週期安全閥 (20%)，每週自動重排 Top 5 強勢產業。\n- **4 大新興 AI 潛力產業**：\n  1. **先進封裝設備耗材與探針卡 (FOPLP/玻璃基板)**（代表：旺矽、穎崴、家登、中砂）\n  2. **人形機器人與實體 AI (Physical AI & Robotics)**（代表：上銀、亞光、台灣精銳、所羅門）\n  3. **邊緣 AI 終端與工業 AI (Edge AI / AI PC)**（代表：研華、華碩、瑞昱）\n  4. **AI 軟體代理與主權雲資安**（代表：零壹、精誠、安碁資訊）\n- **股池汰弱留強看板**：系統自動比對核心池中趨弱標的（建議減碼換股）與新興預備隊中的潛力新星（建議納入觀察）。\n\n---\n\n## 📈 第七章：走勢對照圖讀法與「近三個月動向」判讀指南\n\n在「📊 大盤趨勢與先行指標」分頁中，走勢對照圖採用 **雙 Y 軸設計**，並於圖表正下方自動演算「近三個月走勢判斷、分析與說明」：\n\n1. **雙軸刻度防誤判**：\n   - **青線（自適應記分卡總分）**：對應圖表 **右側刻度（0～100 分）**。\n   - **深藍線（台股加權指數月 K）**：對應圖表 **左側刻度（指數點數）**；圖面捲動至最右側最新月份時，左側軸位於左方捲軸外，因此藍線貼近畫面上方只代表指數位於近年相對高檔，**不是 90～100 分**。\n2. **先蹲後跳 vs 高檔背離的判讀重點**：\n   - 當藍線維持高檔或上漲，而青線一度急降回測 `40～59` 警戒區後再 V 型勾起回到 `60+`（例如 `2026-07 ➔ 08 ➔ 09` 由 `74.0 ➔ 57.0 ➔ 67.0`），代表短期宏觀／費半雜音曾引發「指數彈、指標跌」警戒，但美股 AI 動能隨後重新確認接棒。\n   - 後續追蹤分水嶺：青線站上 **75 分** 且傳統宏觀轉正 ＝ 多頭擴散；若跌破 **60 分（或 50 分熄燈線）** ＝ 警覺背離、依研究規則收縮水位（註：歷史觀察圖與規則尚未通過歷史可得資料及樣本外核驗，不構成投資建議）。\n",
   "wave_events": [
     {
       "name": "2018 中美貿易戰底",
@@ -18702,7 +19270,7 @@
     ],
     "delivery_scope": "離線與模擬管道；真正送達另行確認",
     "snapshot_id": "061b70b3b7bd485b40c618faa023554220305b3a5db990e881c4d1b0a595ab6c",
-    "checked_at": "2026-11-12T15:37:42.849705+08:00"
+    "checked_at": "2026-11-12T15:54:57.211947+08:00"
   },
   "input_sha256": {
     "adaptive_scorecard_history.csv": "bd16999273e25fe38a7ceb08f8556f3f90be2557efb2a8a0e49ca9bae75fb5a1",
@@ -18747,8 +19315,8 @@
     "tw_stocks_volume.parquet": "f7665595658840b5eaeb0ac4cb04f648d452cd0b25c9cc7a350652df3c4a6131",
     "twse_market.csv": "2f0b183a62852174cf4e098d0889df45097c6bd3ac2eda821e8c7111ebcecf0a",
     "twse_market.parquet": "788ee8c5c9cb2f0032a6d440c3c1b08e33a9d337b9344ece237f4538adb36266",
-    "implementation_sha256": "cde9db3bf3ce8eefa806735cd558c5a9080043371507b69c10578dc8ba13bda5"
+    "implementation_sha256": "ddb56149e0e7a9b09c9de192ab6e84005fcdcb0fc9a2084e7c471f4c3decacf9"
   },
   "snapshot_schema": "dashboard-snapshot-v1",
-  "snapshot_id": "7b88b7924b8603ad5b27c4ecca9edca192f3c5b346f84315f6e94316f3386b06"
+  "snapshot_id": "5828386d87fac20420eb67881511140d525a68c0f3a1034ed635dff325d1bb24"
 }
