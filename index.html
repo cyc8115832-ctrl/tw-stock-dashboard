@@ -431,7 +431,7 @@
     <span>👵</span>
     <span>長者友善 1.6X 大字 (常駐生效)</span>
   </div>
-  <a href="guide.html" class="px-3.5 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold text-sm flex items-center gap-1.5 shadow-lg hover:brightness-110 active:scale-95 transition-all">
+  <a href="guide.html" onclick="if(window.saveNavStateForGuide) window.saveNavStateForGuide();" class="px-3.5 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold text-sm flex items-center gap-1.5 shadow-lg hover:brightness-110 active:scale-95 transition-all">
     <span>📖</span>
     <span>白話操作全書</span>
   </a>
@@ -1720,7 +1720,7 @@
     <span class="mob-nav-icon">📡</span>
     <span class="mob-nav-label font-mono">雷達</span>
   </button>
-  <a class="text-amber-400 rounded-xl active:scale-95 transition-transform" href="guide.html">
+  <a class="text-amber-400 rounded-xl active:scale-95 transition-transform" href="guide.html" onclick="if(window.saveNavStateForGuide) window.saveNavStateForGuide();">
     <span class="mob-nav-icon">📖</span>
     <span class="mob-nav-label font-mono">全書</span>
   </a>
@@ -1857,7 +1857,7 @@
 
 <script>
     const DASHBOARD_DATA = {
-  "generated_at": "2026-11-12T16:07:37.308053+08:00",
+  "generated_at": "2026-11-12T16:27:37.870994+08:00",
   "build_errors": [],
   "latest_signal": {
     "date": "2026-09",
@@ -21128,7 +21128,7 @@
     ],
     "delivery_scope": "離線與模擬管道；真正送達另行確認",
     "snapshot_id": "061b70b3b7bd485b40c618faa023554220305b3a5db990e881c4d1b0a595ab6c",
-    "checked_at": "2026-11-12T16:07:37.192442+08:00"
+    "checked_at": "2026-11-12T16:27:37.759556+08:00"
   },
   "input_sha256": {
     "adaptive_scorecard_history.csv": "bd16999273e25fe38a7ceb08f8556f3f90be2557efb2a8a0e49ca9bae75fb5a1",
@@ -21173,10 +21173,10 @@
     "tw_stocks_volume.parquet": "f7665595658840b5eaeb0ac4cb04f648d452cd0b25c9cc7a350652df3c4a6131",
     "twse_market.csv": "2f0b183a62852174cf4e098d0889df45097c6bd3ac2eda821e8c7111ebcecf0a",
     "twse_market.parquet": "788ee8c5c9cb2f0032a6d440c3c1b08e33a9d337b9344ece237f4538adb36266",
-    "implementation_sha256": "5e3b768d5a0180694014e3a94bd57d9e89eff0c129a5e47d84b3012ca6ff96f1"
+    "implementation_sha256": "86699db4040fed9f1214ca4970506354820520a4454cabe890e59fd93e082f64"
   },
   "snapshot_schema": "dashboard-snapshot-v1",
-  "snapshot_id": "5c8156fac7f76513002085ec77bed2a7747b3242e0f77be685020c9c9bcc49b3"
+  "snapshot_id": "82c39978476a59b57cbe1087304fe7341481583a345a98ffb2374cfb8726934b"
 };
   </script>
 <!-- 互動圖表與數據渲染腳本 -->
@@ -21218,8 +21218,16 @@
       const rawEmergingList = data.emerging_stock_pool || [];
       const rawValueList = data.value_watchlist_20 || [];
       const POOL_OVERRIDES_KEY = "TAIWAN_STOCK_POOL_OVERRIDES_V1";
+      const NAV_STATE_KEY = "TSLI_NAV_STATE_V1";
+      const FROM_GUIDE_KEY = "TSLI_FROM_GUIDE_V1";
       let currentStockGroup = 'group1';
       let currentFilterType = 'all';
+      let _currentActiveTab = 'home';
+      const _tabScroll = { home: null, portfolio: null, analysis: null, 'ai-radar': null };
+      let _coreScrollY = null;
+      const _expandedSymbols = new Set();
+      let _isRestoringNavState = false;
+      let _navBooted = false;
 
       function normSym(s) {
         return String(s || '').trim().toUpperCase();
@@ -21398,11 +21406,15 @@
         if (typeof renderRotationWatch === 'function') renderRotationWatch();
       }
 
-      window.switchStockGroup = function(groupName) {
+      window.switchStockGroup = function(groupName, options) {
+        const opts = options || {};
         currentStockGroup = groupName === 'group2' ? 'group2' : 'group1';
         updateGroupTabsUI();
         updateFilterCounts();
-        window.filterStocks('all');
+        window.filterStocks(opts.preserveFilter ? (currentFilterType || 'all') : 'all');
+        if (typeof saveNavStateToStorage === 'function' && !_isRestoringNavState) {
+          saveNavStateToStorage();
+        }
       };
 
       window.togglePromoteEmerging = function(symbol) {
@@ -21521,18 +21533,130 @@
         _toastTimer = setTimeout(() => { el.classList.add('hidden'); }, 3200);
       };
 
-      // v3.0 主題分頁切換系統（支援直達指定區塊 + 手機/桌機自動對齊視窗，避免頁首遮蔽內容）
-      let _currentActiveTab = 'home';
-      window.switchTab = function(tabName, sectionId) {
+      function calcSectionTargetY(tabName, sectionId, targetEl) {
+        if (!targetEl) return 0;
+        const rect = targetEl.getBoundingClientRect();
+        const navEl = document.getElementById('mainTabNav');
+        const isDesktopSticky = window.innerWidth >= 1024;
+        const stickyOffset = (isDesktopSticky && navEl && (tabName !== 'home' || Boolean(sectionId))) ? (navEl.getBoundingClientRect().height + 16) : 8;
+        return Math.max(0, Math.round(rect.top + window.scrollY - stickyOffset));
+      }
+
+      function getCoreStocksTop() {
+        if (_currentActiveTab !== 'home') return null;
+        const coreEl = document.getElementById('core-stocks');
+        if (!coreEl || coreEl.offsetParent === null) return null;
+        return calcSectionTargetY('home', 'core-stocks', coreEl);
+      }
+
+      function updateMobileHomeCoreHighlight(overrideY) {
+        const mobTabs = ['home', 'portfolio', 'analysis', 'ai-radar'];
+        const scrollYVal = overrideY != null ? overrideY : Math.round(window.scrollY || document.documentElement.scrollTop || 0);
+        const coreTop = getCoreStocksTop();
+        const inCoreZone = (_currentActiveTab === 'home') && (coreTop != null) && (scrollYVal >= coreTop - 48);
+        mobTabs.forEach(t => {
+          const mobBtn = document.getElementById(`mob-btn-${t}`);
+          if (!mobBtn) return;
+          const isMobActive = (t === _currentActiveTab) && !(t === 'home' && inCoreZone);
+          mobBtn.className = isMobActive
+            ? "relative text-cyan-300 bg-cyan-500/20 border border-cyan-400/60 rounded-xl active:scale-95 transition-transform"
+            : "relative text-slate-300 rounded-xl active:scale-95 transition-transform";
+        });
+        const coreMobBtn = document.getElementById('mob-btn-core-stocks');
+        if (coreMobBtn) {
+          coreMobBtn.className = inCoreZone
+            ? "relative text-cyan-300 bg-cyan-500/20 border border-cyan-400/60 rounded-xl active:scale-95 transition-transform"
+            : "relative text-slate-300 rounded-xl active:scale-95 transition-transform";
+        }
+      }
+
+      function saveNavStateToStorage(extraFlags) {
+        const flags = extraFlags || {};
+        if (!_navBooted && !flags.force) return;
+        try {
+          const curY = Math.max(0, Math.round(window.scrollY || document.documentElement.scrollTop || 0));
+          _tabScroll[_currentActiveTab] = curY;
+          if (_currentActiveTab === 'home') {
+            const cTop = getCoreStocksTop();
+            if (cTop != null && curY >= cTop - 48) {
+              _coreScrollY = curY;
+            }
+          }
+          const existingRaw = sessionStorage.getItem(NAV_STATE_KEY);
+          const existing = existingRaw ? JSON.parse(existingRaw) : {};
+          const payload = {
+            activeTab: _currentActiveTab,
+            tabScroll: { ..._tabScroll },
+            coreScrollY: _coreScrollY,
+            stockGroup: currentStockGroup,
+            filterType: currentFilterType,
+            expandedSymbols: Array.from(_expandedSymbols),
+            dashboardUrl: window.location.href,
+            leftViaGuide: flags.leftViaGuide !== undefined ? Boolean(flags.leftViaGuide) : Boolean(existing.leftViaGuide),
+            savedAt: Date.now(),
+          };
+          sessionStorage.setItem(NAV_STATE_KEY, JSON.stringify(payload));
+        } catch (e) {}
+      }
+
+      window.saveNavStateForGuide = function() {
+        saveNavStateToStorage({ leftViaGuide: true, force: true });
+      };
+
+      let _navScrollTicking = false;
+      let _navSaveDebounce = null;
+      let _tabSwitchSeq = 0;
+      window.addEventListener('scroll', () => {
+        if (_isRestoringNavState) return;
+        if (!_navScrollTicking) {
+          _navScrollTicking = true;
+          requestAnimationFrame(() => {
+            _navScrollTicking = false;
+            const curY = Math.max(0, Math.round(window.scrollY || document.documentElement.scrollTop || 0));
+            _tabScroll[_currentActiveTab] = curY;
+            if (_currentActiveTab === 'home') {
+              const cTop = getCoreStocksTop();
+              if (cTop != null && curY >= cTop - 48) {
+                _coreScrollY = curY;
+              }
+            }
+            updateMobileHomeCoreHighlight(curY);
+          });
+        }
+        clearTimeout(_navSaveDebounce);
+        _navSaveDebounce = setTimeout(() => {
+          saveNavStateToStorage();
+        }, 200);
+      }, { passive: true });
+
+      window.addEventListener('pagehide', () => {
+        saveNavStateToStorage();
+      });
+
+      // v3.0 主題分頁切換系統（支援閱讀進度記憶 + 同頁再點回頂端 + 跨頁返回接續）
+      window.switchTab = function(tabName, sectionId, options) {
+        const opts = options || {};
         const prevTab = _currentActiveTab;
+        const curY = Math.max(0, Math.round(window.scrollY || document.documentElement.scrollTop || 0));
+
+        if (!opts.fromRestore && prevTab) {
+          _tabScroll[prevTab] = curY;
+          if (prevTab === 'home') {
+            const prevCoreTop = getCoreStocksTop();
+            if (prevCoreTop != null && curY >= prevCoreTop - 48) {
+              _coreScrollY = curY;
+            }
+          }
+        }
+
         _currentActiveTab = tabName;
         window._pendingTabSwitch = null;
-        const isCoreJump = (tabName === 'home' && sectionId === 'core-stocks');
+        _tabSwitchSeq += 1;
+        const mySwitchSeq = _tabSwitchSeq;
         const tabs = ['home', 'portfolio', 'analysis', 'ai-radar'];
         tabs.forEach(t => {
           const pane = document.getElementById(`tab-${t}`);
           const topBtn = document.getElementById(`tab-btn-${t}`);
-          const mobBtn = document.getElementById(`mob-btn-${t}`);
           const isActive = (t === tabName);
 
           if (pane) {
@@ -21544,22 +21668,58 @@
               ? "tab-nav-btn justify-center px-3 py-2.5 rounded-xl font-black text-xs sm:text-sm md:text-base flex items-center gap-1.5 bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg border border-cyan-400/50 active:scale-95 transition-transform"
               : "tab-nav-btn justify-center px-3 py-2.5 rounded-xl font-bold text-xs sm:text-sm md:text-base flex items-center gap-1.5 bg-slate-900/90 text-slate-300 hover:text-white border border-slate-700/80 active:scale-95 transition-transform";
           }
-          if (mobBtn) {
-            const isMobActive = isActive && !(t === 'home' && isCoreJump);
-            mobBtn.className = isMobActive
-              ? "relative text-cyan-300 bg-cyan-500/20 border border-cyan-400/60 rounded-xl active:scale-95 transition-transform"
-              : "relative text-slate-300 rounded-xl active:scale-95 transition-transform";
-          }
         });
-        const coreMobBtn = document.getElementById('mob-btn-core-stocks');
-        if (coreMobBtn) {
-          coreMobBtn.className = isCoreJump
-            ? "relative text-cyan-300 bg-cyan-500/20 border border-cyan-400/60 rounded-xl active:scale-95 transition-transform"
-            : "relative text-slate-300 rounded-xl active:scale-95 transition-transform";
-        }
 
         if (tabName === 'portfolio') {
           try { if (typeof renderUserPortfolio === 'function') renderUserPortfolio(); } catch (e) {}
+        }
+
+        let targetY = 0;
+        const isCoreJump = (tabName === 'home' && sectionId === 'core-stocks');
+        if (opts.fromRestore && opts.restoreScrollY != null && Number.isFinite(Number(opts.restoreScrollY))) {
+          targetY = Math.max(0, Math.round(Number(opts.restoreScrollY)));
+        } else if (isCoreJump) {
+          const coreTopNow = getCoreStocksTop();
+          const cTop = coreTopNow != null ? coreTopNow : 0;
+          if (prevTab === 'home' && curY > cTop + 80) {
+            // 已在監控池往下瀏覽時再點「🎯 監控池」➔ 回到監控池頂端
+            targetY = cTop;
+            _coreScrollY = cTop;
+            _tabScroll['home'] = cTop;
+          } else if (_coreScrollY != null && _coreScrollY >= cTop - 48) {
+            // 從其他分頁或主頁上方點「🎯 監控池」➔ 接續上次瀏覽位置
+            targetY = _coreScrollY;
+            _tabScroll['home'] = _coreScrollY;
+          } else {
+            targetY = cTop;
+            _coreScrollY = cTop;
+            _tabScroll['home'] = cTop;
+          }
+        } else if (sectionId) {
+          const targetEl = document.getElementById(sectionId);
+          targetY = targetEl ? calcSectionTargetY(tabName, sectionId, targetEl) : 0;
+          _tabScroll[tabName] = targetY;
+        } else if (prevTab !== tabName) {
+          // 從其他分頁切回來 ➔ 優先恢復上次停住的位置
+          if (_tabScroll[tabName] != null && Number.isFinite(_tabScroll[tabName])) {
+            targetY = _tabScroll[tabName];
+          } else if (tabName === 'home') {
+            targetY = 0;
+          } else {
+            const paneEl = document.getElementById(`tab-${tabName}`);
+            targetY = paneEl ? calcSectionTargetY(tabName, null, paneEl) : 0;
+          }
+        } else {
+          // 已經在同一個分頁內再按一次按鈕 ➔ 回到該分頁頂端
+          if (tabName === 'home') {
+            targetY = 0;
+            _coreScrollY = null;
+            _tabScroll['home'] = 0;
+          } else {
+            const paneEl = document.getElementById(`tab-${tabName}`);
+            targetY = paneEl ? calcSectionTargetY(tabName, null, paneEl) : 0;
+            _tabScroll[tabName] = targetY;
+          }
         }
 
         // 當切換至「大盤趨勢與先行指標」分頁時，重新計算寬度並觸發 Chart.js resize + update，解決隱藏容器寬度 0 空白問題
@@ -21594,36 +21754,32 @@
 
               if (tc) tc.scrollLeft = tc.scrollWidth;
               if (pc) pc.scrollLeft = pc.scrollWidth;
+              if (_currentActiveTab === 'analysis' && _tabSwitchSeq === mySwitchSeq) {
+                document.documentElement.style.scrollBehavior = 'auto';
+                window.scrollTo(0, targetY);
+                setTimeout(() => { document.documentElement.style.scrollBehavior = ''; }, 0);
+              }
             } catch (err) {
               console.warn('[Analysis Tab Resize]', err);
             }
           }, 60);
         }
 
-        // 手機/桌機捲動對位：切到其他分頁直接將分頁內容捲進可視區頂端，不讓頁首/圖例佔滿手機全螢幕
-        const targetEl = sectionId
-          ? document.getElementById(sectionId)
-          : (tabName === 'home'
-              ? ((prevTab !== 'home' || window.scrollY > 120) ? document.getElementById('mainTabNav') : null)
-              : document.getElementById(`tab-${tabName}`));
-
         try {
           document.documentElement.style.scrollBehavior = 'auto';
-          if (targetEl) {
-            const rect = targetEl.getBoundingClientRect();
-            const navEl = document.getElementById('mainTabNav');
-            const isDesktopSticky = window.innerWidth >= 1024;
-            const stickyOffset = (isDesktopSticky && navEl && (tabName !== 'home' || Boolean(sectionId))) ? (navEl.getBoundingClientRect().height + 16) : 8;
-            const targetY = Math.max(0, Math.round(rect.top + window.scrollY - stickyOffset));
-            window.scrollTo(0, targetY);
-          } else {
-            window.scrollTo(0, 0);
+          window.scrollTo(0, targetY);
+          if (targetY === 0) {
             document.documentElement.scrollTop = 0;
             document.body.scrollTop = 0;
           }
           setTimeout(() => { document.documentElement.style.scrollBehavior = ''; }, 0);
         } catch (e) {
-          window.scrollTo(0, 0);
+          window.scrollTo(0, targetY || 0);
+        }
+
+        updateMobileHomeCoreHighlight(targetY);
+        if (!opts.fromRestore) {
+          saveNavStateToStorage();
         }
       };
 
@@ -23298,11 +23454,11 @@
                     <span class="flex items-center gap-2 font-black text-white">
                       <span>🔍</span> ${isEmergingObserved ? 'FinMind 實績財務 ＆ -10% 紀律防線' : '孫慶龍五大價位 &amp; 遠期預估'}
                     </span>
-                    <span id="${cardId}-arrow" class="text-cyan-300 text-sm font-black">▼ 點擊展開</span>
+                    <span id="${cardId}-arrow" class="text-cyan-300 text-sm font-black">${_expandedSymbols.has(normSym(r.symbol)) ? '▲ 點擊收合' : '▼ 點擊展開'}</span>
                   </button>
 
                   <!-- 抽屜隱藏區 -->
-                  <div id="${cardId}-details" class="hidden pt-3 border-t-2 border-slate-800 space-y-3.5 text-sm font-mono">
+                  <div id="${cardId}-details" data-card-symbol="${safeSym}" class="${_expandedSymbols.has(normSym(r.symbol)) ? '' : 'hidden '}pt-3 border-t-2 border-slate-800 space-y-3.5 text-sm font-mono">
                     ${drawerContentHtml}
 
                     <!-- 操盤行動指令 (分層指引：空手 vs 持倉) -->
@@ -23324,19 +23480,23 @@
         }
       }
 
-      // 卡片折疊切換
+      // 卡片折疊切換（同步記憶展開狀態，返回時不自動收合）
       window.toggleCardDetails = function(cardId) {
         const details = document.getElementById(`${cardId}-details`);
         const arrow = document.getElementById(`${cardId}-arrow`);
         if (!details) return;
+        const cardSym = normSym(details.getAttribute("data-card-symbol"));
         const isHidden = details.classList.contains("hidden");
         if (isHidden) {
           details.classList.remove("hidden");
           if (arrow) arrow.textContent = "▲ 點擊收合";
+          if (cardSym) _expandedSymbols.add(cardSym);
         } else {
           details.classList.add("hidden");
           if (arrow) arrow.textContent = "▼ 點擊展開";
+          if (cardSym) _expandedSymbols.delete(cardSym);
         }
+        if (!_isRestoringNavState) saveNavStateToStorage();
       };
 
       // v3.0 65歲長者大字體常駐生效
@@ -23412,6 +23572,9 @@
         }
 
         renderWatchlist(filtered);
+        if (!_isRestoringNavState) {
+          saveNavStateToStorage();
+        }
       };
 
       // 計算各類數量並更新篩選按鈕文字
@@ -25046,13 +25209,96 @@
         }
       }
 
+      function restoreSavedNavState() {
+        try {
+          const fromGuideFlag = sessionStorage.getItem(FROM_GUIDE_KEY) === '1';
+          if (fromGuideFlag) sessionStorage.removeItem(FROM_GUIDE_KEY);
+          const raw = sessionStorage.getItem(NAV_STATE_KEY);
+          if (!raw) return false;
+          const saved = JSON.parse(raw);
+          const navEntries = (typeof performance !== 'undefined' && performance.getEntriesByType) ? performance.getEntriesByType('navigation') : [];
+          const navType = navEntries.length > 0 ? navEntries[0].type : '';
+          const isBackForward = navType === 'back_forward';
+          const cameFromGuide = fromGuideFlag || (Boolean(saved.leftViaGuide) && String(document.referrer || '').includes('guide.html')) || isBackForward;
+          if (!cameFromGuide) return false;
+          if (saved.savedAt && (Date.now() - Number(saved.savedAt)) > 12 * 3600 * 1000) return false;
+
+          _isRestoringNavState = true;
+          if (saved.tabScroll && typeof saved.tabScroll === 'object') {
+            ['home', 'portfolio', 'analysis', 'ai-radar'].forEach(t => {
+              if (saved.tabScroll[t] != null && Number.isFinite(Number(saved.tabScroll[t]))) {
+                _tabScroll[t] = Math.max(0, Math.round(Number(saved.tabScroll[t])));
+              }
+            });
+          }
+          if (saved.coreScrollY != null && Number.isFinite(Number(saved.coreScrollY))) {
+            _coreScrollY = Math.max(0, Math.round(Number(saved.coreScrollY)));
+          }
+          if (Array.isArray(saved.expandedSymbols)) {
+            _expandedSymbols.clear();
+            saved.expandedSymbols.forEach(s => { const ns = normSym(s); if (ns) _expandedSymbols.add(ns); });
+          }
+
+          currentStockGroup = saved.stockGroup === 'group2' ? 'group2' : 'group1';
+          currentFilterType = saved.filterType || 'all';
+          updateGroupTabsUI();
+          updateFilterCounts();
+          window.filterStocks(currentFilterType);
+
+          const targetTab = ['home', 'portfolio', 'analysis', 'ai-radar'].includes(saved.activeTab) ? saved.activeTab : 'home';
+          const targetY = (_tabScroll[targetTab] != null && Number.isFinite(_tabScroll[targetTab])) ? _tabScroll[targetTab] : 0;
+          window.switchTab(targetTab, null, { fromRestore: true, restoreScrollY: targetY });
+
+          const applyPinScroll = () => {
+            document.documentElement.style.scrollBehavior = 'auto';
+            window.scrollTo(0, targetY);
+            updateMobileHomeCoreHighlight(targetY);
+            document.documentElement.style.scrollBehavior = '';
+          };
+          requestAnimationFrame(applyPinScroll);
+          setTimeout(() => {
+            applyPinScroll();
+            _isRestoringNavState = false;
+            saveNavStateToStorage({ leftViaGuide: false, force: true });
+          }, 120);
+          return true;
+        } catch (e) {
+          _isRestoringNavState = false;
+          return false;
+        }
+      }
+
       // 初始化持倉渲染與啟動雲端雙向檢查
       renderUserPortfolio();
       cloudAutoPullOnStartup();
       if (window._pendingTabSwitch && Array.isArray(window._pendingTabSwitch)) {
         const pending = window._pendingTabSwitch;
         window.switchTab(pending[0], pending[1]);
+        _navBooted = true;
+      } else {
+        const restored = restoreSavedNavState();
+        _navBooted = true;
+        if (!restored) {
+          try {
+            const rawExisting = sessionStorage.getItem(NAV_STATE_KEY);
+            if (rawExisting) {
+              const ex = JSON.parse(rawExisting);
+              if (ex.leftViaGuide) {
+                ex.leftViaGuide = false;
+                sessionStorage.setItem(NAV_STATE_KEY, JSON.stringify(ex));
+              }
+            }
+          } catch (e) {}
+        }
       }
+
+      window.addEventListener('pageshow', (evt) => {
+        if (evt && evt.persisted) {
+          try { sessionStorage.removeItem(FROM_GUIDE_KEY); } catch (e) {}
+          updateMobileHomeCoreHighlight();
+          saveNavStateToStorage({ leftViaGuide: false, force: true });
+        }
+      });
     });
   </script>
 </body>
