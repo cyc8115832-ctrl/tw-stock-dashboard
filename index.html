@@ -657,13 +657,13 @@
         </div>
         <div class="flex items-center gap-3">
           <div class="text-right">
-            <span class="text-xs text-slate-400 font-mono block">今日景氣總分</span>
-            <div class="text-3xl md:text-4xl font-black font-mono text-cyan-400" id="heroScoreDisplay">67.0</div>
+            <span class="text-xs text-slate-400 font-mono block" id="heroScoreLabel">🐇 兔子 / 🐢 烏龜</span>
+            <div class="text-2xl md:text-3xl font-black font-mono text-cyan-400 whitespace-nowrap" id="heroScoreDisplay">— / —</div>
           </div>
           <div class="h-10 w-px bg-slate-800"></div>
           <div class="text-right">
             <span class="text-xs text-slate-400 font-mono block">建議整體持股</span>
-            <div class="text-3xl md:text-4xl font-black font-mono text-emerald-400" id="heroStockRatio">75%</div>
+            <div class="text-3xl md:text-4xl font-black font-mono text-emerald-400" id="heroStockRatio">—%</div>
           </div>
         </div>
       </div>
@@ -715,62 +715,62 @@
     <span class="px-3 py-1 rounded-lg bg-purple-500/20 text-purple-200 text-xs font-mono border border-purple-500/30 flex-shrink-0">即時監控中</span>
   </div>
 
-  <!-- 主頁美台三大重點卡 (含日期與變化球，附跳轉分析頁按鈕) -->
+  <!-- 主頁三線分工 v4 三大核心卡 (🐇 兔子 / 📈 大盤 / 🐢 烏龜，附跳轉分析頁按鈕) -->
   <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-    <!-- 美國 AI 核心先行線 -->
+    <!-- 🐇 兔子線：美股 AI 日頻油門 -->
     <div class="p-5 rounded-2xl bg-brand-card border border-brand-border space-y-3 relative overflow-hidden">
       <div class="flex items-center justify-between gap-2">
-        <span class="text-xs font-mono text-slate-400 uppercase">美股 AI 核心權重 (55%)</span>
+        <span class="text-xs font-mono text-slate-400">🐇 兔子線｜美股 AI 日頻油門</span>
         <span class="px-2 py-0.5 rounded text-xs font-mono bg-cyan-500/20 text-cyan-300 border border-cyan-500/40" id="cardUsAiDate">-</span>
       </div>
       <div class="flex items-baseline justify-between gap-2">
         <div class="text-xl sm:text-2xl font-black text-white font-mono flex items-center gap-2" id="cardUsAiVal">
-          <span>🔴▲</span><span>輝達/CSP/費半</span>
+          <span>🐇</span><span>— 分</span>
         </div>
-        <span class="text-xs text-[#FF5252] font-bold font-mono" id="cardUsAiStatus">強勢領先</span>
+        <span class="text-xs text-cyan-300 font-bold font-mono" id="cardUsAiStatus">—</span>
       </div>
       <p class="text-xs text-slate-400 leading-relaxed" id="cardUsAiDesc">
-        微軟/Meta/Google/亞馬遜資本支出續增，美股 AI 核心維持多頭擴張，領先台股傳導。
+        追蹤 NVDA、四大 CSP、費半與台積電 ADR，平時決定持股油門（100% / 75% / 50% / 25%）。
       </p>
       <button type="button" onclick="window.switchTab('analysis', 'three-line-v4-panel')" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 active:scale-95 text-cyan-300 text-xs font-bold border border-slate-700 flex items-center justify-center gap-1.5 transition-all">
-        <span>📈 查看先行線走勢圖 ➔</span>
+        <span>📈 查看三線 v4 走勢圖 ➔</span>
       </button>
     </div>
 
-    <!-- 台灣半導體與外資籌碼 -->
+    <!-- 📈 大盤線：加權與月線節奏 -->
     <div class="p-5 rounded-2xl bg-brand-card border border-brand-border space-y-3 relative overflow-hidden">
       <div class="flex items-center justify-between gap-2">
-        <span class="text-xs font-mono text-slate-400 uppercase">台股動能與籌碼確認 (Stage 4)</span>
+        <span class="text-xs font-mono text-slate-400">📈 大盤線｜加權與月線節奏</span>
         <span class="px-2 py-0.5 rounded text-xs font-mono bg-slate-800 text-slate-300 border border-slate-700" id="cardTwChipDate">-</span>
       </div>
       <div class="flex items-baseline justify-between gap-2">
         <div class="text-xl sm:text-2xl font-black text-white font-mono flex items-center gap-2" id="cardTwChipVal">
-          <span>⚪━</span><span>得分 7 / 20</span>
+          <span>📈</span><span>— 點</span>
         </div>
-        <span class="text-xs text-amber-300 font-bold font-mono" id="cardTwChipStatus">高檔整理</span>
+        <span class="text-xs text-amber-300 font-bold font-mono" id="cardTwChipStatus">—</span>
       </div>
       <p class="text-xs text-slate-400 leading-relaxed" id="cardTwChipDesc">
-        追蹤外資期貨避險水位、成交量與個股 CMF 主力資金流向，未見恐慌性撤離。
+        依加權指數與 20MA 月線位置判斷進出節奏，決定是否可加碼或維持警覺。
       </p>
-      <button type="button" onclick="window.switchTab('analysis', 'scorecard-section')" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 active:scale-95 text-cyan-300 text-xs font-bold border border-slate-700 flex items-center justify-center gap-1.5 transition-all">
-        <span>📊 查看 20 項指標明細 ➔</span>
+      <button type="button" onclick="window.switchTab('analysis', 'three-line-v4-panel')" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 active:scale-95 text-cyan-300 text-xs font-bold border border-slate-700 flex items-center justify-center gap-1.5 transition-all">
+        <span>🚦 查看三線動作對照表 ➔</span>
       </button>
     </div>
 
-    <!-- 景氣對策信號與總經 -->
+    <!-- 🐢 烏龜線：景氣與宏觀安全氣囊 -->
     <div class="p-5 rounded-2xl bg-brand-card border border-brand-border space-y-3 relative overflow-hidden">
       <div class="flex items-center justify-between gap-2">
-        <span class="text-xs font-mono text-slate-400 uppercase">總經宏觀與設備擴產</span>
-        <span class="px-2 py-0.5 rounded text-xs font-mono bg-rose-500/20 text-rose-300 border border-rose-500/40" id="cardNdcDate">-</span>
+        <span class="text-xs font-mono text-slate-400">🐢 烏龜線｜景氣安全氣囊</span>
+        <span class="px-2 py-0.5 rounded text-xs font-mono bg-emerald-500/20 text-emerald-300 border border-emerald-500/40" id="cardNdcDate">-</span>
       </div>
       <div class="flex items-baseline justify-between gap-2">
         <div class="text-xl sm:text-2xl font-black text-white font-mono flex items-center gap-2" id="cardNdcVal">
-          <span>🔴▲</span><span>紅燈擴張中</span>
+          <span>🐢</span><span>— 分</span>
         </div>
-        <span class="text-xs text-[#FF5252] font-bold font-mono" id="cardNdcStatus">0 項紅燈風險</span>
+        <span class="text-xs text-emerald-300 font-bold font-mono" id="cardNdcStatus">—</span>
       </div>
       <p class="text-xs text-slate-400 leading-relaxed" id="cardNdcDesc">
-        追蹤半導體設備進口 YoY、外銷訂單、美債 10Y 與 VIX 波動率六大宏觀指標。
+        僅在兔子煞車時決定安全氣囊水位（25% / 15% / 0%），平時不拖累多頭報酬；宏觀六因子即時監控中。
       </p>
       <button type="button" onclick="window.switchTab('analysis', 'macro-risk-section')" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 active:scale-95 text-cyan-300 text-xs font-bold border border-slate-700 flex items-center justify-center gap-1.5 transition-all">
         <span>🔍 查看六因子風險監控 ➔</span>
@@ -2161,7 +2161,7 @@
 
 <script>
     const DASHBOARD_DATA = {
-  "generated_at": "2026-11-13T12:44:46.470699+08:00",
+  "generated_at": "2026-11-13T12:46:05.351928+08:00",
   "build_errors": [],
   "latest_signal": {
     "date": "2026-10",
@@ -2907,9 +2907,9 @@
       ]
     },
     "rabbit": {
-      "score": 17.8,
+      "score": 17.7,
       "state": "煞車",
-      "delta_1d": 2.1,
+      "delta_1d": 2.0,
       "dir_5d": "↗",
       "us_source_date": "2026-11-12"
     },
@@ -2919,10 +2919,10 @@
       "latest_ym": "2026-10"
     },
     "market": {
-      "close": 43809.89,
+      "close": 43809.2,
       "etf_0050_close": null,
-      "ma20": 44641.14,
-      "ma60": 46217.43,
+      "ma20": 44641.1,
+      "ma60": 46217.42,
       "above_ma20": false,
       "state": "整理",
       "pace": "防守"
@@ -2941,11 +2941,11 @@
       "start_date": "2026-08-17",
       "end_date": "2026-11-13",
       "rabbit_start": 47.7,
-      "rabbit_end": 17.8,
+      "rabbit_end": 17.7,
       "tortoise_start": 85.9,
       "tortoise_end": 80.8,
-      "twii_ret_3m_pct": -4.46,
-      "chart_meaning": "近三個月 🐇 兔子由 48 分滑落至 18 分（煞車）；🐢 烏龜由 86 分轉緩至 81 分（趨緩）；📈 大盤近 3 月漲跌 -4.5%（收 43,810 點，整理／仍在月線下）。",
+      "twii_ret_3m_pct": -4.47,
+      "chart_meaning": "近三個月 🐇 兔子由 48 分滑落至 18 分（煞車）；🐢 烏龜由 86 分轉緩至 81 分（趨緩）；📈 大盤近 3 月漲跌 -4.5%（收 43,809 點，整理／仍在月線下）。",
       "investment_stance": "⛔ 警覺減倉（建議持股 15%）：兔子煞車加上烏龜「趨緩」，雙弱警戒降到 15% 輕倉防補跌。"
     },
     "action_table": [
@@ -12055,11 +12055,11 @@
       },
       {
         "date": "2026-11-13",
-        "twii": 43809.89,
+        "twii": 43809.2,
         "etf_0050": null,
-        "twii_ma20": 44641.14,
-        "twii_ma60": 46217.43,
-        "rabbit": 17.8,
+        "twii_ma20": 44641.1,
+        "twii_ma60": 46217.42,
+        "rabbit": 17.7,
         "rabbit_state": "煞車",
         "tortoise": 80.8,
         "tortoise_state": "趨緩",
@@ -15564,9 +15564,7 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
-        "月營收原始來源或官方回應雜湊缺漏",
         "季報原始來源雜湊缺漏",
-        "月營收尚未完成官方交叉核對",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -15586,9 +15584,7 @@
       "model_sun_status": "🟢 特價好球帶",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
-        "月營收原始來源或官方回應雜湊缺漏",
         "季報原始來源雜湊缺漏",
-        "月營收尚未完成官方交叉核對",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -16599,9 +16595,7 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
-        "月營收原始來源或官方回應雜湊缺漏",
         "季報原始來源雜湊缺漏",
-        "月營收尚未完成官方交叉核對",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -16621,9 +16615,7 @@
       "model_sun_status": "🟢 便宜低估區",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
-        "月營收原始來源或官方回應雜湊缺漏",
         "季報原始來源雜湊缺漏",
-        "月營收尚未完成官方交叉核對",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -17614,9 +17606,7 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
-        "月營收原始來源或官方回應雜湊缺漏",
         "季報原始來源雜湊缺漏",
-        "月營收尚未完成官方交叉核對",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -17636,9 +17626,7 @@
       "model_sun_status": "🟢 便宜低估區",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
-        "月營收原始來源或官方回應雜湊缺漏",
         "季報原始來源雜湊缺漏",
-        "月營收尚未完成官方交叉核對",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -18386,9 +18374,7 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
-        "月營收原始來源或官方回應雜湊缺漏",
         "季報原始來源雜湊缺漏",
-        "月營收尚未完成官方交叉核對",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -18408,9 +18394,7 @@
       "model_sun_status": "🟢 便宜低估區",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
-        "月營收原始來源或官方回應雜湊缺漏",
         "季報原始來源雜湊缺漏",
-        "月營收尚未完成官方交叉核對",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -19965,9 +19949,7 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
-        "月營收原始來源或官方回應雜湊缺漏",
         "季報原始來源雜湊缺漏",
-        "月營收尚未完成官方交叉核對",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -19987,9 +19969,7 @@
       "model_sun_status": "⚪ 合理價值區",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
-        "月營收原始來源或官方回應雜湊缺漏",
         "季報原始來源雜湊缺漏",
-        "月營收尚未完成官方交叉核對",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -20511,9 +20491,7 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
-        "月營收原始來源或官方回應雜湊缺漏",
         "季報原始來源雜湊缺漏",
-        "月營收尚未完成官方交叉核對",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -20533,9 +20511,7 @@
       "model_sun_status": "🔴 瘋狂過熱區",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
-        "月營收原始來源或官方回應雜湊缺漏",
         "季報原始來源雜湊缺漏",
-        "月營收尚未完成官方交叉核對",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -24979,9 +24955,7 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
-        "月營收原始來源或官方回應雜湊缺漏",
         "季報原始來源雜湊缺漏",
-        "月營收尚未完成官方交叉核對",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -25001,9 +24975,7 @@
       "model_sun_status": "🟢 特價好球帶",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
-        "月營收原始來源或官方回應雜湊缺漏",
         "季報原始來源雜湊缺漏",
-        "月營收尚未完成官方交叉核對",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -26014,9 +25986,7 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
-        "月營收原始來源或官方回應雜湊缺漏",
         "季報原始來源雜湊缺漏",
-        "月營收尚未完成官方交叉核對",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -26036,9 +26006,7 @@
       "model_sun_status": "🟢 便宜低估區",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
-        "月營收原始來源或官方回應雜湊缺漏",
         "季報原始來源雜湊缺漏",
-        "月營收尚未完成官方交叉核對",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -27029,9 +26997,7 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
-        "月營收原始來源或官方回應雜湊缺漏",
         "季報原始來源雜湊缺漏",
-        "月營收尚未完成官方交叉核對",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -27051,9 +27017,7 @@
       "model_sun_status": "🟢 便宜低估區",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
-        "月營收原始來源或官方回應雜湊缺漏",
         "季報原始來源雜湊缺漏",
-        "月營收尚未完成官方交叉核對",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -27801,9 +27765,7 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
-        "月營收原始來源或官方回應雜湊缺漏",
         "季報原始來源雜湊缺漏",
-        "月營收尚未完成官方交叉核對",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -27823,9 +27785,7 @@
       "model_sun_status": "🟢 便宜低估區",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
-        "月營收原始來源或官方回應雜湊缺漏",
         "季報原始來源雜湊缺漏",
-        "月營收尚未完成官方交叉核對",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -29380,9 +29340,7 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
-        "月營收原始來源或官方回應雜湊缺漏",
         "季報原始來源雜湊缺漏",
-        "月營收尚未完成官方交叉核對",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -29402,9 +29360,7 @@
       "model_sun_status": "⚪ 合理價值區",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
-        "月營收原始來源或官方回應雜湊缺漏",
         "季報原始來源雜湊缺漏",
-        "月營收尚未完成官方交叉核對",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -29926,9 +29882,7 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
-        "月營收原始來源或官方回應雜湊缺漏",
         "季報原始來源雜湊缺漏",
-        "月營收尚未完成官方交叉核對",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -29948,9 +29902,7 @@
       "model_sun_status": "🔴 瘋狂過熱區",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
-        "月營收原始來源或官方回應雜湊缺漏",
         "季報原始來源雜湊缺漏",
-        "月營收尚未完成官方交叉核對",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -30041,7 +29993,7 @@
       },
       {
         "name": "美元/台幣匯率",
-        "value": "32.83",
+        "value": "32.85",
         "light": "yellow",
         "date": "2026-11-13",
         "source": "Yahoo Finance (USDTWD=X)",
@@ -30598,7 +30550,7 @@
   "release_readiness": {
     "schema_version": "evidence-gates-v2",
     "input_sha256": {
-      "stock_revenue_live.json": "7303708d787671a1934f8dfbf4ead803b8289a0e27aa8666d7866b893e0126ac",
+      "stock_revenue_live.json": "96e27b7771e98dd5e29ed9c2deb91173b36bcddf0ece844314b5f8249d6fc723",
       "stock_quarterly_live.json": "96e67facdcc3407347873d2dd90baaec54b660ad759acd607fc79e08c3e3c81d",
       "stock_price_evidence.json": "fa31f144ec70b0813185ef165dfa9dae8698c47ad6598f40fadb742ac5973b1b",
       "aligned_monthly.parquet": "e1a24e7d0a4ccb21db50bf0524395ad78502c60f7539618472a6419c16bda111",
@@ -30769,8 +30721,8 @@
       "歷史可得資料、股息／股數事件、歷史股池及樣本外驗收未齊"
     ],
     "delivery_scope": "離線與模擬管道；真正送達另行確認",
-    "snapshot_id": "2a7d274fcdb26e611e5249e20f2569ea2365ee9fc0746460cfa6c42b086b4cab",
-    "checked_at": "2026-11-13T12:44:46.450871+08:00"
+    "snapshot_id": "8b42258f05a3941b574ab2b6585ed579525c520bf37cd5b4de3ed4ebb577e784",
+    "checked_at": "2026-11-13T12:46:05.327044+08:00"
   },
   "input_sha256": {
     "adaptive_scorecard_history.csv": "bd47d79e51e8c05593cd7e93a7f4a499617ee473ca04795849c2b3e855ef8f3d",
@@ -30785,8 +30737,8 @@
     "export_orders_monthly.parquet": "73d7e8d3c3abd17e1a198ad42096f5c0791f757838042864612be4c19ef1d33b",
     "last_dispatch.json": "11bb982851f89cdaa293e058aa6b3183901b70018ddfeb179df2706faf3fa6e0",
     "latest_signal.json": "2068f7a83227b567f90c13f14bea58ccce2f7e29b08ef549132ccf1a804b4bbc",
-    "market_indicators.csv": "f6ae41697069111048038fd6435464811d4b62da191a4b214b1647ca392ea542",
-    "market_indicators.parquet": "cf93112a859de87020511676872b506a81fbed803e7b9c0eaaa7af845b643db6",
+    "market_indicators.csv": "d5a08969d4676f9052d42c935a73c85393bd17adef50737f5e1e7ce6b7392816",
+    "market_indicators.parquet": "daa59df918cab61edf059bd54223dbced96a19c27faee4e215e276b93a8083b4",
     "market_revenue_monthly.parquet": "2281fca3a314944a7e798febab62a4994080f31d4d0ba458f2d318ed45fc66e2",
     "ndc_indicators.parquet": "8b8274d490d8780f37813c0a0c652d54886cae2caea2fc0801650066b3b7d8d4",
     "pmi_monthly.parquet": "6b8e10ba8964684f23566f4cf86a4c4990ac7152c0b306955998b29a3e05e201",
@@ -30799,8 +30751,8 @@
     "stock_fundamentals_emerging.json": "6d358b7b1d7c1583edc90c5c5f1f9a2f39b4627cb954ce53b26b1781382f477f",
     "stock_price_evidence.json": "fa31f144ec70b0813185ef165dfa9dae8698c47ad6598f40fadb742ac5973b1b",
     "stock_quarterly_live.json": "96e67facdcc3407347873d2dd90baaec54b660ad759acd607fc79e08c3e3c81d",
-    "stock_revenue_emerging.json": "e8b72f921827383d6a2aa955c0b11101eebe04b2fb450b5c2c97dddc3b5e4ce1",
-    "stock_revenue_live.json": "7303708d787671a1934f8dfbf4ead803b8289a0e27aa8666d7866b893e0126ac",
+    "stock_revenue_emerging.json": "b99e405120a6a05e27ca306ac7c985e17415539f508b94ff73060f86e4258eb6",
+    "stock_revenue_live.json": "96e27b7771e98dd5e29ed9c2deb91173b36bcddf0ece844314b5f8249d6fc723",
     "taifex_txf_daily.parquet": "c0496124a5003ded7d8df78c164600050fb52d23285d0e0405aa4102bb540bd5",
     "taifex_txf_institutional.parquet": "e8ee946ae3bc41f78ed1d0aac57ab3329e7ad58f9d0720ba5c2383648d4659ff",
     "tw_stocks_daily.parquet": "055ef54680ea49a6ad2fe2547cf164494b899a9e23f5c43dd525917bd7ec1316",
@@ -30816,10 +30768,10 @@
     "tw_stocks_low.parquet": "df82c004d0b37642e5bc993d031f75b81143a44c8c0fa5ef6d396178e0391d1d",
     "tw_stocks_volume.parquet": "713e4d4c7a5cdf46eafcc733e37e15a5921202b5ecdab710f1a359cc9618ddc2",
     "twse_market.parquet": "56de08c26aa7dc850c28545c3e6da206c728fa26a4d9eab3f3dd3fd60c5393f2",
-    "implementation_sha256": "ec500e2d58e38b2f77d510d7b7265a1a7883467964d1b2ddd71718b1e84b764f"
+    "implementation_sha256": "090643bc9f0120141e2b3763892908f7c282c6ed9786fd2dc3b3d5a1e70b3ee0"
   },
   "snapshot_schema": "dashboard-snapshot-v1",
-  "snapshot_id": "ac1a382f85eb367fb72c5845ee5303e6eecc5d67e18f2db11be7e02743220a3c"
+  "snapshot_id": "f51675d9b257b93c822173c91d4f7c9f9ffc7cbb0a857a6807170f8e0d39ca86"
 };
   </script>
 <!-- 互動圖表與數據渲染腳本 -->
@@ -31511,61 +31463,46 @@
           }
         }
 
-        // 綁定 Tab 1 美台三大重點摘要卡數據與最新日期
-        const nvdaDateMatch = String(capex.nvda_ret_60d || '').match(/\d{4}-\d{2}-\d{2}/);
-        set('cardUsAiDate', nvdaDateMatch ? nvdaDateMatch[0] : (sig.date || latestHist.date || '-'));
-        const usValEl = document.getElementById('cardUsAiVal');
-        if (usValEl) {
-          const s1Pct = (s1 != null && s1Max) ? (s1 / s1Max) : 0.7;
-          const usBall = s1Pct >= 0.7 ? '🔴▲' : (s1Pct >= 0.45 ? '⚪━' : '🔵▼');
-          const usBallCls = s1Pct >= 0.7 ? 'text-[#FF5252]' : (s1Pct >= 0.45 ? 'text-[#CBD5E1]' : 'text-[#00E5FF]');
-          usValEl.innerHTML = `<span class="${usBallCls}">${usBall}</span><span>Stage 1: ${qualified ? num(s1) + '/' + s1Max : 'N/A'}</span>`;
-          set('cardUsAiStatus', s1Pct >= 0.7 ? '強勢領先' : (s1Pct >= 0.45 ? '溫和擴張' : '動能轉弱'));
-        }
-        if (capex.nvda_ret_60d || capex.csp_above_ma60) {
-          set('cardUsAiDesc', `NVDA 60日報酬 ${capex.nvda_ret_60d || '-'} ｜ 四大 CSP 站上季線比例 ${capex.csp_above_ma60 || '-'}，持續領先台股傳導。`);
-        }
-
-        const twLatestDate = (rawCoreList[0] && rawCoreList[0].price_asof) || sig.date || '-';
-        set('cardTwChipDate', twLatestDate);
-        const twValEl = document.getElementById('cardTwChipVal');
-        if (twValEl) {
-          const s4Ratio = s4 != null ? (s4 / 20) : 0.35;
-          const twBall = s4Ratio >= 0.6 ? '🔴▲' : (s4Ratio >= 0.3 ? '⚪━' : '🔵▼');
-          const twBallCls = s4Ratio >= 0.6 ? 'text-[#FF5252]' : (s4Ratio >= 0.3 ? 'text-[#CBD5E1]' : 'text-[#00E5FF]');
-          twValEl.innerHTML = `<span class="${twBallCls}">${twBall}</span><span>得分 ${qualified ? num(s4) : 'N/A'} / 20</span>`;
-          set('cardTwChipStatus', s4Ratio >= 0.6 ? '積極確認' : (s4Ratio >= 0.3 ? '高檔整理' : '保守防禦'));
-        }
-
-        const macroDate = (macro.items && macro.items[0] && macro.items[0].date) || latestHist.date || '-';
-        set('cardNdcDate', macroDate);
-        const ndcValEl = document.getElementById('cardNdcVal');
-        if (ndcValEl) {
-          const redN = macro.red_count != null ? macro.red_count : 0;
-          const ndcBall = redN >= 2 ? '🔵▼' : '🔴▲';
-          const ndcCls = redN >= 2 ? 'text-[#00E5FF]' : 'text-[#FF5252]';
-          ndcValEl.innerHTML = `<span class="${ndcCls}">${ndcBall}</span><span>Stage 2: ${qualified ? num(s2) + '/' + s2Max : 'N/A'}</span>`;
-          const ndcStatusEl = document.getElementById('cardNdcStatus');
-          if (ndcStatusEl) {
-            if (macro.red_count == null) {
-              ndcStatusEl.textContent = '風險來源待核實';
-              ndcStatusEl.className = 'text-xs text-rose-300 font-bold font-mono';
-            } else if (redN === 0) {
-              ndcStatusEl.textContent = '🟢 0 項紅燈風險(安全)';
-              ndcStatusEl.className = 'text-xs text-emerald-300 font-bold font-mono';
-            } else if (redN === 1) {
-              ndcStatusEl.textContent = '🟡 1 項紅燈風險(警戒)';
-              ndcStatusEl.className = 'text-xs text-amber-300 font-bold font-mono';
-            } else {
-              ndcStatusEl.textContent = `🔴 ${redN} 項緊縮紅燈風險`;
-              ndcStatusEl.className = 'text-xs text-[#FF5252] font-bold font-mono';
-            }
-          } else {
-            set('cardNdcStatus', `${redN} 項紅燈風險`);
+        // 綁定 Tab 1 三線分工 v4 三大核心卡數據與最新日期（不再顯示舊版月頻 Stage 分數）
+        const v4Cards = data.three_line_v4 || null;
+        if (v4Cards && v4Cards.rabbit && v4Cards.market && v4Cards.tortoise) {
+          const rScore = Number(v4Cards.rabbit.score ?? 0);
+          const tScore = Number(v4Cards.tortoise.score ?? 0);
+          const mClose = Number(v4Cards.market.close ?? 0);
+          set('cardUsAiDate', v4Cards.rabbit.us_source_date || v4Cards.as_of_date || '-');
+          const usValEl = document.getElementById('cardUsAiVal');
+          if (usValEl) {
+            const rCls = rScore >= 50 ? 'text-emerald-300' : (rScore >= 30 ? 'text-amber-300' : 'text-[#00E5FF]');
+            usValEl.innerHTML = `<span>🐇</span><span class="${rCls}">${rScore.toFixed(1)} 分</span>`;
+            set('cardUsAiStatus', v4Cards.rabbit.state || '—');
           }
-        }
-        if (capex.semi_import_yoy || macro.regime_summary) {
-          set('cardNdcDesc', `半導體設備進口 ${capex.semi_import_yoy || '-'} ｜ ${macro.regime_summary || ''}`);
+          set('cardUsAiDesc', `${capex.nvda_ret_60d ? 'NVDA 60日報酬 ' + capex.nvda_ret_60d + ' ｜ CSP 站上季線 ' + (capex.csp_above_ma60 || '-') + '。' : ''}平時決定持股油門（100/75/50/25%）。`);
+
+          set('cardTwChipDate', v4Cards.as_of_date || '-');
+          const twValEl = document.getElementById('cardTwChipVal');
+          if (twValEl) {
+            const mCls = v4Cards.market.above_ma20 ? 'text-emerald-300' : 'text-amber-300';
+            twValEl.innerHTML = `<span>📈</span><span class="${mCls}">${mClose.toLocaleString('en-US', { maximumFractionDigits: 0 })} 點</span>`;
+            set('cardTwChipStatus', v4Cards.market.state || '—');
+          }
+          set('cardTwChipDesc', `${v4Cards.market.pace || ''}（${v4Cards.market.above_ma20 ? '站上 20MA 月線' : '位於 20MA 月線下'}）｜0050 收盤 ${v4Cards.market.etf_0050_close ?? '-'} 元。`);
+
+          set('cardNdcDate', v4Cards.tortoise.latest_ym || '-');
+          const ndcValEl = document.getElementById('cardNdcVal');
+          if (ndcValEl) {
+            const tCls = tScore >= 50 ? 'text-emerald-300' : (tScore >= 30 ? 'text-amber-300' : 'text-rose-400');
+            ndcValEl.innerHTML = `<span>🐢</span><span class="${tCls}">${tScore.toFixed(1)} 分</span>`;
+            const redN = macro.red_count != null ? macro.red_count : 0;
+            const ndcStatusEl = document.getElementById('cardNdcStatus');
+            if (ndcStatusEl) {
+              ndcStatusEl.textContent = `${v4Cards.tortoise.state || '—'}｜${redN} 項紅燈`;
+              ndcStatusEl.className = redN === 0 ? 'text-xs text-emerald-300 font-bold font-mono' : (redN === 1 ? 'text-xs text-amber-300 font-bold font-mono' : 'text-xs text-[#FF5252] font-bold font-mono');
+            }
+          }
+          set('cardNdcDesc', `僅在兔子煞車時決定安全氣囊（25% / 15% / 0%），平時不拖累報酬${capex.semi_import_yoy ? '｜設備進口 ' + capex.semi_import_yoy : ''}。`);
+        } else {
+          const nvdaDateMatch = String(capex.nvda_ret_60d || '').match(/\d{4}-\d{2}-\d{2}/);
+          set('cardUsAiDate', nvdaDateMatch ? nvdaDateMatch[0] : (sig.date || latestHist.date || '-'));
         }
       } catch (err) {
         console.warn('[Tab 1 Summary Cards Bind]', err);
@@ -33431,19 +33368,41 @@
       }
 
       // ==========================================
-      // v3.0 Tab 1: Hero Banner 與重點卡數據綁定 (使用既有 sig 變數，不重複宣告)
+      // v4.0 Tab 1: Hero Banner 與三線分工 v4 數據綁定（取代舊版月頻 32 分 / 0%）
       // ==========================================
       try {
-        if (document.getElementById('heroChangeBall')) document.getElementById('heroChangeBall').textContent = sig.change_ball || '🔴▲';
-        if (document.getElementById('heroQuadrantTitle')) document.getElementById('heroQuadrantTitle').textContent = sig.quadrant_title || (qualified ? (sig.state_name || 'Stage 2 景氣確認 · 震盪蓄勢') : '資料待核實');
-        if (document.getElementById('heroDateAsOf')) document.getElementById('heroDateAsOf').textContent = sig.date || latestHist.date || 'N/A';
-        if (document.getElementById('heroTrendForecast')) document.getElementById('heroTrendForecast').textContent = sig.future_trend_forecast || '先行指標與美股 AI 核心權重持續追蹤中。';
-        if (document.getElementById('heroScoreDisplay')) document.getElementById('heroScoreDisplay').textContent = qualified && sig.total_score != null ? formatCleanNum(sig.total_score) : (sig.total_score != null ? formatCleanNum(sig.total_score) : 'N/A');
-        if (document.getElementById('heroStockRatio')) document.getElementById('heroStockRatio').textContent = qualified ? (sig.target_position || 'N/A') : '待核實';
-        if (document.getElementById('heroHolderAdvice')) document.getElementById('heroHolderAdvice').textContent = sig.dual_axis_holder_advice || '不要不三問就賣出！賣出前先對【賣出三問】：①漲破 🟠昂貴／🟣⚠️過熱 分批停利、②虧損亮 🔵▼ 嚴禁攤平，反彈不回月線或破 -10% 停損先減碼、③健康未破月線則續抱不亂賣。';
-        if (document.getElementById('heroBuyerAdvice')) document.getElementById('heroBuyerAdvice').textContent = sig.dual_axis_buyer_advice || '不要不三問就買進！買進前必對【買進三問】：①價格打折了嗎（左邊有『🟢特價/便宜』或『合理偏低』）？②股價止跌站穩月線了嗎（亮『🔴▲轉強』，不要買破月線的『🔵▼轉弱』或『🟡↗破線反彈』）？③大戶沒在偷賣嗎（無『⚠️價量營收背離』與『⚠️資金流出』）？少一問都不接刀！';
-        if (document.getElementById('heroMindsetOneLiner')) document.getElementById('heroMindsetOneLiner').textContent = sig.daily_mindset_one_liner || '大盤景氣定持股總水位，個股好球帶定買進出手點；高分順勢抱牢，低分冷靜撿寶。';
-        if (document.getElementById('heroRecentSummary')) document.getElementById('heroRecentSummary').textContent = sig.recent_days_summary || '🗓️ 近數日狀態：指標平穩無惡化，維持景氣確認水位';
+        const v4Hero = data.three_line_v4 || null;
+        if (v4Hero && v4Hero.action && v4Hero.rabbit && v4Hero.tortoise && v4Hero.market) {
+          const act = v4Hero.action;
+          const rScore = Number(v4Hero.rabbit.score ?? 0);
+          const tScore = Number(v4Hero.tortoise.score ?? 0);
+          const mClose = Number(v4Hero.market.close ?? 0);
+          const badgeParts = String(act.badge || '🚦 三線分工').split(' ');
+          const badgeIcon = badgeParts[0] || '🚦';
+          const d1 = Number(v4Hero.rabbit.delta_1d ?? 0);
+          const d1Str = `${d1 >= 0 ? '+' : ''}${d1.toFixed(1)}`;
+          if (document.getElementById('heroChangeBall')) document.getElementById('heroChangeBall').textContent = badgeIcon;
+          if (document.getElementById('heroQuadrantTitle')) document.getElementById('heroQuadrantTitle').textContent = `${act.badge || '三線分工 v4'}（建議持股 ${act.actual_target_pct ?? '—'}%）`;
+          if (document.getElementById('heroDateAsOf')) document.getElementById('heroDateAsOf').textContent = v4Hero.as_of_date || 'N/A';
+          if (document.getElementById('heroTrendForecast')) document.getElementById('heroTrendForecast').textContent = `🐇 兔子定油門 ${rScore.toFixed(1)}（${v4Hero.rabbit.state || '—'}） × 📈 大盤 ${mClose.toLocaleString('en-US', {maximumFractionDigits: 0})}（${v4Hero.market.pace || '—'}） × 🐢 烏龜氣囊 ${tScore.toFixed(1)}（${v4Hero.tortoise.state || '—'}）｜${act.short_rule || ''}；${act.tortoise_note || ''}`;
+          if (document.getElementById('heroScoreDisplay')) document.getElementById('heroScoreDisplay').textContent = `${rScore.toFixed(1)} / ${tScore.toFixed(1)}`;
+          if (document.getElementById('heroStockRatio')) document.getElementById('heroStockRatio').textContent = `${act.actual_target_pct ?? '—'}%`;
+          if (document.getElementById('heroHolderAdvice')) document.getElementById('heroHolderAdvice').textContent = `依三線分工 v4 今日建議總水位 ${act.actual_target_pct ?? '—'}%（${act.badge || '—'}）。不要不三問就賣出！賣出前先對【賣出三問】：①漲破 🟠昂貴／🟣⚠️過熱 分批停利、②虧損跌破月線轉 🔵▼ 或撞 -10% 停損果斷減碼（嚴禁攤平）、③基本面強且站穩月線則依總水位控管不盲砍。`;
+          if (document.getElementById('heroBuyerAdvice')) document.getElementById('heroBuyerAdvice').textContent = '不要不三問就買進！買進前必對【買進三問】：①價格打折了嗎（左邊有『🟡💎 好球帶』或『合理偏低』）？②股價止跌站穩月線了嗎（亮『🔴▲轉強』，不要買破月線的『🔵▼轉弱』或『🟡↗破線反彈』）？③大戶沒在偷賣嗎（無『⚠️價量營收背離』與『⚠️資金流出』）？少一問都不接刀！';
+          if (document.getElementById('heroMindsetOneLiner')) document.getElementById('heroMindsetOneLiner').textContent = (v4Hero.three_month_summary && v4Hero.three_month_summary.investment_stance) || '🐇 兔子定平時油門、📈 大盤定進出節奏、🐢 烏龜僅在兔子煞車時當安全氣囊；個股嚴守買進三問與賣出三問。';
+          if (document.getElementById('heroRecentSummary')) document.getElementById('heroRecentSummary').textContent = `🐇 ${v4Hero.rabbit.state || '—'}（1日 ${d1Str}）｜📈 ${v4Hero.market.above_ma20 ? '站上20MA' : '20MA下'}｜🐢 ${v4Hero.tortoise.latest_ym || '—'}`;
+        } else {
+          if (document.getElementById('heroChangeBall')) document.getElementById('heroChangeBall').textContent = sig.change_ball || '🔴▲';
+          if (document.getElementById('heroQuadrantTitle')) document.getElementById('heroQuadrantTitle').textContent = sig.quadrant_title || (qualified ? (sig.state_name || 'Stage 2 景氣確認 · 震盪蓄勢') : '資料待核實');
+          if (document.getElementById('heroDateAsOf')) document.getElementById('heroDateAsOf').textContent = sig.date || latestHist.date || 'N/A';
+          if (document.getElementById('heroTrendForecast')) document.getElementById('heroTrendForecast').textContent = sig.future_trend_forecast || '先行指標與美股 AI 核心權重持續追蹤中。';
+          if (document.getElementById('heroScoreDisplay')) document.getElementById('heroScoreDisplay').textContent = qualified && sig.total_score != null ? formatCleanNum(sig.total_score) : (sig.total_score != null ? formatCleanNum(sig.total_score) : 'N/A');
+          if (document.getElementById('heroStockRatio')) document.getElementById('heroStockRatio').textContent = qualified ? (sig.target_position || 'N/A') : '待核實';
+          if (document.getElementById('heroHolderAdvice')) document.getElementById('heroHolderAdvice').textContent = sig.dual_axis_holder_advice || '不要不三問就賣出！賣出前先對【賣出三問】：①漲破 🟠昂貴／🟣⚠️過熱 分批停利、②虧損亮 🔵▼ 嚴禁攤平，反彈不回月線或破 -10% 停損先減碼、③健康未破月線則續抱不亂賣。';
+          if (document.getElementById('heroBuyerAdvice')) document.getElementById('heroBuyerAdvice').textContent = sig.dual_axis_buyer_advice || '不要不三問就買進！買進前必對【買進三問】：①價格打折了嗎（左邊有『🟢特價/便宜』或『合理偏低』）？②股價止跌站穩月線了嗎（亮『🔴▲轉強』，不要買破月線的『🔵▼轉弱』或『🟡↗破線反彈』）？③大戶沒在偷賣嗎（無『⚠️價量營收背離』與『⚠️資金流出』）？少一問都不接刀！';
+          if (document.getElementById('heroMindsetOneLiner')) document.getElementById('heroMindsetOneLiner').textContent = sig.daily_mindset_one_liner || '大盤景氣定持股總水位，個股好球帶定買進出手點；高分順勢抱牢，低分冷靜撿寶。';
+          if (document.getElementById('heroRecentSummary')) document.getElementById('heroRecentSummary').textContent = sig.recent_days_summary || '🗓️ 近數日狀態：指標平穩無惡化，維持景氣確認水位';
+        }
         if (document.getElementById('eventCalendarText') && sig.event_calendar_banner) document.getElementById('eventCalendarText').textContent = sig.event_calendar_banner;
       } catch (err) {
         console.warn('[Hero Banner Bind]', err);
