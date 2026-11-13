@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-13T18:11:23.698695+08:00",
+  "generated_at": "2026-11-13T18:20:59.886380+08:00",
   "build_errors": [],
   "latest_signal": {
     "date": "2026-10",
@@ -27805,7 +27805,7 @@
       },
       {
         "name": "VIX恐慌指數",
-        "value": "18.5",
+        "value": "18.4",
         "light": "green",
         "date": "2026-11-13",
         "source": "CBOE (^VIX)",
@@ -27814,7 +27814,7 @@
       },
       {
         "name": "美元/台幣匯率",
-        "value": "32.85",
+        "value": "32.86",
         "light": "yellow",
         "date": "2026-11-13",
         "source": "Yahoo Finance (USDTWD=X)",
@@ -28371,7 +28371,7 @@
   "release_readiness": {
     "schema_version": "evidence-gates-v2",
     "input_sha256": {
-      "stock_revenue_live.json": "6a26e519a2a525285ad31246656881a74ce001110ff69c3923d745f59c5c6280",
+      "stock_revenue_live.json": "6c3a8347eb09e2e13c985bd16dd7c1daa72f37c0b4c916bdf337f79586b61573",
       "stock_quarterly_live.json": "96e67facdcc3407347873d2dd90baaec54b660ad759acd607fc79e08c3e3c81d",
       "stock_price_evidence.json": "fa31f144ec70b0813185ef165dfa9dae8698c47ad6598f40fadb742ac5973b1b",
       "aligned_monthly.parquet": "e1a24e7d0a4ccb21db50bf0524395ad78502c60f7539618472a6419c16bda111",
@@ -28542,8 +28542,8 @@
       "歷史可得資料、股息／股數事件、歷史股池及樣本外驗收未齊"
     ],
     "delivery_scope": "離線與模擬管道；真正送達另行確認",
-    "snapshot_id": "445edd1ffa36774fb3e3b61fc4589b7146fd26db0a2b5ed295969ee099299a5b",
-    "checked_at": "2026-11-13T18:11:23.673906+08:00"
+    "snapshot_id": "da1b1d519cf6ca145b6dfcc5b495b4d1fe03042a2eb90701405b9cd35b7db55e",
+    "checked_at": "2026-11-13T18:20:59.866587+08:00"
   },
   "input_sha256": {
     "adaptive_scorecard_history.csv": "bd47d79e51e8c05593cd7e93a7f4a499617ee473ca04795849c2b3e855ef8f3d",
@@ -28558,8 +28558,8 @@
     "export_orders_monthly.parquet": "73d7e8d3c3abd17e1a198ad42096f5c0791f757838042864612be4c19ef1d33b",
     "last_dispatch.json": "11bb982851f89cdaa293e058aa6b3183901b70018ddfeb179df2706faf3fa6e0",
     "latest_signal.json": "2068f7a83227b567f90c13f14bea58ccce2f7e29b08ef549132ccf1a804b4bbc",
-    "market_indicators.csv": "4f5f8b3c0a8ef4909e1bd33275d33bccadbb180989047841ac7627a618d9c81f",
-    "market_indicators.parquet": "a5732dcf5f5365862987e6d388eb565705f82b0ca75cf86efdbea79a0bd04e99",
+    "market_indicators.csv": "8dbb3c7d17737c3699ce8b864a0bd2ea8584adb5e719d3fbcd78a94bfea3a077",
+    "market_indicators.parquet": "1beb72b10eb9f8784b71d2bc0cd84e8e91d2c172d2548ac8627e3c4b21ab0f50",
     "market_revenue_monthly.parquet": "2281fca3a314944a7e798febab62a4994080f31d4d0ba458f2d318ed45fc66e2",
     "ndc_indicators.parquet": "8b8274d490d8780f37813c0a0c652d54886cae2caea2fc0801650066b3b7d8d4",
     "pmi_monthly.parquet": "6b8e10ba8964684f23566f4cf86a4c4990ac7152c0b306955998b29a3e05e201",
@@ -28572,8 +28572,8 @@
     "stock_fundamentals_emerging.json": "6d358b7b1d7c1583edc90c5c5f1f9a2f39b4627cb954ce53b26b1781382f477f",
     "stock_price_evidence.json": "fa31f144ec70b0813185ef165dfa9dae8698c47ad6598f40fadb742ac5973b1b",
     "stock_quarterly_live.json": "96e67facdcc3407347873d2dd90baaec54b660ad759acd607fc79e08c3e3c81d",
-    "stock_revenue_emerging.json": "0d68c8bc5baad287cfd22523c7d0bdbbfcd0fd3ecc83a1756c93c4806fd46f18",
-    "stock_revenue_live.json": "6a26e519a2a525285ad31246656881a74ce001110ff69c3923d745f59c5c6280",
+    "stock_revenue_emerging.json": "2b97954e4f03ec034b4631b9e20caac84ea936c0ca2fc836567c6342f832c995",
+    "stock_revenue_live.json": "6c3a8347eb09e2e13c985bd16dd7c1daa72f37c0b4c916bdf337f79586b61573",
     "taifex_txf_daily.parquet": "c0496124a5003ded7d8df78c164600050fb52d23285d0e0405aa4102bb540bd5",
     "taifex_txf_institutional.csv": "2822dfae18bba354cefdcb8d69b99df2539555be57458e0667d404e75601d930",
     "taifex_txf_institutional.parquet": "5d3697391ba38b68b023609a6992f7a52c0ea382e6d9f893f6040197e414fc30",
@@ -28590,8 +28590,8 @@
     "tw_stocks_low.parquet": "230ab8980918b0dd22657d2baae7f245714ea265ce6b81eaa62b4c5a65cdc8e9",
     "tw_stocks_volume.parquet": "488b4aa2565ad25a1134033771bec060f646a886c578373eb5cd7f2b03038a8b",
     "twse_market.parquet": "56de08c26aa7dc850c28545c3e6da206c728fa26a4d9eab3f3dd3fd60c5393f2",
-    "implementation_sha256": "979c016c4af31588dc25fadc3586211de150082c40515663da418faefaf66204"
+    "implementation_sha256": "571372542aaa64a98e5426797abb72a06c640ad7e571eaab51fa8fae2c780572"
   },
   "snapshot_schema": "dashboard-snapshot-v1",
-  "snapshot_id": "9cdeeb5ed718752df301e5c396299bcf641b3ace200f3be7e6023eb201208760"
+  "snapshot_id": "f341006dd40b590164e5d507b79dea4ed481d34594f9b3956a615959887595ab"
 }
