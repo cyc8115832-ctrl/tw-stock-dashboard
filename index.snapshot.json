@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-13T12:21:56.367055+08:00",
+  "generated_at": "2026-11-13T12:44:46.470699+08:00",
   "build_errors": [],
   "latest_signal": {
     "date": "2026-10",
@@ -745,7 +745,7 @@
       ]
     },
     "rabbit": {
-      "score": 17.7,
+      "score": 17.8,
       "state": "煞車",
       "delta_1d": 2.1,
       "dir_5d": "↗",
@@ -757,10 +757,10 @@
       "latest_ym": "2026-10"
     },
     "market": {
-      "close": 43564.07,
+      "close": 43809.89,
       "etf_0050_close": null,
-      "ma20": 44628.85,
-      "ma60": 46213.34,
+      "ma20": 44641.14,
+      "ma60": 46217.43,
       "above_ma20": false,
       "state": "整理",
       "pace": "防守"
@@ -779,11 +779,11 @@
       "start_date": "2026-08-17",
       "end_date": "2026-11-13",
       "rabbit_start": 47.7,
-      "rabbit_end": 17.7,
+      "rabbit_end": 17.8,
       "tortoise_start": 85.9,
       "tortoise_end": 80.8,
-      "twii_ret_3m_pct": -5.0,
-      "chart_meaning": "近三個月 🐇 兔子由 48 分滑落至 18 分（煞車）；🐢 烏龜由 86 分轉緩至 81 分（趨緩）；📈 大盤近 3 月漲跌 -5.0%（收 43,564 點，整理／仍在月線下）。",
+      "twii_ret_3m_pct": -4.46,
+      "chart_meaning": "近三個月 🐇 兔子由 48 分滑落至 18 分（煞車）；🐢 烏龜由 86 分轉緩至 81 分（趨緩）；📈 大盤近 3 月漲跌 -4.5%（收 43,810 點，整理／仍在月線下）。",
       "investment_stance": "⛔ 警覺減倉（建議持股 15%）：兔子煞車加上烏龜「趨緩」，雙弱警戒降到 15% 輕倉防補跌。"
     },
     "action_table": [
@@ -9893,11 +9893,11 @@
       },
       {
         "date": "2026-11-13",
-        "twii": 43564.07,
+        "twii": 43809.89,
         "etf_0050": null,
-        "twii_ma20": 44628.85,
-        "twii_ma60": 46213.34,
-        "rabbit": 17.7,
+        "twii_ma20": 44641.14,
+        "twii_ma60": 46217.43,
+        "rabbit": 17.8,
         "rabbit_state": "煞車",
         "tortoise": 80.8,
         "tortoise_state": "趨緩",
@@ -13402,7 +13402,9 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "月營收原始來源或官方回應雜湊缺漏",
         "季報原始來源雜湊缺漏",
+        "月營收尚未完成官方交叉核對",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -13422,7 +13424,9 @@
       "model_sun_status": "🟢 特價好球帶",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "月營收原始來源或官方回應雜湊缺漏",
         "季報原始來源雜湊缺漏",
+        "月營收尚未完成官方交叉核對",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -14433,7 +14437,9 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "月營收原始來源或官方回應雜湊缺漏",
         "季報原始來源雜湊缺漏",
+        "月營收尚未完成官方交叉核對",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -14453,7 +14459,9 @@
       "model_sun_status": "🟢 便宜低估區",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "月營收原始來源或官方回應雜湊缺漏",
         "季報原始來源雜湊缺漏",
+        "月營收尚未完成官方交叉核對",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -15444,7 +15452,9 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "月營收原始來源或官方回應雜湊缺漏",
         "季報原始來源雜湊缺漏",
+        "月營收尚未完成官方交叉核對",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -15464,7 +15474,9 @@
       "model_sun_status": "🟢 便宜低估區",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "月營收原始來源或官方回應雜湊缺漏",
         "季報原始來源雜湊缺漏",
+        "月營收尚未完成官方交叉核對",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -16212,7 +16224,9 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "月營收原始來源或官方回應雜湊缺漏",
         "季報原始來源雜湊缺漏",
+        "月營收尚未完成官方交叉核對",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -16232,7 +16246,9 @@
       "model_sun_status": "🟢 便宜低估區",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "月營收原始來源或官方回應雜湊缺漏",
         "季報原始來源雜湊缺漏",
+        "月營收尚未完成官方交叉核對",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -17787,7 +17803,9 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "月營收原始來源或官方回應雜湊缺漏",
         "季報原始來源雜湊缺漏",
+        "月營收尚未完成官方交叉核對",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -17807,7 +17825,9 @@
       "model_sun_status": "⚪ 合理價值區",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "月營收原始來源或官方回應雜湊缺漏",
         "季報原始來源雜湊缺漏",
+        "月營收尚未完成官方交叉核對",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -18329,7 +18349,9 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "月營收原始來源或官方回應雜湊缺漏",
         "季報原始來源雜湊缺漏",
+        "月營收尚未完成官方交叉核對",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -18349,7 +18371,9 @@
       "model_sun_status": "🔴 瘋狂過熱區",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "月營收原始來源或官方回應雜湊缺漏",
         "季報原始來源雜湊缺漏",
+        "月營收尚未完成官方交叉核對",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -22793,7 +22817,9 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "月營收原始來源或官方回應雜湊缺漏",
         "季報原始來源雜湊缺漏",
+        "月營收尚未完成官方交叉核對",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -22813,7 +22839,9 @@
       "model_sun_status": "🟢 特價好球帶",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "月營收原始來源或官方回應雜湊缺漏",
         "季報原始來源雜湊缺漏",
+        "月營收尚未完成官方交叉核對",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -23824,7 +23852,9 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "月營收原始來源或官方回應雜湊缺漏",
         "季報原始來源雜湊缺漏",
+        "月營收尚未完成官方交叉核對",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -23844,7 +23874,9 @@
       "model_sun_status": "🟢 便宜低估區",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "月營收原始來源或官方回應雜湊缺漏",
         "季報原始來源雜湊缺漏",
+        "月營收尚未完成官方交叉核對",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -24835,7 +24867,9 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "月營收原始來源或官方回應雜湊缺漏",
         "季報原始來源雜湊缺漏",
+        "月營收尚未完成官方交叉核對",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -24855,7 +24889,9 @@
       "model_sun_status": "🟢 便宜低估區",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "月營收原始來源或官方回應雜湊缺漏",
         "季報原始來源雜湊缺漏",
+        "月營收尚未完成官方交叉核對",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -25603,7 +25639,9 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "月營收原始來源或官方回應雜湊缺漏",
         "季報原始來源雜湊缺漏",
+        "月營收尚未完成官方交叉核對",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -25623,7 +25661,9 @@
       "model_sun_status": "🟢 便宜低估區",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "月營收原始來源或官方回應雜湊缺漏",
         "季報原始來源雜湊缺漏",
+        "月營收尚未完成官方交叉核對",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -27178,7 +27218,9 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "月營收原始來源或官方回應雜湊缺漏",
         "季報原始來源雜湊缺漏",
+        "月營收尚未完成官方交叉核對",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -27198,7 +27240,9 @@
       "model_sun_status": "⚪ 合理價值區",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "月營收原始來源或官方回應雜湊缺漏",
         "季報原始來源雜湊缺漏",
+        "月營收尚未完成官方交叉核對",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -27720,7 +27764,9 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "月營收原始來源或官方回應雜湊缺漏",
         "季報原始來源雜湊缺漏",
+        "月營收尚未完成官方交叉核對",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -27740,7 +27786,9 @@
       "model_sun_status": "🔴 瘋狂過熱區",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "月營收原始來源或官方回應雜湊缺漏",
         "季報原始來源雜湊缺漏",
+        "月營收尚未完成官方交叉核對",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -27831,7 +27879,7 @@
       },
       {
         "name": "美元/台幣匯率",
-        "value": "32.84",
+        "value": "32.83",
         "light": "yellow",
         "date": "2026-11-13",
         "source": "Yahoo Finance (USDTWD=X)",
@@ -27840,7 +27888,7 @@
       },
       {
         "name": "全球銅博士期貨",
-        "value": "$6.21/lb",
+        "value": "$6.20/lb",
         "light": "green",
         "date": "2026-11-12",
         "source": "COMEX (HG=F)",
@@ -28388,7 +28436,7 @@
   "release_readiness": {
     "schema_version": "evidence-gates-v2",
     "input_sha256": {
-      "stock_revenue_live.json": "611b976990eb00067d7a3e4b00887d0cb9f81c9c85528dd8f44deb938987ea80",
+      "stock_revenue_live.json": "7303708d787671a1934f8dfbf4ead803b8289a0e27aa8666d7866b893e0126ac",
       "stock_quarterly_live.json": "96e67facdcc3407347873d2dd90baaec54b660ad759acd607fc79e08c3e3c81d",
       "stock_price_evidence.json": "fa31f144ec70b0813185ef165dfa9dae8698c47ad6598f40fadb742ac5973b1b",
       "aligned_monthly.parquet": "e1a24e7d0a4ccb21db50bf0524395ad78502c60f7539618472a6419c16bda111",
@@ -28559,8 +28607,8 @@
       "歷史可得資料、股息／股數事件、歷史股池及樣本外驗收未齊"
     ],
     "delivery_scope": "離線與模擬管道；真正送達另行確認",
-    "snapshot_id": "796e377d9ee119c20f5512db0a22793d7ce55030d32f8c72681d84a2c35b8a1c",
-    "checked_at": "2026-11-13T12:21:56.334079+08:00"
+    "snapshot_id": "2a7d274fcdb26e611e5249e20f2569ea2365ee9fc0746460cfa6c42b086b4cab",
+    "checked_at": "2026-11-13T12:44:46.450871+08:00"
   },
   "input_sha256": {
     "adaptive_scorecard_history.csv": "bd47d79e51e8c05593cd7e93a7f4a499617ee473ca04795849c2b3e855ef8f3d",
@@ -28575,8 +28623,8 @@
     "export_orders_monthly.parquet": "73d7e8d3c3abd17e1a198ad42096f5c0791f757838042864612be4c19ef1d33b",
     "last_dispatch.json": "11bb982851f89cdaa293e058aa6b3183901b70018ddfeb179df2706faf3fa6e0",
     "latest_signal.json": "2068f7a83227b567f90c13f14bea58ccce2f7e29b08ef549132ccf1a804b4bbc",
-    "market_indicators.csv": "406ac30106af7cebe9826118963c16cc224b2e95430d2039c57ee711a6e1a68a",
-    "market_indicators.parquet": "c995696b812fd2da7c6c36e4015be85c499cc6fe98375795dc0e778d0bc36d7a",
+    "market_indicators.csv": "f6ae41697069111048038fd6435464811d4b62da191a4b214b1647ca392ea542",
+    "market_indicators.parquet": "cf93112a859de87020511676872b506a81fbed803e7b9c0eaaa7af845b643db6",
     "market_revenue_monthly.parquet": "2281fca3a314944a7e798febab62a4994080f31d4d0ba458f2d318ed45fc66e2",
     "ndc_indicators.parquet": "8b8274d490d8780f37813c0a0c652d54886cae2caea2fc0801650066b3b7d8d4",
     "pmi_monthly.parquet": "6b8e10ba8964684f23566f4cf86a4c4990ac7152c0b306955998b29a3e05e201",
@@ -28589,8 +28637,8 @@
     "stock_fundamentals_emerging.json": "6d358b7b1d7c1583edc90c5c5f1f9a2f39b4627cb954ce53b26b1781382f477f",
     "stock_price_evidence.json": "fa31f144ec70b0813185ef165dfa9dae8698c47ad6598f40fadb742ac5973b1b",
     "stock_quarterly_live.json": "96e67facdcc3407347873d2dd90baaec54b660ad759acd607fc79e08c3e3c81d",
-    "stock_revenue_emerging.json": "45fb9311524f7449a335801741b3c4caa1d8b8157d97d85d3daa81672f0b8a11",
-    "stock_revenue_live.json": "611b976990eb00067d7a3e4b00887d0cb9f81c9c85528dd8f44deb938987ea80",
+    "stock_revenue_emerging.json": "e8b72f921827383d6a2aa955c0b11101eebe04b2fb450b5c2c97dddc3b5e4ce1",
+    "stock_revenue_live.json": "7303708d787671a1934f8dfbf4ead803b8289a0e27aa8666d7866b893e0126ac",
     "taifex_txf_daily.parquet": "c0496124a5003ded7d8df78c164600050fb52d23285d0e0405aa4102bb540bd5",
     "taifex_txf_institutional.parquet": "e8ee946ae3bc41f78ed1d0aac57ab3329e7ad58f9d0720ba5c2383648d4659ff",
     "tw_stocks_daily.parquet": "055ef54680ea49a6ad2fe2547cf164494b899a9e23f5c43dd525917bd7ec1316",
@@ -28609,5 +28657,5 @@
     "implementation_sha256": "ec500e2d58e38b2f77d510d7b7265a1a7883467964d1b2ddd71718b1e84b764f"
   },
   "snapshot_schema": "dashboard-snapshot-v1",
-  "snapshot_id": "a9282cb335ef085f9accdb1498b8fc1ad4bc17d145b1cd898f4647dbd40d49ed"
+  "snapshot_id": "ac1a382f85eb367fb72c5845ee5303e6eecc5d67e18f2db11be7e02743220a3c"
 }
