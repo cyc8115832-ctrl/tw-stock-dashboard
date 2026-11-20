@@ -2429,7 +2429,7 @@
 
 <script>
     const DASHBOARD_DATA = {
-  "generated_at": "2026-11-20T21:10:00.090813+08:00",
+  "generated_at": "2026-11-21T00:59:00.364730+08:00",
   "build_errors": [],
   "latest_signal": {
     "date": "2026-10",
@@ -3243,17 +3243,19 @@
   "three_line_v4": {
     "version": "v4",
     "config_sha256": "5019cbf47c6f",
-    "as_of_date": "2026-11-20",
+    "as_of_date": "2026-11-19",
     "freshness": {
       "twii_latest_date": "2026-11-20",
       "taifex_latest_date": "2026-11-20",
-      "is_stale": false,
-      "stale_reasons": []
+      "is_stale": true,
+      "stale_reasons": [
+        "三線基準日(2026-11-19)落後大盤(2026-11-20)"
+      ]
     },
     "long_term_left_side_hint": {
       "active": true,
       "badge": "💎 長投左側特價分批區",
-      "message": "景氣基本面未衰退（🐢 烏龜 80.8 ≥ 50）但市場情緒極度恐慌（🐇 兔子 18.9 \u003c 20）：波段／會設 -10% 停損資金仍守右側「不接刀」紀律（維持 15%）；長投／閒錢定投資金（0050 或高安全邊際績優股）可啟動小額分批慢買，絕不一次壓滿。"
+      "message": "景氣基本面未衰退（🐢 烏龜 80.8 ≥ 50）但市場情緒極度恐慌（🐇 兔子 19.0 \u003c 20）：波段／會設 -10% 停損資金仍守右側「不接刀」紀律（維持 15%）；長投／閒錢定投資金（0050 或高安全邊際績優股）可啟動小額分批慢買，絕不一次壓滿。"
     },
     "dual_wallet_strategy": {
       "right_wallet": {
@@ -3272,43 +3274,43 @@
         "is_open": true,
         "eligible_assets": "限 0050 大盤 ETF 與高確定性龍頭權值股（嚴禁對題材/景氣循環股越跌越攤平）",
         "tranche_plan": "金字塔 3～5 批（拉開 8%～10% 價差），預留 1～2 年抱股耐心",
-        "summary": "🐢 烏龜 80.8 ≥ 50（景氣未壞）× 🐇 兔子 18.9 \u003c 20（極度恐慌）：限閒錢長投錢包針對『0050』或高安全邊際龍頭啟動金字塔 3～5 批慢買（每跌 8%～10% 買一批），絕不單筆 All-in。"
+        "summary": "🐢 烏龜 80.8 ≥ 50（景氣未壞）× 🐇 兔子 19.0 \u003c 20（極度恐慌）：限閒錢長投錢包針對『0050』或高安全邊際龍頭啟動金字塔 3～5 批慢買（每跌 8%～10% 買一批），絕不單筆 All-in。"
       },
       "anti_mismatch_rule": "⚠️ 防邏輯錯位紅線：① 嚴禁『左側買、右側砍』（因便宜抄底卻在續跌 15% 時恐慌停損）；② 嚴禁『右側追、左側凹』（追突破失敗不砍、改口領股息變套牢）。下單前先決定這筆錢屬於哪個錢包！"
     },
     "rabbit": {
-      "score": 18.9,
-      "raw_score": 18.8,
+      "score": 19.0,
+      "raw_score": 16.2,
       "state": "煞車",
-      "delta_1d": -0.1,
-      "dir_5d": "━",
-      "us_source_date": "2026-11-19",
+      "delta_1d": -2.8,
+      "dir_5d": "↗",
+      "us_source_date": "2026-11-18",
       "components": [
         {
           "key": "sox_rel_ma100",
           "label": "費半相對 100 日均線",
           "source": "美股日頻",
-          "source_date": "2026-11-19",
+          "source_date": "2026-11-18",
           "weight": 15.0,
-          "raw_display": "-19.4%",
-          "score": 1.6,
-          "contribution": 0.24
+          "raw_display": "-17.8%",
+          "score": 1.9,
+          "contribution": 0.28
         },
         {
           "key": "nvda_ret_60d",
           "label": "輝達 (NVDA) 60 日報酬",
           "source": "美股日頻",
-          "source_date": "2026-11-19",
+          "source_date": "2026-11-18",
           "weight": 15.0,
-          "raw_display": "-30.4%",
-          "score": 0.8,
-          "contribution": 0.12
+          "raw_display": "-29.1%",
+          "score": 1.1,
+          "contribution": 0.16
         },
         {
           "key": "csp_above_ma60_pct",
           "label": "美股 CSP 四巨頭站上季線比例",
           "source": "美股日頻",
-          "source_date": "2026-11-19",
+          "source_date": "2026-11-18",
           "weight": 15.0,
           "raw_display": "25%",
           "score": 25.0,
@@ -3318,61 +3320,61 @@
           "key": "vix_inv",
           "label": "VIX 恐慌指數（反向計分）",
           "source": "美股日頻",
-          "source_date": "2026-11-19",
+          "source_date": "2026-11-18",
           "weight": 10.0,
-          "raw_display": "28.44",
-          "score": 2.4,
-          "contribution": 0.24
+          "raw_display": "24.56",
+          "score": 6.5,
+          "contribution": 0.65
         },
         {
           "key": "us10y_inv",
           "label": "美國 10 年期公債殖利率（反向）",
           "source": "美股日頻",
-          "source_date": "2026-11-19",
+          "source_date": "2026-11-18",
           "weight": 5.0,
-          "raw_display": "5.05%",
-          "score": 3.4,
+          "raw_display": "5.07%",
+          "score": 3.3,
           "contribution": 0.17
         },
         {
           "key": "yield_spread",
           "label": "美債 10Y-2Y 殖利率利差",
           "source": "美股日頻",
-          "source_date": "2026-11-19",
+          "source_date": "2026-11-18",
           "weight": 5.0,
-          "raw_display": "+0.28%",
-          "score": 40.8,
-          "contribution": 2.04
+          "raw_display": "+0.29%",
+          "score": 41.6,
+          "contribution": 2.08
         },
         {
           "key": "usdtwd_chg20_inv",
           "label": "台幣匯率 20 日變動（升值加分）",
           "source": "台股日頻",
-          "source_date": "2026-11-20",
+          "source_date": "2026-11-19",
           "weight": 10.0,
-          "raw_display": "+1.15%",
-          "score": 26.9,
-          "contribution": 2.69
+          "raw_display": "+1.74%",
+          "score": 12.7,
+          "contribution": 1.27
         },
         {
           "key": "txf_foreign_oi_level",
           "label": "外資台指期未平倉淨口數水位",
           "source": "台股日頻",
-          "source_date": "2026-11-20",
+          "source_date": "2026-11-19",
           "weight": 12.0,
-          "raw_display": "-97,863 口",
-          "score": 1.3,
-          "contribution": 0.16
+          "raw_display": "-99,219 口",
+          "score": 1.1,
+          "contribution": 0.13
         },
         {
           "key": "txf_foreign_oi_chg5",
           "label": "外資台指期 5 日淨口數變化",
           "source": "台股日頻",
-          "source_date": "2026-11-20",
+          "source_date": "2026-11-19",
           "weight": 13.0,
-          "raw_display": "+3,007 口",
-          "score": 72.5,
-          "contribution": 9.42
+          "raw_display": "+354 口",
+          "score": 59.5,
+          "contribution": 7.74
         }
       ]
     },
@@ -3450,11 +3452,11 @@
       ]
     },
     "market": {
-      "close": 36033.29,
-      "etf_0050_close": 84.45,
-      "etf_0050_date": "2026-11-20",
-      "ma20": 42719.57,
-      "ma60": 45710.92,
+      "close": 38426.89,
+      "etf_0050_close": 94.1,
+      "etf_0050_date": "2026-11-18",
+      "ma20": 43262.29,
+      "ma60": 45864.1,
       "above_ma20": false,
       "state": "空頭",
       "pace": "防守"
@@ -3475,24 +3477,24 @@
       "action_key": "警覺減倉",
       "action_badge": "⛔ 警覺減倉",
       "actual_target_pct": 15,
-      "regime_directive": "【⛔ 狀態 3：煞車防守期｜⛔ 警覺減倉（建議持股 15%）】🐇 兔子 18.9 分（煞車）× 🐢 烏龜 80.8 分（趨緩）啟動氣囊保護！2026 回溯實證煞車期硬買停損率高達 45.4%，系統自動鎖定買訊禁接刀；虧損破月線 🔵▼ 嚴禁攤平（破 -10% 停損），高檔複合賣訊優先減碼。",
-      "calendar_id": "cal_2_macro_orders",
-      "calendar_title": "🗓️ 日曆時段 2（11月20日｜每月 20～28 號外銷訂單與景氣燈號公布期）",
-      "calendar_desc": "20 號外銷訂單、24 號 M1B-M2 資金剪刀差與 27～28 號國發會景氣對策燈號陸續開獎，🐢 烏龜線慢線分數即將更新。"
+      "regime_directive": "【⛔ 狀態 3：煞車防守期｜⛔ 警覺減倉（建議持股 15%）】🐇 兔子 19.0 分（煞車）× 🐢 烏龜 80.8 分（趨緩）啟動氣囊保護！2026 回溯實證煞車期硬買停損率高達 45.4%，系統自動鎖定買訊禁接刀；虧損破月線 🔵▼ 嚴禁攤平（破 -10% 停損），高檔複合賣訊優先減碼。",
+      "calendar_id": "cal_4_normal_watch",
+      "calendar_title": "🗓️ 日曆時段 4（11月19日｜常態美股 AI 與價量籌碼追蹤期）",
+      "calendar_desc": "月報與季報空窗期，專注追蹤 🐇 兔子線（美股 AI 巨頭 NVDA/CSP、費半、外資期貨）與個股是否出現「⚠️ 價量營收背離」或大戶資金流出。"
     },
     "three_month_summary": {
       "window_days": 60,
       "fast_window_days": 20,
       "slow_window_days": 40,
-      "start_date": "2026-10-22",
-      "end_date": "2026-11-20",
-      "rabbit_start": 35.9,
-      "rabbit_end": 18.9,
+      "start_date": "2026-10-21",
+      "end_date": "2026-11-19",
+      "rabbit_start": 30.5,
+      "rabbit_end": 19.0,
       "tortoise_start": 87.5,
       "tortoise_end": 80.8,
-      "twii_ret_1m_pct": -21.74,
-      "twii_ret_3m_pct": -21.74,
-      "chart_meaning": "🐇 兔子近 1 月由 36 分滑落至 19 分（煞車，最低 12 分微彈）；📈 大盤近 1 月回檔 -21.7%（收 36,033 點，空頭／仍在月線下）；🐢 烏龜近 2 月由 88 分轉緩至 81 分（趨緩）。",
+      "twii_ret_1m_pct": -18.04,
+      "twii_ret_3m_pct": -18.04,
+      "chart_meaning": "🐇 兔子近 1 月由 30 分滑落至 19 分（煞車，最低 12 分微彈）；📈 大盤近 1 月回檔 -18.0%（收 38,427 點，空頭／仍在月線下）；🐢 烏龜近 2 月由 88 分轉緩至 81 分（趨緩）。",
       "investment_stance": "⛔ 警覺減倉（建議持股 15%）：兔子煞車加上烏龜「趨緩」，雙弱警戒降到 15% 輕倉防補跌。"
     },
     "action_table": [
@@ -3540,6 +3542,18 @@
       }
     ],
     "series": [
+      {
+        "date": "2023-10-06",
+        "twii": 16520.57,
+        "etf_0050": 31.02,
+        "twii_ma20": 16503.68,
+        "twii_ma60": 16720.18,
+        "rabbit": 44.3,
+        "rabbit_state": "減速",
+        "tortoise": 27.7,
+        "tortoise_state": "復甦",
+        "target_pct": 25
+      },
       {
         "date": "2023-10-11",
         "twii": 16672.03,
@@ -12599,18 +12613,6 @@
         "tortoise": 80.8,
         "tortoise_state": "趨緩",
         "target_pct": 15
-      },
-      {
-        "date": "2026-11-20",
-        "twii": 36033.29,
-        "etf_0050": 84.45,
-        "twii_ma20": 42719.57,
-        "twii_ma60": 45710.92,
-        "rabbit": 18.9,
-        "rabbit_state": "煞車",
-        "tortoise": 80.8,
-        "tortoise_state": "趨緩",
-        "target_pct": 15
       }
     ]
   },
@@ -16286,12 +16288,7 @@
           36339.5
         ]
       },
-      "bvps": 477.02,
       "div_5y_avg": 25.0,
-      "gross_margin_4q": 84.95,
-      "op_margin_4q": 78.66,
-      "net_margin_4q": 66.86,
-      "rev_4q_bn": 385.71,
       "recent_4q_eps": [
         36.88,
         36.58,
@@ -16307,7 +16304,6 @@
       "latest_q_eps": 122.79,
       "latest_revenue": 45.62,
       "latest_rev_yoy": 191.06,
-      "latest_pbr": 11.22,
       "latest_div_yield": 0.47,
       "per_bands": {
         "p25": 26.6,
@@ -16319,6 +16315,7 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -16338,6 +16335,7 @@
       "model_sun_status": "🟢 特價好球帶",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -16349,8 +16347,10 @@
         "最新扣庫藏普通股流通股數／日期／原始證據未核實"
       ],
       "contract_liabilities_bn": null,
+      "bvps": null,
       "div_latest": null,
       "div_latest_note": null,
+      "latest_pbr": null,
       "rank": 14,
       "rs_score": 37.8,
       "ret_3m": -60.03,
@@ -16585,12 +16585,7 @@
           2887.5
         ]
       },
-      "bvps": 93.94,
       "div_5y_avg": 4.8,
-      "gross_margin_4q": 29.99,
-      "op_margin_4q": 23.42,
-      "net_margin_4q": 16.61,
-      "rev_4q_bn": 514.29,
       "recent_4q_eps": [
         3.76,
         4.36,
@@ -16606,7 +16601,6 @@
       "latest_q_eps": 12.88,
       "latest_revenue": 64.78,
       "latest_rev_yoy": 127.0,
-      "latest_pbr": 6.63,
       "latest_div_yield": 0.77,
       "per_bands": {
         "p25": 18.1,
@@ -16618,6 +16612,7 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -16637,6 +16632,7 @@
       "model_sun_status": "🟢 特價好球帶",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -16648,8 +16644,10 @@
         "最新扣庫藏普通股流通股數／日期／原始證據未核實"
       ],
       "contract_liabilities_bn": null,
+      "bvps": null,
       "div_latest": null,
       "div_latest_note": null,
+      "latest_pbr": null,
       "rank": 19,
       "rs_score": 13.2,
       "ret_3m": -58.33,
@@ -16884,12 +16882,7 @@
           2887.5
         ]
       },
-      "bvps": 122.5,
       "div_5y_avg": 12.0,
-      "gross_margin_4q": 35.27,
-      "op_margin_4q": 16.83,
-      "net_margin_4q": 12.34,
-      "rev_4q_bn": 7012.81,
       "recent_4q_eps": [
         6.67,
         7.91,
@@ -16905,7 +16898,6 @@
       "latest_q_eps": 9.04,
       "latest_revenue": 746.66,
       "latest_rev_yoy": 30.12,
-      "latest_pbr": 7.35,
       "latest_div_yield": 1.33,
       "per_bands": {
         "p25": 27.4,
@@ -16917,6 +16909,7 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -16936,6 +16929,7 @@
       "model_sun_status": "🟢 特價好球帶",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -16947,8 +16941,10 @@
         "最新扣庫藏普通股流通股數／日期／原始證據未核實"
       ],
       "contract_liabilities_bn": 182.1,
+      "bvps": null,
       "div_latest": null,
       "div_latest_note": null,
+      "latest_pbr": null,
       "rank": 15,
       "rs_score": 30.9,
       "ret_3m": -48.57,
@@ -17176,12 +17172,7 @@
           10972.1
         ]
       },
-      "bvps": 205.03,
       "div_5y_avg": 12.0,
-      "gross_margin_4q": 33.59,
-      "op_margin_4q": 26.17,
-      "net_margin_4q": 20.13,
-      "rev_4q_bn": 1661.54,
       "recent_4q_eps": [
         10.44,
         14.9,
@@ -17197,7 +17188,6 @@
       "latest_q_eps": 40.47,
       "latest_revenue": 244.73,
       "latest_rev_yoy": 203.08,
-      "latest_pbr": 13.71,
       "latest_div_yield": 0.43,
       "per_bands": {
         "p25": 24.2,
@@ -17209,6 +17199,7 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -17228,6 +17219,7 @@
       "model_sun_status": "🟢 特價好球帶",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -17239,8 +17231,10 @@
         "最新扣庫藏普通股流通股數／日期／原始證據未核實"
       ],
       "contract_liabilities_bn": null,
+      "bvps": null,
       "div_latest": null,
       "div_latest_note": null,
+      "latest_pbr": null,
       "rank": 13,
       "rs_score": 38.7,
       "ret_3m": -50.53,
@@ -17468,12 +17462,7 @@
           611.3
         ]
       },
-      "bvps": 77.75,
       "div_5y_avg": 2.8,
-      "gross_margin_4q": 5.62,
-      "op_margin_4q": 3.79,
-      "net_margin_4q": 1.41,
-      "rev_4q_bn": 36117.77,
       "recent_4q_eps": [
         2.61,
         3.06,
@@ -17489,7 +17478,6 @@
       "latest_q_eps": 5.74,
       "latest_revenue": 4026.15,
       "latest_rev_yoy": 117.56,
-      "latest_pbr": 1.89,
       "latest_div_yield": 1.9,
       "per_bands": {
         "p25": 14.9,
@@ -17501,6 +17489,7 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -17520,6 +17509,7 @@
       "model_sun_status": "🟢 特價好球帶",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -17531,8 +17521,10 @@
         "最新扣庫藏普通股流通股數／日期／原始證據未核實"
       ],
       "contract_liabilities_bn": 121.95,
+      "bvps": null,
       "div_latest": null,
       "div_latest_note": null,
+      "latest_pbr": null,
       "rank": 2,
       "rs_score": 90.7,
       "ret_3m": -16.24,
@@ -17760,12 +17752,7 @@
           382.9
         ]
       },
-      "bvps": 49.69,
       "div_5y_avg": 3.2,
-      "gross_margin_4q": 40.85,
-      "op_margin_4q": 30.27,
-      "net_margin_4q": 24.94,
-      "rev_4q_bn": 176.53,
       "recent_4q_eps": [
         1.79,
         1.95,
@@ -17781,7 +17768,6 @@
       "latest_q_eps": 3.1,
       "latest_revenue": 18.57,
       "latest_rev_yoy": 47.87,
-      "latest_pbr": 2.74,
       "latest_div_yield": 2.35,
       "per_bands": {
         "p25": 16.4,
@@ -17793,6 +17779,7 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -17812,6 +17799,7 @@
       "model_sun_status": "🟢 特價好球帶",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -17823,8 +17811,10 @@
         "最新扣庫藏普通股流通股數／日期／原始證據未核實"
       ],
       "contract_liabilities_bn": 0.05,
+      "bvps": null,
       "div_latest": null,
       "div_latest_note": null,
+      "latest_pbr": null,
       "rank": 11,
       "rs_score": 51.0,
       "ret_3m": -33.0,
@@ -18052,12 +18042,7 @@
           420.5
         ]
       },
-      "bvps": 42.82,
       "div_5y_avg": 4.5,
-      "gross_margin_4q": 24.39,
-      "op_margin_4q": 12.94,
-      "net_margin_4q": 11.21,
-      "rev_4q_bn": 1978.7,
       "recent_4q_eps": [
         1.7,
         1.66,
@@ -18073,7 +18058,6 @@
       "latest_q_eps": 3.27,
       "latest_revenue": 200.71,
       "latest_rev_yoy": 32.01,
-      "latest_pbr": 4.1,
       "latest_div_yield": 2.56,
       "per_bands": {
         "p25": 19.1,
@@ -18085,6 +18069,7 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -18104,6 +18089,7 @@
       "model_sun_status": "🟢 便宜低估區",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -18115,8 +18101,10 @@
         "最新扣庫藏普通股流通股數／日期／原始證據未核實"
       ],
       "contract_liabilities_bn": 4.88,
+      "bvps": null,
       "div_latest": null,
       "div_latest_note": null,
+      "latest_pbr": null,
       "rank": 8,
       "rs_score": 60.3,
       "ret_3m": -32.76,
@@ -18344,12 +18332,7 @@
           100.7
         ]
       },
-      "bvps": 22.52,
       "div_5y_avg": 1.6,
-      "gross_margin_4q": 4.58,
-      "op_margin_4q": 1.67,
-      "net_margin_4q": 1.2,
-      "rev_4q_bn": 9135.54,
       "recent_4q_eps": [
         0.57,
         0.68,
@@ -18365,7 +18348,6 @@
       "latest_q_eps": 0.71,
       "latest_revenue": 799.66,
       "latest_rev_yoy": 46.02,
-      "latest_pbr": 1.74,
       "latest_div_yield": 4.08,
       "per_bands": {
         "p25": 18.3,
@@ -18377,6 +18359,7 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -18396,6 +18379,7 @@
       "model_sun_status": "🟢 便宜低估區",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -18407,8 +18391,10 @@
         "最新扣庫藏普通股流通股數／日期／原始證據未核實"
       ],
       "contract_liabilities_bn": 297.89,
+      "bvps": null,
       "div_latest": null,
       "div_latest_note": null,
+      "latest_pbr": null,
       "rank": 10,
       "rs_score": 55.4,
       "ret_3m": -40.26,
@@ -18636,12 +18622,7 @@
           421.0
         ]
       },
-      "bvps": 60.53,
       "div_5y_avg": 4.5,
-      "gross_margin_4q": 18.4,
-      "op_margin_4q": 10.94,
-      "net_margin_4q": 8.7,
-      "rev_4q_bn": 145.01,
       "recent_4q_eps": [
         2.52,
         2.05,
@@ -18657,7 +18638,6 @@
       "latest_q_eps": 2.33,
       "latest_revenue": 8.28,
       "latest_rev_yoy": -17.52,
-      "latest_pbr": 2.83,
       "latest_div_yield": 2.63,
       "per_bands": {
         "p25": 12.0,
@@ -18669,6 +18649,7 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -18688,6 +18669,7 @@
       "model_sun_status": "🟢 便宜低估區",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -18699,8 +18681,10 @@
         "最新扣庫藏普通股流通股數／日期／原始證據未核實"
       ],
       "contract_liabilities_bn": null,
+      "bvps": null,
       "div_latest": null,
       "div_latest_note": null,
+      "latest_pbr": null,
       "rank": 17,
       "rs_score": 23.5,
       "ret_3m": -51.21,
@@ -18928,12 +18912,7 @@
           256.8
         ]
       },
-      "bvps": 39.81,
       "div_5y_avg": 3.2,
-      "gross_margin_4q": 32.12,
-      "op_margin_4q": 16.59,
-      "net_margin_4q": 13.32,
-      "rev_4q_bn": 214.99,
       "recent_4q_eps": [
         2.29,
         2.36,
@@ -18949,7 +18928,6 @@
       "latest_q_eps": 3.14,
       "latest_revenue": 19.82,
       "latest_rev_yoy": 24.36,
-      "latest_pbr": 2.79,
       "latest_div_yield": 2.88,
       "per_bands": {
         "p25": 16.3,
@@ -18961,6 +18939,7 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -18980,6 +18959,7 @@
       "model_sun_status": "🟢 便宜低估區",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -18991,8 +18971,10 @@
         "最新扣庫藏普通股流通股數／日期／原始證據未核實"
       ],
       "contract_liabilities_bn": 1.96,
+      "bvps": null,
       "div_latest": null,
       "div_latest_note": null,
+      "latest_pbr": null,
       "rank": 6,
       "rs_score": 71.1,
       "ret_3m": -22.11,
@@ -19220,12 +19202,7 @@
           867.6
         ]
       },
-      "bvps": 30.44,
       "div_5y_avg": 4.5,
-      "gross_margin_4q": 43.46,
-      "op_margin_4q": 22.92,
-      "net_margin_4q": 21.88,
-      "rev_4q_bn": 243.04,
       "recent_4q_eps": [
         5.31,
         3.29,
@@ -19241,7 +19218,6 @@
       "latest_q_eps": 4.55,
       "latest_revenue": 18.89,
       "latest_rev_yoy": -15.38,
-      "latest_pbr": 13.85,
       "latest_div_yield": 1.07,
       "per_bands": {
         "p25": 29.4,
@@ -19253,6 +19229,7 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -19272,6 +19249,7 @@
       "model_sun_status": "🟢 便宜低估區",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -19283,8 +19261,10 @@
         "最新扣庫藏普通股流通股數／日期／原始證據未核實"
       ],
       "contract_liabilities_bn": 61.21,
+      "bvps": null,
       "div_latest": null,
       "div_latest_note": null,
+      "latest_pbr": null,
       "rank": 12,
       "rs_score": 46.1,
       "ret_3m": -41.7,
@@ -19512,12 +19492,7 @@
           7195.0
         ]
       },
-      "bvps": 540.28,
       "div_5y_avg": 22.0,
-      "gross_margin_4q": 60.05,
-      "op_margin_4q": 35.57,
-      "net_margin_4q": 35.17,
-      "rev_4q_bn": 2177.3,
       "recent_4q_eps": [
         22.08,
         68.8,
@@ -19533,13 +19508,13 @@
       "latest_q_eps": 138.0,
       "latest_revenue": 315.3,
       "latest_rev_yoy": 346.27,
-      "latest_pbr": 2.44,
       "latest_div_yield": 1.67,
       "per_bands": null,
       "official_market_pe": null,
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -19559,6 +19534,7 @@
       "model_sun_status": "🟢 便宜低估區",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -19570,8 +19546,10 @@
         "最新扣庫藏普通股流通股數／日期／原始證據未核實"
       ],
       "contract_liabilities_bn": 15.44,
+      "bvps": 540.28,
       "div_latest": 60.0,
       "div_latest_note": "2026H1擬配$60",
+      "latest_pbr": 2.44,
       "rank": 9,
       "rs_score": 55.9,
       "ret_3m": -36.39,
@@ -19799,12 +19777,7 @@
           264.8
         ]
       },
-      "bvps": 74.23,
       "div_5y_avg": 2.8,
-      "gross_margin_4q": 21.31,
-      "op_margin_4q": 11.91,
-      "net_margin_4q": 9.9,
-      "rev_4q_bn": 397.63,
       "recent_4q_eps": [
         0.81,
         2.79,
@@ -19820,7 +19793,6 @@
       "latest_q_eps": 1.71,
       "latest_revenue": 30.84,
       "latest_rev_yoy": 16.45,
-      "latest_pbr": 1.94,
       "latest_div_yield": 1.94,
       "per_bands": {
         "p25": 27.8,
@@ -19832,6 +19804,7 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -19851,6 +19824,7 @@
       "model_sun_status": "🟢 便宜低估區",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -19862,8 +19836,10 @@
         "最新扣庫藏普通股流通股數／日期／原始證據未核實"
       ],
       "contract_liabilities_bn": 104.11,
+      "bvps": null,
       "div_latest": null,
       "div_latest_note": null,
+      "latest_pbr": null,
       "rank": 7,
       "rs_score": 68.6,
       "ret_3m": -28.71,
@@ -20107,12 +20083,7 @@
           4568.6
         ]
       },
-      "bvps": 269.85,
       "div_5y_avg": 16.0,
-      "gross_margin_4q": 65.85,
-      "op_margin_4q": 57.98,
-      "net_margin_4q": 51.53,
-      "rev_4q_bn": 49448.17,
       "recent_4q_eps": [
         19.51,
         22.08,
@@ -20128,7 +20099,6 @@
       "latest_q_eps": 29.43,
       "latest_revenue": 5868.9,
       "latest_rev_yoy": 59.71,
-      "latest_pbr": 7.41,
       "latest_div_yield": 0.8,
       "per_bands": {
         "p25": 21.3,
@@ -20140,6 +20110,7 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -20159,6 +20130,7 @@
       "model_sun_status": "🟢 便宜低估區",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -20170,8 +20142,10 @@
         "最新扣庫藏普通股流通股數／日期／原始證據未核實"
       ],
       "contract_liabilities_bn": null,
+      "bvps": null,
       "div_latest": null,
       "div_latest_note": null,
+      "latest_pbr": null,
       "rank": 3,
       "rs_score": 89.7,
       "ret_3m": -17.01,
@@ -20399,12 +20373,7 @@
           233.3
         ]
       },
-      "bvps": 43.42,
       "div_5y_avg": 3.5,
-      "gross_margin_4q": 27.3,
-      "op_margin_4q": 18.71,
-      "net_margin_4q": 15.97,
-      "rev_4q_bn": 284.6,
       "recent_4q_eps": [
         2.08,
         1.94,
@@ -20420,7 +20389,6 @@
       "latest_q_eps": 2.61,
       "latest_revenue": 26.22,
       "latest_rev_yoy": 18.21,
-      "latest_pbr": 2.94,
       "latest_div_yield": 2.75,
       "per_bands": {
         "p25": 19.0,
@@ -20432,6 +20400,7 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -20451,6 +20420,7 @@
       "model_sun_status": "🟢 便宜低估區",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -20462,8 +20432,10 @@
         "最新扣庫藏普通股流通股數／日期／原始證據未核實"
       ],
       "contract_liabilities_bn": 92.44,
+      "bvps": null,
       "div_latest": null,
       "div_latest_note": null,
+      "latest_pbr": null,
       "rank": 5,
       "rs_score": 79.9,
       "ret_3m": -23.19,
@@ -20707,12 +20679,7 @@
           450.0
         ]
       },
-      "bvps": 140.65,
       "div_5y_avg": 5.4,
-      "gross_margin_4q": 6.04,
-      "op_margin_4q": 3.62,
-      "net_margin_4q": 2.27,
-      "rev_4q_bn": 102674.34,
       "recent_4q_eps": [
         3.23,
         3.56,
@@ -20728,7 +20695,6 @@
       "latest_q_eps": 5.51,
       "latest_revenue": 13053.2,
       "latest_rev_yoy": 45.73,
-      "latest_pbr": 1.49,
       "latest_div_yield": 2.57,
       "per_bands": {
         "p25": 14.1,
@@ -20740,6 +20706,7 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -20759,6 +20726,7 @@
       "model_sun_status": "🟢 便宜低估區",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -20770,8 +20738,10 @@
         "最新扣庫藏普通股流通股數／日期／原始證據未核實"
       ],
       "contract_liabilities_bn": null,
+      "bvps": null,
       "div_latest": null,
       "div_latest_note": null,
+      "latest_pbr": null,
       "rank": 1,
       "rs_score": 93.1,
       "ret_3m": -14.46,
@@ -20986,12 +20956,7 @@
           449.1
         ]
       },
-      "bvps": 50.33,
       "div_5y_avg": 0.8,
-      "gross_margin_4q": 6.69,
-      "op_margin_4q": -17.18,
-      "net_margin_4q": -8.96,
-      "rev_4q_bn": 18.02,
       "recent_4q_eps": [
         -0.21,
         -0.98,
@@ -21007,13 +20972,13 @@
       "latest_q_eps": -0.06,
       "latest_revenue": 2.29,
       "latest_rev_yoy": 70.35,
-      "latest_pbr": 5.1,
       "latest_div_yield": 0.31,
       "per_bands": null,
       "official_market_pe": null,
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -21033,6 +20998,7 @@
       "model_sun_status": "🟢 便宜低估區",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -21044,8 +21010,10 @@
         "最新扣庫藏普通股流通股數／日期／原始證據未核實"
       ],
       "contract_liabilities_bn": 0.77,
+      "bvps": null,
       "div_latest": null,
       "div_latest_note": null,
+      "latest_pbr": null,
       "rank": 20,
       "rs_score": 10.8,
       "ret_3m": -57.25,
@@ -21124,11 +21092,11 @@
       "base_multiple_label": "PSR 3.5x",
       "valuation_scenarios": {
         "conservative": {
-          "fair": 173.9,
-          "cheap": 139.1,
-          "expensive": 208.7,
-          "mos_pct": -8.11,
-          "formula": "已公告近4季財報每股營收 SPS $66.36 × 保守轉機PSR 2.62x = $174",
+          "fair": 175.6,
+          "cheap": 140.5,
+          "expensive": 210.7,
+          "mos_pct": -7.06,
+          "formula": "已公告近4季財報每股營收 SPS $67.01 × 保守轉機PSR 2.62x = $176",
           "source": "已公告近4季財報營收（股數未核實）"
         },
         "base": {
@@ -21239,7 +21207,7 @@
       "val_basis": "近12月滾動每股營收 SPS $67.01 (PSR河流圖)",
       "eps_2026e_cons": null,
       "unverified_consensus_candidate": null,
-      "p_fair_conservative": 173.9,
+      "p_fair_conservative": 175.6,
       "raw_upside_total": 31.3,
       "raw_upside_ann": 27.8,
       "pv_target_2027": 222.0,
@@ -21296,12 +21264,7 @@
           515.8
         ]
       },
-      "bvps": 80.99,
       "div_5y_avg": 2.0,
-      "gross_margin_4q": 16.2,
-      "op_margin_4q": 1.95,
-      "net_margin_4q": 0.3,
-      "rev_4q_bn": 78.24,
       "recent_4q_eps": [
         0.9,
         -1.45,
@@ -21317,13 +21280,13 @@
       "latest_q_eps": 0.05,
       "latest_revenue": 7.99,
       "latest_rev_yoy": 10.52,
-      "latest_pbr": 2.32,
       "latest_div_yield": 1.06,
       "per_bands": null,
       "official_market_pe": null,
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -21343,6 +21306,7 @@
       "model_sun_status": "⚪ 估值無法確認",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -21354,8 +21318,10 @@
         "最新扣庫藏普通股流通股數／日期／原始證據未核實"
       ],
       "contract_liabilities_bn": 0.36,
+      "bvps": null,
       "div_latest": null,
       "div_latest_note": null,
+      "latest_pbr": null,
       "rank": 18,
       "rs_score": 19.6,
       "ret_3m": -55.02,
@@ -21591,12 +21557,7 @@
           5250.0
         ]
       },
-      "bvps": 289.99,
       "div_5y_avg": 55.0,
-      "gross_margin_4q": 46.24,
-      "op_margin_4q": 15.29,
-      "net_margin_4q": 16.03,
-      "rev_4q_bn": 6195.79,
       "recent_4q_eps": [
         14.4,
         15.17,
@@ -21612,7 +21573,6 @@
       "latest_q_eps": 17.5,
       "latest_revenue": 550.26,
       "latest_rev_yoy": 5.77,
-      "latest_pbr": 11.55,
       "latest_div_yield": 1.64,
       "per_bands": {
         "p25": 20.7,
@@ -21624,6 +21584,7 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -21643,6 +21604,7 @@
       "model_sun_status": "⚪ 合理價值區",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -21654,8 +21616,10 @@
         "最新扣庫藏普通股流通股數／日期／原始證據未核實"
       ],
       "contract_liabilities_bn": 89.63,
+      "bvps": null,
       "div_latest": null,
       "div_latest_note": null,
+      "latest_pbr": null,
       "rank": 4,
       "rs_score": 83.8,
       "ret_3m": -11.61,
@@ -21898,12 +21862,7 @@
           925.0
         ]
       },
-      "bvps": 57.92,
       "div_5y_avg": 2.5,
-      "gross_margin_4q": 55.99,
-      "op_margin_4q": 44.52,
-      "net_margin_4q": 36.9,
-      "rev_4q_bn": 43.3,
       "recent_4q_eps": [
         2.07,
         3.44,
@@ -21919,7 +21878,6 @@
       "latest_q_eps": 6.12,
       "latest_revenue": 5.7,
       "latest_rev_yoy": 182.96,
-      "latest_pbr": 23.57,
       "latest_div_yield": 0.18,
       "per_bands": {
         "p25": 200.8,
@@ -21931,6 +21889,7 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -21950,6 +21909,7 @@
       "model_sun_status": "🔴 瘋狂過熱區",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -21961,8 +21921,10 @@
         "最新扣庫藏普通股流通股數／日期／原始證據未核實"
       ],
       "contract_liabilities_bn": 0.07,
+      "bvps": null,
       "div_latest": null,
       "div_latest_note": null,
+      "latest_pbr": null,
       "rank": 16,
       "rs_score": 28.9,
       "ret_3m": -53.25,
@@ -26547,12 +26509,7 @@
           36339.5
         ]
       },
-      "bvps": 477.02,
       "div_5y_avg": 25.0,
-      "gross_margin_4q": 84.95,
-      "op_margin_4q": 78.66,
-      "net_margin_4q": 66.86,
-      "rev_4q_bn": 385.71,
       "recent_4q_eps": [
         36.88,
         36.58,
@@ -26568,7 +26525,6 @@
       "latest_q_eps": 122.79,
       "latest_revenue": 45.62,
       "latest_rev_yoy": 191.06,
-      "latest_pbr": 11.22,
       "latest_div_yield": 0.47,
       "per_bands": {
         "p25": 26.6,
@@ -26580,6 +26536,7 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -26599,6 +26556,7 @@
       "model_sun_status": "🟢 特價好球帶",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -26610,8 +26568,10 @@
         "最新扣庫藏普通股流通股數／日期／原始證據未核實"
       ],
       "contract_liabilities_bn": null,
+      "bvps": null,
       "div_latest": null,
       "div_latest_note": null,
+      "latest_pbr": null,
       "rank": 14,
       "rs_score": 37.8,
       "ret_3m": -60.03,
@@ -26846,12 +26806,7 @@
           2887.5
         ]
       },
-      "bvps": 93.94,
       "div_5y_avg": 4.8,
-      "gross_margin_4q": 29.99,
-      "op_margin_4q": 23.42,
-      "net_margin_4q": 16.61,
-      "rev_4q_bn": 514.29,
       "recent_4q_eps": [
         3.76,
         4.36,
@@ -26867,7 +26822,6 @@
       "latest_q_eps": 12.88,
       "latest_revenue": 64.78,
       "latest_rev_yoy": 127.0,
-      "latest_pbr": 6.63,
       "latest_div_yield": 0.77,
       "per_bands": {
         "p25": 18.1,
@@ -26879,6 +26833,7 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -26898,6 +26853,7 @@
       "model_sun_status": "🟢 特價好球帶",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -26909,8 +26865,10 @@
         "最新扣庫藏普通股流通股數／日期／原始證據未核實"
       ],
       "contract_liabilities_bn": null,
+      "bvps": null,
       "div_latest": null,
       "div_latest_note": null,
+      "latest_pbr": null,
       "rank": 19,
       "rs_score": 13.2,
       "ret_3m": -58.33,
@@ -27145,12 +27103,7 @@
           2887.5
         ]
       },
-      "bvps": 122.5,
       "div_5y_avg": 12.0,
-      "gross_margin_4q": 35.27,
-      "op_margin_4q": 16.83,
-      "net_margin_4q": 12.34,
-      "rev_4q_bn": 7012.81,
       "recent_4q_eps": [
         6.67,
         7.91,
@@ -27166,7 +27119,6 @@
       "latest_q_eps": 9.04,
       "latest_revenue": 746.66,
       "latest_rev_yoy": 30.12,
-      "latest_pbr": 7.35,
       "latest_div_yield": 1.33,
       "per_bands": {
         "p25": 27.4,
@@ -27178,6 +27130,7 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -27197,6 +27150,7 @@
       "model_sun_status": "🟢 特價好球帶",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -27208,8 +27162,10 @@
         "最新扣庫藏普通股流通股數／日期／原始證據未核實"
       ],
       "contract_liabilities_bn": 182.1,
+      "bvps": null,
       "div_latest": null,
       "div_latest_note": null,
+      "latest_pbr": null,
       "rank": 15,
       "rs_score": 30.9,
       "ret_3m": -48.57,
@@ -27437,12 +27393,7 @@
           10972.1
         ]
       },
-      "bvps": 205.03,
       "div_5y_avg": 12.0,
-      "gross_margin_4q": 33.59,
-      "op_margin_4q": 26.17,
-      "net_margin_4q": 20.13,
-      "rev_4q_bn": 1661.54,
       "recent_4q_eps": [
         10.44,
         14.9,
@@ -27458,7 +27409,6 @@
       "latest_q_eps": 40.47,
       "latest_revenue": 244.73,
       "latest_rev_yoy": 203.08,
-      "latest_pbr": 13.71,
       "latest_div_yield": 0.43,
       "per_bands": {
         "p25": 24.2,
@@ -27470,6 +27420,7 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -27489,6 +27440,7 @@
       "model_sun_status": "🟢 特價好球帶",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -27500,8 +27452,10 @@
         "最新扣庫藏普通股流通股數／日期／原始證據未核實"
       ],
       "contract_liabilities_bn": null,
+      "bvps": null,
       "div_latest": null,
       "div_latest_note": null,
+      "latest_pbr": null,
       "rank": 13,
       "rs_score": 38.7,
       "ret_3m": -50.53,
@@ -27729,12 +27683,7 @@
           611.3
         ]
       },
-      "bvps": 77.75,
       "div_5y_avg": 2.8,
-      "gross_margin_4q": 5.62,
-      "op_margin_4q": 3.79,
-      "net_margin_4q": 1.41,
-      "rev_4q_bn": 36117.77,
       "recent_4q_eps": [
         2.61,
         3.06,
@@ -27750,7 +27699,6 @@
       "latest_q_eps": 5.74,
       "latest_revenue": 4026.15,
       "latest_rev_yoy": 117.56,
-      "latest_pbr": 1.89,
       "latest_div_yield": 1.9,
       "per_bands": {
         "p25": 14.9,
@@ -27762,6 +27710,7 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -27781,6 +27730,7 @@
       "model_sun_status": "🟢 特價好球帶",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -27792,8 +27742,10 @@
         "最新扣庫藏普通股流通股數／日期／原始證據未核實"
       ],
       "contract_liabilities_bn": 121.95,
+      "bvps": null,
       "div_latest": null,
       "div_latest_note": null,
+      "latest_pbr": null,
       "rank": 2,
       "rs_score": 90.7,
       "ret_3m": -16.24,
@@ -28021,12 +27973,7 @@
           382.9
         ]
       },
-      "bvps": 49.69,
       "div_5y_avg": 3.2,
-      "gross_margin_4q": 40.85,
-      "op_margin_4q": 30.27,
-      "net_margin_4q": 24.94,
-      "rev_4q_bn": 176.53,
       "recent_4q_eps": [
         1.79,
         1.95,
@@ -28042,7 +27989,6 @@
       "latest_q_eps": 3.1,
       "latest_revenue": 18.57,
       "latest_rev_yoy": 47.87,
-      "latest_pbr": 2.74,
       "latest_div_yield": 2.35,
       "per_bands": {
         "p25": 16.4,
@@ -28054,6 +28000,7 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -28073,6 +28020,7 @@
       "model_sun_status": "🟢 特價好球帶",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -28084,8 +28032,10 @@
         "最新扣庫藏普通股流通股數／日期／原始證據未核實"
       ],
       "contract_liabilities_bn": 0.05,
+      "bvps": null,
       "div_latest": null,
       "div_latest_note": null,
+      "latest_pbr": null,
       "rank": 11,
       "rs_score": 51.0,
       "ret_3m": -33.0,
@@ -28313,12 +28263,7 @@
           420.5
         ]
       },
-      "bvps": 42.82,
       "div_5y_avg": 4.5,
-      "gross_margin_4q": 24.39,
-      "op_margin_4q": 12.94,
-      "net_margin_4q": 11.21,
-      "rev_4q_bn": 1978.7,
       "recent_4q_eps": [
         1.7,
         1.66,
@@ -28334,7 +28279,6 @@
       "latest_q_eps": 3.27,
       "latest_revenue": 200.71,
       "latest_rev_yoy": 32.01,
-      "latest_pbr": 4.1,
       "latest_div_yield": 2.56,
       "per_bands": {
         "p25": 19.1,
@@ -28346,6 +28290,7 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -28365,6 +28310,7 @@
       "model_sun_status": "🟢 便宜低估區",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -28376,8 +28322,10 @@
         "最新扣庫藏普通股流通股數／日期／原始證據未核實"
       ],
       "contract_liabilities_bn": 4.88,
+      "bvps": null,
       "div_latest": null,
       "div_latest_note": null,
+      "latest_pbr": null,
       "rank": 8,
       "rs_score": 60.3,
       "ret_3m": -32.76,
@@ -28605,12 +28553,7 @@
           100.7
         ]
       },
-      "bvps": 22.52,
       "div_5y_avg": 1.6,
-      "gross_margin_4q": 4.58,
-      "op_margin_4q": 1.67,
-      "net_margin_4q": 1.2,
-      "rev_4q_bn": 9135.54,
       "recent_4q_eps": [
         0.57,
         0.68,
@@ -28626,7 +28569,6 @@
       "latest_q_eps": 0.71,
       "latest_revenue": 799.66,
       "latest_rev_yoy": 46.02,
-      "latest_pbr": 1.74,
       "latest_div_yield": 4.08,
       "per_bands": {
         "p25": 18.3,
@@ -28638,6 +28580,7 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -28657,6 +28600,7 @@
       "model_sun_status": "🟢 便宜低估區",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -28668,8 +28612,10 @@
         "最新扣庫藏普通股流通股數／日期／原始證據未核實"
       ],
       "contract_liabilities_bn": 297.89,
+      "bvps": null,
       "div_latest": null,
       "div_latest_note": null,
+      "latest_pbr": null,
       "rank": 10,
       "rs_score": 55.4,
       "ret_3m": -40.26,
@@ -28897,12 +28843,7 @@
           421.0
         ]
       },
-      "bvps": 60.53,
       "div_5y_avg": 4.5,
-      "gross_margin_4q": 18.4,
-      "op_margin_4q": 10.94,
-      "net_margin_4q": 8.7,
-      "rev_4q_bn": 145.01,
       "recent_4q_eps": [
         2.52,
         2.05,
@@ -28918,7 +28859,6 @@
       "latest_q_eps": 2.33,
       "latest_revenue": 8.28,
       "latest_rev_yoy": -17.52,
-      "latest_pbr": 2.83,
       "latest_div_yield": 2.63,
       "per_bands": {
         "p25": 12.0,
@@ -28930,6 +28870,7 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -28949,6 +28890,7 @@
       "model_sun_status": "🟢 便宜低估區",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -28960,8 +28902,10 @@
         "最新扣庫藏普通股流通股數／日期／原始證據未核實"
       ],
       "contract_liabilities_bn": null,
+      "bvps": null,
       "div_latest": null,
       "div_latest_note": null,
+      "latest_pbr": null,
       "rank": 17,
       "rs_score": 23.5,
       "ret_3m": -51.21,
@@ -29189,12 +29133,7 @@
           256.8
         ]
       },
-      "bvps": 39.81,
       "div_5y_avg": 3.2,
-      "gross_margin_4q": 32.12,
-      "op_margin_4q": 16.59,
-      "net_margin_4q": 13.32,
-      "rev_4q_bn": 214.99,
       "recent_4q_eps": [
         2.29,
         2.36,
@@ -29210,7 +29149,6 @@
       "latest_q_eps": 3.14,
       "latest_revenue": 19.82,
       "latest_rev_yoy": 24.36,
-      "latest_pbr": 2.79,
       "latest_div_yield": 2.88,
       "per_bands": {
         "p25": 16.3,
@@ -29222,6 +29160,7 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -29241,6 +29180,7 @@
       "model_sun_status": "🟢 便宜低估區",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -29252,8 +29192,10 @@
         "最新扣庫藏普通股流通股數／日期／原始證據未核實"
       ],
       "contract_liabilities_bn": 1.96,
+      "bvps": null,
       "div_latest": null,
       "div_latest_note": null,
+      "latest_pbr": null,
       "rank": 6,
       "rs_score": 71.1,
       "ret_3m": -22.11,
@@ -29481,12 +29423,7 @@
           867.6
         ]
       },
-      "bvps": 30.44,
       "div_5y_avg": 4.5,
-      "gross_margin_4q": 43.46,
-      "op_margin_4q": 22.92,
-      "net_margin_4q": 21.88,
-      "rev_4q_bn": 243.04,
       "recent_4q_eps": [
         5.31,
         3.29,
@@ -29502,7 +29439,6 @@
       "latest_q_eps": 4.55,
       "latest_revenue": 18.89,
       "latest_rev_yoy": -15.38,
-      "latest_pbr": 13.85,
       "latest_div_yield": 1.07,
       "per_bands": {
         "p25": 29.4,
@@ -29514,6 +29450,7 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -29533,6 +29470,7 @@
       "model_sun_status": "🟢 便宜低估區",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -29544,8 +29482,10 @@
         "最新扣庫藏普通股流通股數／日期／原始證據未核實"
       ],
       "contract_liabilities_bn": 61.21,
+      "bvps": null,
       "div_latest": null,
       "div_latest_note": null,
+      "latest_pbr": null,
       "rank": 12,
       "rs_score": 46.1,
       "ret_3m": -41.7,
@@ -29773,12 +29713,7 @@
           7195.0
         ]
       },
-      "bvps": 540.28,
       "div_5y_avg": 22.0,
-      "gross_margin_4q": 60.05,
-      "op_margin_4q": 35.57,
-      "net_margin_4q": 35.17,
-      "rev_4q_bn": 2177.3,
       "recent_4q_eps": [
         22.08,
         68.8,
@@ -29794,13 +29729,13 @@
       "latest_q_eps": 138.0,
       "latest_revenue": 315.3,
       "latest_rev_yoy": 346.27,
-      "latest_pbr": 2.44,
       "latest_div_yield": 1.67,
       "per_bands": null,
       "official_market_pe": null,
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -29820,6 +29755,7 @@
       "model_sun_status": "🟢 便宜低估區",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -29831,8 +29767,10 @@
         "最新扣庫藏普通股流通股數／日期／原始證據未核實"
       ],
       "contract_liabilities_bn": 15.44,
+      "bvps": 540.28,
       "div_latest": 60.0,
       "div_latest_note": "2026H1擬配$60",
+      "latest_pbr": 2.44,
       "rank": 9,
       "rs_score": 55.9,
       "ret_3m": -36.39,
@@ -30060,12 +29998,7 @@
           264.8
         ]
       },
-      "bvps": 74.23,
       "div_5y_avg": 2.8,
-      "gross_margin_4q": 21.31,
-      "op_margin_4q": 11.91,
-      "net_margin_4q": 9.9,
-      "rev_4q_bn": 397.63,
       "recent_4q_eps": [
         0.81,
         2.79,
@@ -30081,7 +30014,6 @@
       "latest_q_eps": 1.71,
       "latest_revenue": 30.84,
       "latest_rev_yoy": 16.45,
-      "latest_pbr": 1.94,
       "latest_div_yield": 1.94,
       "per_bands": {
         "p25": 27.8,
@@ -30093,6 +30025,7 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -30112,6 +30045,7 @@
       "model_sun_status": "🟢 便宜低估區",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -30123,8 +30057,10 @@
         "最新扣庫藏普通股流通股數／日期／原始證據未核實"
       ],
       "contract_liabilities_bn": 104.11,
+      "bvps": null,
       "div_latest": null,
       "div_latest_note": null,
+      "latest_pbr": null,
       "rank": 7,
       "rs_score": 68.6,
       "ret_3m": -28.71,
@@ -30368,12 +30304,7 @@
           4568.6
         ]
       },
-      "bvps": 269.85,
       "div_5y_avg": 16.0,
-      "gross_margin_4q": 65.85,
-      "op_margin_4q": 57.98,
-      "net_margin_4q": 51.53,
-      "rev_4q_bn": 49448.17,
       "recent_4q_eps": [
         19.51,
         22.08,
@@ -30389,7 +30320,6 @@
       "latest_q_eps": 29.43,
       "latest_revenue": 5868.9,
       "latest_rev_yoy": 59.71,
-      "latest_pbr": 7.41,
       "latest_div_yield": 0.8,
       "per_bands": {
         "p25": 21.3,
@@ -30401,6 +30331,7 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -30420,6 +30351,7 @@
       "model_sun_status": "🟢 便宜低估區",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -30431,8 +30363,10 @@
         "最新扣庫藏普通股流通股數／日期／原始證據未核實"
       ],
       "contract_liabilities_bn": null,
+      "bvps": null,
       "div_latest": null,
       "div_latest_note": null,
+      "latest_pbr": null,
       "rank": 3,
       "rs_score": 89.7,
       "ret_3m": -17.01,
@@ -30660,12 +30594,7 @@
           233.3
         ]
       },
-      "bvps": 43.42,
       "div_5y_avg": 3.5,
-      "gross_margin_4q": 27.3,
-      "op_margin_4q": 18.71,
-      "net_margin_4q": 15.97,
-      "rev_4q_bn": 284.6,
       "recent_4q_eps": [
         2.08,
         1.94,
@@ -30681,7 +30610,6 @@
       "latest_q_eps": 2.61,
       "latest_revenue": 26.22,
       "latest_rev_yoy": 18.21,
-      "latest_pbr": 2.94,
       "latest_div_yield": 2.75,
       "per_bands": {
         "p25": 19.0,
@@ -30693,6 +30621,7 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -30712,6 +30641,7 @@
       "model_sun_status": "🟢 便宜低估區",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -30723,8 +30653,10 @@
         "最新扣庫藏普通股流通股數／日期／原始證據未核實"
       ],
       "contract_liabilities_bn": 92.44,
+      "bvps": null,
       "div_latest": null,
       "div_latest_note": null,
+      "latest_pbr": null,
       "rank": 5,
       "rs_score": 79.9,
       "ret_3m": -23.19,
@@ -30968,12 +30900,7 @@
           450.0
         ]
       },
-      "bvps": 140.65,
       "div_5y_avg": 5.4,
-      "gross_margin_4q": 6.04,
-      "op_margin_4q": 3.62,
-      "net_margin_4q": 2.27,
-      "rev_4q_bn": 102674.34,
       "recent_4q_eps": [
         3.23,
         3.56,
@@ -30989,7 +30916,6 @@
       "latest_q_eps": 5.51,
       "latest_revenue": 13053.2,
       "latest_rev_yoy": 45.73,
-      "latest_pbr": 1.49,
       "latest_div_yield": 2.57,
       "per_bands": {
         "p25": 14.1,
@@ -31001,6 +30927,7 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -31020,6 +30947,7 @@
       "model_sun_status": "🟢 便宜低估區",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -31031,8 +30959,10 @@
         "最新扣庫藏普通股流通股數／日期／原始證據未核實"
       ],
       "contract_liabilities_bn": null,
+      "bvps": null,
       "div_latest": null,
       "div_latest_note": null,
+      "latest_pbr": null,
       "rank": 1,
       "rs_score": 93.1,
       "ret_3m": -14.46,
@@ -31247,12 +31177,7 @@
           449.1
         ]
       },
-      "bvps": 50.33,
       "div_5y_avg": 0.8,
-      "gross_margin_4q": 6.69,
-      "op_margin_4q": -17.18,
-      "net_margin_4q": -8.96,
-      "rev_4q_bn": 18.02,
       "recent_4q_eps": [
         -0.21,
         -0.98,
@@ -31268,13 +31193,13 @@
       "latest_q_eps": -0.06,
       "latest_revenue": 2.29,
       "latest_rev_yoy": 70.35,
-      "latest_pbr": 5.1,
       "latest_div_yield": 0.31,
       "per_bands": null,
       "official_market_pe": null,
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -31294,6 +31219,7 @@
       "model_sun_status": "🟢 便宜低估區",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -31305,8 +31231,10 @@
         "最新扣庫藏普通股流通股數／日期／原始證據未核實"
       ],
       "contract_liabilities_bn": 0.77,
+      "bvps": null,
       "div_latest": null,
       "div_latest_note": null,
+      "latest_pbr": null,
       "rank": 20,
       "rs_score": 10.8,
       "ret_3m": -57.25,
@@ -31385,11 +31313,11 @@
       "base_multiple_label": "PSR 3.5x",
       "valuation_scenarios": {
         "conservative": {
-          "fair": 173.9,
-          "cheap": 139.1,
-          "expensive": 208.7,
-          "mos_pct": -8.11,
-          "formula": "已公告近4季財報每股營收 SPS $66.36 × 保守轉機PSR 2.62x = $174",
+          "fair": 175.6,
+          "cheap": 140.5,
+          "expensive": 210.7,
+          "mos_pct": -7.06,
+          "formula": "已公告近4季財報每股營收 SPS $67.01 × 保守轉機PSR 2.62x = $176",
           "source": "已公告近4季財報營收（股數未核實）"
         },
         "base": {
@@ -31500,7 +31428,7 @@
       "val_basis": "近12月滾動每股營收 SPS $67.01 (PSR河流圖)",
       "eps_2026e_cons": null,
       "unverified_consensus_candidate": null,
-      "p_fair_conservative": 173.9,
+      "p_fair_conservative": 175.6,
       "raw_upside_total": 31.3,
       "raw_upside_ann": 27.8,
       "pv_target_2027": 222.0,
@@ -31557,12 +31485,7 @@
           515.8
         ]
       },
-      "bvps": 80.99,
       "div_5y_avg": 2.0,
-      "gross_margin_4q": 16.2,
-      "op_margin_4q": 1.95,
-      "net_margin_4q": 0.3,
-      "rev_4q_bn": 78.24,
       "recent_4q_eps": [
         0.9,
         -1.45,
@@ -31578,13 +31501,13 @@
       "latest_q_eps": 0.05,
       "latest_revenue": 7.99,
       "latest_rev_yoy": 10.52,
-      "latest_pbr": 2.32,
       "latest_div_yield": 1.06,
       "per_bands": null,
       "official_market_pe": null,
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -31604,6 +31527,7 @@
       "model_sun_status": "⚪ 估值無法確認",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -31615,8 +31539,10 @@
         "最新扣庫藏普通股流通股數／日期／原始證據未核實"
       ],
       "contract_liabilities_bn": 0.36,
+      "bvps": null,
       "div_latest": null,
       "div_latest_note": null,
+      "latest_pbr": null,
       "rank": 18,
       "rs_score": 19.6,
       "ret_3m": -55.02,
@@ -31852,12 +31778,7 @@
           5250.0
         ]
       },
-      "bvps": 289.99,
       "div_5y_avg": 55.0,
-      "gross_margin_4q": 46.24,
-      "op_margin_4q": 15.29,
-      "net_margin_4q": 16.03,
-      "rev_4q_bn": 6195.79,
       "recent_4q_eps": [
         14.4,
         15.17,
@@ -31873,7 +31794,6 @@
       "latest_q_eps": 17.5,
       "latest_revenue": 550.26,
       "latest_rev_yoy": 5.77,
-      "latest_pbr": 11.55,
       "latest_div_yield": 1.64,
       "per_bands": {
         "p25": 20.7,
@@ -31885,6 +31805,7 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -31904,6 +31825,7 @@
       "model_sun_status": "⚪ 合理價值區",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -31915,8 +31837,10 @@
         "最新扣庫藏普通股流通股數／日期／原始證據未核實"
       ],
       "contract_liabilities_bn": 89.63,
+      "bvps": null,
       "div_latest": null,
       "div_latest_note": null,
+      "latest_pbr": null,
       "rank": 4,
       "rs_score": 83.8,
       "ret_3m": -11.61,
@@ -32159,12 +32083,7 @@
           925.0
         ]
       },
-      "bvps": 57.92,
       "div_5y_avg": 2.5,
-      "gross_margin_4q": 55.99,
-      "op_margin_4q": 44.52,
-      "net_margin_4q": 36.9,
-      "rev_4q_bn": 43.3,
       "recent_4q_eps": [
         2.07,
         3.44,
@@ -32180,7 +32099,6 @@
       "latest_q_eps": 6.12,
       "latest_revenue": 5.7,
       "latest_rev_yoy": 182.96,
-      "latest_pbr": 23.57,
       "latest_div_yield": 0.18,
       "per_bands": {
         "p25": 200.8,
@@ -32192,6 +32110,7 @@
       "data_eligible": false,
       "data_quality_status": "pending",
       "data_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -32211,6 +32130,7 @@
       "model_sun_status": "🔴 瘋狂過熱區",
       "valuation_is_reference_only": true,
       "valuation_quality_reasons": [
+        "季報原始來源雜湊缺漏",
         "TTM／三月年增所需15個月的逐月官方證據未齊或金額不符",
         "季報及每股盈餘股數基準尚未核實",
         "季報普通股盈餘與股數官方證據缺漏",
@@ -32222,8 +32142,10 @@
         "最新扣庫藏普通股流通股數／日期／原始證據未核實"
       ],
       "contract_liabilities_bn": 0.07,
+      "bvps": null,
       "div_latest": null,
       "div_latest_note": null,
+      "latest_pbr": null,
       "rank": 16,
       "rs_score": 28.9,
       "ret_3m": -53.25,
@@ -32262,16 +32184,16 @@
     }
   ],
   "macro_risk": {
-    "regime_title": "🔴 宏觀系統性緊縮",
-    "regime_badge_color": "rose",
-    "regime_summary": "總體宏觀因子即時動態監控中，當前觸發 2 項紅燈警報",
-    "red_count": 2,
+    "regime_title": "🟡 宏觀警示震盪",
+    "regime_badge_color": "amber",
+    "regime_summary": "總體宏觀因子即時動態監控中，當前觸發 1 項紅燈警報",
+    "red_count": 1,
     "items": [
       {
         "name": "美債10Y殖利率",
-        "value": "5.05%",
-        "light": "red",
-        "date": "2026-11-19",
+        "value": "4.94%",
+        "light": "yellow",
+        "date": "2026-11-20",
         "source": "Yahoo Finance (^TNX)",
         "threshold": "\u003c 5.0%",
         "desc": "長端公債殖利率即時監控"
@@ -32296,7 +32218,7 @@
       },
       {
         "name": "VIX恐慌指數",
-        "value": "28.5",
+        "value": "31.4",
         "light": "red",
         "date": "2026-11-20",
         "source": "CBOE (^VIX)",
@@ -32305,7 +32227,7 @@
       },
       {
         "name": "美元/台幣匯率",
-        "value": "32.97",
+        "value": "32.94",
         "light": "yellow",
         "date": "2026-11-20",
         "source": "Yahoo Finance (USDTWD=X)",
@@ -32314,7 +32236,7 @@
       },
       {
         "name": "全球銅博士期貨",
-        "value": "$5.58/lb",
+        "value": "$5.49/lb",
         "light": "green",
         "date": "2026-11-20",
         "source": "COMEX (HG=F)",
@@ -32325,7 +32247,7 @@
   },
   "ai_capex": {
     "status_badge": "⚠️ AI 源頭動能降溫",
-    "nvda_ret_60d": "-30.4% (2026-11-19)",
+    "nvda_ret_60d": "-40.3% (2026-11-20)",
     "nvda_bar_pct": 10,
     "csp_above_ma60": "25% (1/4 站上季線)",
     "csp_bar_pct": 25,
@@ -32862,12 +32784,12 @@
   "release_readiness": {
     "schema_version": "evidence-gates-v2",
     "input_sha256": {
-      "stock_revenue_live.json": "ae4cc41bfc74facfbc1d1dd518514218aee0ee358662e31b129140f066014e52",
-      "stock_quarterly_live.json": "b9f3501cc2068c4142ff99d0a952189e75955aae3716a5e2ed69b53aeac3a51d",
-      "stock_price_evidence.json": "1ac971ac4ba3d5007d360de3bbb750a9c0e2b91d0686597240cb89fe9bed0160",
-      "aligned_monthly.parquet": "79de295ca4cd9c0571e9a8d2c3b26540ac7b66d081e87c047afbc3c13ddbb148",
-      "latest_signal.json": "f8485a70c506b626e08e793f9db81ccbf176d34b358e8121a766dcc71b28d551",
-      "portfolio_backtest_metadata.json": "a49a9933f1d1da48cebef15cc2728146cf1f454a62abd8fe12fe17fb4c6a0334",
+      "stock_revenue_live.json": "a89259088522fe97e54c24a449a1026d15c9ad7cee0183d2a9402f5e113ed279",
+      "stock_quarterly_live.json": "e493ed8c62b1fc35f8a958447115b97894643b428faac8fd0a7e844b4af17caf",
+      "stock_price_evidence.json": "fa31f144ec70b0813185ef165dfa9dae8698c47ad6598f40fadb742ac5973b1b",
+      "aligned_monthly.parquet": "841edbc96a21737c9ba60661b81fc8513f8782089c79cc7d0fe0aac9e3a978aa",
+      "latest_signal.json": "2068f7a83227b567f90c13f14bea58ccce2f7e29b08ef549132ccf1a804b4bbc",
+      "portfolio_backtest_metadata.json": "84fe6c1664c5609051d54677772a3b3a06fd31a3a94219e3d045776729cbcf70",
       "macro_verifications.json": null,
       "valuation_verifications.json": null,
       "model_acceptance.json": null,
@@ -33033,50 +32955,41 @@
       "歷史可得資料、股息／股數事件、歷史股池及樣本外驗收未齊"
     ],
     "delivery_scope": "離線與模擬管道；真正送達另行確認",
-    "snapshot_id": "684747ea6db0f3191bc21ca0bc86a6c2e8bcc33902ea149f900260c92a5d8f73",
-    "checked_at": "2026-11-20T21:09:59.946029+08:00"
+    "snapshot_id": "9294143c82ed2a43d8ea1731766d3187de218cfce020696ba9f3be8b2392140d",
+    "checked_at": "2026-11-21T00:59:00.338041+08:00"
   },
   "input_sha256": {
-    "adaptive_scorecard_history.csv": "dc31fc7aa6262432af0acd3d7f8695a250ca6cac57090f75533805b08cede434",
-    "adaptive_scorecard_history.parquet": "f0aa01776a92aa48eca9f96362329be32aae4dd64f607d675ce8874a8b8f2fe4",
-    "aligned_monthly.parquet": "79de295ca4cd9c0571e9a8d2c3b26540ac7b66d081e87c047afbc3c13ddbb148",
+    "adaptive_scorecard_history.csv": "bd47d79e51e8c05593cd7e93a7f4a499617ee473ca04795849c2b3e855ef8f3d",
+    "adaptive_scorecard_history.parquet": "2e487f355e67cd95928ce19529ce9bf963e0a79de2b17c646abf00168f49d94c",
+    "aligned_monthly.parquet": "841edbc96a21737c9ba60661b81fc8513f8782089c79cc7d0fe0aac9e3a978aa",
     "benchmark_daily.parquet": "97a4f9b07d6cd14b515b82cbfe3ad1b0533f72f0b3714c35618aa02359c9b61a",
-    "cbc_money_supply.csv": "3709394e18b9c6048f07044521648099115664d39a17a8512cbfdd67a5643298",
     "cbc_money_supply.parquet": "760089ee4d283e360888f3facd43f3405d4fb8bfa0a8ba3f5c4e1ae8e2b21caa",
-    "csp_daily.csv": "5ff5c34940f061550654cc9be05b7e2a13a5aca831f5376fa20b67ea88311992",
     "csp_daily.parquet": "764bd9a56360539dd4d98831c1f21465bbbd036633e80325554fded7e5e0bf07",
-    "csp_indicators.csv": "509e3139040d66c4418a5b890d10d0e71dff6283cf4613b282531e1b28d97179",
-    "csp_indicators.parquet": "187ca9161df60f157f5f5cd05f62b7225079d9725ab06fd6739114e517e995be",
-    "customs_monthly.csv": "c49a6dfbb87dfe2eb138376e7ceb7403558fa1255aac6a53be55b318af14acae",
+    "csp_indicators.csv": "477160afc78fc25498503fe1370ced6ba72001c4c43aee492182d4a67f2a1395",
+    "csp_indicators.parquet": "1759500018847a12f512fa09ec20cae29edc6db1d5d836a38e7a0bd90c783c1b",
     "customs_monthly.parquet": "dd7c71e929f87b194f7ae80382e79069ce8effc0b42b8b2b9dbb9a6f389dee24",
     "etf_0050_daily.parquet": "76547e2e54e1c61baac99acf414123eb0ea1dce0c85926a3a09ab64c3d9a9c93",
-    "etf_0050_meta.json": "c0014e82d3e13dd8f4b97e674cf7f85be9ed1f006bb0e7095bf3e176075cc526",
-    "event_details.csv": "eb5537cc0953069a4b8c6e60017315763ab42e946305532d2a8dd6f4bf60db87",
+    "etf_0050_meta.json": "e807717626099ef053e8ba871ab091a72dcaeb2e8b4d7529e315170819eb81fd",
     "export_orders_monthly.parquet": "73d7e8d3c3abd17e1a198ad42096f5c0791f757838042864612be4c19ef1d33b",
-    "last_dispatch.json": "bb7fec5d19025cc9fd44679a00827783409642ceecd206af270a7c6a929f2443",
-    "latest_signal.json": "f8485a70c506b626e08e793f9db81ccbf176d34b358e8121a766dcc71b28d551",
-    "market_indicators.csv": "035df87795653b30d6a022c62dc79d995be2458cde234e063be24c55cfd3bbf8",
-    "market_indicators.parquet": "351ff536fcdce38763cc4a14d2f5a3884e19de78ac7e514043efaa9608e9506a",
+    "last_dispatch.json": "11bb982851f89cdaa293e058aa6b3183901b70018ddfeb179df2706faf3fa6e0",
+    "latest_signal.json": "2068f7a83227b567f90c13f14bea58ccce2f7e29b08ef549132ccf1a804b4bbc",
+    "market_indicators.csv": "6cda456832be6abac1e9f021ec67207567bec22d850660750ecf085d72e7c190",
+    "market_indicators.parquet": "23c619cd9d2fb59535d133b476c8a6c73d4351c84e468b36e8c0c22fb952c48c",
     "market_revenue_monthly.parquet": "2281fca3a314944a7e798febab62a4994080f31d4d0ba458f2d318ed45fc66e2",
-    "ndc_indicators.csv": "1794f4f0c6db4a863d8b49c93b5f89cd5c761face78b288d874b6d8e438a8cdb",
     "ndc_indicators.parquet": "8b8274d490d8780f37813c0a0c652d54886cae2caea2fc0801650066b3b7d8d4",
-    "pmi_monthly.csv": "d903165af6ad244a688c4677ecaf05914b2940f996948309946c8527be9e55ed",
     "pmi_monthly.parquet": "6b8e10ba8964684f23566f4cf86a4c4990ac7152c0b306955998b29a3e05e201",
-    "portfolio_backtest_metadata.json": "a49a9933f1d1da48cebef15cc2728146cf1f454a62abd8fe12fe17fb4c6a0334",
-    "portfolio_backtest_results.csv": "e3112f8b3feff88ffb1ddd7461a096e4b595a78f5aed26c59d6bff0c4aa75022",
+    "portfolio_backtest_metadata.json": "84fe6c1664c5609051d54677772a3b3a06fd31a3a94219e3d045776729cbcf70",
     "portfolio_backtest_results.parquet": "7ffe7a7e9b70814ccc8f49220653a2a0bcceddba71ce59e0bdbc3f90586afc20",
-    "reporting_calendars.json": "59c269bf98bdaf92a285784e7fd892dd86590fe923248fe683570f792626f02d",
-    "scorecard.csv": "d4967e165f63a07eb69dcf241cfc1d2f6d974f95d461af292d16feb4d4afe116",
-    "scorecard_history.csv": "b46024a9105e91e48352830a30aaab62d3517cc390c016a68afc453d5be3d5c1",
+    "reporting_calendars.json": "6dfd43da7504082d5af3ff19677a69ca4e0f2bc6cfff80c2bbc6eee8613c3421",
+    "scorecard.csv": "46f4044ea8dd02cd04616df637757ea37fbacf5cf6a168a0758e513f8a4680eb",
     "scorecard_history.parquet": "323c5119d7434f9f7fa2f3b887b141dacc543c6ff2d9fe360e92d314e7553bc6",
-    "scorecard_summary.json": "2ed1697f49fb54d29c6b03e7cbcc841e654fa79ff32eb77d0e9993d07795b8b5",
-    "stock_fundamentals_emerging.json": "de42c83ce4ebc2d7438a3ab17e31bf59cb96f9f877cc3ab96eeb276314502ecf",
-    "stock_price_evidence.json": "1ac971ac4ba3d5007d360de3bbb750a9c0e2b91d0686597240cb89fe9bed0160",
-    "stock_quarterly_live.json": "b9f3501cc2068c4142ff99d0a952189e75955aae3716a5e2ed69b53aeac3a51d",
-    "stock_revenue_emerging.json": "0a66e448057589b108694f0d5fbfab70ad3ab863e8793f8040929eff735f94e4",
-    "stock_revenue_live.json": "ae4cc41bfc74facfbc1d1dd518514218aee0ee358662e31b129140f066014e52",
+    "scorecard_summary.json": "ae0f28a41e09e87833762e34fff5dafa6d7993d7925a63ff95b5e1841cc5aa9b",
+    "stock_fundamentals_emerging.json": "9b822132e148b13d7e6521fc1fb227e53fe153965009eb3c3a67dc3582f955e4",
+    "stock_price_evidence.json": "fa31f144ec70b0813185ef165dfa9dae8698c47ad6598f40fadb742ac5973b1b",
+    "stock_quarterly_live.json": "e493ed8c62b1fc35f8a958447115b97894643b428faac8fd0a7e844b4af17caf",
+    "stock_revenue_emerging.json": "63c8c1a9682e1232f47594ea41669bd8b7625c59c07ecebee6f11ce8a3195e1f",
+    "stock_revenue_live.json": "a89259088522fe97e54c24a449a1026d15c9ad7cee0183d2a9402f5e113ed279",
     "taifex_txf_daily.parquet": "c0496124a5003ded7d8df78c164600050fb52d23285d0e0405aa4102bb540bd5",
-    "taifex_txf_institutional.csv": "3b20997824bf504bf8c1fb7075123eb590b5310de4012563092e22223255639d",
     "taifex_txf_institutional.parquet": "6479cf9986ee6f475562d5562fed4551b1655a7f2833d7b55a105ef087cf689a",
     "tw_stocks_daily.parquet": "4631f177c67fe8c24e146fb4c791de7b691bf78d1e4b0c5c8591208bb28086df",
     "tw_stocks_emerging_daily.parquet": "c912fbe7dbed3f15869da6bf162b51df27e0ecee8533546ec284993cde8d5c8d",
@@ -33090,12 +33003,11 @@
     "tw_stocks_high.parquet": "9ea66f92c57db1b53e7dbdc0def827945b5fbaeaccedd48055f0fc3ced359931",
     "tw_stocks_low.parquet": "620add0281304af9e47f3bab01a9f7d6321cb359ad1e05342d0b44279d34d4c5",
     "tw_stocks_volume.parquet": "f9d8038add37b7dc026b4881607c8628a9c3e5c39c6b437613ef15d0d03e4dba",
-    "twse_market.csv": "807f187e5ba37f90e284d71b93bd69203377bf056b31e871df7d86912f8d6a75",
     "twse_market.parquet": "0e9081ee76195cb00207d8b3b8f6ef4209fdb4fd635b01a53b09786ae6ceedee",
-    "implementation_sha256": "75e1f175055b7129235e588bd64bb7786a34898e25f5046989549d891503c079"
+    "implementation_sha256": "c80dc5f897b019d3b50ef2b2a3c84b2003f9f5a1938425e5a408e40940793515"
   },
   "snapshot_schema": "dashboard-snapshot-v1",
-  "snapshot_id": "fdf4a1a4459a64f2ace63ccfe784019098f815008f45c93b84a8894e6e5b5657"
+  "snapshot_id": "7ef89273a59887a9cb38bada84fbf8268cdefc6cc5cc613464456d586ee9029e"
 };
   </script>
 <!-- 互動圖表與數據渲染腳本 -->
