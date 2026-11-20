@@ -1393,13 +1393,27 @@
     </div>
   </div>
 
-  <!-- 宏觀六因子監控面板 -->
-  <section class="grid grid-cols-1 lg:grid-cols-2 gap-4" id="macro-risk-section">
-<!-- 系統一致性與資料驗證卡 (A2 升級：拆分雙分數＋4大交叉檢查) -->
-<div class="bg-brand-card p-4 sm:p-5 rounded-xl border border-emerald-500/40 glow-accent flex flex-col justify-between min-w-0">
+  <!-- 宏觀六因子監控面板（預設收合，收合時僅顯示綠紅燈數量與更新日期時間） -->
+  <section class="grid grid-cols-1 lg:grid-cols-2 gap-4 items-start" id="macro-risk-section">
+<!-- 系統一致性與資料驗證卡 (預設收合，顯示綠紅燈數＋日期時間) -->
+<details id="systemHealthCard" class="tsli-collapsible bg-brand-card rounded-xl border border-emerald-500/40 glow-accent min-w-0">
+<summary class="list-none cursor-pointer select-none px-4 py-3 flex flex-wrap items-center justify-between gap-2 hover:bg-slate-900/60 rounded-xl transition-colors">
+  <div class="flex items-center gap-2 flex-wrap min-w-0">
+    <span class="text-lg flex-shrink-0">🔍</span>
+    <span class="text-sm font-black text-white">系統健康度自檢</span>
+    <span id="healthLightSummary" class="px-2 py-0.5 rounded-full text-xs font-mono font-bold bg-emerald-500/20 text-[#00F59B] border border-emerald-400/50">🟢 6綠 / 🔴 0紅</span>
+  </div>
+  <div class="flex items-center gap-2 flex-shrink-0">
+    <span id="healthUpdatedAt" class="text-[11px] font-mono text-cyan-300">🕒 —</span>
+    <span class="px-2 py-0.5 rounded-lg bg-slate-800 text-cyan-300 border border-cyan-500/40 text-[11px] font-mono font-bold">
+      <span class="tsli-lbl-closed">展開 ▾</span>
+      <span class="tsli-lbl-open">收合 ▴</span>
+    </span>
+  </div>
+</summary>
+<div class="px-4 sm:px-5 pb-4 sm:pb-5 pt-2 border-t border-slate-800 flex flex-col justify-between min-w-0">
 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-slate-800">
 <div class="flex items-center gap-2 min-w-0">
-<span class="text-xl flex-shrink-0">🔍</span>
 <div class="min-w-0">
 <h3 class="text-sm font-bold text-white flex items-center gap-2 flex-wrap">
                 系統健康度自檢 (System Health)
@@ -1413,7 +1427,7 @@
   <a href="guide.html#sec-system-health" onclick="if(window.saveNavStateForGuide) window.saveNavStateForGuide();" class="px-2.5 py-0.5 rounded font-mono text-xs font-bold bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-200 border border-cyan-400/50 whitespace-nowrap transition-all active:scale-95">📖 看說明</a>
 </div>
 </div>
-<div class="grid grid-cols-2 sm:grid-cols-3 gap-2 my-3 text-xs font-mono">
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-2 my-3 text-xs font-mono" id="healthCheckItemsGrid">
 <div class="p-2 rounded-lg bg-slate-900/80 border border-slate-800">
 <div class="text-[11px] text-slate-400">① 標籤 vs 籌碼流向</div>
 <div class="font-bold text-emerald-400 flex items-center gap-1 mt-0.5 flex-wrap">
@@ -1462,11 +1476,26 @@
 <span class="text-cyan-400 font-mono text-[10px]">實時自檢</span>
 </div>
 </div>
-<!-- 總體宏觀風險多因子監控卡片 (A1 升級：動態規則判定＋日期來源＋閾值) -->
-<div class="bg-brand-card p-4 sm:p-5 rounded-xl border border-slate-700 glow-accent flex flex-col justify-between min-w-0" id="macroRiskCard">
+</details>
+<!-- 總體宏觀風險多因子監控卡片 (預設收合，顯示綠紅燈數＋日期時間) -->
+<details class="tsli-collapsible bg-brand-card rounded-xl border border-slate-700 glow-accent min-w-0" id="macroRiskCard">
+<summary class="list-none cursor-pointer select-none px-4 py-3 flex flex-wrap items-center justify-between gap-2 hover:bg-slate-900/60 rounded-xl transition-colors">
+  <div class="flex items-center gap-2 flex-wrap min-w-0">
+    <span class="text-lg flex-shrink-0">🌐</span>
+    <span class="text-sm font-black text-white">總體宏觀風險監控</span>
+    <span id="macroLightSummary" class="px-2 py-0.5 rounded-full text-xs font-mono font-bold bg-slate-800 text-slate-200 border border-slate-600">載入中...</span>
+  </div>
+  <div class="flex items-center gap-2 flex-shrink-0">
+    <span id="macroUpdatedAt" class="text-[11px] font-mono text-cyan-300">🕒 —</span>
+    <span class="px-2 py-0.5 rounded-lg bg-slate-800 text-cyan-300 border border-cyan-500/40 text-[11px] font-mono font-bold">
+      <span class="tsli-lbl-closed">展開 ▾</span>
+      <span class="tsli-lbl-open">收合 ▴</span>
+    </span>
+  </div>
+</summary>
+<div class="px-4 sm:px-5 pb-4 sm:pb-5 pt-2 border-t border-slate-800 flex flex-col justify-between min-w-0">
 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-slate-800">
 <div class="flex items-center gap-2 min-w-0">
-<span class="text-xl flex-shrink-0">🌐</span>
 <div class="min-w-0">
 <h3 class="text-sm font-bold text-white flex items-center gap-2 flex-wrap">
                 總體宏觀風險監控 (Macro Risk Monitor)
@@ -1493,6 +1522,7 @@
 <span class="text-slate-400 font-mono text-[10px]">閾值規則寫入配置（🚦紅綠燈制）</span>
 </div>
 </div>
+</details>
 </section>
 
   <!-- Phase 37 v4 三線分工一目了然買賣看板 + 三曲線圖 + 近三個月圖意與投資取向 -->
@@ -2377,7 +2407,7 @@
 
 <script>
     const DASHBOARD_DATA = {
-  "generated_at": "2026-11-20T19:09:34.841268+08:00",
+  "generated_at": "2026-11-20T20:40:53.834614+08:00",
   "build_errors": [],
   "latest_signal": {
     "date": "2026-10",
@@ -32963,7 +32993,7 @@
     ],
     "delivery_scope": "離線與模擬管道；真正送達另行確認",
     "snapshot_id": "684747ea6db0f3191bc21ca0bc86a6c2e8bcc33902ea149f900260c92a5d8f73",
-    "checked_at": "2026-11-20T19:09:34.715570+08:00"
+    "checked_at": "2026-11-20T20:40:53.694978+08:00"
   },
   "input_sha256": {
     "adaptive_scorecard_history.csv": "dc31fc7aa6262432af0acd3d7f8695a250ca6cac57090f75533805b08cede434",
@@ -33021,10 +33051,10 @@
     "tw_stocks_volume.parquet": "f9d8038add37b7dc026b4881607c8628a9c3e5c39c6b437613ef15d0d03e4dba",
     "twse_market.csv": "807f187e5ba37f90e284d71b93bd69203377bf056b31e871df7d86912f8d6a75",
     "twse_market.parquet": "0e9081ee76195cb00207d8b3b8f6ef4209fdb4fd635b01a53b09786ae6ceedee",
-    "implementation_sha256": "a807f1029716f62ba77916b68830e203405cd53ae86b005a9e349051990eef06"
+    "implementation_sha256": "c04717ebff547bb6fdaa7e224f329f3ab29ae5ebefb32e724f5e50407deaa940"
   },
   "snapshot_schema": "dashboard-snapshot-v1",
-  "snapshot_id": "85b491785266a195d2984ba061e19ac121798aca50f10488f483427b5295cfd8"
+  "snapshot_id": "4d45acdd20ce4a49ca298832c483c45010ead01bdb18eeadfc42e79841d72cb1"
 };
   </script>
 <!-- 互動圖表與數據渲染腳本 -->
@@ -33809,20 +33839,64 @@
         set('macroSummaryText', macro.regime_summary || '來源待核實');
 
         if (badgeColorMode === 'emerald') {
-          if (macroCardEl) macroCardEl.className = 'bg-brand-card p-4 sm:p-5 rounded-xl border border-emerald-500/40 glow-accent flex flex-col justify-between min-w-0';
+          if (macroCardEl) macroCardEl.className = 'tsli-collapsible bg-brand-card rounded-xl border border-emerald-500/40 glow-accent min-w-0';
           if (macroBadgeEl) macroBadgeEl.className = 'px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-500/15 text-emerald-300 border border-emerald-500/40 font-black';
           if (macroRedEl) macroRedEl.className = 'text-xs px-2 py-0.5 rounded font-mono bg-emerald-500/15 text-emerald-300 border border-emerald-500/40 font-bold flex-shrink-0 w-fit';
           if (macroSummaryEl) macroSummaryEl.className = 'text-emerald-300';
         } else if (badgeColorMode === 'amber') {
-          if (macroCardEl) macroCardEl.className = 'bg-brand-card p-4 sm:p-5 rounded-xl border border-amber-500/40 glow-accent flex flex-col justify-between min-w-0';
+          if (macroCardEl) macroCardEl.className = 'tsli-collapsible bg-brand-card rounded-xl border border-amber-500/40 glow-accent min-w-0';
           if (macroBadgeEl) macroBadgeEl.className = 'px-2 py-0.5 rounded text-[10px] font-mono bg-amber-500/15 text-amber-300 border border-amber-500/40 font-black';
           if (macroRedEl) macroRedEl.className = 'text-xs px-2 py-0.5 rounded font-mono bg-amber-500/15 text-amber-300 border border-amber-500/40 font-bold flex-shrink-0 w-fit';
           if (macroSummaryEl) macroSummaryEl.className = 'text-amber-300';
         } else {
-          if (macroCardEl) macroCardEl.className = 'bg-brand-card p-4 sm:p-5 rounded-xl border border-rose-500/50 glow-accent flex flex-col justify-between min-w-0';
+          if (macroCardEl) macroCardEl.className = 'tsli-collapsible bg-brand-card rounded-xl border border-rose-500/50 glow-accent min-w-0';
           if (macroBadgeEl) macroBadgeEl.className = 'px-2 py-0.5 rounded text-[10px] font-mono bg-rose-500/20 text-rose-300 border border-rose-500/40 font-black';
           if (macroRedEl) macroRedEl.className = 'text-xs px-2 py-0.5 rounded font-mono bg-slate-800 text-rose-300 border border-rose-500/40 font-bold flex-shrink-0 w-fit';
           if (macroSummaryEl) macroSummaryEl.className = 'text-rose-300';
+        }
+
+        // 更新收合摘要列：綠燈/黃燈/紅燈數量 ＋ 更新日期時間（含時分）
+        const genAt = data.generated_at || '';
+        const genAtText = genAt ? `🕒 ${genAt}` : '🕒 —';
+        set('healthUpdatedAt', genAtText);
+        set('macroUpdatedAt', genAtText);
+
+        const mItems = Array.isArray(macro.items) ? macro.items : [];
+        const mGreen = mItems.filter(it => it.light === 'green').length;
+        const mYellow = mItems.filter(it => it.light === 'yellow').length;
+        const mRed = mItems.filter(it => it.light === 'red').length;
+        const macroSumEl = document.getElementById('macroLightSummary');
+        if (macroSumEl) {
+          macroSumEl.textContent = mItems.length > 0
+            ? `🟢 ${mGreen}綠 · 🟡 ${mYellow}黃 · 🔴 ${mRed}紅`
+            : '⚪ 待核實';
+          macroSumEl.className = mRed > 0
+            ? 'px-2 py-0.5 rounded-full text-xs font-mono font-bold bg-rose-500/20 text-rose-200 border border-rose-400/50'
+            : (mYellow > 0
+              ? 'px-2 py-0.5 rounded-full text-xs font-mono font-bold bg-amber-500/20 text-amber-200 border border-amber-400/50'
+              : 'px-2 py-0.5 rounded-full text-xs font-mono font-bold bg-emerald-500/20 text-[#00F59B] border border-emerald-400/50');
+        }
+
+        // 統計系統健康度自檢 6 格的綠燈與紅/黃警示數量
+        const hGrid = document.getElementById('healthCheckItemsGrid');
+        const hSumEl = document.getElementById('healthLightSummary');
+        if (hGrid && hSumEl) {
+          const cards = Array.from(hGrid.children);
+          let hGreen = 0, hRed = 0, hYellow = 0;
+          for (const c of cards) {
+            const txt = c.textContent || '';
+            if (txt.includes('🔴') || txt.includes('FAIL')) hRed++;
+            else if (txt.includes('🟡') || txt.includes('WARN')) hYellow++;
+            else if (txt.includes('🟢') || txt.includes('PASS')) hGreen++;
+          }
+          hSumEl.textContent = hYellow > 0
+            ? `🟢 ${hGreen}綠 · 🟡 ${hYellow}警 · 🔴 ${hRed}紅`
+            : `🟢 ${hGreen}綠 / 🔴 ${hRed}紅`;
+          hSumEl.className = hRed > 0
+            ? 'px-2 py-0.5 rounded-full text-xs font-mono font-bold bg-rose-500/20 text-rose-200 border border-rose-400/50'
+            : (hYellow > 0
+              ? 'px-2 py-0.5 rounded-full text-xs font-mono font-bold bg-amber-500/20 text-amber-200 border border-amber-400/50'
+              : 'px-2 py-0.5 rounded-full text-xs font-mono font-bold bg-emerald-500/20 text-[#00F59B] border border-emerald-400/50');
         }
 
         const macroGrid = document.getElementById('macroRiskGrid');
