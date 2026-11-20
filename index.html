@@ -1654,8 +1654,10 @@
         <div class="flex flex-wrap items-center gap-3 text-xs font-mono">
           <span class="font-bold text-white">📊 三線走勢對照</span>
           <span class="inline-flex items-center gap-1 text-cyan-300"><span class="w-3 h-0.5 bg-cyan-400"></span>🐇 兔子</span>
-          <span class="inline-flex items-center gap-1 text-emerald-300"><span class="w-3 h-0.5 bg-emerald-400"></span>🐢 烏龜</span>
+          <span class="inline-flex items-center gap-1 text-emerald-300"><span class="w-3 h-0.5 border-t-2 border-dashed border-emerald-400"></span>🐢 烏龜</span>
           <span class="inline-flex items-center gap-1 text-amber-300"><span class="w-3 h-0.5 bg-amber-400"></span>📈 加權指數</span>
+          <span class="inline-flex items-center gap-1 text-pink-300 text-[11px]"><span class="w-2.5 h-2.5 rounded-sm bg-pink-400/25 border border-pink-400/60"></span>🐇60+高檔帶(P90)</span>
+          <span class="inline-flex items-center gap-1 text-purple-300 text-[11px]"><span class="w-2.5 h-2.5 rounded-sm bg-purple-400/25 border border-purple-400/60"></span>🐇25-恐慌帶(P10)</span>
         </div>
         <div class="flex items-center gap-1.5 text-xs font-mono" id="v4WindowBtns">
           <button type="button" data-days="20" onclick="window.setV4ChartDays(20)" class="v4-win-btn px-2.5 py-1 rounded bg-slate-800 text-slate-300 border border-slate-700">近 1 個月</button>
@@ -2377,7 +2379,7 @@
 
 <script>
     const DASHBOARD_DATA = {
-  "generated_at": "2026-11-20T17:13:13.056030+08:00",
+  "generated_at": "2026-11-20T18:32:53.324076+08:00",
   "build_errors": [],
   "latest_signal": {
     "date": "2026-10",
@@ -32963,7 +32965,7 @@
     ],
     "delivery_scope": "離線與模擬管道；真正送達另行確認",
     "snapshot_id": "684747ea6db0f3191bc21ca0bc86a6c2e8bcc33902ea149f900260c92a5d8f73",
-    "checked_at": "2026-11-20T17:13:12.927544+08:00"
+    "checked_at": "2026-11-20T18:32:53.197609+08:00"
   },
   "input_sha256": {
     "adaptive_scorecard_history.csv": "dc31fc7aa6262432af0acd3d7f8695a250ca6cac57090f75533805b08cede434",
@@ -33021,10 +33023,10 @@
     "tw_stocks_volume.parquet": "f9d8038add37b7dc026b4881607c8628a9c3e5c39c6b437613ef15d0d03e4dba",
     "twse_market.csv": "807f187e5ba37f90e284d71b93bd69203377bf056b31e871df7d86912f8d6a75",
     "twse_market.parquet": "0e9081ee76195cb00207d8b3b8f6ef4209fdb4fd635b01a53b09786ae6ceedee",
-    "implementation_sha256": "7cc9d9db3fa59cccbdd5974da98d512a64a85b41e54b631eb72eb57435b72bfc"
+    "implementation_sha256": "23363820996b60d4ba50c95f50d9ac7803368fcad063fb6a6bc860daf80972c0"
   },
   "snapshot_schema": "dashboard-snapshot-v1",
-  "snapshot_id": "3568adef604393511f73f936a8f53ff78bbaa87c07eb8d1fd401fea2c81c12ae"
+  "snapshot_id": "47286e7552d28804a70a9f00811f19c513c374a946237c4329ba1a49c17acf76"
 };
   </script>
 <!-- 互動圖表與數據渲染腳本 -->
@@ -34034,8 +34036,48 @@
           const slice = v4.series.slice(-days);
           const labels = slice.map(d => d.date.slice(2));
           if (window._threeLineV4Chart) window._threeLineV4Chart.destroy();
+          const rabbitZoneBandPlugin = {
+            id: "rabbitZoneBandPlugin",
+            beforeDatasetsDraw(chart) {
+              const { ctx, chartArea, scales } = chart;
+              if (!chartArea || !scales?.yScore) return;
+              const yScale = scales.yScore;
+              const y100 = yScale.getPixelForValue(100);
+              const y60 = yScale.getPixelForValue(60);
+              const y25 = yScale.getPixelForValue(25);
+              const y0 = yScale.getPixelForValue(0);
+              const { left, right } = chartArea;
+              ctx.save();
+              // 🐇 兔子近2年高檔帶 (60~100, P90起點)：淡玫瑰粉霧帶＋極細點線，完全區隔翡翠綠虛線烏龜
+              ctx.fillStyle = "rgba(244, 114, 182, 0.08)";
+              ctx.fillRect(left, y100, right - left, y60 - y100);
+              ctx.strokeStyle = "rgba(244, 114, 182, 0.55)";
+              ctx.lineWidth = 1;
+              ctx.setLineDash([2, 6]);
+              ctx.beginPath();
+              ctx.moveTo(left, y60);
+              ctx.lineTo(right, y60);
+              ctx.stroke();
+              ctx.fillStyle = "#F9A8D4";
+              ctx.font = "bold 10px ui-monospace, SFMono-Regular, monospace";
+              ctx.fillText("🐇 60+ 常態高檔區 (近2年P90)", left + 6, y60 - 5);
+
+              // 🐇 兔子近2年恐慌帶 (0~25, P10起點)：淡亮紫霧帶＋極細點線
+              ctx.fillStyle = "rgba(192, 132, 252, 0.09)";
+              ctx.fillRect(left, y25, right - left, y0 - y25);
+              ctx.strokeStyle = "rgba(192, 132, 252, 0.55)";
+              ctx.beginPath();
+              ctx.moveTo(left, y25);
+              ctx.lineTo(right, y25);
+              ctx.stroke();
+              ctx.fillStyle = "#D8B4FE";
+              ctx.fillText("🐇 25- 恐慌低檔區 (近2年P10)", left + 6, y25 + 12);
+              ctx.restore();
+            },
+          };
           window._threeLineV4Chart = new Chart(canvas.getContext("2d"), {
             type: "line",
+            plugins: [rabbitZoneBandPlugin],
             data: {
               labels,
               datasets: [
