@@ -1710,6 +1710,28 @@
         <div class="p-2.5 rounded-lg bg-slate-900/90 border border-amber-400/35 text-slate-100 leading-relaxed" id="etf0050RightAction">—</div>
         <div class="p-2.5 rounded-lg bg-slate-900/90 border border-cyan-400/35 text-slate-100 leading-relaxed" id="etf0050LeftAction">—</div>
       </div>
+
+      <!-- 🧮 0050 四價位歷史倍數公式（P20/P50/P80/P92）＆ TTM 除息殖利率明細（預設展開，可手動收合） -->
+      <details open id="etf0050FormulaDetails" class="tsli-collapsible rounded-lg bg-slate-900/85 border border-slate-700/80 text-xs">
+        <summary class="list-none cursor-pointer select-none px-3 py-2 flex items-center justify-between gap-2 hover:bg-slate-800/60 rounded-lg transition-colors">
+          <span class="font-bold text-[#00E5FF]">🧮 四價位歷史倍數公式（P20/P50/P80/P92）＆ TTM 除息殖利率明細</span>
+          <span class="px-2 py-0.5 rounded bg-slate-800 text-cyan-300 border border-cyan-500/40 text-[11px] font-mono font-bold flex-shrink-0">
+            <span class="tsli-lbl-closed">展開 ▾</span>
+            <span class="tsli-lbl-open">收合 ▴</span>
+          </span>
+        </summary>
+        <div class="px-3 pb-3 pt-2 border-t border-slate-800 grid grid-cols-1 md:grid-cols-2 gap-3 font-mono">
+          <div class="space-y-1.5">
+            <div class="text-[11px] text-slate-300 font-sans" id="etf0050FormulaSample">近 8 年 240MA 乖離實證分位計算中...</div>
+            <div class="space-y-1 text-xs" id="etf0050FormulaBody"></div>
+          </div>
+          <div class="space-y-1.5">
+            <div class="text-[11px] text-slate-300 font-sans">近 12 個月實際除息明細（分割還原後）與 TTM 殖利率：</div>
+            <div class="space-y-1 text-xs" id="etf0050DivEventsBody"></div>
+          </div>
+        </div>
+      </details>
+
       <div class="text-[11px] text-slate-400" id="etf0050MethodNote"></div>
     </div>
 
@@ -2407,7 +2429,7 @@
 
 <script>
     const DASHBOARD_DATA = {
-  "generated_at": "2026-11-20T20:40:53.834614+08:00",
+  "generated_at": "2026-11-20T21:10:00.090813+08:00",
   "build_errors": [],
   "latest_signal": {
     "date": "2026-10",
@@ -12620,8 +12642,27 @@
     "val_status": "🟢 便宜特價區（年線下低位階）",
     "val_tier": "CHEAP",
     "ttm_div": 1.6,
+    "ttm_div_events": [
+      {
+        "date": "2026-01-22",
+        "amount": 1.0
+      },
+      {
+        "date": "2026-07-21",
+        "amount": 0.6
+      }
+    ],
     "avg_5y_div": 1.214,
     "div_yield_ttm": 1.89,
+    "band_formula": {
+      "sample_days": 2038,
+      "sample_range": "2018-07-04 ～ 2026-11-20",
+      "curr_ratio": 0.9278,
+      "q_cheap": 0.979,
+      "q_fair": 1.0785,
+      "q_expensive": 1.2198,
+      "q_crazy": 1.3359
+    },
     "left_tranches": [
       {
         "label": "第 1 批（試單）",
@@ -32993,7 +33034,7 @@
     ],
     "delivery_scope": "離線與模擬管道；真正送達另行確認",
     "snapshot_id": "684747ea6db0f3191bc21ca0bc86a6c2e8bcc33902ea149f900260c92a5d8f73",
-    "checked_at": "2026-11-20T20:40:53.694978+08:00"
+    "checked_at": "2026-11-20T21:09:59.946029+08:00"
   },
   "input_sha256": {
     "adaptive_scorecard_history.csv": "dc31fc7aa6262432af0acd3d7f8695a250ca6cac57090f75533805b08cede434",
@@ -33051,10 +33092,10 @@
     "tw_stocks_volume.parquet": "f9d8038add37b7dc026b4881607c8628a9c3e5c39c6b437613ef15d0d03e4dba",
     "twse_market.csv": "807f187e5ba37f90e284d71b93bd69203377bf056b31e871df7d86912f8d6a75",
     "twse_market.parquet": "0e9081ee76195cb00207d8b3b8f6ef4209fdb4fd635b01a53b09786ae6ceedee",
-    "implementation_sha256": "c04717ebff547bb6fdaa7e224f329f3ab29ae5ebefb32e724f5e50407deaa940"
+    "implementation_sha256": "75e1f175055b7129235e588bd64bb7786a34898e25f5046989549d891503c079"
   },
   "snapshot_schema": "dashboard-snapshot-v1",
-  "snapshot_id": "4d45acdd20ce4a49ca298832c483c45010ead01bdb18eeadfc42e79841d72cb1"
+  "snapshot_id": "fdf4a1a4459a64f2ace63ccfe784019098f815008f45c93b84a8894e6e5b5657"
 };
   </script>
 <!-- 互動圖表與數據渲染腳本 -->
@@ -34032,6 +34073,37 @@
           setEl("etf0050RightAction", e50.right_action || "—");
           setEl("etf0050LeftAction", e50.left_action || "—");
           setEl("etf0050MethodNote", e50.method_note || "");
+          // 渲染四價位歷史倍數公式（P20/P50/P80/P92）
+          const bf = e50.band_formula || null;
+          const fSampleEl = document.getElementById("etf0050FormulaSample");
+          const fBodyEl = document.getElementById("etf0050FormulaBody");
+          if (bf && fBodyEl) {
+            if (fSampleEl) {
+              fSampleEl.textContent = `以近 8 年（${bf.sample_range}，共 ${bf.sample_days} 日）之「收盤 ÷ 240MA」實證分位 × 今日年線 $${Number(e50.ma240).toFixed(2)}：`;
+            }
+            const ma240Txt = Number(e50.ma240).toFixed(2);
+            const rowsHtml = [
+              ["🟢 便宜價 (P20)", bf.q_cheap, e50.p_cheap, "text-[#00F59B]"],
+              ["🟡 合理價 (P50)", bf.q_fair, e50.p_fair, "text-amber-300"],
+              ["🔴 昂貴價 (P80)", bf.q_expensive, e50.p_expensive, "text-rose-300"],
+              ["🔥 瘋狂價 (P92)", bf.q_crazy, e50.p_crazy, "text-purple-300"],
+            ].map(([lbl, qv, pv, cls]) => `<div class="flex items-center justify-between gap-2 bg-slate-950/70 px-2 py-1 rounded border border-slate-800/80"><span class="${cls} font-bold">${lbl}</span><span class="text-slate-300">$${ma240Txt} × ${Number(qv).toFixed(4)}x = <strong class="text-white">$${Number(pv).toFixed(2)}</strong></span></div>`).join("");
+            const currLine = `<div class="text-[11px] text-cyan-200 pt-1">現價 $${Number(e50.close).toFixed(2)} ÷ $${ma240Txt} = <strong>${Number(bf.curr_ratio).toFixed(4)}x</strong>（第 ${Number(e50.ratio_percentile).toFixed(1)} 百分位）｜MoS = (${Number(e50.p_fair).toFixed(2)} - ${Number(e50.close).toFixed(2)}) ÷ ${Number(e50.p_fair).toFixed(2)} = <strong class="${Number(e50.mos_pct) >= 0 ? "text-[#00F59B]" : "text-rose-300"}">${Number(e50.mos_pct) >= 0 ? "+" : ""}${Number(e50.mos_pct).toFixed(1)}%</strong></div>`;
+            fBodyEl.innerHTML = rowsHtml + currLine;
+          }
+          // 渲染 TTM 近 12 個月除息明細與殖利率算式
+          const divBodyEl = document.getElementById("etf0050DivEventsBody");
+          if (divBodyEl) {
+            const evs = Array.isArray(e50.ttm_div_events) ? e50.ttm_div_events : [];
+            const evRows = evs.length > 0
+              ? evs.map(ev => `<div class="flex items-center justify-between gap-2 bg-slate-950/70 px-2 py-1 rounded border border-slate-800/80"><span class="text-slate-300">除息日 ${escapeText(ev.date)}</span><span class="text-amber-300 font-bold">$${Number(ev.amount).toFixed(4)} 元</span></div>`).join("")
+              : `<div class="text-slate-400">暫無近 12 個月除息紀錄</div>`;
+            const sumLine = `<div class="flex items-center justify-between gap-2 bg-emerald-950/50 px-2 py-1.5 rounded border border-emerald-500/40"><span class="text-emerald-200 font-bold">TTM 合計配息</span><span class="text-white font-black">$${Number(e50.ttm_div || 0).toFixed(2)} 元（5年均 $${Number(e50.avg_5y_div || 0).toFixed(2)}）</span></div>`;
+            const yieldLine = e50.div_yield_ttm != null
+              ? `<div class="text-[11px] text-amber-200 pt-1">TTM 殖利率 = $${Number(e50.ttm_div).toFixed(2)} ÷ $${Number(e50.close).toFixed(2)} × 100% = <strong class="text-amber-300">${Number(e50.div_yield_ttm).toFixed(2)}%</strong>（市值型 ETF 以資本利得為主，殖利率作現金流參考）</div>`
+              : "";
+            divBodyEl.innerHTML = evRows + sumLine + yieldLine;
+          }
           const tGrid = document.getElementById("etf0050TranchesGrid");
           if (tGrid && Array.isArray(e50.left_tranches)) {
             tGrid.innerHTML = e50.left_tranches.map(t => {
