@@ -2377,7 +2377,7 @@
 
 <script>
     const DASHBOARD_DATA = {
-  "generated_at": "2026-11-20T18:58:08.048286+08:00",
+  "generated_at": "2026-11-20T19:09:34.841268+08:00",
   "build_errors": [],
   "latest_signal": {
     "date": "2026-10",
@@ -32963,7 +32963,7 @@
     ],
     "delivery_scope": "離線與模擬管道；真正送達另行確認",
     "snapshot_id": "684747ea6db0f3191bc21ca0bc86a6c2e8bcc33902ea149f900260c92a5d8f73",
-    "checked_at": "2026-11-20T18:58:07.911098+08:00"
+    "checked_at": "2026-11-20T19:09:34.715570+08:00"
   },
   "input_sha256": {
     "adaptive_scorecard_history.csv": "dc31fc7aa6262432af0acd3d7f8695a250ca6cac57090f75533805b08cede434",
@@ -33021,10 +33021,10 @@
     "tw_stocks_volume.parquet": "f9d8038add37b7dc026b4881607c8628a9c3e5c39c6b437613ef15d0d03e4dba",
     "twse_market.csv": "807f187e5ba37f90e284d71b93bd69203377bf056b31e871df7d86912f8d6a75",
     "twse_market.parquet": "0e9081ee76195cb00207d8b3b8f6ef4209fdb4fd635b01a53b09786ae6ceedee",
-    "implementation_sha256": "3f8eb99123ee151934b6cc3957124fe1e0ea3695ae19efac473e9c1c67f733d1"
+    "implementation_sha256": "a807f1029716f62ba77916b68830e203405cd53ae86b005a9e349051990eef06"
   },
   "snapshot_schema": "dashboard-snapshot-v1",
-  "snapshot_id": "5afb96aebc34dfed28127b47f7b8a44004909b71700653703ad0d5ef4a605927"
+  "snapshot_id": "85b491785266a195d2984ba061e19ac121798aca50f10488f483427b5295cfd8"
 };
   </script>
 <!-- 互動圖表與數據渲染腳本 -->
@@ -34065,16 +34065,12 @@
               ctx.stroke();
               ctx.restore();
               ctx.font = "bold 11px ui-monospace, SFMono-Regular, monospace";
-              const lblTop = "🐇 60+ 常態高檔 (近2年P90)";
-              const wTop = ctx.measureText(lblTop).width + 10;
-              ctx.fillStyle = "rgba(11, 15, 25, 0.85)";
-              ctx.fillRect(left + 4, y60 - 18, wTop, 15);
-              ctx.strokeStyle = "rgba(255, 102, 196, 0.85)";
-              ctx.lineWidth = 1;
-              ctx.setLineDash([]);
-              ctx.strokeRect(left + 4, y60 - 18, wTop, 15);
+              ctx.save();
+              ctx.shadowColor = "rgba(0, 0, 0, 0.95)";
+              ctx.shadowBlur = 3;
               ctx.fillStyle = "#FFC2E6";
-              ctx.fillText(lblTop, left + 9, y60 - 7);
+              ctx.fillText("🐇 60+ 常態高檔 (近2年P90)", left + 6, y60 - 6);
+              ctx.restore();
 
               // 🐇 兔子近2年恐慌帶 (0~25, P10起點)：10%低亮度高對比版（電光亮紫霧帶＋高飽和密集點線＋微光暈）
               ctx.fillStyle = "rgba(192, 132, 252, 0.16)";
@@ -34090,16 +34086,12 @@
               ctx.lineTo(right, y25);
               ctx.stroke();
               ctx.restore();
-              const lblBot = "🐇 25- 恐慌低檔 (近2年P10)";
-              const wBot = ctx.measureText(lblBot).width + 10;
-              ctx.fillStyle = "rgba(11, 15, 25, 0.85)";
-              ctx.fillRect(left + 4, y25 + 4, wBot, 15);
-              ctx.strokeStyle = "rgba(232, 121, 249, 0.85)";
-              ctx.lineWidth = 1;
-              ctx.setLineDash([]);
-              ctx.strokeRect(left + 4, y25 + 4, wBot, 15);
+              ctx.save();
+              ctx.shadowColor = "rgba(0, 0, 0, 0.95)";
+              ctx.shadowBlur = 3;
               ctx.fillStyle = "#F5D0FE";
-              ctx.fillText(lblBot, left + 9, y25 + 15);
+              ctx.fillText("🐇 25- 恐慌低檔 (近2年P10)", left + 6, y25 + 14);
+              ctx.restore();
               ctx.restore();
             },
           };
