@@ -2865,29 +2865,14 @@
     function applyFontPreference() {
       let isNormal = false;
       try { isNormal = localStorage.getItem("user-font-pref") === "normal"; } catch (e) {}
-      const btnText = document.getElementById("seniorToggleText");
-      const btn = document.getElementById("seniorToggleBtn");
-
       if (isNormal) {
         document.documentElement.classList.add("normal-font-mode");
         document.documentElement.classList.remove("senior-mode");
-        if (btnText) btnText.textContent = "標準字體 (1X)：已切換";
-        if (btn) btn.className = "px-3.5 py-1.5 rounded-xl bg-slate-800 text-slate-300 border border-slate-600 font-bold text-sm flex items-center gap-2 active:scale-95 transition-all";
       } else {
         document.documentElement.classList.remove("normal-font-mode");
         document.documentElement.classList.add("senior-mode");
-        if (btnText) btnText.textContent = "長者特大字 (2X)：開啟中";
-        if (btn) btn.className = "px-3.5 py-1.5 rounded-xl bg-amber-500/20 text-amber-300 border-2 border-amber-400 font-bold text-sm flex items-center gap-2 active:scale-95 transition-all shadow-sm";
       }
     }
-
-    window.toggleSeniorMode = function() {
-      const isNormal = document.documentElement.classList.contains("normal-font-mode");
-      try {
-        localStorage.setItem("user-font-pref", isNormal ? "senior" : "normal");
-      } catch (e) {}
-      applyFontPreference();
-    };
 
     applyFontPreference();
 
@@ -2920,7 +2905,7 @@
         if (rawNav) {
           const navObj = JSON.parse(rawNav);
           if (navObj && navObj.activeTab === "analysis") fromTabLabel = "返回原處（趨勢頁）";
-          else if (navObj && navObj.activeTab === "overview") fromTabLabel = "返回原處（主頁）";
+          else if (navObj && (navObj.activeTab === "home" || navObj.activeTab === "overview")) fromTabLabel = "返回原處（主頁）";
         }
       } catch (e) {}
       document.querySelectorAll('a[data-return-dashboard="1"]').forEach(link => {
