@@ -2429,7 +2429,7 @@
 
 <script>
     const DASHBOARD_DATA = {
-  "generated_at": "2026-11-24T16:53:56.046152+08:00",
+  "generated_at": "2026-11-24T16:56:52.549532+08:00",
   "build_errors": [],
   "latest_signal": {
     "date": "2026-10",
@@ -32897,7 +32897,7 @@
     ],
     "delivery_scope": "離線與模擬管道；真正送達另行確認",
     "snapshot_id": "3d0e6f26358249f68171814e4f2907b516a8df3cb2662b9b65f4bbe4221a4485",
-    "checked_at": "2026-11-24T16:53:55.873384+08:00"
+    "checked_at": "2026-11-24T16:56:52.412608+08:00"
   },
   "input_sha256": {
     "adaptive_scorecard_history.csv": "dc31fc7aa6262432af0acd3d7f8695a250ca6cac57090f75533805b08cede434",
@@ -32955,10 +32955,10 @@
     "tw_stocks_volume.parquet": "4c61cea8045327f75a027fa55ff2eb5c635ac196ee872a20c7876ec5b688731b",
     "twse_market.csv": "79ca14f7458d3f091db9fd1e4dacfda8fa3e99e860329710d372fe8203df0a1b",
     "twse_market.parquet": "dfa60a70ba28b1440d3cff2dd5e52fd0e3a75b5ec32dce815cadefa9c9cb8faf",
-    "implementation_sha256": "22647d5581e4d819c92b24837dc1e239235d8c5091e2c695dbdb485ec8ef69c2"
+    "implementation_sha256": "bfd287314d6956d13edc3b7adac422b25893ee20601e24008116f2a5e6218fb1"
   },
   "snapshot_schema": "dashboard-snapshot-v1",
-  "snapshot_id": "e1bc8f2bdf40221de96db65d23e061a4ee5a185afad67ac204a26f8737111eee"
+  "snapshot_id": "7778b07371864d775fc06e5d63b4c4a168e56ac40a9907fd2dda0a9a0e707a83"
 };
   </script>
 <!-- 互動圖表與數據渲染腳本 -->
@@ -35177,7 +35177,7 @@
                     </div>
                   </td>
 
-                  <td class="py-2.5 px-2 font-black text-white font-mono text-sm">${r.close != null ? '$' + formatPrice(r.close) : '-'}</td>
+                  <td class="py-2.5 px-2 font-black text-white font-mono text-sm">${r.close != null ? '$' + formatPrice(r.close) : '-'}${r.price_asof ? ` <span class="text-[10px] font-normal text-cyan-300 whitespace-nowrap">(${escapeText(r.price_asof)})</span>` : ''}</td>
                   <td class="py-2.5 px-2 font-mono text-emerald-400 font-semibold">${pCheapStr}</td>
                   <td class="py-2.5 px-2 font-mono text-white font-semibold">${pFairStr}</td>
                   <td class="py-2.5 px-2 font-mono text-amber-300">${pExpStr}</td>
@@ -35744,7 +35744,7 @@
                   <div class="grid grid-cols-3 gap-2 py-3 px-2.5 sm:px-3 bg-slate-950/80 rounded-xl border-2 border-slate-800 font-mono text-center min-w-0">
                     <div class="min-w-0">
                       <div class="text-xs text-slate-300 font-bold uppercase tracking-wider mb-1">現價</div>
-                      <div class="text-lg sm:text-2xl font-black text-white break-words">${r.close != null ? '$' + formatPrice(r.close) : '-'}</div>
+                      <div class="text-lg sm:text-2xl font-black text-white break-words">${r.close != null ? '$' + formatPrice(r.close) : '-'}${r.price_asof ? ` <span class="text-[11px] font-semibold text-cyan-300 whitespace-nowrap">(${escapeText(r.price_asof)})</span>` : ''}</div>
                     </div>
                     <div class="min-w-0">
                       <div class="text-xs text-slate-300 font-bold uppercase tracking-wider mb-1">${isEmergingObserved ? '參考底線(15x)' : '合理價'}</div>
