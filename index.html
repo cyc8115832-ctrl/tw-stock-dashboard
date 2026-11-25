@@ -1049,6 +1049,9 @@
         <button type="button" id="cloudPushBtn" onclick="window.cloudPushHoldings('手動完整備份', null)" class="px-3.5 py-2 rounded-xl bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 text-xs font-black border border-emerald-500/40 active:scale-95 transition-all disabled:opacity-50">
           ☁️ 立即備份至雲端
         </button>
+        <button type="button" id="portMonthlyReportBtn" onclick="window.togglePortMonthlyReportDrawer()" class="px-3.5 py-2 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-200 text-xs font-black border border-amber-400/60 active:scale-95 transition-all">
+          📊 雲端月報結算
+        </button>
         <button type="button" id="cloudSettingsToggleBtn" onclick="window.toggleCloudSettingsDrawer()" class="px-3.5 py-2 rounded-xl bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-200 text-xs font-black border border-cyan-500/40 active:scale-95 transition-all">
           ⚙️ 雲端連線設定
         </button>
@@ -1079,6 +1082,54 @@
       <a id="cloudLinkArchive" href="#" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-lg bg-slate-950/90 border border-slate-700 hover:border-cyan-500/50 text-xs font-mono font-bold text-amber-300 inline-flex items-center gap-1">
         <span>🗂️ 開啟異動快照資料夾</span><span>↗</span>
       </a>
+      <a id="cloudLinkMonthlyReport" href="#" target="_blank" rel="noopener noreferrer" class="hidden px-3 py-1.5 rounded-lg bg-amber-500/15 border border-amber-400/50 hover:bg-amber-500/25 text-xs font-mono font-bold text-amber-200 inline-flex items-center gap-1">
+        <span>📊 開啟雲碟月報分頁</span><span>↗</span>
+      </a>
+    </div>
+
+    <!-- 📊 真實持倉雲端月報結算與歷月損益統計抽屜 -->
+    <div id="portMonthlyReportDrawer" class="hidden p-4 rounded-2xl bg-slate-950/95 border-2 border-amber-400/50 space-y-3">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2 border-b border-slate-800">
+        <div>
+          <h4 class="text-sm sm:text-base font-black text-amber-300 flex items-center gap-2">
+            <span>📊</span><span>真實持倉月報結算（已實現 ＋ 未實現定期損益統計）</span>
+          </h4>
+          <p class="text-[11px] text-slate-300 mt-0.5">
+            自動彙整「歷史進出異動總表」之買賣筆數與已實現損益，並記錄每月未實現損益至 Google 雲端試算表【真實持倉月報結算】分頁。
+          </p>
+        </div>
+        <div class="flex flex-wrap items-center gap-2 flex-shrink-0">
+          <button type="button" id="portSettleMonthBtn" onclick="window.savePortMonthlyReport()" class="px-3 py-1.5 rounded-xl bg-emerald-500/25 hover:bg-emerald-500/35 text-[#00F59B] text-xs font-black border border-emerald-400/60 active:scale-95 transition-all">
+            📅 立即結算本月寫入雲碟
+          </button>
+          <button type="button" onclick="window.loadPortMonthlyReport(false)" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-cyan-200 text-xs font-bold border border-cyan-500/40 active:scale-95 transition-all">
+            🔄 重整月報
+          </button>
+          <a id="portMonthlySheetDirectLink" href="#" target="_blank" rel="noopener noreferrer" class="hidden px-3 py-1.5 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-200 text-xs font-black border border-amber-400/60 inline-flex items-center gap-1">
+            <span>📂 開啟雲碟月報表</span><span>↗</span>
+          </a>
+        </div>
+      </div>
+      <div id="portMonthlyReportStatus" class="text-xs font-mono text-cyan-300">尚未載入雲端月報，請點「🔄 重整月報」或「📅 立即結算本月寫入雲碟」。</div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs font-mono border-collapse">
+          <thead>
+            <tr class="border-b border-slate-700 text-slate-300">
+              <th class="py-1.5 pr-2 whitespace-nowrap">結算月份</th>
+              <th class="py-1.5 pr-2 whitespace-nowrap">檔數</th>
+              <th class="py-1.5 pr-2 whitespace-nowrap">投入成本</th>
+              <th class="py-1.5 pr-2 whitespace-nowrap">目前市值</th>
+              <th class="py-1.5 pr-2 whitespace-nowrap">未實現損益</th>
+              <th class="py-1.5 pr-2 whitespace-nowrap">買/賣筆數</th>
+              <th class="py-1.5 pr-2 whitespace-nowrap">已實現(估)</th>
+              <th class="py-1.5 whitespace-nowrap">綜合總損益</th>
+            </tr>
+          </thead>
+          <tbody id="portMonthlyReportBody" class="divide-y divide-slate-800/80 text-slate-100">
+            <tr><td colspan="8" class="py-4 text-center text-slate-400">點選上方「📅 立即結算本月寫入雲碟」即可建立第一筆月報紀錄</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <!-- 最近 5 筆雲端進出異動快照 -->
@@ -1672,6 +1723,7 @@
         </div>
         <div class="flex items-center gap-2 flex-wrap">
           <span class="text-[11px] font-mono text-slate-300" id="etf0050AsOf">基準日：—</span>
+          <button type="button" onclick="window.openAddHoldingModal('0050.TW')" class="px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold bg-amber-500/20 text-amber-200 border border-amber-400/50 hover:bg-amber-500/30 active:scale-95 transition-all">💼 加入持倉</button>
           <a href="guide.html#sec-left-right-wallet" onclick="if(window.saveNavStateForGuide) window.saveNavStateForGuide();" class="px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold bg-emerald-500/20 text-[#00F59B] border border-emerald-400/50 hover:bg-emerald-500/30">📖 看 0050 左右側指南 ➔</a>
         </div>
       </div>
@@ -2429,7 +2481,7 @@
 
 <script>
     const DASHBOARD_DATA = {
-  "generated_at": "2026-11-24T16:56:52.549532+08:00",
+  "generated_at": "2026-11-25T09:34:05.706923+08:00",
   "build_errors": [],
   "latest_signal": {
     "date": "2026-10",
@@ -3113,17 +3165,19 @@
   "three_line_v4": {
     "version": "v4",
     "config_sha256": "5019cbf47c6f",
-    "as_of_date": "2026-11-24",
+    "as_of_date": "2026-11-23",
     "freshness": {
       "twii_latest_date": "2026-11-24",
       "taifex_latest_date": "2026-11-24",
-      "is_stale": false,
-      "stale_reasons": []
+      "is_stale": true,
+      "stale_reasons": [
+        "三線基準日(2026-11-23)落後大盤(2026-11-24)"
+      ]
     },
     "long_term_left_side_hint": {
       "active": true,
       "badge": "💎 長投左側特價分批區",
-      "message": "景氣基本面未衰退（🐢 烏龜 80.8 ≥ 50）但市場情緒極度恐慌（🐇 兔子 12.5 \u003c 20）：波段／會設 -10% 停損資金仍守右側「不接刀」紀律（維持 15%）；長投／閒錢定投資金（0050 或高安全邊際績優股）可啟動小額分批慢買，絕不一次壓滿。"
+      "message": "景氣基本面未衰退（🐢 烏龜 80.8 ≥ 50）但市場情緒極度恐慌（🐇 兔子 12.7 \u003c 20）：波段／會設 -10% 停損資金仍守右側「不接刀」紀律（維持 15%）；長投／閒錢定投資金（0050 或高安全邊際績優股）可啟動小額分批慢買，絕不一次壓滿。"
     },
     "dual_wallet_strategy": {
       "right_wallet": {
@@ -3142,65 +3196,65 @@
         "is_open": true,
         "eligible_assets": "限 0050 大盤 ETF 與高確定性龍頭權值股（嚴禁對題材/景氣循環股越跌越攤平）",
         "tranche_plan": "金字塔 3～5 批（拉開 8%～10% 價差），預留 1～2 年抱股耐心",
-        "summary": "🐢 烏龜 80.8 ≥ 50（景氣未壞）× 🐇 兔子 12.5 \u003c 20（極度恐慌）：限閒錢長投錢包針對『0050』或高安全邊際龍頭啟動金字塔 3～5 批慢買（每跌 8%～10% 買一批），絕不單筆 All-in。"
+        "summary": "🐢 烏龜 80.8 ≥ 50（景氣未壞）× 🐇 兔子 12.7 \u003c 20（極度恐慌）：限閒錢長投錢包針對『0050』或高安全邊際龍頭啟動金字塔 3～5 批慢買（每跌 8%～10% 買一批），絕不單筆 All-in。"
       },
       "anti_mismatch_rule": "⚠️ 防邏輯錯位紅線：① 嚴禁『左側買、右側砍』（因便宜抄底卻在續跌 15% 時恐慌停損）；② 嚴禁『右側追、左側凹』（追突破失敗不砍、改口領股息變套牢）。下單前先決定這筆錢屬於哪個錢包！"
     },
     "rabbit": {
-      "score": 12.5,
-      "raw_score": 12.3,
+      "score": 12.7,
+      "raw_score": 6.6,
       "state": "煞車",
-      "delta_1d": -0.2,
+      "delta_1d": -6.0,
       "dir_5d": "↘",
-      "us_source_date": "2026-11-23",
+      "us_source_date": "2026-11-20",
       "components": [
         {
           "key": "sox_rel_ma100",
           "label": "費半相對 100 日均線",
           "source": "美股日頻",
-          "source_date": "2026-11-23",
+          "source_date": "2026-11-20",
           "weight": 15.0,
-          "raw_display": "-17.4%",
-          "score": 2.4,
-          "contribution": 0.36
+          "raw_display": "-27.8%",
+          "score": 0.1,
+          "contribution": 0.02
         },
         {
           "key": "nvda_ret_60d",
           "label": "輝達 (NVDA) 60 日報酬",
           "source": "美股日頻",
-          "source_date": "2026-11-23",
+          "source_date": "2026-11-20",
           "weight": 15.0,
-          "raw_display": "-24.1%",
-          "score": 2.1,
-          "contribution": 0.32
+          "raw_display": "-44.9%",
+          "score": 0.1,
+          "contribution": 0.02
         },
         {
           "key": "csp_above_ma60_pct",
           "label": "美股 CSP 四巨頭站上季線比例",
           "source": "美股日頻",
-          "source_date": "2026-11-23",
+          "source_date": "2026-11-20",
           "weight": 15.0,
-          "raw_display": "25%",
-          "score": 25.0,
-          "contribution": 3.75
+          "raw_display": "0%",
+          "score": 0.0,
+          "contribution": 0.0
         },
         {
           "key": "vix_inv",
           "label": "VIX 恐慌指數（反向計分）",
           "source": "美股日頻",
-          "source_date": "2026-11-23",
+          "source_date": "2026-11-20",
           "weight": 10.0,
-          "raw_display": "26.62",
-          "score": 4.1,
-          "contribution": 0.41
+          "raw_display": "35.89",
+          "score": 0.8,
+          "contribution": 0.08
         },
         {
           "key": "us10y_inv",
           "label": "美國 10 年期公債殖利率（反向）",
           "source": "美股日頻",
-          "source_date": "2026-11-23",
+          "source_date": "2026-11-20",
           "weight": 5.0,
-          "raw_display": "4.92%",
+          "raw_display": "4.91%",
           "score": 6.1,
           "contribution": 0.31
         },
@@ -3208,41 +3262,41 @@
           "key": "yield_spread",
           "label": "美債 10Y-2Y 殖利率利差",
           "source": "美股日頻",
-          "source_date": "2026-11-23",
+          "source_date": "2026-11-20",
           "weight": 5.0,
           "raw_display": "+0.14%",
-          "score": 32.0,
-          "contribution": 1.6
+          "score": 31.4,
+          "contribution": 1.57
         },
         {
           "key": "usdtwd_chg20_inv",
           "label": "台幣匯率 20 日變動（升值加分）",
           "source": "台股日頻",
-          "source_date": "2026-11-24",
+          "source_date": "2026-11-23",
           "weight": 10.0,
-          "raw_display": "+1.13%",
-          "score": 27.5,
-          "contribution": 2.75
+          "raw_display": "+1.18%",
+          "score": 26.5,
+          "contribution": 2.65
         },
         {
           "key": "txf_foreign_oi_level",
           "label": "外資台指期未平倉淨口數水位",
           "source": "台股日頻",
-          "source_date": "2026-11-24",
+          "source_date": "2026-11-23",
           "weight": 12.0,
-          "raw_display": "-103,182 口",
-          "score": 0.5,
-          "contribution": 0.06
+          "raw_display": "-103,432 口",
+          "score": 0.4,
+          "contribution": 0.05
         },
         {
           "key": "txf_foreign_oi_chg5",
           "label": "外資台指期 5 日淨口數變化",
           "source": "台股日頻",
-          "source_date": "2026-11-24",
+          "source_date": "2026-11-23",
           "weight": 13.0,
-          "raw_display": "-5,286 口",
-          "score": 20.9,
-          "contribution": 2.72
+          "raw_display": "-6,645 口",
+          "score": 15.1,
+          "contribution": 1.96
         }
       ]
     },
@@ -3320,11 +3374,11 @@
       ]
     },
     "market": {
-      "close": 40122.35,
-      "etf_0050_close": 95.7,
-      "etf_0050_date": "2026-11-24",
-      "ma20": 41959.4,
-      "ma60": 45494.29,
+      "close": 36811.89,
+      "etf_0050_close": 87.0,
+      "etf_0050_date": "2026-11-23",
+      "ma20": 42258.09,
+      "ma60": 45578.41,
       "above_ma20": false,
       "state": "空頭",
       "pace": "防守"
@@ -3345,25 +3399,25 @@
       "action_key": "警覺減倉",
       "action_badge": "⛔ 警覺減倉",
       "actual_target_pct": 15,
-      "regime_directive": "【⛔ 狀態 3：煞車防守期｜⛔ 警覺減倉（建議持股 15%）】🐇 兔子 12.5 分（煞車）× 🐢 烏龜 80.8 分（趨緩）啟動氣囊保護！2026 回溯實證煞車期硬買停損率高達 45.4%，系統自動鎖定買訊禁接刀；虧損破月線 🔵▼ 嚴禁攤平（破 -10% 停損），高檔複合賣訊優先減碼。",
+      "regime_directive": "【⛔ 狀態 3：煞車防守期｜⛔ 警覺減倉（建議持股 15%）】🐇 兔子 12.7 分（煞車）× 🐢 烏龜 80.8 分（趨緩）啟動氣囊保護！2026 回溯實證煞車期硬買停損率高達 45.4%，系統自動鎖定買訊禁接刀；虧損破月線 🔵▼ 嚴禁攤平（破 -10% 停損），高檔複合賣訊優先減碼。",
       "calendar_id": "cal_2_macro_orders",
-      "calendar_title": "🗓️ 日曆時段 2（11月24日｜每月 20～28 號外銷訂單與景氣燈號公布期）",
+      "calendar_title": "🗓️ 日曆時段 2（11月23日｜每月 20～28 號外銷訂單與景氣燈號公布期）",
       "calendar_desc": "20 號外銷訂單、24 號 M1B-M2 資金剪刀差與 27～28 號國發會景氣對策燈號陸續開獎，🐢 烏龜線慢線分數即將更新。"
     },
     "three_month_summary": {
       "window_days": 60,
       "fast_window_days": 20,
       "slow_window_days": 40,
-      "start_date": "2026-10-28",
-      "slow_start_date": "2026-09-23",
-      "end_date": "2026-11-24",
-      "rabbit_start": 30.8,
-      "rabbit_end": 12.5,
+      "start_date": "2026-10-27",
+      "slow_start_date": "2026-09-22",
+      "end_date": "2026-11-23",
+      "rabbit_start": 32.2,
+      "rabbit_end": 12.7,
       "tortoise_start": 87.9,
       "tortoise_end": 80.8,
-      "twii_ret_1m_pct": -14.7,
-      "twii_ret_3m_pct": -12.46,
-      "chart_meaning": "🐇 兔子近 1 月由 31 分滑落至 12 分（煞車）；📈 大盤近 1 月回檔 -14.7%（收 40,122 點，空頭／仍在月線下）；🐢 烏龜近 2 月由 88 分轉緩至 81 分（趨緩）。",
+      "twii_ret_1m_pct": -20.14,
+      "twii_ret_3m_pct": -18.5,
+      "chart_meaning": "🐇 兔子近 1 月由 32 分滑落至 13 分（煞車）；📈 大盤近 1 月回檔 -20.1%（收 36,812 點，空頭／仍在月線下）；🐢 烏龜近 2 月由 88 分轉緩至 81 分（趨緩）。",
       "investment_stance": "⛔ 警覺減倉（建議持股 15%）：兔子煞車加上烏龜「趨緩」，雙弱警戒降到 15% 輕倉防補跌。"
     },
     "action_table": [
@@ -3411,6 +3465,18 @@
       }
     ],
     "series": [
+      {
+        "date": "2023-10-12",
+        "twii": 16825.91,
+        "etf_0050": 29.7,
+        "twii_ma20": 16528.13,
+        "twii_ma60": 16706.06,
+        "rabbit": 51.5,
+        "rabbit_state": "回溫",
+        "tortoise": 26.3,
+        "tortoise_state": "復甦",
+        "target_pct": 75
+      },
       {
         "date": "2023-10-13",
         "twii": 16782.57,
@@ -12466,18 +12532,6 @@
         "twii_ma20": 42258.09,
         "twii_ma60": 45578.41,
         "rabbit": 12.7,
-        "rabbit_state": "煞車",
-        "tortoise": 80.8,
-        "tortoise_state": "趨緩",
-        "target_pct": 15
-      },
-      {
-        "date": "2026-11-24",
-        "twii": 40122.35,
-        "etf_0050": 95.7,
-        "twii_ma20": 41959.4,
-        "twii_ma60": 45494.29,
-        "rabbit": 12.5,
         "rabbit_state": "煞車",
         "tortoise": 80.8,
         "tortoise_state": "趨緩",
@@ -32132,9 +32186,9 @@
     "items": [
       {
         "name": "美債10Y殖利率",
-        "value": "4.92%",
+        "value": "4.90%",
         "light": "yellow",
-        "date": "2026-11-23",
+        "date": "2026-11-24",
         "source": "Yahoo Finance (^TNX)",
         "threshold": "\u003c 5.0%",
         "desc": "長端公債殖利率即時監控"
@@ -32159,7 +32213,7 @@
       },
       {
         "name": "VIX恐慌指數",
-        "value": "26.8",
+        "value": "26.4",
         "light": "red",
         "date": "2026-11-24",
         "source": "CBOE (^VIX)",
@@ -32168,7 +32222,7 @@
       },
       {
         "name": "美元/台幣匯率",
-        "value": "32.90",
+        "value": "32.85",
         "light": "yellow",
         "date": "2026-11-24",
         "source": "Yahoo Finance (USDTWD=X)",
@@ -32177,7 +32231,7 @@
       },
       {
         "name": "全球銅博士期貨",
-        "value": "$5.58/lb",
+        "value": "$5.47/lb",
         "light": "green",
         "date": "2026-11-24",
         "source": "COMEX (HG=F)",
@@ -32188,10 +32242,10 @@
   },
   "ai_capex": {
     "status_badge": "⚠️ AI 源頭動能降溫",
-    "nvda_ret_60d": "-24.1% (2026-11-23)",
-    "nvda_bar_pct": 13,
-    "csp_above_ma60": "25% (1/4 站上季線)",
-    "csp_bar_pct": 25,
+    "nvda_ret_60d": "-29.6% (2026-11-24)",
+    "nvda_bar_pct": 10,
+    "csp_above_ma60": "0% (0/4 站上季線)",
+    "csp_bar_pct": 0,
     "semi_import_yoy": "+41.0% (2026-09)",
     "ndc_score": 41.0,
     "ndc_light": "紅燈",
@@ -32897,7 +32951,7 @@
     ],
     "delivery_scope": "離線與模擬管道；真正送達另行確認",
     "snapshot_id": "3d0e6f26358249f68171814e4f2907b516a8df3cb2662b9b65f4bbe4221a4485",
-    "checked_at": "2026-11-24T16:56:52.412608+08:00"
+    "checked_at": "2026-11-25T09:34:05.585960+08:00"
   },
   "input_sha256": {
     "adaptive_scorecard_history.csv": "dc31fc7aa6262432af0acd3d7f8695a250ca6cac57090f75533805b08cede434",
@@ -32906,8 +32960,8 @@
     "benchmark_daily.parquet": "97a4f9b07d6cd14b515b82cbfe3ad1b0533f72f0b3714c35618aa02359c9b61a",
     "cbc_money_supply.csv": "3709394e18b9c6048f07044521648099115664d39a17a8512cbfdd67a5643298",
     "cbc_money_supply.parquet": "760089ee4d283e360888f3facd43f3405d4fb8bfa0a8ba3f5c4e1ae8e2b21caa",
-    "csp_daily.csv": "ccfe469ec75252f5db40962f49e1c5ff7fc2a25744abe36974adf159068d26b4",
-    "csp_daily.parquet": "a0817c97e01170fc515116d52c5a6bdb29dc08f3bfdc79fe7f998570a1d9d49c",
+    "csp_daily.csv": "f8fedfc28816023474fdc4e1ede72b89b1a1ddba18b2b5973711bdf2102c1151",
+    "csp_daily.parquet": "a9ddccddf271d373f774621efb0003bfec023ac6e635f84c1f1548d4480ad66a",
     "csp_indicators.csv": "509e3139040d66c4418a5b890d10d0e71dff6283cf4613b282531e1b28d97179",
     "csp_indicators.parquet": "187ca9161df60f157f5f5cd05f62b7225079d9725ab06fd6739114e517e995be",
     "customs_monthly.csv": "c49a6dfbb87dfe2eb138376e7ceb7403558fa1255aac6a53be55b318af14acae",
@@ -32918,8 +32972,8 @@
     "export_orders_monthly.parquet": "73d7e8d3c3abd17e1a198ad42096f5c0791f757838042864612be4c19ef1d33b",
     "last_dispatch.json": "bb7fec5d19025cc9fd44679a00827783409642ceecd206af270a7c6a929f2443",
     "latest_signal.json": "f8485a70c506b626e08e793f9db81ccbf176d34b358e8121a766dcc71b28d551",
-    "market_indicators.csv": "a4ff7959e802d289e6c7673eba6ceb3ce8980485d909abc356ef27396be378fe",
-    "market_indicators.parquet": "cc92f4615cef5028a9b29757e7909ddf7af64470b8d94b38f96d69ff8eb5ee06",
+    "market_indicators.csv": "011dbb6a8146505f129e27b723a8b360c009c7c60e9a7a658bb812a237e3c328",
+    "market_indicators.parquet": "2fb78da55fa44a4fdc40e19bca565de90067a0e90effdd5eeb5e2ecc8e1801da",
     "market_revenue_monthly.parquet": "2281fca3a314944a7e798febab62a4994080f31d4d0ba458f2d318ed45fc66e2",
     "ndc_indicators.csv": "1794f4f0c6db4a863d8b49c93b5f89cd5c761face78b288d874b6d8e438a8cdb",
     "ndc_indicators.parquet": "8b8274d490d8780f37813c0a0c652d54886cae2caea2fc0801650066b3b7d8d4",
@@ -32953,12 +33007,12 @@
     "tw_stocks_high.parquet": "cf873ff5f61befca75bf66d010ee0c184d414552d766759196b03063d140a8c2",
     "tw_stocks_low.parquet": "ac7eaecd53c4424b64eee6a69ee3a19dce85bbacd3d7e75b0ed911de8e0d3010",
     "tw_stocks_volume.parquet": "4c61cea8045327f75a027fa55ff2eb5c635ac196ee872a20c7876ec5b688731b",
-    "twse_market.csv": "79ca14f7458d3f091db9fd1e4dacfda8fa3e99e860329710d372fe8203df0a1b",
+    "twse_market.csv": "c4ca4a6e6cee1eff0086e9eb6eb76029430e55f53f11da676212bd897590a9d9",
     "twse_market.parquet": "dfa60a70ba28b1440d3cff2dd5e52fd0e3a75b5ec32dce815cadefa9c9cb8faf",
-    "implementation_sha256": "bfd287314d6956d13edc3b7adac422b25893ee20601e24008116f2a5e6218fb1"
+    "implementation_sha256": "4bdc2d58b9a8bb5df5b1df2ea0fe55597c5befd36475f6ac85f6048786c1ea89"
   },
   "snapshot_schema": "dashboard-snapshot-v1",
-  "snapshot_id": "7778b07371864d775fc06e5d63b4c4a168e56ac40a9907fd2dda0a9a0e707a83"
+  "snapshot_id": "332a2b0501211690ba5224944338e894711c453b1d5a3e9123f6d4a0a86d322a"
 };
   </script>
 <!-- 互動圖表與數據渲染腳本 -->
@@ -36417,6 +36471,28 @@
           seen.add(base);
           list.push(item);
         };
+        // 優先納入 0050.TW 元大台灣50，支援持倉新增/加碼/減碼與即時損益計算
+        const e50 = data.etf_0050_research || null;
+        const e50Close = (e50 && Number(e50.close) > 0)
+          ? Number(e50.close)
+          : Number((data.three_line_v4 && data.three_line_v4.market && data.three_line_v4.market.etf_0050_close) || 0);
+        if (e50Close > 0) {
+          pushItem({
+            symbol: '0050.TW',
+            name: '元大台灣50',
+            category: '市值型核心 ETF',
+            close: e50Close,
+            price: e50Close,
+            price_asof: (e50 && e50.as_of_date) || (data.three_line_v4 && data.three_line_v4.as_of_date) || '',
+            p_cheap: e50 ? e50.p_cheap : null,
+            p_fair: e50 ? e50.p_fair : null,
+            p_expensive: e50 ? e50.p_expensive : null,
+            stop_loss_price: e50 && e50.ma240 ? Math.round(Number(e50.ma240) * 0.90) : Math.round(e50Close * 0.90),
+            sun_status: (e50 && e50.val_status) || '市值型 ETF',
+            change_ball: (e50 && e50.above_ma20) ? '🔴▲ 轉強' : '🔵▼ 轉弱',
+            action_holding: (e50 && e50.right_action) || '依三線 v4 與左右側雙錢包紀律操作',
+          });
+        }
         (data.core_watchlist_20 || []).forEach(pushItem);
         (data.value_watchlist_20 || []).forEach(pushItem);
         (data.emerging_stock_pool || []).forEach(pushItem);
@@ -37648,6 +37724,139 @@
         } catch (err) {
           showCloudSettingsFeedback('❌ 解析設定碼失敗：' + (err?.message || err), true);
           window.showToast('設定碼無效或已損毀', '⚠️', true);
+        }
+      };
+
+      function _updateMonthlyReportLinks(url) {
+        const safeUrl = (typeof url === 'string' && url.startsWith('https://')) ? url : '';
+        ['portMonthlySheetDirectLink', 'cloudLinkMonthlyReport'].forEach(id => {
+          const el = document.getElementById(id);
+          if (!el) return;
+          if (safeUrl) {
+            el.href = safeUrl;
+            el.classList.remove('hidden');
+          } else {
+            el.classList.add('hidden');
+          }
+        });
+      }
+
+      function renderPortMonthlyReportTable(reports) {
+        const tbody = document.getElementById('portMonthlyReportBody');
+        if (!tbody) return;
+        if (!Array.isArray(reports) || reports.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="8" class="py-4 text-center text-slate-400">雲端尚無月報結算紀錄，點上方「📅 立即結算本月寫入雲碟」即可建立！</td></tr>';
+          return;
+        }
+        const fmtPnl = (v) => {
+          const n = Number(v || 0);
+          const cls = n > 0 ? 'text-[#FF5252]' : (n < 0 ? 'text-[#00F59B]' : 'text-slate-300');
+          return `<span class="${cls} font-bold">${n > 0 ? '+' : ''}$${Math.round(n).toLocaleString()}</span>`;
+        };
+        tbody.innerHTML = reports.map(r => {
+          const pct = Number(r.unrealizedPct || 0);
+          const pctStr = `${pct > 0 ? '+' : ''}${pct.toFixed(1)}%`;
+          return `<tr class="hover:bg-slate-900/70">
+            <td class="py-2 pr-2 font-bold text-amber-300 whitespace-nowrap">${escapeText(r.month)}<div class="text-[10px] text-slate-400 font-normal">${escapeText((r.settledAt || '').slice(5, 16))}</div></td>
+            <td class="py-2 pr-2 whitespace-nowrap">${Number(r.holdingCount || 0)} 檔</td>
+            <td class="py-2 pr-2 whitespace-nowrap">$${Math.round(Number(r.totalCost || 0)).toLocaleString()}</td>
+            <td class="py-2 pr-2 text-cyan-300 whitespace-nowrap">$${Math.round(Number(r.totalMarketVal || 0)).toLocaleString()}</td>
+            <td class="py-2 pr-2 whitespace-nowrap">${fmtPnl(r.unrealizedPnl)} <span class="text-[10px] text-slate-300">(${pctStr})</span></td>
+            <td class="py-2 pr-2 whitespace-nowrap text-slate-200">買${Number(r.buyCount || 0)} / 賣${Number(r.sellCount || 0)}</td>
+            <td class="py-2 pr-2 whitespace-nowrap">${fmtPnl(r.realizedPnl)}</td>
+            <td class="py-2 whitespace-nowrap">${fmtPnl(r.combinedPnl)}</td>
+          </tr>`;
+        }).join('');
+      }
+
+      window.loadPortMonthlyReport = async function(silent = false) {
+        const cfg = getGasConfig();
+        const stEl = document.getElementById('portMonthlyReportStatus');
+        if (!cfg.gasUrl || !cfg.token) {
+          if (stEl) stEl.textContent = '⚠️ 請先完成「⚙️ 雲端連線設定」後，即可讀取或寫入雲碟月報結算表。';
+          if (!silent) window.showToast('請先設定 Google 雲端連線', '⚠️', true);
+          return;
+        }
+        if (stEl) stEl.textContent = '⏳ 正在從 Google 雲碟讀取【真實持倉月報結算】...';
+        try {
+          const resp = await fetch(cfg.gasUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify({ action: 'load_monthly_report', token: cfg.token }),
+          });
+          const res = await resp.json();
+          if (!res || !res.ok) throw new Error(res?.message || '雲端回傳失敗');
+          _updateMonthlyReportLinks(res.monthlyReportUrl || res.masterUrl || '');
+          renderPortMonthlyReportTable(res.reports || []);
+          const cnt = (res.reports || []).length;
+          if (stEl) stEl.textContent = `✅ 已載入 Google 雲碟月報（共 ${cnt} 個月結算紀錄；點右側「📂 開啟雲碟月報表」可直接檢視試算表）`;
+        } catch (err) {
+          if (stEl) stEl.textContent = '❌ 讀取雲端月報失敗：' + (err?.message || err);
+          if (!silent) window.showToast('讀取雲端月報失敗', '⚠️', true);
+        }
+      };
+
+      window.savePortMonthlyReport = async function() {
+        const cfg = getGasConfig();
+        const stEl = document.getElementById('portMonthlyReportStatus');
+        if (!cfg.gasUrl || !cfg.token) {
+          if (stEl) stEl.textContent = '⚠️ 請先完成「⚙️ 雲端連線設定」再結算寫入雲碟。';
+          window.showToast('請先設定 Google 雲端連線', '⚠️', true);
+          return;
+        }
+        const holdings = getStoredHoldings();
+        let totalCost = 0, totalMarketVal = 0;
+        holdings.forEach(h => {
+          const shares = Number(h.shares || 0);
+          const cost = Number(h.cost || 0);
+          const sData = findStockData(h.symbol);
+          const curPx = (sData && Number.isFinite(Number(sData.close || sData.price)) && Number(sData.close || sData.price) > 0)
+            ? Number(sData.close || sData.price)
+            : cost;
+          totalCost += shares * cost;
+          totalMarketVal += shares * curPx;
+        });
+        const unrealizedPnl = totalMarketVal - totalCost;
+        const unrealizedPct = totalCost > 0 ? (unrealizedPnl / totalCost) * 100 : 0;
+        const now = new Date();
+        const ym = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
+
+        if (stEl) stEl.textContent = `⏳ 正在將 ${ym} 持倉結算寫入 Google 雲碟【真實持倉月報結算】...`;
+        try {
+          const resp = await fetch(cfg.gasUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify({
+              action: 'save_monthly_report',
+              token: cfg.token,
+              month: ym,
+              holdingCount: holdings.length,
+              totalCost: Math.round(totalCost),
+              totalMarketVal: Math.round(totalMarketVal),
+              unrealizedPnl: Math.round(unrealizedPnl),
+              unrealizedPct: Number(unrealizedPct.toFixed(2)),
+              device: cfg.device || detectDefaultDeviceName(),
+            }),
+          });
+          const res = await resp.json();
+          if (!res || !res.ok) throw new Error(res?.message || '結算寫入失敗');
+          _updateMonthlyReportLinks(res.monthlyReportUrl || res.masterUrl || '');
+          renderPortMonthlyReportTable(res.reports || []);
+          if (stEl) stEl.textContent = `✅ 已完成 ${res.month} 月報結算並寫入 Google 雲碟（${res.settledAt}）！`;
+          window.showToast(`📊 已將 ${res.month} 月報結算寫入 Google 雲碟`, '✅', false);
+        } catch (err) {
+          if (stEl) stEl.textContent = '❌ 寫入雲端月報失敗：' + (err?.message || err);
+          window.showToast('寫入雲端月報失敗', '⚠️', true);
+        }
+      };
+
+      window.togglePortMonthlyReportDrawer = function() {
+        const drawer = document.getElementById('portMonthlyReportDrawer');
+        if (!drawer) return;
+        const willOpen = drawer.classList.contains('hidden');
+        drawer.classList.toggle('hidden');
+        if (willOpen) {
+          window.loadPortMonthlyReport(true);
         }
       };
 
